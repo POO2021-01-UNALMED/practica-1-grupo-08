@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package uiMain;
 
 public class Recepción {
 
