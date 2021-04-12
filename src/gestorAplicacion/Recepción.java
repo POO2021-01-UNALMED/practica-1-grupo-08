@@ -1,5 +1,5 @@
 package gestorAplicacion;
 
-public class Hotel {
+public class Recepción {
 
 }
