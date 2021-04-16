@@ -1,5 +1,5 @@
 package gestorAplicacion.Funcionamiento;
 
-public class Habitación {
+public class Habitacion {
 
 }
