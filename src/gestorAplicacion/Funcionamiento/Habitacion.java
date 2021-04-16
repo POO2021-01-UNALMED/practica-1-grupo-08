@@ -79,4 +79,16 @@ public class Habitacion {
 	public Reserva getReserva() {
 		return this.reserva;
 	}
+
+
+	public static boolean disponibilidad(int numAcompanantes) {
+		boolean confirmacion = true;
+		return confirmacion;
+		
+	}
+
+
+
+
+
 }
