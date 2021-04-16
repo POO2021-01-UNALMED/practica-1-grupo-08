@@ -27,7 +27,9 @@ public class Servicio {
 		
 	}
 
-
+  public void ensayo() {
+	  
+  }
 
 
 
