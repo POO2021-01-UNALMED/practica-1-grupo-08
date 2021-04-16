@@ -6,6 +6,7 @@ public class Empleado {
 	private String cargo;
 	private int salario;
 	public HorasExtras horasextras;
+	//int horasPagadas;
 	Hotel hotel;
 	int cantidadTipoHorasExtras[] = new int[4]; 
     
