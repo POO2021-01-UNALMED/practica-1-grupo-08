@@ -10,4 +10,14 @@ public class Habitacion {
 	public static int capacidad5;
 	public Cliente cliente;
 
+	
+	public void setNumHabitacion(int num) {
+		this.numHabitacion = num;
+	}
+	
+	
+	
+	
+	
+	
 }
