@@ -34,6 +34,8 @@ public class Reserva {
 		this.fecha_de_salida = fecha_de_salida;
 	}
 	
+	
+	/// Métodos.
 	public void reasignar_reserva(Date nueva_fecha_ing, Date nueva_fecha_sal) {
 		
 	}
