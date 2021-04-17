@@ -1,5 +1,7 @@
 package gestorAplicacion.Personal;
 
-public class Administrador {
-
+public class Administrador extends Empleado{
+	public Administrador() {}
+	
+	public void pagarSalario() {}
 }
