@@ -42,15 +42,15 @@ public class Habitacion {
 		Habitacion.capacidad2 = capacidad2;
 	}
 	
-	public void setCapacidad3(int capacidad3) {
+	public static void setCapacidad3(int capacidad3) {
 		Habitacion.capacidad3 = capacidad3;
 	}
 	
-	public void setCapacidad4(int capacidad4) {
+	public static void setCapacidad4(int capacidad4) {
 		Habitacion.capacidad4 = capacidad4;
 	}
 	
-	public void setCapacidad5(int capacidad5) {
+	public static void setCapacidad5(int capacidad5) {
 		Habitacion.capacidad5 = capacidad5;
 	}
 	
