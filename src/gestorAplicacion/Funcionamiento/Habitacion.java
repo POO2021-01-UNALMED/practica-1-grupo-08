@@ -20,6 +20,14 @@ public class Habitacion {
 	}
 	
 	
+	public void setTipoCapacidad(int num) {
+		this. = num;
+	}
+	
+	public return getTipoCapacidad() {
+		return;
+	}
+	
 	public void setNumHabitacion(int num) {
 		this.numHabitacion = num;
 	}
