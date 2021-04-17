@@ -11,7 +11,7 @@ public class Cliente {
 	private Date fecha_entrada;
 	private Date fecha_salida;
 	private String parentescoEmpleado;
-	private int numAcompañantes;
+	private int numAcompanantes;
 	private boolean reserva;
 	public int cuentaFinal;
 	public int saldo;
@@ -76,12 +76,12 @@ public class Cliente {
 		this.parentescoEmpleado = parentescoEmpleado;
 	}
 
-	public int getNumAcompañantes() {
-		return numAcompañantes;
+	public int getNumAcompanantes() {
+		return numAcompanantes;
 	}
 
 	public void setNumAcompañantes(int numAcompañantes) {
-		this.numAcompañantes = numAcompañantes;
+		this.numAcompanantes = numAcompañantes;
 	}
 
 	public boolean isReserva() {

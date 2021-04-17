@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Habitacion {
 	public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	public int numHabitacion;
-	public boolean disponibilidad;
+	public boolean disponibilidadHab;
 	private int tipoCapacidad;
 	private static int capacidad2 = 10;
 	private static int capacidad3 = 10;
@@ -16,7 +16,7 @@ public class Habitacion {
 	
 	public Habitacion(int numHabitacion, int tipoCapacidad){
 		this.numHabitacion = numHabitacion;
-		this.disponibilidad = true;
+		this.disponibilidadHab = true;
 		this.tipoCapacidad=tipoCapacidad;
 		habitaciones.add(this);
 	}
@@ -34,8 +34,8 @@ public class Habitacion {
 		this.numHabitacion = num;
 	}
 	
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
+	public void setDisponibilidadHab(boolean disponibilidadHab) {
+		this.disponibilidadHab = disponibilidadHab;
 	}
 	
 	public static void setCapacidad2(int capacidad2) {
@@ -69,8 +69,8 @@ public class Habitacion {
 		
 	}
 	
-	public boolean getDisponibilidad() {
-		return this.disponibilidad;
+	public boolean getDisponibilidadHab() {
+		return this.disponibilidadHab;
 		
 	}
 	
@@ -117,41 +117,7 @@ public class Habitacion {
 		
 		return confirmacion;
 		
-		/*Aqui boolean confirmacion = false;
-		 * switch (totalPersonas) {
-            case 1: 
-            	if(capacidad2 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-		case 2: 
-            	if(capacidad2 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 3:  
-            	if(capacidad3 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 4:
-            	if(capacidad4 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 5: 
-            	if(capacidad5 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            default: 
-            	return confirmacion;
-        }*/
-		
+
 		
 	}
 
