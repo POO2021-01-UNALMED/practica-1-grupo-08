@@ -1,5 +1,6 @@
 package gestorAplicacion.Personal;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 public class Administrador extends Empleado{
 	
@@ -17,9 +18,10 @@ public class Administrador extends Empleado{
 		super.setSalario(3500000);
 	}
 	public void pagarSalario() {
-		int totalSalario;
+		int totalSalario=0;
 		for (int i =0; i<empleados.size();i++) {
-			empleados.getSalario();
+			empleados.get(i).getSalario();
+			totalSalario=totalSalario+empleados.get(i).getSalario();
 		}
 	}
 }
