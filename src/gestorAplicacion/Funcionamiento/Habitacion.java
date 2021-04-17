@@ -82,8 +82,43 @@ public class Habitacion {
 
 
 	public static boolean disponibilidad(int numAcompanantes) {
-		boolean confirmacion = true;
-		return confirmacion;
+		int totalPersonas = 1 + numAcompanantes;
+		boolean confirmacion = false;
+		
+		switch (totalPersonas) {
+            case 1: 
+            	if(capacidad2 > 0) {
+            		confirmacion = true;
+            	}
+            	break;
+
+            case 2: 
+            	if(capacidad2 > 0) {
+            		confirmacion = true;
+            	}
+            	break;
+            	
+            case 3:  
+            	if(capacidad3 > 0) {
+            		confirmacion = true;
+            	}
+            	break;
+            	
+            case 4:
+            	if(capacidad4 > 0) {
+            		confirmacion = true;
+            	}
+            	break;
+            	
+            case 5: 
+            	if(capacidad5 > 0) {
+            		confirmacion = true;
+            	}
+            	break;
+            	//default
+        }
+		
+	return confirmacion;
 		
 	}
 
