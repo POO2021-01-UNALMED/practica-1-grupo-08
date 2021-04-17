@@ -4,13 +4,20 @@ import gestorAplicacion.Cliente;
 public class Habitacion {
 	public int numHabitacion;
 	public boolean disponibilidad;
-	private static int capacidad2 = 10;
-	private static int capacidad3 = 10;
-	private static int capacidad4 = 10;
-	private static int capacidad5 = 10;
+	private static int capacidad2;
+	private static int capacidad3;
+	private static int capacidad4;
+	private static int capacidad5;
 	private Cliente cliente;
 	private Reserva reserva;
 
+	static {
+		capacidad2 = 10;
+		capacidad3 = 10;
+		capacidad4 = 10;
+		capacidad5 = 10;
+	}
+	
 	
 	public Habitacion(int numHabitacion){
 		this.numHabitacion = numHabitacion;
