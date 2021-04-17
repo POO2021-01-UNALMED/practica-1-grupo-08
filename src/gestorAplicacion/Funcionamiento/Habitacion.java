@@ -111,41 +111,7 @@ public class Habitacion {
 		}
 		
 		return confirmacion;
-		
-		/*Aqui boolean confirmacion = false;
-		 * switch (totalPersonas) {
-            case 1: 
-            	if(capacidad2 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-		case 2: 
-            	if(capacidad2 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 3:  
-            	if(capacidad3 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 4:
-            	if(capacidad4 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            case 5: 
-            	if(capacidad5 > 0) {
-            		confirmacion = true;
-            	}
-            	return confirmacion;
-            	
-            default: 
-            	return confirmacion;
-        }*/
+	
 		
 		
 	}
