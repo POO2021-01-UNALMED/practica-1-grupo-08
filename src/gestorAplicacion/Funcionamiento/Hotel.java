@@ -6,6 +6,12 @@ public class Hotel {
 	public Habitacion habitacion;
 	
 	public void asignarHabitacion(Cliente cliente) {
-		cliente.habitacion.ha
+		if (Habitacion.disponibilidad(cliente.getNumAcompañantes())==true) {//va a disponibilidad con el parametro de num de clientes
+			if((cliente.getNumAcompañantes()+1==1)||(cliente.getNumAcompañantes()+1==2)) {
+				Habitacion.setCapacidad2(Habitacion.getCapacidad2());
+				
+			}
+		} 
+		
 	}
 }

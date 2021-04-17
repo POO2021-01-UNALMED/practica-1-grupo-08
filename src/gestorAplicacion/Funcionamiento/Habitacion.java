@@ -18,6 +18,7 @@ public class Habitacion {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidad = true;
 		this.tipoCapacidad=tipoCapacidad;
+		habitaciones.add(this);
 	}
 	
 	
@@ -37,7 +38,7 @@ public class Habitacion {
 		this.disponibilidad = disponibilidad;
 	}
 	
-	public void setCapacidad2(int capacidad2) {
+	public static void setCapacidad2(int capacidad2) {
 		Habitacion.capacidad2 = capacidad2;
 	}
 	
@@ -104,7 +105,7 @@ public class Habitacion {
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;
 				
-		if((totalPersonas == 1 | totalPersonas == 2) && capacidad2 == 0) {
+		if((totalPersonas == 1 || totalPersonas == 2) && capacidad2 == 0) {
 			confirmacion = false;
 		}else if(totalPersonas == 3 && capacidad3 == 0) {
 			confirmacion = false;
