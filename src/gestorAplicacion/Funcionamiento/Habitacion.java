@@ -12,6 +12,11 @@ public class Habitacion {
 	public Reserva reserva;
 
 	
+	public Habitacion(int numHabitacion){
+		this.numHabitacion = numHabitacion;
+	}
+	
+	
 	public void setNumHabitacion(int num) {
 		this.numHabitacion = num;
 	}
