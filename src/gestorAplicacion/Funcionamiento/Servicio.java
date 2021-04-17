@@ -44,12 +44,9 @@ public class Servicio {
 					 	+ "2. Ensala de espárragos y requesón - $15000. \n"
 						+ "3. Lasaña vegetal - $10000. \n"
 					 	+ "4. Alcachofas rellenas de quinoa - $20000. \n"
-						+ "5. Piscina de pelotas - $8000. \n"
-					 	+ "6. Carrusel - $8000. \n"
-						+ "7. Bungy - $10000. \n"
-						+ "8. Barco pirata - $15000. \n");
+						+ "5. Hamburguesa vegetariana - $8000. \n);
 				}else if(opcion == 2){
-						System.out.println(Carta vegetariana:
+						System.out.println(Carta tradicional:
 			 			+ "1. Montaña rusa - $15000. \n" 
 					 	+ "2. Paseo oscuro - $15000. \n"
 						+ "3. Carritos chocones - $10000. \n"

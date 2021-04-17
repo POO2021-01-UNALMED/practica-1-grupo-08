@@ -15,6 +15,7 @@ public class Cliente {
 	public int saldo;
 	public Habitacion habitacion;
 	public Hotel hotel;
+	public Servicio servicio;
 	
 	
 	public Cliente(String nombre,long cedula,int numNoches,int saldo) {
@@ -86,5 +87,12 @@ public class Cliente {
 		this.habitacion = habitacion;
 	}
 	
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
+	
+	public Servicio getServicio() {
+		return servicio;
+	}
 	
 }
