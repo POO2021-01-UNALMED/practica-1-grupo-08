@@ -27,9 +27,6 @@ public class Servicio {
 		
 	}
 
-  public void ensayo() {
-	  int va = 0;
-  }
 
 
 
