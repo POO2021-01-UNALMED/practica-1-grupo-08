@@ -1,14 +1,17 @@
 package gestorAplicacion.Personal;
 import gestorAplicacion.Funcionamiento.*;
+
 public class Empleado {
 	private String nombre;
 	private long id;
 	private String cargo;
-	private int salario;
+	private int salario;	
 	public HorasExtras horasextras;
-	//int horasPagadas;
 	Hotel hotel;
-	int cantidadTipoHorasExtras[] = new int[4]; 
+	private int horaExtraDiurna;
+	private int horaExtraNocturna;
+	private int horaExtraDiurnaDom;
+	private int horaExtraNocturnaDom;
     
 	//Constructores
 	public Empleado(String nombre,long id, String cargo,HorasExtras horasextras) {
@@ -36,7 +39,9 @@ public class Empleado {
 		}
 	}
 	
-	public void pagoHorasExtras() {}
+	/*public void pagoHorasExtras() {
+		if(horasExtras)
+	}*/
 	
 	//Getters y Setters
 	public String getNombre() {
@@ -63,5 +68,6 @@ public class Empleado {
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-
+	
+	
 }
