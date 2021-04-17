@@ -89,7 +89,7 @@ public class Habitacion {
 
 	public static boolean disponibilidad(int numAcompanantes) {
 		//validar que todas las cantidades sean positivas. ¿static?
-		// Validar el número de acompñantes ¿Desde el constructor?
+		// Validar el número de acompañantes ¿Desde el constructor?
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;
 				
@@ -105,7 +105,8 @@ public class Habitacion {
 		
 		return confirmacion;
 		
-		/*switch (totalPersonas) {
+		/*Aqui boolean confirmacion = false;
+		 * switch (totalPersonas) {
             case 1: 
             	if(capacidad2 > 0) {
             		confirmacion = true;

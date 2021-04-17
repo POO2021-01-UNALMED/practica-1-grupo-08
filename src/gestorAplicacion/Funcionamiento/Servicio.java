@@ -41,14 +41,14 @@ public class Servicio {
 		 int confirmar; 
 		 do {
 			 System.out.println("Bienvenido al parque de diversiones, por favor escoja una opción: \n"
-						+ "1. Montaña rusa. \n" 
-					 	+ "2. Paseo oscuro. \n"
-						+ "3. Carritos chocones. \n"
-					 	+ "4. Piscina. \n"
-						+ "5. Piscina de pelotas. \n"
-					 	+ "6. Carrusel. \n"
-						+ "7. Bungy. \n"
-						+ "8. Barco pirata. \n");
+						+ "1. Montaña rusa - $15000. \n" 
+					 	+ "2. Paseo oscuro - $15000. \n"
+						+ "3. Carritos chocones - $10000. \n"
+					 	+ "4. Piscina - $20000. \n"
+						+ "5. Piscina de pelotas - $8000. \n"
+					 	+ "6. Carrusel - $8000. \n"
+						+ "7. Bungy - $10000. \n"
+						+ "8. Barco pirata - $15000. \n");
 				// Se lee un número entero.
 			 	// Se llama el método tipoAtraccion y se envia el valor leído
 			 
@@ -57,36 +57,47 @@ public class Servicio {
 			 		+ "1. Sí. \n"
 					+ "2. No. " );
 			 // Se lee la elección
+			 //se verifica que se un numero del 1 al 8
+			  *if(opcion < 0 || opcion > 8){
+			  *System.out.println("Valor ingresado inválido")
+			 return;
+			  *}
 		 }while(confirmar == 1);*/
 		 
 		 	
 		 switch (opcion) {
          case 1: 
-         	valorTotalServicio = valorTotalServicio + 12000;
+         	valorTotalServicio = valorTotalServicio + 15000;
          	break;
 
          case 2: 
-        	 valorTotalServicio = 12000;
+        	valorTotalServicio = valorTotalServicio + 15000;
           	break;
  
          case 3:  
-         	if(capacidad3 > 0) {
-         		confirmacion = true;
-         	}
-         	break;
+        	valorTotalServicio = valorTotalServicio + 10000;
+          	break;
          	
          case 4:
-         	if(capacidad4 > 0) {
-         		confirmacion = true;
-         	}
-         	break;
+        	valorTotalServicio = valorTotalServicio + 20000;
+          	break;
          	
          case 5: 
-         	if(capacidad5 > 0) {
-         		confirmacion = true;
-         	}
-         	break;
-         	//default
+        	valorTotalServicio = valorTotalServicio + 8000;
+          	break;
+          	
+         case 6: 
+         	valorTotalServicio = valorTotalServicio + 8000;
+           	break; 	
+           	
+         case 7: 
+          	valorTotalServicio = valorTotalServicio + 10000;
+            	break; 
+            	
+         case 8: 
+           	valorTotalServicio = valorTotalServicio + 15000;
+             	break;   	
+         	
 		 }
 		 
 		 
