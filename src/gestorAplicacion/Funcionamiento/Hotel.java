@@ -1,9 +1,12 @@
 package gestorAplicacion.Funcionamiento;
+import java.util.Date;
+
 import gestorAplicacion.*;
 
 public class Hotel {
 	public Cliente cliente;
 	public Habitacion habitacion;
+	public Reserva reserva;
 	
 	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
 	public void asignarHabitacion(Cliente cliente) {
@@ -33,8 +36,9 @@ public class Hotel {
 		return;	
 		}
 		
-		//¿desea hacer reserva?
+		//¿desea hacer reserva? !!!!!
 		
+       Reserva reserva = new Reserva(cliente.getFecha_entrada(),cliente.getFecha_salida(), cliente);
 	
 	}
 
