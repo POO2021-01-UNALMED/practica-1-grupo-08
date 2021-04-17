@@ -23,6 +23,7 @@ public class Empleado {
 		this.horasextras=horasextras;
 		asignarSalario();
 		pagoHorasExtras();
+		empleados.add(this);
 	}
 	public Empleado(String nombre,long id, String cargo) {
 		this.nombre=nombre;

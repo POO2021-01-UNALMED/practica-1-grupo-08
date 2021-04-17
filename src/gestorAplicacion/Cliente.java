@@ -1,13 +1,15 @@
 package gestorAplicacion;
-
 import gestorAplicacion.Funcionamiento.*;
-
 import gestorAplicacion.Personal.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Cliente {
+	public ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private String nombre;
-	private long cedulaIdentidad;
-	private int numNoches;
+	private long id;
+	private Date fecha_entrada;
+	private Date fecha_salida;
 	private String parentescoEmpleado;
 	private int numAcompañantes;
 	private boolean reserva;
@@ -18,30 +20,57 @@ public class Cliente {
 	public Servicio servicio;
 	
 	
-	public Cliente(String nombre,long cedula,int numNoches,int saldo) {
+	public Cliente(String nombre,long id,Date fecha_entrada,Date fecha_salida ,int saldo) {
 		this.nombre = nombre;
-		this.cedulaIdentidad = cedula;
-		this.numNoches = numNoches;
+		this.id = id;
+		this.fecha_entrada= fecha_entrada;
+		this.fecha_salida= fecha_salida;
 		this.saldo = saldo;
-	}
-	
-	public Cliente() {
+		clientes.add(this);
 		
 	}
-	
+
 	//Setter y getters
-
-	public int getNumNoches() {
-		return numNoches;
-	}
-
-	public void setNumNoches(int numNoches) {
-		this.numNoches = numNoches;
-	}
-
+    
 	public String getParentescoEmpleado() {
 		return parentescoEmpleado;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Date getFecha_entrada() {
+		return fecha_entrada;
+	}
+
+    
+	public void setFecha_entrada(Date fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
+	}
+
+
+	public Date getFecha_salida() {
+		return fecha_salida;
+	}
+
+
+	public void setFecha_salida(Date fecha_salida) {
+		this.fecha_salida = fecha_salida;
+	}
+
 
 	public void setParentescoEmpleado(String parentescoEmpleado) {
 		this.parentescoEmpleado = parentescoEmpleado;

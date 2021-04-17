@@ -1,27 +1,22 @@
 package gestorAplicacion.Funcionamiento;
 import gestorAplicacion.Cliente;
-
+import java.util.ArrayList;
 public class Habitacion {
+	public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	public int numHabitacion;
 	public boolean disponibilidad;
-	private static int capacidad2;
-	private static int capacidad3;
-	private static int capacidad4;
-	private static int capacidad5;
+	private static int capacidad2 = 10;
+	private static int capacidad3 = 10;
+	private static int capacidad4 = 10;
+	private static int capacidad5 = 10;
 	private Cliente cliente;
 	private Reserva reserva;
 
-	static {
-		capacidad2 = 10;
-		capacidad3 = 10;
-		capacidad4 = 10;
-		capacidad5 = 10;
-	}
-	
 	
 	public Habitacion(int numHabitacion){
 		this.numHabitacion = numHabitacion;
 		this.disponibilidad = true;
+		
 	}
 	
 	
@@ -111,7 +106,41 @@ public class Habitacion {
 		}
 		
 		return confirmacion;
-	
+		
+		/*Aqui boolean confirmacion = false;
+		 * switch (totalPersonas) {
+            case 1: 
+            	if(capacidad2 > 0) {
+            		confirmacion = true;
+            	}
+            	return confirmacion;
+		case 2: 
+            	if(capacidad2 > 0) {
+            		confirmacion = true;
+            	}
+            	return confirmacion;
+            	
+            case 3:  
+            	if(capacidad3 > 0) {
+            		confirmacion = true;
+            	}
+            	return confirmacion;
+            	
+            case 4:
+            	if(capacidad4 > 0) {
+            		confirmacion = true;
+            	}
+            	return confirmacion;
+            	
+            case 5: 
+            	if(capacidad5 > 0) {
+            		confirmacion = true;
+            	}
+            	return confirmacion;
+            	
+            default: 
+            	return confirmacion;
+        }*/
 		
 		
 	}

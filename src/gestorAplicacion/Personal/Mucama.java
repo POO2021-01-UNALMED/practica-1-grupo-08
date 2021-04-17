@@ -2,7 +2,7 @@ package gestorAplicacion.Personal;
 import gestorAplicacion.Funcionamiento.*;
 
 public class Mucama extends Empleado {
-	public Habitacion habitacion;
+	public Hotel hotel;
 	int numHabitacion;
 
 	public Mucama(String nombre,long id, String cargo, HorasExtras horasextras) {
@@ -18,6 +18,7 @@ public class Mucama extends Empleado {
 	public void asignarSalario() {
 		super.setSalario(9150000);
 	}
+	
 	public void limpiarHabitacion(int numHabitacion) {
 	//crear atributo que me de la capacidad de habitacion
 
