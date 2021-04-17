@@ -23,11 +23,21 @@ public class Servicio {
 	}
 	
 	
-	public int reportarGasto() {
+	public int reportarGasto(Cliente cliente) {
 		int reporteGasto = 0;
+		
+		//Variable
+		//return cliente.getServicio().getGastosServicios();
+		
+		//Arreglo
+		for(int valor: gastosServicios) {
+			reporteGasto = reporteGasto + valor;
+		}
+				
 		return reporteGasto;
 	}
 	
+
 	static void tipoMenu(int opcion, Cliente cliente) {
 		//Se cambió a que recibiera el cliente también para poder hacer registro del gasto
 		 int valorTotalServicio = 0;
@@ -40,21 +50,18 @@ public class Servicio {
 			// se lee la opcion.
 			 * if(opcion == 1){
 			 * 		System.out.println(Carta vegetariana:
-			 * 			+ "1. Espirales con setas y verduras. - $15000. \n" 
-					 	+ "2. Ensala de espárragos y requesón - $15000. \n"
-						+ "3. Lasaña vegetal - $10000. \n"
-					 	+ "4. Alcachofas rellenas de quinoa - $20000. \n"
-						+ "5. Hamburguesa vegetariana - $8000. \n);
+			 * 			+ "1. Espirales con setas y verduras. - $20000. \n" 
+					 	+ "2. Ensala de espárragos y requesón - $18000. \n"
+						+ "3. Lasaña vegetal - $15000. \n"
+					 	+ "4. Alcachofas rellenas de quinoa - $22000. \n"
+						+ "5. Hamburguesa vegetariana - $15000. \n);
 				}else if(opcion == 2){
 						System.out.println(Carta tradicional:
-			 			+ "1. Montaña rusa - $15000. \n" 
-					 	+ "2. Paseo oscuro - $15000. \n"
-						+ "3. Carritos chocones - $10000. \n"
-					 	+ "4. Piscina - $20000. \n"
-						+ "5. Piscina de pelotas - $8000. \n"
-					 	+ "6. Carrusel - $8000. \n"
-						+ "7. Bungy - $10000. \n"
-						+ "8. Barco pirata - $15000. \n");
+			 			+ "6. Alitas orientales - $15000. \n" 
+					 	+ "7. Arroz atollado - $18000. \n"
+						+ "8. Bandeja paisa - $25000. \n"
+					 	+ "9. Crema de champiñones - $15000. \n"
+						+ "10. Hígado encebollado - $20000.);
 				}else{
 					System.out.println("Valor ingresado incorrecto.");
 				}
@@ -75,40 +82,46 @@ public class Servicio {
 		 	
 		 switch (opcion) {
         case 1: 
-        	valorTotalServicio = valorTotalServicio + 15000;
+        	valorTotalServicio = valorTotalServicio + 20000;
         	break;
 
         case 2: 
-       	valorTotalServicio = valorTotalServicio + 15000;
+       	valorTotalServicio = valorTotalServicio + 18000;
          	break;
 
         case 3:  
-       	valorTotalServicio = valorTotalServicio + 10000;
+       	valorTotalServicio = valorTotalServicio + 15000;
          	break;
         	
         case 4:
-       	valorTotalServicio = valorTotalServicio + 20000;
+       	valorTotalServicio = valorTotalServicio + 22000;
          	break;
         	
         case 5: 
-       	valorTotalServicio = valorTotalServicio + 8000;
+       	valorTotalServicio = valorTotalServicio + 15000;
          	break;
          	
         case 6: 
-        	valorTotalServicio = valorTotalServicio + 8000;
+        	valorTotalServicio = valorTotalServicio + 15000;
           	break; 	
           	
         case 7: 
-         	valorTotalServicio = valorTotalServicio + 10000;
+         	valorTotalServicio = valorTotalServicio + 18000;
            	break; 
            	
         case 8: 
+          	valorTotalServicio = valorTotalServicio + 25000;
+            	break;  
+        case 9: 
           	valorTotalServicio = valorTotalServicio + 15000;
-            	break;   	
+            	break;
+        case 10: 
+          	valorTotalServicio = valorTotalServicio + 20000;
+            	break;      	
         	
 		 }
 		 
-		//cliente.getServicio.getGastosServicios().add(valorTotalServicio);
+		 cliente.getServicio().getGastosServicios().add(valorTotalServicio);
 		 
 		
 		
@@ -180,7 +193,7 @@ public class Servicio {
          	
 		 }
 		 
-		//cliente.getServicio.getGastosServicios().add(valorTotalServicio);
+		cliente.getServicio().getGastosServicios().add(valorTotalServicio);
 		 
 		
 	}
