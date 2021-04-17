@@ -5,6 +5,7 @@ public class Habitacion {
 	public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	public int numHabitacion;
 	public boolean disponibilidad;
+	private int tipoCapacidad;
 	private static int capacidad2 = 10;
 	private static int capacidad3 = 10;
 	private static int capacidad4 = 10;
@@ -13,19 +14,19 @@ public class Habitacion {
 	private Reserva reserva;
 
 	
-	public Habitacion(int numHabitacion){
+	public Habitacion(int numHabitacion, int tipoCapacidad){
 		this.numHabitacion = numHabitacion;
 		this.disponibilidad = true;
-		
+		this.tipoCapacidad=tipoCapacidad;
 	}
 	
 	
 	public void setTipoCapacidad(int num) {
-		this. = num;
+		this.tipoCapacidad = num;
 	}
 	
-	public return getTipoCapacidad() {
-		return;
+	public int getTipoCapacidad() {
+		return this.tipoCapacidad;
 	}
 	
 	public void setNumHabitacion(int num) {
