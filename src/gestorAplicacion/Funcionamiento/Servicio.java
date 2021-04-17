@@ -6,6 +6,10 @@ public class Servicio {
 	public ArrayList<Integer> gastosServicios;
 	public 	Cliente cliente;
 	
+	public Servicio(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
