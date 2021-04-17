@@ -4,12 +4,12 @@ import gestorAplicacion.Cliente;
 public class Habitacion {
 	public int numHabitacion;
 	public boolean disponibilidad;
-	public static int capacidad2 = 10;
-	public static int capacidad3 = 10;
-	public static int capacidad4 = 10;
-	public static int capacidad5 = 10;
-	public Cliente cliente;
-	public Reserva reserva;
+	private static int capacidad2 = 10;
+	private static int capacidad3 = 10;
+	private static int capacidad4 = 10;
+	private static int capacidad5 = 10;
+	private Cliente cliente;
+	private Reserva reserva;
 
 	
 	public Habitacion(int numHabitacion){
@@ -88,43 +88,57 @@ public class Habitacion {
 
 
 	public static boolean disponibilidad(int numAcompanantes) {
+		//validar que todas las cantidades sean positivas. ¿static?
+		// Validar el número de acompñantes ¿Desde el constructor?
 		int totalPersonas = 1 + numAcompanantes;
-		boolean confirmacion = false;
+		boolean confirmacion = true;
+				
+		if((totalPersonas == 1 | totalPersonas == 2) && capacidad2 == 0) {
+			confirmacion = false;
+		}else if(totalPersonas == 3 && capacidad3 == 0) {
+			confirmacion = false;
+		}else if(totalPersonas == 4 && capacidad4 == 0) {
+			confirmacion = false;
+		}else if(totalPersonas == 5 && capacidad5 == 0) {
+			confirmacion = false;
+		}
 		
-		switch (totalPersonas) {
+		return confirmacion;
+		
+		/*switch (totalPersonas) {
             case 1: 
             	if(capacidad2 > 0) {
             		confirmacion = true;
             	}
-            	break;
-
-            case 2: 
+            	return confirmacion;
+		case 2: 
             	if(capacidad2 > 0) {
             		confirmacion = true;
             	}
-            	break;
+            	return confirmacion;
             	
             case 3:  
             	if(capacidad3 > 0) {
             		confirmacion = true;
             	}
-            	break;
+            	return confirmacion;
             	
             case 4:
             	if(capacidad4 > 0) {
             		confirmacion = true;
             	}
-            	break;
+            	return confirmacion;
             	
             case 5: 
             	if(capacidad5 > 0) {
             		confirmacion = true;
             	}
-            	break;
-            	//default
-        }
+            	return confirmacion;
+            	
+            default: 
+            	return confirmacion;
+        }*/
 		
-	return confirmacion;
 		
 	}
 
