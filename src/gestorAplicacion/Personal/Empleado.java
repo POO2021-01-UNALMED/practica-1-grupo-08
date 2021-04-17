@@ -14,16 +14,20 @@ public class Empleado {
 	private int horaExtraNocturnaDom;
     
 	//Constructores
-	public Empleado(String nombre,long id, String cargo,HorasExtras horasextras) {
+	public Empleado(String nombre,long id, String cargo, HorasExtras horasextras) {
 		this.nombre=nombre;
 		this.id=id;
 		this.cargo=cargo;
 		this.horasextras=horasextras;
+		asignarSalario();
+		pagoHorasExtras();
 	}
 	public Empleado(String nombre,long id, String cargo) {
 		this.nombre=nombre;
-		this.id=id;
+		this.id=id;          
 		this.cargo=cargo;
+		asignarSalario();
+		
 	}
 	public Empleado() {}
 	//Métodos
@@ -39,10 +43,17 @@ public class Empleado {
 		}
 	}
 	
-	/*public void pagoHorasExtras() {
-		if(horasExtras)
-	}*/
-	
+	public void pagoHorasExtras() {
+		if(horasextras.getPrecioHora()==4731) {
+			salario = salario+4731*(horaExtraDiurna);
+		}else if(horasextras.getPrecioHora()==6624) {
+			salario = salario+6624*(horaExtraNocturna);
+		}else if(horasextras.getPrecioHora()==7570) {
+			salario = salario+7570*(horaExtraDiurnaDom);
+		}else if(horasextras.getPrecioHora()==9463) {
+			salario = salario+9463*(horaExtraNocturnaDom);
+	    }
+    }
 	//Getters y Setters
 	public String getNombre() {
 		return nombre;
