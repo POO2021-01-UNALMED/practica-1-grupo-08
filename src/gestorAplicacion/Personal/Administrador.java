@@ -19,9 +19,9 @@ public class Administrador extends Empleado{
 	}
 	public void pagarSalario() {
 		int totalSalario=0;
-		for (int i =0; i<empleados.size();i++) {
-			empleados.get(i).getSalario();
-			totalSalario=totalSalario+empleados.get(i).getSalario();
+		for (int i =0; i<Empleado.getEmpleados().size();i++) {
+			Empleado.getEmpleados().get(i).getSalario();
+			totalSalario=totalSalario+Empleado.getEmpleados().get(i).getSalario();
 		}
 	}
 }
