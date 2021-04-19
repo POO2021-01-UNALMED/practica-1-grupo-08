@@ -10,6 +10,10 @@ public class Hotel {
 	public Reserva reserva;
 	public Empleado empleado;
 	
+	public Hotel() {
+		
+	}
+	
 	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
 	public void asignarHabitacion(Cliente cliente) {
 		int cap2 =Habitacion.getCapacidad2();
