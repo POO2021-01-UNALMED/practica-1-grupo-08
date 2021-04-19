@@ -1,12 +1,14 @@
 package gestorAplicacion.Funcionamiento;
 import java.util.Date;
-
+import java.lang.Math;
 import gestorAplicacion.*;
+import gestorAplicacion.Personal.Empleado;
 
 public class Hotel {
 	public Cliente cliente;
 	public Habitacion habitacion;
 	public Reserva reserva;
+	public Empleado empleado;
 	
 	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
 	public void asignarHabitacion(Cliente cliente) {
@@ -42,4 +44,30 @@ public class Hotel {
 	
 	}
 
+	
+	public void descuentoFamiliar(Cliente cliente) {
+		if(cliente.isParentescoEmpleado()==true) {
+			for(int i =0; i<Empleado.getEmpleados().size(); i++) {
+				if(Empleado.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
+					int descuento =cliente.getServicio().getGastosServicios() - 40000;
+					cliente.getServicio().setGastosServicios(descuento);
+					break;
+				}
+				
+			}
+			
+		}
+		return;
+	
+	}
+	
+	public void descuentoPorConsumo(Cliente cliente) {
+		if(cliente.getServicio().getGastosServicios() > 150000) {
+			int gasto = cliente.getServicio().getGastosServicios();
+			int porcentaje = (gasto - (int)((gasto*0.12)/100));
+			cliente.getServicio().setGastosServicios(porcentaje);
+			
+			
+		}
+	}
 }

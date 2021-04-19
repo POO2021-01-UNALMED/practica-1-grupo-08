@@ -3,7 +3,7 @@ import gestorAplicacion.Funcionamiento.*;
 import java.util.ArrayList;
 
 public class Empleado {
-	protected ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private String nombre;
 	private long id;
 	private String cargo;
@@ -82,11 +82,11 @@ public class Empleado {
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-	public ArrayList<Empleado> getEmpleados() {
+	public static ArrayList<Empleado> getEmpleados() {
 		return empleados;
 	}
-	public void setEmpleados(ArrayList<Empleado> empleados) {
-		this.empleados = empleados;
+	public static void setEmpleados(ArrayList<Empleado> empleados) {
+		Empleado.empleados = empleados;
 	}
 	
 	

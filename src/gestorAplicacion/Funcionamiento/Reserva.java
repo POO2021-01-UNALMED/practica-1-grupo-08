@@ -41,7 +41,6 @@ public class Reserva {
 	public void reasignar_reserva(Date nueva_fecha_ing, Date nueva_fecha_sal) {
 		cliente.setFecha_entrada(nueva_fecha_ing);
 		cliente.setFecha_salida(nueva_fecha_sal);
-		
 	}
 
 	public void cancelar_reserva(Cliente cliente) {

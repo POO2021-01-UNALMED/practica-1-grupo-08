@@ -10,7 +10,8 @@ public class Cliente {
 	private long id;
 	private Date fecha_entrada;
 	private Date fecha_salida;
-	private String parentescoEmpleado;
+	private boolean parentescoEmpleado;
+	private long idFamiliar;
 	private int numAcompanantes;
 	private boolean reserva;
 	public int cuentaFinal;
@@ -20,6 +21,18 @@ public class Cliente {
 	public Servicio servicio;
 	
 	
+	public Cliente(String nombre,long id,Date fecha_entrada,Date fecha_salida ,int saldo, long idFamiliar) {
+		this.nombre = nombre;
+		this.id = id;
+		this.fecha_entrada= fecha_entrada;
+		this.fecha_salida= fecha_salida;
+		this.saldo = saldo;
+		this.idFamiliar = idFamiliar;
+		this.parentescoEmpleado = true;
+		clientes.add(this);
+		
+	}
+	
 	public Cliente(String nombre,long id,Date fecha_entrada,Date fecha_salida ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
@@ -27,15 +40,12 @@ public class Cliente {
 		this.fecha_salida= fecha_salida;
 		this.saldo = saldo;
 		clientes.add(this);
-		
 	}
 
+	
+	
 	//Setter y getters
     
-	public String getParentescoEmpleado() {
-		return parentescoEmpleado;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -72,8 +82,12 @@ public class Cliente {
 	}
 
 
-	public void setParentescoEmpleado(String parentescoEmpleado) {
+	public void setParentescoEmpleado(boolean parentescoEmpleado) {
 		this.parentescoEmpleado = parentescoEmpleado;
+	}
+	
+	public boolean isParentescoEmpleado() {
+		return parentescoEmpleado;
 	}
 
 	public int getNumAcompanantes() {
@@ -122,6 +136,14 @@ public class Cliente {
 	
 	public Servicio getServicio() {
 		return servicio;
+	}
+	
+	public void setIdFamiliar(long id) {
+		this.idFamiliar = id;
+	}
+	
+	public long getIdFamiliar() {
+		return this.idFamiliar;
 	}
 	
 }

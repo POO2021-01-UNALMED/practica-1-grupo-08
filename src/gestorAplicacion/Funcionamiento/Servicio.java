@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import gestorAplicacion.Cliente;
 
 public class Servicio {
-	public ArrayList<Integer> gastosServicios;
-	public 	Cliente cliente;
+	private int gastosServicios;
+	private	Cliente cliente;
 	
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
@@ -18,10 +18,13 @@ public class Servicio {
 		return this.cliente;
 	}
 
-	public ArrayList<Integer> getGastosServicios() {
-		return this.gastosServicios;
+	public void setGastosServicios(int valorGasto) {
+		this.gastosServicios = valorGasto;
 	}
 	
+	public int getGastosServicios() {
+		return this.gastosServicios;
+	}
 	
 	public int reportarGasto(Cliente cliente) {
 		int reporteGasto = 0;
@@ -30,14 +33,20 @@ public class Servicio {
 		//return cliente.getServicio().getGastosServicios();
 		
 		//Arreglo
-		for(int valor: gastosServicios) {
+		/*for(int valor: gastosServicios) {
 			reporteGasto = reporteGasto + valor;
-		}
+		}*/
 				
 		return reporteGasto;
 	}
 	
 
+	public  void gastosAcumulados(int valorTotalServicio) {
+		this.gastosServicios =+ valorTotalServicio;
+	}
+	
+	
+	
 	static void tipoMenu(int opcion, Cliente cliente) {
 		//Se cambió a que recibiera el cliente también para poder hacer registro del gasto
 		 int valorTotalServicio = 0;
@@ -83,48 +92,55 @@ public class Servicio {
 		 switch (opcion) {
         case 1: 
         	valorTotalServicio = valorTotalServicio + 20000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
         	break;
 
         case 2: 
        	valorTotalServicio = valorTotalServicio + 18000;
+       	cliente.getServicio().gastosAcumulados(valorTotalServicio);
          	break;
 
         case 3:  
        	valorTotalServicio = valorTotalServicio + 15000;
+       	cliente.getServicio().gastosAcumulados(valorTotalServicio);
          	break;
         	
         case 4:
        	valorTotalServicio = valorTotalServicio + 22000;
+       	cliente.getServicio().gastosAcumulados(valorTotalServicio);
          	break;
         	
         case 5: 
        	valorTotalServicio = valorTotalServicio + 15000;
+       	cliente.getServicio().gastosAcumulados(valorTotalServicio);
          	break;
          	
         case 6: 
         	valorTotalServicio = valorTotalServicio + 15000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
           	break; 	
           	
         case 7: 
          	valorTotalServicio = valorTotalServicio + 18000;
+         	cliente.getServicio().gastosAcumulados(valorTotalServicio);
            	break; 
            	
         case 8: 
           	valorTotalServicio = valorTotalServicio + 25000;
+          	cliente.getServicio().gastosAcumulados(valorTotalServicio);
             	break;  
         case 9: 
           	valorTotalServicio = valorTotalServicio + 15000;
+          	cliente.getServicio().gastosAcumulados(valorTotalServicio);
             	break;
         case 10: 
           	valorTotalServicio = valorTotalServicio + 20000;
+          	cliente.getServicio().gastosAcumulados(valorTotalServicio);
             	break;      	
         	
 		 }
 		 
-		 cliente.getServicio().getGastosServicios().add(valorTotalServicio);
-		 
-		
-		
+				
 	}
 	
 	static void tipoAtraccion(int opcion, Cliente cliente) {
@@ -161,39 +177,45 @@ public class Servicio {
 		 switch (opcion) {
          case 1: 
          	valorTotalServicio = valorTotalServicio + 15000;
+         	cliente.getServicio().gastosAcumulados(valorTotalServicio);
          	break;
 
          case 2: 
         	valorTotalServicio = valorTotalServicio + 15000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
           	break;
  
          case 3:  
         	valorTotalServicio = valorTotalServicio + 10000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
           	break;
          	
          case 4:
         	valorTotalServicio = valorTotalServicio + 20000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
           	break;
          	
          case 5: 
         	valorTotalServicio = valorTotalServicio + 8000;
+        	cliente.getServicio().gastosAcumulados(valorTotalServicio);
           	break;
           	
          case 6: 
          	valorTotalServicio = valorTotalServicio + 8000;
+         	cliente.getServicio().gastosAcumulados(valorTotalServicio);
            	break; 	
            	
          case 7: 
           	valorTotalServicio = valorTotalServicio + 10000;
+          	cliente.getServicio().gastosAcumulados(valorTotalServicio);
             	break; 
             	
          case 8: 
            	valorTotalServicio = valorTotalServicio + 15000;
+           	cliente.getServicio().gastosAcumulados(valorTotalServicio);
              	break;   	
          	
 		 }
-		 
-		cliente.getServicio().getGastosServicios().add(valorTotalServicio);
 		 
 		
 	}
