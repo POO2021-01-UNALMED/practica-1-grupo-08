@@ -1,27 +1,28 @@
 package gestorAplicacion.Personal;
-import java.util.Iterator;
-import java.util.ArrayList;
+
+
 
 public class Administrador extends Empleado{
 	
-	public Administrador(String nombre,long id, String cargo, HorasExtras horasextras) {
-		super(nombre,id,cargo,horasextras);
-		super.asignarSalario();
+	public Administrador(String nombre,long id, HorasExtras horasextras) {
+		super(nombre,id,"Administrador",horasextras);
+		asignarSalario();
 		super.pagoHorasExtras();
 	}
-	public Administrador(String nombre,long id, String cargo) {
-		super(nombre,id,cargo);
+	public Administrador(String nombre,long id) {
+		super(nombre,id,"Administrador");
+		asignarSalario();
 	}
 	
 	@Override
 	public void asignarSalario() {
 		super.setSalario(3500000);
 	}
-	public void pagarSalario() {
+	public int pagarSalario() {
 		int totalSalario=0;
 		for (int i =0; i<Empleado.getEmpleados().size();i++) {
-			Empleado.getEmpleados().get(i).getSalario();
-			totalSalario=totalSalario+Empleado.getEmpleados().get(i).getSalario();
-		}
-	}
+         totalSalario += Empleado.getEmpleados().get(i).getSalario();
+	    }
+		return totalSalario += (Mucama.getMucamas().size())*950000 + 3500000;		
 }
+} 

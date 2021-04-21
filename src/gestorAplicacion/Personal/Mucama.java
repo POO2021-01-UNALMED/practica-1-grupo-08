@@ -1,8 +1,11 @@
 package gestorAplicacion.Personal;
+import java.util.ArrayList;
+
 import gestorAplicacion.Funcionamiento.*;
 
 public class Mucama extends Empleado {
-	public Hotel hotel;
+	private static ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
+	//public Hotel hotel;
 	private int numHabitacion;
 	private Habitacion habitacion;
 
@@ -10,17 +13,25 @@ public class Mucama extends Empleado {
 		super(nombre,id,"Mucama",horasextras);
 		asignarSalario();
 		super.pagoHorasExtras();
+		mucamas.add(this);
 	}
 	public Mucama(String nombre,long id) {
 		super(nombre,id,"Mucama");
 		asignarSalario();
+		mucamas.add(this);
+	}
+	public static ArrayList<Mucama> getMucamas() {
+		return mucamas;
+	}
+	public static void setMucamas(ArrayList<Mucama> mucamas) {
+		Mucama.mucamas = mucamas;
 	}
 	
 	@Override
 	public void asignarSalario() {
 		super.setSalario(915000);
 	}
-	
+	//Hacer prueba :)
 	public void limpiarHabitacion(int numHabitacion) {
 		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
 			if (numHabitacion==Habitacion.getHabitaciones().get(i).getNumhabitacion()) {
