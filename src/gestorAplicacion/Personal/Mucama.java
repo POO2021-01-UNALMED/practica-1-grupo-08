@@ -3,24 +3,44 @@ import gestorAplicacion.Funcionamiento.*;
 
 public class Mucama extends Empleado {
 	public Hotel hotel;
-	int numHabitacion;
+	private int numHabitacion;
+	private Habitacion habitacion;
 
-	public Mucama(String nombre,long id, String cargo, HorasExtras horasextras) {
-		super(nombre,id,cargo,horasextras);
-		super.asignarSalario();
+	public Mucama(String nombre,long id, HorasExtras horasextras) {
+		super(nombre,id,"Mucama",horasextras);
+		asignarSalario();
 		super.pagoHorasExtras();
 	}
-	public Mucama(String nombre,long id, String cargo) {
-		super(nombre,id,cargo);
+	public Mucama(String nombre,long id) {
+		super(nombre,id,"Mucama");
+		asignarSalario();
 	}
 	
 	@Override
 	public void asignarSalario() {
-		super.setSalario(9150000);
+		super.setSalario(915000);
 	}
 	
 	public void limpiarHabitacion(int numHabitacion) {
-	//crear atributo que me de la capacidad de habitacion
-
+		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
+			if (numHabitacion==Habitacion.getHabitaciones().get(i).getNumhabitacion()) {
+				Habitacion.getHabitaciones().get(i).setDisponibilidadHab(true);
+				if (Habitacion.getHabitaciones().get(i).getTipoCapacidad()==2) {
+					Habitacion.getHabitaciones().get(i).setCapacidad2(Habitacion.getHabitaciones().get(i).getCapacidad2()+1);					
+				    break;
+				}else if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==3) {
+					Habitacion.getHabitaciones().get(i).setCapacidad3(Habitacion.getHabitaciones().get(i).getCapacidad3()+1);
+					break ;
+				}else if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==4) {
+					Habitacion.getHabitaciones().get(i).setCapacidad4(Habitacion.getHabitaciones().get(i).getCapacidad4()+1);
+					break;
+				}else if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==5) {
+					Habitacion.getHabitaciones().get(i).setCapacidad5(Habitacion.getHabitaciones().get(i).getCapacidad5()+1);
+					break;
+				}
+				
+			}
+		}
+	
 	}    
 }

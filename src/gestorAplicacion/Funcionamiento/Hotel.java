@@ -34,10 +34,10 @@ public class Hotel {
 		    }else if ((cliente.getNumAcompanantes()+1==5)) {
 				Habitacion.setCapacidad5(cap5-1);
 			}  
-		for(int i=0; i< Habitacion.habitaciones.size();i++) {
-			if(Habitacion.habitaciones.get(i).getTipoCapacidad()==cliente.getNumAcompanantes()+1) {
-				cliente.setHabitacion(Habitacion.habitaciones.get(i));
-				Habitacion.habitaciones.get(i).setCliente(cliente);	
+		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
+			if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==cliente.getNumAcompanantes()+1) {
+				cliente.setHabitacion(Habitacion.getHabitaciones().get(i));
+				Habitacion.getHabitaciones().get(i).setCliente(cliente);	
 			}			
 		}
 		return;	

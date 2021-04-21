@@ -2,7 +2,7 @@ package gestorAplicacion.Funcionamiento;
 import gestorAplicacion.Cliente;
 import java.util.ArrayList;
 public class Habitacion {
-	public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+	private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	public int numHabitacion;
 	public boolean disponibilidadHab;
 	private int tipoCapacidad;
@@ -21,8 +21,7 @@ public class Habitacion {
 		this.tipoCapacidad=tipoCapacidad;
 		habitaciones.add(this);
 	}
-	
-	
+
 	public void setTipoCapacidad(int num) {
 		this.tipoCapacidad = num;
 	}
@@ -63,16 +62,12 @@ public class Habitacion {
 		this.reserva = reserva;
 	}
 	
-	
-	
 	public int getNumhabitacion() {
-		return this.numHabitacion;
-		
+		return this.numHabitacion;	
 	}
 	
 	public boolean getDisponibilidadHab() {
-		return this.disponibilidadHab;
-		
+		return this.disponibilidadHab;	
 	}
 	
 	public static int getCapacidad2() {
@@ -99,16 +94,21 @@ public class Habitacion {
 		return this.reserva;
 	}
 	
-	
 	public int getPrecio() {
 		return precio;
 	}
-
 
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
+	public static ArrayList<Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public static void setHabitaciones(ArrayList<Habitacion> habitaciones) {
+		Habitacion.habitaciones = habitaciones;
+	}
 
 	public static boolean disponibilidad(int numAcompanantes) {
 		//validar que todas las cantidades sean positivas. ¿static?
@@ -127,9 +127,7 @@ public class Habitacion {
 		}
 		
 		return confirmacion;
-		
-
-		
+			
 	}
 	
 	public void precioHabitacion() {

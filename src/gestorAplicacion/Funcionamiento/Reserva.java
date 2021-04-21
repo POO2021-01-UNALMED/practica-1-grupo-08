@@ -52,7 +52,7 @@ public class Reserva {
 
 	public void cancelar_reserva(Cliente cliente) {
 		cliente.habitacion.setDisponibilidadHab(true);
-		Habitacion.habitaciones.add(cliente.habitacion);
+		Habitacion.getHabitaciones().add(cliente.habitacion);
 		int cap2 =Habitacion.getCapacidad2();
 		int cap3 =Habitacion.getCapacidad3();
 		int cap4 =Habitacion.getCapacidad4();
