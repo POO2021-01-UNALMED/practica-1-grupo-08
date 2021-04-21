@@ -7,7 +7,7 @@ public class Mucama extends Empleado {
 	private static ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
 	//public Hotel hotel;
 	private int numHabitacion;
-	private Habitacion habitacion;
+	//private Habitacion habitacion;
 
 	public Mucama(String nombre,long id, HorasExtras horasextras) {
 		super(nombre,id,"Mucama",horasextras);
@@ -34,7 +34,7 @@ public class Mucama extends Empleado {
 	//Hacer prueba :)
 	public void limpiarHabitacion(int numHabitacion) {
 		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
-			if (numHabitacion==Habitacion.getHabitaciones().get(i).getNumhabitacion()) {
+			if (this.numHabitacion==Habitacion.getHabitaciones().get(i).getNumhabitacion()) {
 				Habitacion.getHabitaciones().get(i).setDisponibilidadHab(true);
 				if (Habitacion.getHabitaciones().get(i).getTipoCapacidad()==2) {
 					Habitacion.getHabitaciones().get(i).setCapacidad2(Habitacion.getHabitaciones().get(i).getCapacidad2()+1);					

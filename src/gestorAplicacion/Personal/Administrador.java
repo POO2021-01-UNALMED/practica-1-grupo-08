@@ -1,7 +1,5 @@
 package gestorAplicacion.Personal;
 
-
-
 public class Administrador extends Empleado{
 	
 	public Administrador(String nombre,long id, HorasExtras horasextras) {
