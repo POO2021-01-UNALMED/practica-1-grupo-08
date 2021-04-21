@@ -2,43 +2,50 @@ package gestorAplicacion.Funcionamiento;
 
 import gestorAplicacion.*;
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Reserva {
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
-	private  Date fecha_de_ingreso;
-	private  Date fecha_de_salida;
+	private  LocalDate fecha_de_ingreso;
+	private  LocalDate fecha_de_salida;
 	public boolean estado;//para pensar
 	public Cliente cliente;
 	public Habitacion habitacion;
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("DD/MM/YYYY"); 
 	
-	public Reserva(Date fecha_de_ingreso, Date fecha_de_salida, Cliente cliente) {
-		this.fecha_de_ingreso = fecha_de_ingreso;
-		this.fecha_de_salida = fecha_de_salida;
+	public Reserva(String fecha_de_ingreso, String fecha_de_salida, Cliente cliente) {
+		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso,convertidor);
+		this.fecha_de_ingreso= fecha_ingresar;
+		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida,convertidor);
+		this.fecha_de_salida= fecha_salir;
 		this.cliente = cliente;
 	}
 	
 	/// Setters y getters.
 	
-	public Date getFecha_de_ingreso() {
+	public LocalDate getFecha_de_ingreso() {
 		return fecha_de_ingreso;
 	}
 
-	public void setFecha_de_ingreso(Date fecha_de_ingreso) {
-		this.fecha_de_ingreso = fecha_de_ingreso;
+	public void setFecha_de_ingreso(String fecha_de_ingreso) {
+		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso,convertidor);
+		this.fecha_de_ingreso= fecha_ingresar;
 	}
 
-	public Date getFecha_de_salida() {
+	public LocalDate getFecha_de_salida() {
 		return fecha_de_salida;
 	}
 
-	public void setFecha_de_salida(Date fecha_de_salida) {
-		this.fecha_de_salida = fecha_de_salida;
+	public void setFecha_de_salida(String fecha_de_salida) {
+		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida,convertidor);
+		this.fecha_de_ingreso= fecha_salir;
 	}
 	
 	
 	/// Métodos.
-	public void reasignar_reserva(Date nueva_fecha_ing, Date nueva_fecha_sal) {
+	public void reasignar_reserva(String nueva_fecha_ing, String nueva_fecha_sal) {
 		cliente.setFecha_entrada(nueva_fecha_ing);
 		cliente.setFecha_salida(nueva_fecha_sal);
 	}

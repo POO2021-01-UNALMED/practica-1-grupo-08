@@ -30,6 +30,7 @@ public class Empleado {
 		this.id=id;          
 		this.cargo=cargo;
 		asignarSalario();
+		empleados.add(this);
 		
 	}
 	public Empleado() {}

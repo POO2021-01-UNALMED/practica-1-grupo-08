@@ -1,5 +1,6 @@
 package gestorAplicacion.Funcionamiento;
 import java.util.Date;
+import uiMain.*;
 import java.lang.Math;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
@@ -68,10 +69,17 @@ public class Hotel {
 	public void descuentoPorConsumo(Cliente cliente) {
 		if(cliente.getServicio().getGastosServicios() > 150000) {
 			int gasto = cliente.getServicio().getGastosServicios();
-			int porcentaje = (gasto - (int)((gasto*0.12)/100));
+			int porcentaje = (gasto - (int)((gasto*0.12)));
 			cliente.getServicio().setGastosServicios(porcentaje);
 			
 			
 		}
+	}
+	
+	public void cobrarDeudas(Cliente cliente) {
+		Recepcion.hotel.descuentoPorConsumo(cliente);
+		Recepcion.hotel.descuentoFamiliar(cliente);
+		
+
 	}
 }

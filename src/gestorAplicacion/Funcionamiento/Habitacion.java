@@ -120,6 +120,10 @@ public class Habitacion {
 
 		
 	}
+	
+	public void precioHabitacion() {
+		
+	}
 
 
 

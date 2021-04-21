@@ -1,6 +1,9 @@
 package gestorAplicacion;
 import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,8 +11,8 @@ public class Cliente {
 	public ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private String nombre;
 	private long id;
-	private Date fecha_entrada;
-	private Date fecha_salida;
+	private LocalDate  fecha_entrada;
+	private LocalDate fecha_salida;
 	private boolean parentescoEmpleado;
 	private long idFamiliar;
 	private int numAcompanantes;
@@ -21,11 +24,15 @@ public class Cliente {
 	public Servicio servicio;
 	
 	
-	public Cliente(String nombre,long id,Date fecha_entrada,Date fecha_salida ,int saldo, long idFamiliar) {
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida ,int saldo, long idFamiliar) {
 		this.nombre = nombre;
 		this.id = id;
-		this.fecha_entrada= fecha_entrada;
-		this.fecha_salida= fecha_salida;
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		this.fecha_entrada= fecha_entrar;
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		this.fecha_salida= fecha_salir;
 		this.saldo = saldo;
 		this.idFamiliar = idFamiliar;
 		this.parentescoEmpleado = true;
@@ -33,11 +40,14 @@ public class Cliente {
 		
 	}
 	
-	public Cliente(String nombre,long id,Date fecha_entrada,Date fecha_salida ,int saldo) {
+
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
-		this.fecha_entrada= fecha_entrada;
-		this.fecha_salida= fecha_salida;
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		this.fecha_entrada= fecha_entrar;
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		this.fecha_salida= fecha_salir;
 		this.saldo = saldo;
 		clientes.add(this);
 	}
@@ -62,23 +72,25 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public Date getFecha_entrada() {
-		return fecha_entrada;
+	public String getFecha_entrada() {
+		return fecha_entrada.toString();
 	}
 
     
-	public void setFecha_entrada(Date fecha_entrada) {
-		this.fecha_entrada = fecha_entrada;
+	public void setFecha_entrada(String fecha_entrada) {
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		this.fecha_entrada= fecha_entrar;
+		}
+
+
+	public String getFecha_salida() {
+		return fecha_salida.toString();
 	}
 
 
-	public Date getFecha_salida() {
-		return fecha_salida;
-	}
-
-
-	public void setFecha_salida(Date fecha_salida) {
-		this.fecha_salida = fecha_salida;
+	public void setFecha_salida(String fecha_salida) {
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		this.fecha_salida= fecha_salir;
 	}
 
 
