@@ -79,7 +79,11 @@ public class Hotel {
 	public void cobrarDeudas(Cliente cliente) {
 		Recepcion.hotel.descuentoPorConsumo(cliente);
 		Recepcion.hotel.descuentoFamiliar(cliente);
+		int preciofin = cliente.getHabitacion().getPrecio();
+		int gastoser = cliente.getServicio().getGastosServicios();
+		cliente.setCuentaFinal(gastoser+preciofin);
+		int nuevosaldo = cliente.getSaldo()-cliente.getCuentaFinal();
+		cliente.setSaldo(nuevosaldo);
 		
-
 	}
 }

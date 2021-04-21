@@ -12,6 +12,7 @@ public class Habitacion {
 	private static int capacidad5 = 10;
 	private Cliente cliente;
 	private Reserva reserva;
+	private int precio;
 
 	
 	public Habitacion(int numHabitacion, int tipoCapacidad){
@@ -96,6 +97,16 @@ public class Habitacion {
 	
 	public Reserva getReserva() {
 		return this.reserva;
+	}
+	
+	
+	public int getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 

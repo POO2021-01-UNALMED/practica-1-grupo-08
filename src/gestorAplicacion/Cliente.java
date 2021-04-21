@@ -158,4 +158,8 @@ public class Cliente {
 		return this.idFamiliar;
 	}
 	
+	/*public void pagarDeuda() {
+		saldo-cuentafinal
+	}*/
+	
 }
