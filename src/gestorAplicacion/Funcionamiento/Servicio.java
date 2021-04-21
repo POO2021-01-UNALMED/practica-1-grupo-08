@@ -1,5 +1,4 @@
 package gestorAplicacion.Funcionamiento;
-import java.util.ArrayList;
 import gestorAplicacion.Cliente;
 
 public class Servicio {
@@ -24,20 +23,6 @@ public class Servicio {
 	
 	public int getGastosServicios() {
 		return this.gastosServicios;
-	}
-	
-	public int reportarGasto(Cliente cliente) {
-		int reporteGasto = 0;
-		
-		//Variable
-		//return cliente.getServicio().getGastosServicios();
-		
-		//Arreglo
-		/*for(int valor: gastosServicios) {
-			reporteGasto = reporteGasto + valor;
-		}*/
-				
-		return reporteGasto;
 	}
 	
 
