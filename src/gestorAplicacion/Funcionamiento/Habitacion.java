@@ -146,7 +146,15 @@ public class Habitacion {
 	}
 	
 	public void precioHabitacion() {
-		
+		if(tipoCapacidad == 2) {
+			precio = 70000; 
+		}else if(tipoCapacidad == 3) {
+			precio = 100000;
+		}else if(tipoCapacidad == 4) {
+			precio = 130000;
+		}else if(tipoCapacidad == 5) {
+			precio = 170000;
+		}
 	}
 
 
