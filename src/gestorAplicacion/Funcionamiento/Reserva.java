@@ -5,6 +5,7 @@ import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import uiMain.*;
 
 public class Reserva {
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
@@ -21,6 +22,8 @@ public class Reserva {
 		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida,convertidor);
 		this.fecha_de_salida= fecha_salir;
 		this.cliente = cliente;
+		Recepcion.hotel.asignarHabitacion(cliente);
+		
 	}
 	
 	/// Setters y getters.
@@ -72,7 +75,11 @@ public class Reserva {
 		for(int i=0; i<reservas.size();i++) {
 			if (reservas.get(i).cliente.equals(cliente)) {
 				reservas.remove(reservas.get(i));
+				Cliente.clientes.get(i).habitacion=null;
+				Habitacion.getHabitaciones().get(i).setCliente(null);
+				break;
 			}
+		break;	
 		}
 		
 	}

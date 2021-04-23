@@ -9,18 +9,15 @@ public class Empleado {
 	private String cargo;
 	private int salario;	
 	public HorasExtras horasextras;
-	Hotel hotel;
-	private int horaExtraDiurna;
-	private int horaExtraNocturna;
-	private int horaExtraDiurnaDom;
-	private int horaExtraNocturnaDom;
+	private int cantidadHoras;
     
 	//Constructores
-	public Empleado(String nombre,long id, String cargo, HorasExtras horasextras) {
+	public Empleado(String nombre,long id, String cargo, HorasExtras horasextras,int cantidadHoras) {
 		this.nombre=nombre;
 		this.id=id;
 		this.cargo=cargo;
 		this.horasextras=horasextras;
+		this.cantidadHoras=cantidadHoras;
 		asignarSalario();
 		pagoHorasExtras();
 		empleados.add(this);
@@ -49,13 +46,13 @@ public class Empleado {
 	
 	public void pagoHorasExtras() {
 		if(horasextras.getPrecioHora()==4731) {
-			salario = salario+4731*(horaExtraDiurna);
+			salario = salario+4731*(cantidadHoras);
 		}else if(horasextras.getPrecioHora()==6624) {
-			salario = salario+6624*(horaExtraNocturna);
+			salario = salario+6624*(cantidadHoras);
 		}else if(horasextras.getPrecioHora()==7570) {
-			salario = salario+7570*(horaExtraDiurnaDom);
+			salario = salario+7570*(cantidadHoras);
 		}else if(horasextras.getPrecioHora()==9463) {
-			salario = salario+9463*(horaExtraNocturnaDom);
+			salario = salario+9463*(cantidadHoras);
 	    }
     }
 	//Getters y Setters

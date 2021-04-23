@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Cliente {
-	public ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	public static  ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private String nombre;
 	private long id;
 	private LocalDate  fecha_entrada;

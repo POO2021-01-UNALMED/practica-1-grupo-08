@@ -1,18 +1,21 @@
 package gestorAplicacion.Funcionamiento;
 import gestorAplicacion.Cliente;
+import gestorAplicacion.Personal.Mucama;
+
 import java.util.ArrayList;
 public class Habitacion {
 	private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	public int numHabitacion;
 	public boolean disponibilidadHab;
 	private int tipoCapacidad;
-	private static int capacidad2 = 10;
-	private static int capacidad3 = 10;
-	private static int capacidad4 = 10;
-	private static int capacidad5 = 10;
+	private static int capacidad2 = 0;
+	private static int capacidad3 = 0;
+	private static int capacidad4 = 0;
+	private static int capacidad5 = 0;
 	private Cliente cliente;
 	private Reserva reserva;
 	private int precio;
+
 
 	
 	public Habitacion(int numHabitacion, int tipoCapacidad){
@@ -20,6 +23,18 @@ public class Habitacion {
 		this.disponibilidadHab = true;
 		this.tipoCapacidad=tipoCapacidad;
 		habitaciones.add(this);
+		if(tipoCapacidad==capacidad2) {
+			capacidad2++;
+		}
+		if(tipoCapacidad==capacidad3) {
+			capacidad3++;
+		}
+		if(tipoCapacidad==capacidad4) {
+			capacidad4++;
+		}
+		if(tipoCapacidad==capacidad5) {
+			capacidad5++;
+		}	
 	}
 
 	public void setTipoCapacidad(int num) {
@@ -110,7 +125,7 @@ public class Habitacion {
 		Habitacion.habitaciones = habitaciones;
 	}
 
-	public static boolean disponibilidad(int numAcompanantes) {
+    public static boolean disponibilidad(int numAcompanantes) {
 		//validar que todas las cantidades sean positivas. ¿static?
 		// Validar el número de acompañantes ¿Desde el constructor?
 		int totalPersonas = 1 + numAcompanantes;

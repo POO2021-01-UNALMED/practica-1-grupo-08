@@ -12,8 +12,7 @@ public class ensayo {
 		Habitacion h1 = new Habitacion(103,2);
 		Mucama m1= new Mucama("Maria",243554);
 		//System.out.println(m1.getSalario());
-		Habitacion.setCapacidad2(9);
-		
+		Habitacion.setCapacidad2(9);	
 		m1.limpiarHabitacion(103);
 		System.out.println(Habitacion.getCapacidad2());
 		

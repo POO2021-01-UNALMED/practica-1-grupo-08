@@ -1,9 +1,10 @@
 package gestorAplicacion.Funcionamiento;
-import java.util.Date;
+
 import uiMain.*;
-import java.lang.Math;
+import java.lang.Math.*;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
+import gestorAplicacion.Personal.Mucama;
 
 public class Hotel {
 	public Cliente cliente;
@@ -38,8 +39,10 @@ public class Hotel {
 		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
 			if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==cliente.getNumAcompanantes()+1) {
 				cliente.setHabitacion(Habitacion.getHabitaciones().get(i));
-				Habitacion.getHabitaciones().get(i).setCliente(cliente);	
-			}			
+				Habitacion.getHabitaciones().get(i).setCliente(cliente);
+				Habitacion.getHabitaciones().get(i).disponibilidadHab=false;	
+				break;
+			}	
 		}
 		return;	
 		}
@@ -64,7 +67,6 @@ public class Hotel {
 			
 		}
 		return;
-	
 	}
 	
 	public void descuentoPorConsumo(Cliente cliente) {
@@ -72,11 +74,10 @@ public class Hotel {
 			int gasto = cliente.getServicio().getGastosServicios();
 			int porcentaje = (gasto - (int)((gasto*0.12)));
 			cliente.getServicio().setGastosServicios(porcentaje);
-			
-			
+		
 		}
 	}
-	
+	//Probar
 	public void cobrarDeudas(Cliente cliente) {
 		Recepcion.hotel.descuentoPorConsumo(cliente);
 		Recepcion.hotel.descuentoFamiliar(cliente);
@@ -85,6 +86,18 @@ public class Hotel {
 		cliente.setCuentaFinal(gastoser+preciofin);
 		int nuevosaldo = cliente.getSaldo()-cliente.getCuentaFinal();
 		cliente.setSaldo(nuevosaldo);
-		
+		int rd=(int)(Math.random()*(Mucama.getMucamas().size()+1));
+		Mucama.getMucamas().get(rd).limpiarHabitacion(cliente.getHabitacion().getNumhabitacion());//Asignación de mucama
+		cliente.getHabitacion().setCliente(null);
+		cliente.setHabitacion(null);		
+	}
+	
+	public int gananciaNeta() {
+		int total=0;
+		for(Cliente i: Cliente.clientes) {
+			total += i.getCuentaFinal();
+		}
+		int salario = Recepcion.ad1.pagarSalario();
+		return total-salario;
 	}
 }
