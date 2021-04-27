@@ -88,7 +88,7 @@ public class Habitacion implements Serializable{
 		return this.numHabitacion;	
 	}
 	
-	public boolean getDisponibilidadHab() {
+	public boolean isDisponibilidadHab() {
 		return this.disponibilidadHab;	
 	}
 	
