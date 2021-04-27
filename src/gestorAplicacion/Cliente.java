@@ -1,14 +1,20 @@
 package gestorAplicacion;
 import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.*;
+import uiMain.Recepcion;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente {
-	public static  ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+public class Cliente implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
 	private long id;
 	private LocalDate  fecha_entrada;
@@ -36,7 +42,7 @@ public class Cliente {
 		this.saldo = saldo;
 		this.idFamiliar = idFamiliar;
 		this.parentescoEmpleado = true;
-		clientes.add(this);
+		Recepcion.hotel.getClientes().add(this);
 		
 	}
 	
@@ -49,7 +55,7 @@ public class Cliente {
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
 		this.saldo = saldo;
-		clientes.add(this);
+		Recepcion.hotel.getClientes().add(this);
 	}
 
 	

@@ -1,7 +1,13 @@
 package gestorAplicacion.Funcionamiento;
+import java.io.Serializable;
+
 import gestorAplicacion.Cliente;
 
-public class Servicio {
+public class Servicio implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int gastosServicios;
 	private	Cliente cliente;
 	

@@ -1,20 +1,84 @@
 package gestorAplicacion.Funcionamiento;
 
 import uiMain.*;
+
+import java.io.Serializable;
 import java.lang.Math.*;
+import java.util.ArrayList;
+
+import baseDatos.Deserializacion;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
 import gestorAplicacion.Personal.Mucama;
 
-public class Hotel {
-	public Cliente cliente;
-	public Habitacion habitacion;
-	public Reserva reserva;
-	public Empleado empleado;
+public class Hotel implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private  ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
+	public  ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	
 	public Hotel() {
-		
+		Deserializacion.deserializar(this);
 	}
+
+	public  ArrayList<Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public void setHabitaciones(ArrayList<Habitacion> habitaciones1) {
+		habitaciones = habitaciones1;
+	}
+
+	public  ArrayList<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(ArrayList<Reserva> Listareservas) {
+		reservas = Listareservas;
+	}
+	
+	public  ArrayList<Servicio> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(ArrayList<Servicio> ListaServicios) {
+		servicios = ListaServicios;
+	}
+	
+	public  ArrayList<Empleado> getEmpleados() {
+		return empleados;
+	}
+	public  void setEmpleados(ArrayList<Empleado> listaempleados) {
+		empleados = listaempleados;
+	}
+	
+	public  ArrayList<Mucama> getMucamas() {
+		return mucamas;
+	}
+	public  void setMucamas(ArrayList<Mucama> listamucamas) {
+		mucamas = listamucamas;
+	}
+	
+	public  ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+	public  void setCliente(ArrayList<Cliente> listaClientes) {
+		clientes = listaClientes;
+	}
+	
+	
+	
+	
+	
+	
 	
 	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
 	// si la habitacion es asignada cambiar disponibilidad
@@ -36,11 +100,11 @@ public class Hotel {
 		    }else if ((cliente.getNumAcompanantes()+1==5)) {
 				Habitacion.setCapacidad5(cap5-1);
 			}  
-		for(int i=0; i< Habitacion.getHabitaciones().size();i++) {
-			if(Habitacion.getHabitaciones().get(i).getTipoCapacidad()==cliente.getNumAcompanantes()+1) {
-				cliente.setHabitacion(Habitacion.getHabitaciones().get(i));
-				Habitacion.getHabitaciones().get(i).setCliente(cliente);
-				Habitacion.getHabitaciones().get(i).disponibilidadHab=false;	
+		for(int i=0; i< Recepcion.hotel.getHabitaciones().size();i++) {
+			if(Recepcion.hotel.getHabitaciones().get(i).getTipoCapacidad()==cliente.getNumAcompanantes()+1) {
+				cliente.setHabitacion(Recepcion.hotel.getHabitaciones().get(i));
+				Recepcion.hotel.getHabitaciones().get(i).setCliente(cliente);
+				Recepcion.hotel.getHabitaciones().get(i).disponibilidadHab=false;	
 				break;
 			}	
 		}
@@ -56,8 +120,8 @@ public class Hotel {
 	
 	public void descuentoFamiliar(Cliente cliente) {
 		if(cliente.isParentescoEmpleado()==true) {
-			for(int i =0; i<Empleado.getEmpleados().size(); i++) {
-				if(Empleado.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
+			for(int i =0; i<Recepcion.hotel.getEmpleados().size(); i++) {
+				if(Recepcion.hotel.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
 					int descuento =cliente.getServicio().getGastosServicios() - 40000;
 					cliente.getServicio().setGastosServicios(descuento);
 					break;
@@ -86,15 +150,15 @@ public class Hotel {
 		cliente.setCuentaFinal(gastoser+preciofin);
 		int nuevosaldo = cliente.getSaldo()-cliente.getCuentaFinal();
 		cliente.setSaldo(nuevosaldo);
-		int rd=(int)(Math.random()*(Mucama.getMucamas().size()+1));
-		Mucama.getMucamas().get(rd).limpiarHabitacion(cliente.getHabitacion().getNumhabitacion());//Asignación de mucama
+		int rd=(int)(Math.random()*(Recepcion.hotel.getMucamas().size()+1));
+		Recepcion.hotel.getMucamas().get(rd).limpiarHabitacion(cliente.getHabitacion().getNumhabitacion());//Asignación de mucama
 		cliente.getHabitacion().setCliente(null);
 		cliente.setHabitacion(null);		
 	}
 	
 	public int gananciaNeta() {
 		int total=0;
-		for(Cliente i: Cliente.clientes) {
+		for(Cliente i: Recepcion.hotel.getClientes()) {
 			total += i.getCuentaFinal();
 		}
 		int salario = Recepcion.ad1.pagarSalario();

@@ -1,10 +1,17 @@
 package gestorAplicacion.Funcionamiento;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Personal.Mucama;
+import uiMain.Recepcion;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Habitacion {
-	private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+
+
+public class Habitacion implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int numHabitacion;
 	public boolean disponibilidadHab;
 	private int tipoCapacidad;
@@ -22,7 +29,7 @@ public class Habitacion {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
 		this.tipoCapacidad=tipoCapacidad;
-		habitaciones.add(this);
+		Recepcion.hotel.getHabitaciones().add(this);
 		if(tipoCapacidad==capacidad2) {
 			capacidad2++;
 		}
@@ -117,14 +124,7 @@ public class Habitacion {
 		this.precio = precio;
 	}
 
-	public static ArrayList<Habitacion> getHabitaciones() {
-		return habitaciones;
-	}
-
-	public static void setHabitaciones(ArrayList<Habitacion> habitaciones) {
-		Habitacion.habitaciones = habitaciones;
-	}
-
+	
     public static boolean disponibilidad(int numAcompanantes) {
 		//validar que todas las cantidades sean positivas. ¿static?
 		// Validar el número de acompañantes ¿Desde el constructor?

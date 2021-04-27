@@ -1,9 +1,11 @@
 package gestorAplicacion.Personal;
 import gestorAplicacion.Funcionamiento.*;
+import uiMain.Recepcion;
+
 import java.util.ArrayList;
 
 public class Empleado {
-	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	
 	private String nombre;
 	private long id;
 	private String cargo;
@@ -20,14 +22,14 @@ public class Empleado {
 		this.cantidadHoras=cantidadHoras;
 		asignarSalario();
 		pagoHorasExtras();
-		empleados.add(this);
+		Recepcion.hotel.getEmpleados().add(this);
 	}
 	public Empleado(String nombre,long id, String cargo) {
 		this.nombre=nombre;
 		this.id=id;          
 		this.cargo=cargo;
 		asignarSalario();
-		empleados.add(this);
+		Recepcion.hotel.getEmpleados().add(this);
 		
 	}
 	public Empleado() {}
@@ -80,12 +82,7 @@ public class Empleado {
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-	public static ArrayList<Empleado> getEmpleados() {
-		return empleados;
-	}
-	public static void setEmpleados(ArrayList<Empleado> empleados) {
-		Empleado.empleados = empleados;
-	}
+	
 	
 	
 	

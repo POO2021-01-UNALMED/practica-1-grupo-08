@@ -2,13 +2,18 @@ package gestorAplicacion.Funcionamiento;
 
 import gestorAplicacion.*;
 import java.util.Date;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import uiMain.*;
 
-public class Reserva {
-	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+public class Reserva implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private  LocalDate fecha_de_ingreso;
 	private  LocalDate fecha_de_salida;
 	public boolean estado;//para pensar
@@ -55,7 +60,7 @@ public class Reserva {
 
 	public void cancelar_reserva(Cliente cliente) {
 		cliente.habitacion.setDisponibilidadHab(true);
-		Habitacion.getHabitaciones().add(cliente.habitacion);
+		Recepcion.hotel.getHabitaciones().add(cliente.habitacion);
 		int cap2 =Habitacion.getCapacidad2();
 		int cap3 =Habitacion.getCapacidad3();
 		int cap4 =Habitacion.getCapacidad4();
@@ -72,11 +77,11 @@ public class Reserva {
 			Habitacion.setCapacidad5(cap5+1);
 		}
 		cliente.setReserva(false);
-		for(int i=0; i<reservas.size();i++) {
-			if (reservas.get(i).cliente.equals(cliente)) {
-				reservas.remove(reservas.get(i));
-				Cliente.clientes.get(i).habitacion=null;
-				Habitacion.getHabitaciones().get(i).setCliente(null);
+		for(int i=0; i<Recepcion.hotel.getReservas().size();i++) {
+			if (Recepcion.hotel.getReservas().get(i).cliente.equals(cliente)) {
+				Recepcion.hotel.getReservas().remove(Recepcion.hotel.getReservas().get(i));
+				Recepcion.hotel.getClientes().get(i).habitacion=null;
+				Recepcion.hotel.getHabitaciones().get(i).setCliente(null);
 				break;
 			}
 		break;	

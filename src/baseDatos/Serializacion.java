@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 import gestorAplicacion.Funcionamiento.*;
+import uiMain.Recepcion;
 
 public class Serializacion {
 	private static File rutaTemp = new File ("src\\baseDatos\\temp");
@@ -34,20 +35,57 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Habitacion.getHabitaciones()); 
+					oos.writeObject(Recepcion.hotel.getHabitaciones()); 
 				}catch(FileNotFoundException e) {
 					e.printStackTrace();
 				}catch(IOException e){
 					e.printStackTrace();
 				}
-			}else if(archivo.getAbsolutePath().contains("alumnos")) {
-				/*es el mismo proceso*/
-			}
+			}else if(archivo.getAbsolutePath().contains("reservas")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getReservas()); 
+				}catch(FileNotFoundException e) {
+					e.printStackTrace();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+			}else if(archivo.getAbsolutePath().contains("servicios")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getServicios()); 
+				}catch(FileNotFoundException e) {
+					e.printStackTrace();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+			}else if(archivo.getAbsolutePath().contains("empleados")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getEmpleados()); 
+				}catch(FileNotFoundException e) {
+					e.printStackTrace();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
 				
+			}else if(archivo.getAbsolutePath().contains("clientes")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getClientes()); 
+				}catch(FileNotFoundException e) {
+					e.printStackTrace();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+				
+			}
+			
 		}
-		
-		
-		
 
 	}
 	
