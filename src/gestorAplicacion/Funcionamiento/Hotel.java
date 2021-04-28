@@ -76,10 +76,6 @@ public class Hotel implements Serializable {
 	
 	
 	
-	
-	
-	
-	
 	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
 	// si la habitacion es asignada cambiar disponibilidad
 	public void asignarHabitacion(Cliente cliente) {
@@ -113,13 +109,13 @@ public class Hotel implements Serializable {
 		
 		//¿desea hacer reserva? !!!!!
 		
-       Reserva reserva = new Reserva(cliente.getFecha_entrada(),cliente.getFecha_salida(), cliente);
+       //Reserva reserva = new Reserva(cliente.getFecha_entrada(),cliente.getFecha_salida(), cliente);
 	
 	}
 
 	
 	public void descuentoFamiliar(Cliente cliente) {
-		if(cliente.isParentescoEmpleado()==true) {
+		if(cliente.getIdFamiliar()!= 0) {
 			for(int i =0; i<Recepcion.hotel.getEmpleados().size(); i++) {
 				if(Recepcion.hotel.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
 					int descuento =cliente.getServicio().getGastosServicios() - 40000;

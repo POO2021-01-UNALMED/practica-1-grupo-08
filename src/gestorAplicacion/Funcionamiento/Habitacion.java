@@ -75,11 +75,11 @@ public class Habitacion implements Serializable{
 	public static void setCapacidad5(int capacidad5) {
 		Habitacion.capacidad5 = capacidad5;
 	}
-	
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
 	}
@@ -109,7 +109,7 @@ public class Habitacion implements Serializable{
 	}
 	
 	public Cliente getCliente() {
-		return this.cliente;
+		return cliente;
 	}
 	
 	public Reserva getReserva() {

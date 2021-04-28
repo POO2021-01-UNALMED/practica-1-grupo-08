@@ -19,7 +19,6 @@ public class Cliente implements Serializable{
 	private long id;
 	private LocalDate  fecha_entrada;
 	private LocalDate fecha_salida;
-	private boolean parentescoEmpleado;
 	private long idFamiliar;
 	private int numAcompanantes;
 	private boolean reserva;
@@ -32,28 +31,29 @@ public class Cliente implements Serializable{
 	
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida ,int saldo, long idFamiliar) {
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this.nombre = nombre;
 		this.id = id;
 		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
 		this.fecha_entrada= fecha_entrar;
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
+		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
 		this.idFamiliar = idFamiliar;
-		this.parentescoEmpleado = true;
 		Recepcion.hotel.getClientes().add(this);
 		
 	}
 	
 
-	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida ,int saldo) {
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
 		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
 		this.fecha_entrada= fecha_entrar;
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
+		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
 		Recepcion.hotel.getClientes().add(this);
 	}
@@ -97,15 +97,6 @@ public class Cliente implements Serializable{
 	public void setFecha_salida(String fecha_salida) {
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
-	}
-
-
-	public void setParentescoEmpleado(boolean parentescoEmpleado) {
-		this.parentescoEmpleado = parentescoEmpleado;
-	}
-	
-	public boolean isParentescoEmpleado() {
-		return parentescoEmpleado;
 	}
 
 	public int getNumAcompanantes() {
