@@ -61,7 +61,7 @@ public class Recepcion {
 					 case 2: hacerReserva(); break;
 					 case 3: elegirMenu(); break;
 					 case 4: elegirAtraccion(); break;                              ////Poner terminar///
-					 case 5: Verónica; break;
+					 case 5: hotel.gananciaNeta(); break;
 					 case 6: Yojan; break;
 					 //AQUÍ//
 					 case 7: salirDelsistema(); break;
@@ -205,7 +205,6 @@ public class Recepcion {
 	}
 	
 	// Metodos de busqueda
-	
 	public static Cliente buscarCliente(long cedula) {
 		Cliente uno = null; 
 		for (Cliente i: hotel.clientes) {
