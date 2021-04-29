@@ -11,7 +11,7 @@ public class Prueba {
 	public static void main(String[] args) {
 		Cliente c1 = new Cliente("luis", 4874, "21/04/2021", "25/04/2021", 300000, 87574);
 		Empleado e1 = new Empleado("Veronica",87574,"ayudante");
-		c1.setParentescoEmpleado(true);
+		//c1.setParentescoEmpleado(true);
 		Habitacion h1 = new Habitacion(102,2);
 		h1.setPrecio(70000);
 		c1.setHabitacion(h1);

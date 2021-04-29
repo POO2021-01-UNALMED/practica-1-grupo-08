@@ -1,11 +1,15 @@
 package uiMain;
 
+import java.text.Normalizer;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import baseDatos.Serializacion;
 import gestorAplicacion.*;
-import gestorAplicacion.Funcionamiento.Habitacion;
-import gestorAplicacion.Funcionamiento.Hotel;
-import gestorAplicacion.Personal.Administrador;
-import gestorAplicacion.Personal.Mucama;
+import gestorAplicacion.Funcionamiento.*;
+import gestorAplicacion.Personal.*;
+
 
 public class Recepcion {
 	public static Administrador ad1 = new Administrador("Luis", 134344);
@@ -18,10 +22,11 @@ public class Recepcion {
 	}
 
 	static String readIn() {
-		sc.nextLine();
+		//sc.nextLine();
 		return sc.nextLine();
 
 	}
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public static void main(String[] args) {
 		 int opcion;
@@ -42,6 +47,7 @@ public class Recepcion {
 			 System.out.println("Bienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			 System.out.println("1. Tomar una habitación");
 			 System.out.println("2. Hacer una reserva");
+			 //cancelar reserva
 			 System.out.println("3. Elegir menú del restaurante");
 			 System.out.println("4. Elegir atracción");
 			 System.out.println("5. Mostrar ganancias netas");
@@ -52,10 +58,11 @@ public class Recepcion {
 			 
 					 switch(opcion){
 					 case 1: tomarHabitacion(); break;
-					 case 2: método; break;
-					 case 3: método; break;
+					 case 2: hacerReserva(); break;
+					 case 3: Ximena(); break;
 					 case 4: método; break;                              ////Poner terminar///
-					 case 5: método; break;
+					 case 5: Verónica; break;
+					 case 6: Yojan; break;
 					 }
 					 }while(opcion !=7);
 		 }
@@ -63,10 +70,55 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
-		hotel.asignarHabitacion(clientenuevo);                   //¿Si no encunetra habitación?
+		hotel.asignarHabitacion(clientenuevo); //¿Si no encuentra habitación?
+		if(clientenuevo.getHabitacion().equals(null)) {
+			System.out.println("¿Desea hacer una reserva?");
+			String res = readIn();//Debe responder si o no y sin tilde			 
+			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);   
+			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+			if(respuesta.equals("si")) {
+				String nueva_fecha_in= clientenuevo.getFecha_entrada();
+				LocalDate nueva = LocalDate.parse(nueva_fecha_in,convertidor);
+				nueva.plusDays(10);
+				clientenuevo.setFecha_entrada(nueva.toString());
+				String nueva_fecha_s= clientenuevo.getFecha_salida();
+				LocalDate nueva_s = LocalDate.parse(nueva_fecha_s,convertidor);
+				nueva_s.plusDays(10);
+				clientenuevo.setFecha_salida(nueva_s.toString());
+			}else if(respuesta.equals("no")) {
+				hotel.clientes.remove(clientenuevo);
+			}			
+		}
 		
 	}
 	
+	static void hacerReserva() {
+		System.out.println("Ingrese C.C. del cliente: ");
+		long cedula = readLong();//Desde el momento que se hace una reserva la habitacion queda ocupada
+		Cliente clientenuevo = buscarCliente(cedula);
+		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada(), clientenuevo.getFecha_salida(),clientenuevo);
+		if(clientenuevo.getHabitacion().equals(null)) {
+		System.out.println("¿Desea reasignar o cancelar la reserva?");
+		String res = readIn();//Debe reasignar o cancelar		 
+		String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);   
+		String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+		
+		if(respuesta.equals("reasignar")){
+			System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
+			String fecha = readIn();
+			LocalDate fecha_nueva = LocalDate.parse(fecha,convertidor);
+			System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
+			String fecha_s=readIn();
+			LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s,convertidor);
+			reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString()); 
+		}else if(respuesta.equals("cancelar")) {
+			System.out.println("Gracias por elegirnos, esperamos tener disponibilidad para ti la próxima vez");
+			hotel.clientes.remove(clientenuevo);
+		}	
+		}
+		clientenuevo.setReserva(true);
+		reserva1.setCliente(clientenuevo);
+	} 
 	// Metodos de busqueda
 	
 	public static Cliente buscarCliente(long cedula) {
@@ -84,6 +136,13 @@ public class Recepcion {
 		}
 		return uno;
 			}
+	//Método 
+	
+	private static void salirDelsistema() {
+		  System.out.println("Vuelva pronto");
+		  Serializacion.serializacion(hotel);
+		  System.exit(0);
+	  }
 
 }
 

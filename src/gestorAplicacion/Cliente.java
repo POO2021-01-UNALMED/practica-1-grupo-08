@@ -17,7 +17,7 @@ public class Cliente implements Serializable{
 	
 	private String nombre;
 	private long id;
-	private LocalDate  fecha_entrada;
+	private LocalDate fecha_entrada;
 	private LocalDate fecha_salida;
 	private long idFamiliar;
 	private int numAcompanantes;
