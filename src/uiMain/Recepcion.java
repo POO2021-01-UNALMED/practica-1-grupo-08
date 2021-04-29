@@ -63,6 +63,8 @@ public class Recepcion {
 					 case 4: método; break;                              ////Poner terminar///
 					 case 5: Verónica; break;
 					 case 6: Yojan; break;
+					 //AQUÍ//
+					 case 7: salirDelsistema(); break;
 					 }
 					 }while(opcion !=7);
 		 }
