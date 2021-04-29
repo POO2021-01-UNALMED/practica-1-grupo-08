@@ -126,10 +126,83 @@ public class Recepcion {
 	} 
 	
 	static void elegirMenu() {
-		System.out.println("Bienvenido al restaurante, por favor responda ¿Desea ver la carta vegetariana o tradicional?\n");
+		System.out.println("BIENVENIDO AL RESTAURANTE.");
+		System.out.println("Ingrese C.C. del cliente: ");
+		long cedula = readLong();
+		Cliente cliente = buscarCliente(cedula);
+		
+		String respFinal;
+		do {
+			System.out.println("¿Desea ver la carta vegetariana o tradicional? Por favor, digite el número correspondiente."
+					+ "1. Carta vegetariana. \n" 
+				 	+ "2. Carta tradicional.");
+			
+			int opcionCarta = (int) readLong();
+				if(opcionCarta == 1){
+				  	System.out.println("Carta vegetariana: \n"
+				  			+ "1. Espirales con setas y verduras. - $20000. \n" 
+						 	+ "2. Ensala de espárragos y requesón - $18000. \n"
+							+ "3. Lasaña vegetal - $15000. \n"
+						 	+ "4. Alcachofas rellenas de quinoa - $22000. \n"
+							+ "5. Hamburguesa vegetariana - $15000. \n");
+					}else if(opcionCarta == 2){
+							System.out.println("Carta tradicional: \n"
+				 			+ "1. Alitas orientales - $15000. \n" 
+						 	+ "2. Arroz atollado - $18000. \n"
+							+ "3. Bandeja paisa - $25000. \n"
+						 	+ "4. Crema de champiñones - $15000. \n"
+							+ "5. Hígado encebollado - $20000.");
+					}else{
+						System.out.println("Dígito ingresado incorrecto.");
+						return;
+					}
+				
+				System.out.println("Digite el número que le corrresponde al platillo que desea.");
+				int eleccion = (int) readLong();
+				if(eleccion <= 0 || eleccion > 5 ){
+					   System.out.println("Dígito ingresado inválido");
+					 return;
+				}
+				Servicio.tipoMenu(opcionCarta,eleccion, cliente);
+				System.out.println("¿Desea elegir otro platillo?");
+				String respSalir = readIn();
+				String cadenaNormalize = Normalizer.normalize(respSalir.toLowerCase(), Normalizer.Form.NFD);   
+				respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+		}while(respFinal.equals("si"));	
+		System.out.println("Buen provecho");
 	}
 	
-	
+	static void elegirAtraccion() {
+		System.out.println("BIENVENIDO AL PARQUE DE DIVERSIONES.");
+		System.out.println("Ingrese C.C. del cliente: ");
+		long cedula = readLong();
+		Cliente cliente = buscarCliente(cedula);
+		
+		String respFinal;
+		do {
+			System.out.println("Por favor, digite el número correspondiente a la atracción que desea."
+					+ "1. Montaña rusa - $15000. \n" 
+				 	+ "2. Paseo oscuro - $15000. \n"
+					+ "3. Carritos chocones - $10000. \n"
+				 	+ "4. Piscina - $20000. \n"
+					+ "5. Piscina de pelotas - $8000. \n"
+				 	+ "6. Carrusel - $8000. \n"
+					+ "7. Bungy - $10000. \n"
+					+ "8. Barco pirata - $15000.");
+			
+				int eleccion = (int) readLong();
+				if(eleccion <= 0 || eleccion > 8 ){
+					   System.out.println("Dígito ingresado inválido");
+					 return;
+				}
+				Servicio.tipoAtraccion(eleccion, cliente);
+				System.out.println("¿Desea elegir otra atracción?");
+				String respSalir = readIn();
+				String cadenaNormalize = Normalizer.normalize(respSalir.toLowerCase(), Normalizer.Form.NFD);   
+				respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+		}while(respFinal.equals("si"));	
+		System.out.println("Disfrute del juego.");
+	}
 	
 	// Metodos de busqueda
 	
@@ -151,7 +224,7 @@ public class Recepcion {
 	//Método 
 	
 	private static void salirDelsistema() {
-		  System.out.println("Vuelva pronto");
+		  System.out.println("Vuelva pronto.");
 		  Serializacion.serializacion(hotel);
 		  System.exit(0);
 	  }
