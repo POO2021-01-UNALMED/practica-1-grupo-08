@@ -59,8 +59,8 @@ public class Recepcion {
 					 switch(opcion){
 					 case 1: tomarHabitacion(); break;
 					 case 2: hacerReserva(); break;
-					 case 3: Ximena(); break;
-					 case 4: método; break;                              ////Poner terminar///
+					 case 3: elegirMenu(); break;
+					 case 4: elegirAtraccion(); break;                              ////Poner terminar///
 					 case 5: Verónica; break;
 					 case 6: Yojan; break;
 					 //AQUÍ//
@@ -87,6 +87,9 @@ public class Recepcion {
 				LocalDate nueva_s = LocalDate.parse(nueva_fecha_s,convertidor);
 				nueva_s.plusDays(10);
 				clientenuevo.setFecha_salida(nueva_s.toString());
+				//AQUÍ//
+				System.out.println("Se buscará una habitación para reservar del " + clientenuevo.getFecha_entrada() + " al " + clientenuevo.getFecha_salida());
+				hacerReserva();
 			}else if(respuesta.equals("no")) {
 				hotel.clientes.remove(clientenuevo);
 			}			
@@ -121,6 +124,13 @@ public class Recepcion {
 		clientenuevo.setReserva(true);
 		reserva1.setCliente(clientenuevo);
 	} 
+	
+	static void elegirMenu() {
+		System.out.println("Bienvenido al restaurante, por favor responda ¿Desea ver la carta vegetariana o tradicional?\n");
+	}
+	
+	
+	
 	// Metodos de busqueda
 	
 	public static Cliente buscarCliente(long cedula) {
