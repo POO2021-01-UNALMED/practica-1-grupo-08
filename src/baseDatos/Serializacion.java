@@ -11,82 +11,84 @@ import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
 
 public class Serializacion {
-	private static File rutaTemp = new File ("src\\baseDatos\\temp");
-	
+	private static File rutaTemp = new File("src\\baseDatos\\temp");
+
 	public static void serializacion(Hotel hotel) {
 		FileOutputStream fos;
-		ObjectOutputStream oos; /*Serializará*/
+		ObjectOutputStream oos; /* Serializará */
 		File[] docs = rutaTemp.listFiles();
-		PrintWriter pw;/*escribirá en el archivo lo que se serializó*/
-		
-		for(File archivo: docs) {
-		/*Borrará todo lo que está en el archivo*/	
-				try {
-					pw = new PrintWriter(archivo);
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}	
-		}
-		
-		
-		for(File archivo: docs) {
-			if(archivo.getAbsolutePath().contains("habitaciones")) {
-				/*getAbsolutePath() trae la dirección del archivo para mirar si correpsonde al archivo asignaturas*/
-				try {
-					fos = new FileOutputStream(archivo);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getHabitaciones()); 
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-			}else if(archivo.getAbsolutePath().contains("reservas")) {
-				try {
-					fos = new FileOutputStream(archivo);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getReservas()); 
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-			}else if(archivo.getAbsolutePath().contains("servicios")) {
-				try {
-					fos = new FileOutputStream(archivo);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getServicios()); 
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-			}else if(archivo.getAbsolutePath().contains("empleados")) {
-				try {
-					fos = new FileOutputStream(archivo);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getEmpleados()); 
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-				
-			}else if(archivo.getAbsolutePath().contains("clientes")) {
-				try {
-					fos = new FileOutputStream(archivo);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getClientes()); 
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-				
+		PrintWriter pw;/* escribirá en el archivo lo que se serializó */
+
+		for (File archivo : docs) {
+			/* Borrará todo lo que está en el archivo */
+			try {
+				pw = new PrintWriter(archivo);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
 			}
-			
+		}
+
+		for (File archivo : docs) {
+			if (archivo.getAbsolutePath().contains("habitaciones")) {
+				/*
+				 * getAbsolutePath() trae la dirección del archivo para mirar si correpsonde al
+				 * archivo asignaturas
+				 */
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getHabitaciones());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if (archivo.getAbsolutePath().contains("reservas")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getReservas());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if (archivo.getAbsolutePath().contains("servicios")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getServicios());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if (archivo.getAbsolutePath().contains("empleados")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getEmpleados());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} else if (archivo.getAbsolutePath().contains("clientes")) {
+				try {
+					fos = new FileOutputStream(archivo);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(Recepcion.hotel.getClientes());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+
 		}
 
 	}
-	
+
 }

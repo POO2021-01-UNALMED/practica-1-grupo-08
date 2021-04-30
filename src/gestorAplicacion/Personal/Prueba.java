@@ -27,7 +27,7 @@ public class Prueba {
 		 */
 
 		Cliente c1 = new Cliente("luis", 4874, "21/04/2021", "25/04/2021", 300000, 87574);
-		
+
 		System.out.println(c1);
 
 	}
