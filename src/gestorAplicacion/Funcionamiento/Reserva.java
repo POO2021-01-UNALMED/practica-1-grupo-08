@@ -28,6 +28,7 @@ public class Reserva implements Serializable {
 		this.fecha_de_salida= fecha_salir;
 		this.cliente = cliente;
 		Recepcion.hotel.asignarHabitacion(cliente);
+		cliente.setReserva(true);
 		
 	}
 	

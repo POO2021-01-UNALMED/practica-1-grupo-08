@@ -52,7 +52,8 @@ public class Recepcion {
 			 System.out.println("4. Elegir atracción");
 			 System.out.println("5. Mostrar ganancias netas");
 			 System.out.println("6. Dar salida a un cliente");
-			 System.out.println("7. Terminar");
+			 System.out.println("7. Mostrar lista de clientes que se encuentren en el hotel");
+			 System.out.println("8. Terminar");
 			 System.out.println("Teclee su opción: ");
 			 opcion = (int)readLong();
 			 
@@ -61,12 +62,13 @@ public class Recepcion {
 					 case 2: hacerReserva(); break;
 					 case 3: elegirMenu(); break;
 					 case 4: elegirAtraccion(); break;                              ////Poner terminar///
-					 case 5: hotel.gananciaNeta(); break;
+					 case 5: gananciasNetas(); break;
 					 case 6: Yojan; break;
+					 case 7: mostrarClientes(); break;
 					 //AQUÍ//
-					 case 7: salirDelsistema(); break;
+					 case 8: salirDelsistema(); break;
 					 }
-					 }while(opcion !=7);
+					 }while(opcion !=8);
 		 }
 	static void tomarHabitacion(){
 		System.out.println("Ingrese C.C. del cliente: ");
@@ -204,6 +206,17 @@ public class Recepcion {
 		System.out.println("Disfrute del juego.");
 	}
 	
+	public static void gananciasNetas() {
+		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: "+ hotel.gananciaNeta());
+	}
+	public static void mostrarClientes() {
+		for(Cliente i: hotel.getClientes()) {
+			if (i.isReserva()==true) {}
+			else {
+				System.out.println(i);
+			}
+		}
+	}
 	// Metodos de busqueda
 	public static Cliente buscarCliente(long cedula) {
 		Cliente uno = null; 

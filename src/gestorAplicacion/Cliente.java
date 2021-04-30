@@ -154,7 +154,10 @@ public class Cliente implements Serializable{
 	public long getIdFamiliar() {
 		return this.idFamiliar;
 	}
-	
+	//Solucionar errores
+	public String toString() {
+		return "Cliente identificado con: " + nombre + "hospedado en la habitación: " + habitacion.getNumhabitacion();
+	}
 	/*public void pagarDeuda() {
 		saldo-cuentafinal
 	}*/
