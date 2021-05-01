@@ -24,7 +24,6 @@ public class Empleado {
 		this.cantidadHoras = cantidadHoras;
 		asignarSalario();
 		pagoHorasExtras();
-		Recepcion.hotel.getEmpleados().add(this);
 	}
 
 	public Empleado(String nombre, long id, String cargo) {

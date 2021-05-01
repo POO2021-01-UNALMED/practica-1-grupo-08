@@ -105,6 +105,7 @@ public class Hotel implements Serializable {
 			for (int i = 0; i < Recepcion.hotel.getHabitaciones().size(); i++) {
 				if (Recepcion.hotel.getHabitaciones().get(i).getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
 					cliente.setHabitacion(Recepcion.hotel.getHabitaciones().get(i));
+					//System.out.println(cliente.getHabitacion()); ///////////////////////
 					Recepcion.hotel.getHabitaciones().get(i).setCliente(cliente);
 					Recepcion.hotel.getHabitaciones().get(i).disponibilidadHab = false;
 					break;

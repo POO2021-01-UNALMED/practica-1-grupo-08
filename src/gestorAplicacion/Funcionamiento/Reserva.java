@@ -19,12 +19,13 @@ public class Reserva implements Serializable {
 	// public boolean estado;//para pensar
 	private Cliente cliente;
 	// public Habitacion habitacion;
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("DD/MM/YYYY");
+	
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("d-MM-YYYY");
 
 	public Reserva(String fecha_de_ingreso, String fecha_de_salida, Cliente cliente) {
-		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso, convertidor);
+		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso);
 		this.fecha_de_ingreso = fecha_ingresar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida, convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida);
 		this.fecha_de_salida = fecha_salir;
 		this.cliente = cliente;
 		Recepcion.hotel.asignarHabitacion(cliente);
@@ -47,7 +48,7 @@ public class Reserva implements Serializable {
 	}
 
 	public void setFecha_de_ingreso(String fecha_de_ingreso) {
-		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso, convertidor);
+		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso);
 		this.fecha_de_ingreso = fecha_ingresar;
 	}
 
@@ -56,7 +57,7 @@ public class Reserva implements Serializable {
 	}
 
 	public void setFecha_de_salida(String fecha_de_salida) {
-		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida, convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida);
 		this.fecha_de_ingreso = fecha_salir;
 	}
 

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import baseDatos.Defecto;
 import baseDatos.Serializacion;
 import gestorAplicacion.*;
 import gestorAplicacion.Funcionamiento.*;
@@ -25,13 +26,13 @@ public class Recepcion {
 		return sc.nextLine();
 	}
 
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("d-MM-YYYY");
 
 	public static void main(String[] args) {
 		//public static Hotel hotel = new Hotel();
 		int opcion;
 
-		Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
+		/*Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "03/06/2021", "15/06/2021", 4, 25000000);
 		Cliente cliente4 = new Cliente("Wilmar", 15670834, "28/05/2020", "07/06/2001", 4, 35000000, 4567234); ///// Solo																										///// titular.
@@ -45,11 +46,13 @@ public class Recepcion {
 
 		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
-		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");
+		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");*/
+		
+		Defecto.ObjetosDefecto();
 
 
 		do {
-			System.out.println("Bienvenidos al hotel, ¿qué acción desea realizar ahora?");
+			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			System.out.println("1. Tomar una habitación");
 			System.out.println("2. Hacer una reserva");
 			// cancelar reserva
@@ -104,11 +107,11 @@ public class Recepcion {
 			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 			if (respuesta.equals("si")) {
 				String nueva_fecha_in = clientenuevo.getFecha_entrada();
-				LocalDate nueva = LocalDate.parse(nueva_fecha_in, convertidor);
+				LocalDate nueva = LocalDate.parse(nueva_fecha_in);
 				nueva.plusDays(10);
 				clientenuevo.setFecha_entrada(nueva.toString());
 				String nueva_fecha_s = clientenuevo.getFecha_salida();
-				LocalDate nueva_s = LocalDate.parse(nueva_fecha_s, convertidor);
+				LocalDate nueva_s = LocalDate.parse(nueva_fecha_s);
 				nueva_s.plusDays(10);
 				clientenuevo.setFecha_salida(nueva_s.toString());
 				// AQUÍ//
@@ -119,6 +122,10 @@ public class Recepcion {
 				hotel.clientes.remove(clientenuevo);
 			}
 		}
+		if (clientenuevo.getHabitacion() != null) {
+			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().numHabitacion);
+		}
+		
 
 	}
 
@@ -220,7 +227,7 @@ public class Recepcion {
 	}
 
 	public static void gananciasNetas() {
-		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta());
+		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta()+ "\n");
 	}
 
 	public static void salidaCliente() {

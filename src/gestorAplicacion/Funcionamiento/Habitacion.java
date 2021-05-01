@@ -27,17 +27,16 @@ public class Habitacion implements Serializable {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
 		this.tipoCapacidad = tipoCapacidad;
-		Recepcion.hotel.getHabitaciones().add(this);
-		if (tipoCapacidad == capacidad2) {
+		if (tipoCapacidad == 2) {
 			capacidad2++;
 		}
-		if (tipoCapacidad == capacidad3) {
+		if (tipoCapacidad == 3) {
 			capacidad3++;
 		}
-		if (tipoCapacidad == capacidad4) {
+		if (tipoCapacidad == 4) {
 			capacidad4++;
 		}
-		if (tipoCapacidad == capacidad5) {
+		if (tipoCapacidad == 5) {
 			capacidad5++;
 		}
 	}
