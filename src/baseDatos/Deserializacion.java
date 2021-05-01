@@ -24,8 +24,7 @@ public class Deserializacion {
 	 * hotel, su constructor llama a este método)
 	 */
 	public static void deserializar(Hotel hotel) {
-		File[] docs = rutaTemp
-				.listFiles(); /*
+		File[] docs = rutaTemp.listFiles(); /*
 								 * Es un arreglo que me traerá todos los archivos que están en ese directorio.
 								 */
 		FileInputStream fis; /* me permitirá leer el archivo en texto */
@@ -41,8 +40,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setHabitaciones((ArrayList<Habitacion>) ois
-							.readObject()); /*
+					hotel.setHabitaciones((ArrayList<Habitacion>) ois.readObject()); /*
 											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó
@@ -60,8 +58,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setReservas((ArrayList<Reserva>) ois
-							.readObject()); /*
+					hotel.setReservas((ArrayList<Reserva>) ois.readObject()); /*
 											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó
@@ -78,8 +75,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setServicios((ArrayList<Servicio>) ois
-							.readObject()); /*
+					hotel.setServicios((ArrayList<Servicio>) ois.readObject()); /*
 											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó
@@ -96,8 +92,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setEmpleados((ArrayList<Empleado>) ois
-							.readObject()); /*
+					hotel.setEmpleados((ArrayList<Empleado>) ois.readObject()); /*
 											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó
@@ -114,8 +109,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setCliente((ArrayList<Cliente>) ois
-							.readObject()); /*
+					hotel.setCliente((ArrayList<Cliente>) ois.readObject()); /*
 											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó

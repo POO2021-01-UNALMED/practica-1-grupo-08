@@ -29,17 +29,13 @@ public class Recepcion {
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public static void main(String[] args) {
+		//public static Hotel hotel = new Hotel();
 		int opcion;
 
 		Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "03/06/2021", "15/06/2021", 4, 25000000);
-		Cliente cliente4 = new Cliente("Wilmar", 15670834, "28/05/2020", "07/06/2001", 4, 35000000, 4567234); ///// Solo
-																												///// se
-																												///// registra
-																												///// el
-																												///// cliente
-																												///// titular.
+		Cliente cliente4 = new Cliente("Wilmar", 15670834, "28/05/2020", "07/06/2001", 4, 35000000, 4567234); ///// Solo																										///// titular.
 		Cliente cliente5 = new Cliente("Sofía", 4321689, "07/07/2020", "20/07/2020", 2, 15600000, 115467300);
 
 		Habitacion hab1 = new Habitacion(103, 2);
@@ -47,6 +43,11 @@ public class Recepcion {
 		Habitacion hab3 = new Habitacion(101, 3);
 		Habitacion hab4 = new Habitacion(303, 5);
 		Habitacion hab5 = new Habitacion(205, 4);
+
+		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
+		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
+		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");
+
 
 		do {
 			System.out.println("Bienvenidos al hotel, ¿qué acción desea realizar ahora?");
