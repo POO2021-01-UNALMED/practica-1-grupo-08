@@ -41,7 +41,7 @@ public class Cliente implements Serializable{
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
 		this.idFamiliar = idFamiliar;
-		hotel.getClientes().add(this);
+		
 		
 	}
 	
@@ -155,7 +155,7 @@ public class Cliente implements Serializable{
 		return this.idFamiliar;
 	}
 	//Solucionar errores
-	public String toString() {
+	/*public String toString() {
 		return "Cliente identificado con: " + nombre + "hospedado en la habitación: " + habitacion.getNumhabitacion();
 	}
 	/*public void pagarDeuda() {

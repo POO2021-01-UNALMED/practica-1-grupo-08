@@ -23,7 +23,6 @@ public class Recepcion {
 	static String readIn() {
 		// sc.nextLine();
 		return sc.nextLine();
-
 	}
 
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");

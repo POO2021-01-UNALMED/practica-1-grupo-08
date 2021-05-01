@@ -2,6 +2,7 @@ package gestorAplicacion.Personal;
 
 import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
+import uiMain.Recepcion2;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class Empleado {
 		this.id = id;
 		this.cargo = cargo;
 		asignarSalario();
-		Recepcion.hotel.getEmpleados().add(this);
+		//Recepcion2.hotel.getEmpleados().add(this);
 
 	}
 

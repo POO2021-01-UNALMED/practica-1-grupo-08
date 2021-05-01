@@ -24,7 +24,7 @@ public class Hotel implements Serializable {
 	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
 	public ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-public int num;
+
 	/*public Hotel() {
 		Deserializacion.deserializar(this);
 		
