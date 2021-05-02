@@ -32,10 +32,6 @@ public class Servicio implements Serializable {
 		return this.gastosServicios;
 	}
 
-	public void gastosAcumulados(int valorTotalServicio) {
-		this.gastosServicios += valorTotalServicio;
-	}
-
 	public void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
 		int valorTotalServicio = gastosServicios;
 
@@ -43,52 +39,52 @@ public class Servicio implements Serializable {
 			switch (eleccion) {
 			case 1:
 				valorTotalServicio = valorTotalServicio + 20000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 2:
 				valorTotalServicio = valorTotalServicio + 18000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 3:
 				valorTotalServicio = valorTotalServicio + 15000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 4:
 				valorTotalServicio = valorTotalServicio + 22000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 5:
 				valorTotalServicio = valorTotalServicio + 15000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 			}
 		} else if (opcionCarta == 2) {
 			switch (eleccion) {
 			case 1:
 				valorTotalServicio = valorTotalServicio + 15000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 2:
 				valorTotalServicio = valorTotalServicio + 18000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 
 			case 3:
 				valorTotalServicio = valorTotalServicio + 25000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 			case 4:
 				valorTotalServicio = valorTotalServicio + 15000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 			case 5:
 				valorTotalServicio = valorTotalServicio + 20000;
-				cliente.getServicio().gastosAcumulados(valorTotalServicio);
+				cliente.getServicio().setGastosServicios(valorTotalServicio);
 				break;
 			}
 		}
@@ -100,42 +96,42 @@ public class Servicio implements Serializable {
 		switch (eleccion) {
 		case 1:
 			valorTotalServicio = valorTotalServicio + 15000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 2:
 			valorTotalServicio = valorTotalServicio + 15000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 3:
 			valorTotalServicio = valorTotalServicio + 10000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 4:
 			valorTotalServicio = valorTotalServicio + 20000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 5:
 			valorTotalServicio = valorTotalServicio + 8000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 6:
 			valorTotalServicio = valorTotalServicio + 8000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 7:
 			valorTotalServicio = valorTotalServicio + 10000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 8:
 			valorTotalServicio = valorTotalServicio + 15000;
-			cliente.getServicio().gastosAcumulados(valorTotalServicio);
+			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		}

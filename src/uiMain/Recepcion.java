@@ -208,7 +208,6 @@ public class Recepcion {
 			respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 		} while (respFinal.equals("si"));
 		System.out.println("¡Buen provecho!");
-		System.out.println(cliente.getServicio().getGastosServicios());
 	}
 
 	static void elegirAtraccion() {
@@ -216,7 +215,6 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente cliente = buscarCliente(cedula);
-		System.out.println(cliente.getServicio().getGastosServicios());
 
 		String respFinal;
 		do {
@@ -236,10 +234,8 @@ public class Recepcion {
 			String respSalir = readIn();
 			String cadenaNormalize = Normalizer.normalize(respSalir.toLowerCase(), Normalizer.Form.NFD);
 			respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
-			System.out.println(cliente.getServicio().getGastosServicios());
 		} while (respFinal.equals("si"));
 		System.out.println("¡Disfrute del juego!");
-		System.out.println(cliente.getServicio().getGastosServicios());
 	}
 
 	public static void gananciasNetas() {
@@ -247,6 +243,7 @@ public class Recepcion {
 	}
 
 	public static void salidaCliente() {
+		tomarHabitacion(); //////////////////////Necesitamos las bases de datos.
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
 		long cedula = readLong();
 		Cliente clientesalida = buscarCliente(cedula);
