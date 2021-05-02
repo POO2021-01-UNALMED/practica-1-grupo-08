@@ -34,9 +34,9 @@ public class Cliente implements Serializable{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this.nombre = nombre;
 		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
 		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
@@ -49,9 +49,9 @@ public class Cliente implements Serializable{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
 		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
@@ -84,7 +84,7 @@ public class Cliente implements Serializable{
 
     
 	public void setFecha_entrada(String fecha_entrada) {
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
 		this.fecha_entrada= fecha_entrar;
 		}
 
@@ -95,7 +95,7 @@ public class Cliente implements Serializable{
 
 
 	public void setFecha_salida(String fecha_salida) {
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 	}
 

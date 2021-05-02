@@ -22,14 +22,14 @@ public class Defecto {
 		Recepcion.hotel.getClientes().add(cliente5);
 		Habitacion hab1 = new Habitacion(103, 2);
 		Recepcion.hotel.getHabitaciones().add(hab1);
-		Habitacion hab2 = new Habitacion(202, 4);
-		Recepcion.hotel.getHabitaciones().add(hab2);
+		//Habitacion hab2 = new Habitacion(202, 4);
+		//Recepcion.hotel.getHabitaciones().add(hab2);
 		Habitacion hab3 = new Habitacion(101, 3);
 		Recepcion.hotel.getHabitaciones().add(hab3);
 		Habitacion hab4 = new Habitacion(303, 5);
 		Recepcion.hotel.getHabitaciones().add(hab4);
-		Habitacion hab5 = new Habitacion(205, 4);
-		Recepcion.hotel.getHabitaciones().add(hab5);
+		//Habitacion hab5 = new Habitacion(205, 4);
+		//Recepcion.hotel.getHabitaciones().add(hab5);
 		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Recepcion.hotel.getEmpleados().add(emp1);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);

@@ -13,6 +13,7 @@ public class Servicio implements Serializable {
 
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
+		cliente.setServicio(this);
 	}
 
 	public void setCliente(Cliente cliente) {
@@ -32,11 +33,11 @@ public class Servicio implements Serializable {
 	}
 
 	public void gastosAcumulados(int valorTotalServicio) {
-		this.gastosServicios = +valorTotalServicio;
+		this.gastosServicios += valorTotalServicio;
 	}
 
-	public static void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
-		int valorTotalServicio = 0;
+	public void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
+		int valorTotalServicio = gastosServicios;
 
 		if (opcionCarta == 1) {
 			switch (eleccion) {
@@ -93,8 +94,8 @@ public class Servicio implements Serializable {
 		}
 	}
 
-	public static void tipoAtraccion(int eleccion, Cliente cliente) {
-		int valorTotalServicio = 0;
+	public void tipoAtraccion(int eleccion, Cliente cliente) {
+		int valorTotalServicio = gastosServicios;
 
 		switch (eleccion) {
 		case 1:

@@ -26,7 +26,7 @@ public class Recepcion {
 	}
 
 	static String readIn() {
-		// sc.nextLine();
+		sc.nextLine();
 		return sc.nextLine();
 	}
 	
@@ -110,26 +110,25 @@ public class Recepcion {
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
 		hotel.asignarHabitacion(clientenuevo); // ¿Si no encuentra habitación?
-		if (clientenuevo.getHabitacion().equals(null)) {
-			System.out.println("¿Desea hacer una reserva?");
+		if (clientenuevo.getHabitacion() == null) {
+			System.out.println("No hay habitaciones disponibles,¿desea hacer una reserva?");
 			String res = readIn();// Debe responder si o no y sin tilde
 			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);
 			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 			if (respuesta.equals("si")) {
-				String nueva_fecha_in = clientenuevo.getFecha_entrada();
-				LocalDate nueva = LocalDate.parse(nueva_fecha_in);
-				nueva.plusDays(10);
-				clientenuevo.setFecha_entrada(nueva.toString());
-				String nueva_fecha_s = clientenuevo.getFecha_salida();
-				LocalDate nueva_s = LocalDate.parse(nueva_fecha_s);
-				nueva_s.plusDays(10);
-				clientenuevo.setFecha_salida(nueva_s.toString());
-				// AQUÍ//
-				System.out.println("Se buscará una habitación para reservar del " + clientenuevo.getFecha_entrada()
-						+ " al " + clientenuevo.getFecha_salida());
-				hacerReserva();
+				System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
+				String fecha = sc.nextLine();
+				//LocalDate fecha_nueva = LocalDate.parse(fecha);
+				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
+				String fecha_s = sc.nextLine();
+				//LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
+				System.out.println("ingreso: "+ fecha + " salida:" + fecha_s);
+				Reserva reserva1 = new Reserva(fecha,fecha_s,clientenuevo);
+				System.out.println("Reserva realizada con éxito");
+				return;
 			} else if (respuesta.equals("no")) {
 				hotel.clientes.remove(clientenuevo);
+				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 			}
 		}
 		if (clientenuevo.getHabitacion() != null) {
@@ -144,22 +143,24 @@ public class Recepcion {
 		long cedula = readLong();// Desde el momento que se hace una reserva la habitacion queda ocupada
 		Cliente clientenuevo = buscarCliente(cedula);
 		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada(), clientenuevo.getFecha_salida(), clientenuevo);
-		if (clientenuevo.getHabitacion().equals(null)) {
-			System.out.println("¿Desea reasignar o cancelar la reserva?");
+		if (clientenuevo.getHabitacion() == null) {
+			System.out.println("No se encontraron habitaciones,¿desea reasignar o cancelar la reserva?");
 			String res = readIn();// Debe reasignar o cancelar
+			
 			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);
 			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 
 			if (respuesta.equals("reasignar")) {
 				System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
-				String fecha = readIn();
+				String fecha = sc.nextLine();
 				LocalDate fecha_nueva = LocalDate.parse(fecha);
 				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
-				String fecha_s = readIn();
+				String fecha_s = sc.nextLine();
 				LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
 				reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString());
-			} else if (respuesta.equals("cancelar")) {
-				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad para ti la próxima vez!");
+				System.out.println("Reserva reasignada con éxito.");
+			} else if (respuesta.equals("cancelar")) {///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
+				System.out.println("¡Gracias por elegirnos!");
 				hotel.clientes.remove(clientenuevo);
 			}
 		}
@@ -177,9 +178,10 @@ public class Recepcion {
 		do {
 			System.out.println(
 					"¿Desea ver la carta vegetariana o tradicional? Por favor, digite el número correspondiente."
-							+ "1. Carta vegetariana. \n" + "2. Carta tradicional.");
-
+							+ "\n" + "1. Carta vegetariana." + "\n" + "2. Carta tradicional.");
+			
 			int opcionCarta = (int) readLong();
+			
 			if (opcionCarta == 1) {
 				System.out.println("Carta vegetariana: \n" + "1. Espirales con setas y verduras. - $20000. \n"
 						+ "2. Ensala de espárragos y requesón - $18000. \n" + "3. Lasaña vegetal - $15000. \n"
@@ -199,13 +201,14 @@ public class Recepcion {
 				System.out.println("Dígito ingresado inválido");
 				return;
 			}
-			Servicio.tipoMenu(opcionCarta, eleccion, cliente);
+			cliente.getServicio().tipoMenu(opcionCarta, eleccion, cliente);
 			System.out.println("¿Desea elegir otro platillo?");
 			String respSalir = readIn();
 			String cadenaNormalize = Normalizer.normalize(respSalir.toLowerCase(), Normalizer.Form.NFD);
 			respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 		} while (respFinal.equals("si"));
 		System.out.println("¡Buen provecho!");
+		System.out.println(cliente.getServicio().getGastosServicios());
 	}
 
 	static void elegirAtraccion() {
@@ -213,11 +216,12 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente cliente = buscarCliente(cedula);
+		System.out.println(cliente.getServicio().getGastosServicios());
 
 		String respFinal;
 		do {
 			System.out.println("Por favor, digite el número correspondiente a la atracción que desea."
-					+ "1. Montaña rusa - $15000. \n" + "2. Paseo oscuro - $15000. \n"
+					+ "\n1. Montaña rusa - $15000. \n" + "2. Paseo oscuro - $15000. \n"
 					+ "3. Carritos chocones - $10000. \n" + "4. Piscina - $20000. \n"
 					+ "5. Piscina de pelotas - $8000. \n" + "6. Carrusel - $8000. \n" + "7. Bungy - $10000. \n"
 					+ "8. Barco pirata - $15000.");
@@ -227,13 +231,15 @@ public class Recepcion {
 				System.out.println("Dígito ingresado inválido");
 				return;
 			}
-			Servicio.tipoAtraccion(eleccion, cliente);
+			cliente.getServicio().tipoAtraccion(eleccion, cliente);
 			System.out.println("¿Desea elegir otra atracción?");
 			String respSalir = readIn();
 			String cadenaNormalize = Normalizer.normalize(respSalir.toLowerCase(), Normalizer.Form.NFD);
 			respFinal = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+			System.out.println(cliente.getServicio().getGastosServicios());
 		} while (respFinal.equals("si"));
 		System.out.println("¡Disfrute del juego!");
+		System.out.println(cliente.getServicio().getGastosServicios());
 	}
 
 	public static void gananciasNetas() {
@@ -265,13 +271,13 @@ public class Recepcion {
 			if (cedula == i.getId()) {
 				uno = i;
 				break;
-			} else {
-				System.out.println("Cliente no encontrado, ingrese una nueva cédula: ");
-				long c1 = readLong();
-				buscarCliente(c1);
 			}
-			break;
+		}if(uno == null) {
+			System.out.println("Cliente no encontrado, ingrese una nueva cédula: ");
+			long c1 = readLong();
+			buscarCliente(c1);
 		}
+
 		return uno;
 	}
 	// Método
