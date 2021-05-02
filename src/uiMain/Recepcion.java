@@ -1,8 +1,12 @@
 package uiMain;
 
+import java.text.DateFormat;
 import java.text.Normalizer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 import baseDatos.Defecto;
@@ -25,9 +29,15 @@ public class Recepcion {
 		// sc.nextLine();
 		return sc.nextLine();
 	}
-
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("d-MM-YYYY");
-
+	
+	
+	/*String fehca = "01/05/2021";
+	DateFormat sdfe = new SimpleDateFormat("dd/MM/yyyy");  //////
+	Date nuevo = sdfe.parse(fehca);
+	String fechafi = sdfe.format(nuevo);
+	System.out.println(fechafi);*/
+	
+	
 	public static void main(String[] args) {
 		//public static Hotel hotel = new Hotel();
 		int opcion;
@@ -143,10 +153,10 @@ public class Recepcion {
 			if (respuesta.equals("reasignar")) {
 				System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
 				String fecha = readIn();
-				LocalDate fecha_nueva = LocalDate.parse(fecha, convertidor);
+				LocalDate fecha_nueva = LocalDate.parse(fecha);
 				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
 				String fecha_s = readIn();
-				LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s, convertidor);
+				LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
 				reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString());
 			} else if (respuesta.equals("cancelar")) {
 				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad para ti la próxima vez!");

@@ -1,5 +1,6 @@
 package gestorAplicacion.Personal;
 
+import java.text.SimpleDateFormat; //// Fechas
 import java.util.Date;
 
 import baseDatos.Defecto;
@@ -23,6 +24,8 @@ public class ensayo {
 		m1.limpiarHabitacion(103);
 		//System.out.println(Habitacion.getCapacidad2());
 		System.out.println(cliente2.getHabitacion());
+		
+		
 
 		
 

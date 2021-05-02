@@ -20,8 +20,6 @@ public class Reserva implements Serializable {
 	private Cliente cliente;
 	// public Habitacion habitacion;
 	
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("d-MM-YYYY");
-
 	public Reserva(String fecha_de_ingreso, String fecha_de_salida, Cliente cliente) {
 		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso);
 		this.fecha_de_ingreso = fecha_ingresar;
