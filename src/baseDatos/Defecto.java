@@ -7,7 +7,6 @@ import gestorAplicacion.Personal.Empleado;
 import gestorAplicacion.Personal.HorasExtras;
 import gestorAplicacion.Personal.Mucama;
 import uiMain.Recepcion;
-import uiMain.Recepcion2;
 
 public class Defecto {
 

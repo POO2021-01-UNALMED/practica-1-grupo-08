@@ -33,10 +33,6 @@ public class Mucama extends Empleado implements Serializable {
 		super.setSalario(915000);
 	}
 
-	public void asignarHab(Habitacion habitacion) {
-
-	}
-
 	public void limpiarHabitacion(int num) {
 
 		for (int i = 0; i < Recepcion.hotel.getHabitaciones().size(); i++) {

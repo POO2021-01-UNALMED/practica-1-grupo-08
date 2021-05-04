@@ -2,7 +2,6 @@ package gestorAplicacion.Personal;
 
 import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
-import uiMain.Recepcion2;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ public class Empleado {
 	private long id;
 	private String cargo;
 	private int salario;
-	public HorasExtras horasextras;
+	private HorasExtras horasextras;
 	private int cantidadHoras;
 
 	// Constructores
@@ -35,8 +34,6 @@ public class Empleado {
 
 	}
 
-	public Empleado() {
-	}
 
 	// Métodos
 	public void asignarSalario() {

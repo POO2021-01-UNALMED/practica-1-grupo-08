@@ -12,7 +12,7 @@ public class Habitacion implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public int numHabitacion;
+	private int numHabitacion;
 	public boolean disponibilidadHab;
 	private int tipoCapacidad;
 	private static int capacidad2 = 0;

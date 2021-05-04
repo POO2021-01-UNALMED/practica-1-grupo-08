@@ -66,7 +66,7 @@ public class Reserva implements Serializable {
 	}
 
 	public void cancelar_reserva(Cliente cliente) {
-		cliente.habitacion.setDisponibilidadHab(true);
+		cliente.getHabitacion().setDisponibilidadHab(true);
 		// Recepcion.hotel.getHabitaciones().add(cliente.habitacion);
 		int cap2 = Habitacion.getCapacidad2();
 		int cap3 = Habitacion.getCapacidad3();
@@ -87,10 +87,11 @@ public class Reserva implements Serializable {
 		for (int i = 0; i < Recepcion.hotel.getReservas().size(); i++) {
 			if (Recepcion.hotel.getReservas().get(i).cliente.equals(cliente)) {
 				Recepcion.hotel.getReservas().remove(Recepcion.hotel.getReservas().get(i));
-				Recepcion.hotel.getClientes().get(i).habitacion = null;
+				Recepcion.hotel.getClientes().get(i).setHabitacion(null);;
 				Recepcion.hotel.getHabitaciones().get(i).setCliente(null);
+				Recepcion.hotel.getClientes().remove(cliente);
 				break;
-			}
+		}
 			break;
 		}
 

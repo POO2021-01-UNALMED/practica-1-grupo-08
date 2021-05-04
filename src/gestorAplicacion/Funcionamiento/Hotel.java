@@ -17,13 +17,15 @@ public class Hotel implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	static final int codigoRNT = 10562;
 
 	private ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
 	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
-	public ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
 	/*public Hotel() {
 		Deserializacion.deserializar(this);

@@ -22,11 +22,10 @@ public class Cliente implements Serializable{
 	private long idFamiliar;
 	private int numAcompanantes;
 	private boolean reserva;
-	public int cuentaFinal;
-	public int saldo;
-	public Habitacion habitacion;
-	public Hotel hotel;
-	public Servicio servicio;
+	private int cuentaFinal;
+	private int saldo;
+	private Habitacion habitacion;
+	private Servicio servicio;
 	
 	
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -55,7 +54,6 @@ public class Cliente implements Serializable{
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
-		Recepcion.hotel.getClientes().add(this);
 	}
 
 	
@@ -154,7 +152,24 @@ public class Cliente implements Serializable{
 	public long getIdFamiliar() {
 		return this.idFamiliar;
 	}
-	//Solucionar errores
+	
+	
+	
+	public void setFecha_entrada(LocalDate fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
+	}
+
+
+	public void setFecha_salida(LocalDate fecha_salida) {
+		this.fecha_salida = fecha_salida;
+	}
+
+
+	public void setNumAcompanantes(int numAcompanantes) {
+		this.numAcompanantes = numAcompanantes;
+	}
+
+
 	public String toString() {
 		return "Cliente identificado con: " + nombre + "hospedado en la habitación: " + habitacion.getNumhabitacion();
 	}

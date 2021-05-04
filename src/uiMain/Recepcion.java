@@ -39,24 +39,7 @@ public class Recepcion {
 	
 	
 	public static void main(String[] args) {
-		//public static Hotel hotel = new Hotel();
 		int opcion;
-
-		/*Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
-		Cliente cliente2 = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
-		Cliente cliente3 = new Cliente("Yesenia", 21724520, "03/06/2021", "15/06/2021", 4, 25000000);
-		Cliente cliente4 = new Cliente("Wilmar", 15670834, "28/05/2020", "07/06/2001", 4, 35000000, 4567234); ///// Solo																										///// titular.
-		Cliente cliente5 = new Cliente("Sofía", 4321689, "07/07/2020", "20/07/2020", 2, 15600000, 115467300);
-
-		Habitacion hab1 = new Habitacion(103, 2);
-		Habitacion hab2 = new Habitacion(202, 4);
-		Habitacion hab3 = new Habitacion(101, 3);
-		Habitacion hab4 = new Habitacion(303, 5);
-		Habitacion hab5 = new Habitacion(205, 4);
-
-		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
-		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
-		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");*/
 		
 		Defecto.ObjetosDefecto();
 
@@ -65,13 +48,13 @@ public class Recepcion {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			System.out.println("1. Tomar una habitación");
 			System.out.println("2. Hacer una reserva");
-			// cancelar reserva
-			System.out.println("3. Elegir menú del restaurante");
-			System.out.println("4. Elegir atracción");
-			System.out.println("5. Mostrar ganancias netas");
-			System.out.println("6. Dar salida a un cliente");
-			System.out.println("7. Mostrar lista de clientes que se encuentren en el hotel");
-			System.out.println("8. Terminar");
+			System.out.println("3. Cancelar una reserva");
+			System.out.println("4. Elegir menú del restaurante");
+			System.out.println("5. Elegir atracción");
+			System.out.println("6. Mostrar ganancias netas");
+			System.out.println("7. Dar salida a un cliente");
+			System.out.println("8. Mostrar lista de clientes que se encuentren en el hotel");
+			System.out.println("9. Terminar");
 			System.out.println("Teclee su opción: ");
 			opcion = (int) readLong();
 
@@ -83,22 +66,24 @@ public class Recepcion {
 				hacerReserva();
 				break;
 			case 3:
-				elegirMenu();
+				cancelarReserva();
 				break;
 			case 4:
-				elegirAtraccion();
-				break; //// Poner terminar///
+				elegirMenu();
+				break;
 			case 5:
+				elegirAtraccion();
+				break; 
+			case 6:
 				gananciasNetas();
 				break;
-			case 6:
+			case 7:
 				salidaCliente();
 				break;
-			case 7:
+			case 8:
 				mostrarClientes();
 				break;
-			// AQUÍ//
-			case 8:
+			case 9:
 				salirDelsistema();
 				break;
 			}
@@ -123,16 +108,17 @@ public class Recepcion {
 				String fecha_s = sc.nextLine();
 				//LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
 				System.out.println("ingreso: "+ fecha + " salida:" + fecha_s);
-				Reserva reserva1 = new Reserva(fecha,fecha_s,clientenuevo);
+			//PREGUNTAR//
+				new Reserva(fecha,fecha_s,clientenuevo);
 				System.out.println("Reserva realizada con éxito");
 				return;
 			} else if (respuesta.equals("no")) {
-				hotel.clientes.remove(clientenuevo);
+				hotel.getClientes().remove(clientenuevo);
 				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 			}
 		}
 		if (clientenuevo.getHabitacion() != null) {
-			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().numHabitacion);
+			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().getNumhabitacion());
 		}
 		
 
@@ -142,6 +128,7 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();// Desde el momento que se hace una reserva la habitacion queda ocupada
 		Cliente clientenuevo = buscarCliente(cedula);
+		//PREGUNTAR//
 		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada(), clientenuevo.getFecha_salida(), clientenuevo);
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No se encontraron habitaciones,¿desea reasignar o cancelar la reserva?");
@@ -161,7 +148,7 @@ public class Recepcion {
 				System.out.println("Reserva reasignada con éxito.");
 			} else if (respuesta.equals("cancelar")) {///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
 				System.out.println("¡Gracias por elegirnos!");
-				hotel.clientes.remove(clientenuevo);
+				hotel.getClientes().remove(clientenuevo);
 			}
 		}
 		clientenuevo.setReserva(true);
@@ -249,7 +236,7 @@ public class Recepcion {
 		Cliente clientesalida = buscarCliente(cedula);
 		clientesalida.getHabitacion().setDisponibilidadHab(true);
 		System.out.println("¡Gracias por visitarnos, vuelva pronto!");
-		hotel.clientes.remove(clientesalida);
+		hotel.getClientes().remove(clientesalida);
 	}
 
 	public static void mostrarClientes() {
@@ -261,10 +248,26 @@ public class Recepcion {
 		}
 	}
 
+	
+	public static void cancelarReserva() {
+		System.out.println("Ingrese C.C. del cliente: ");
+		long cedula = readLong();
+		Cliente clientenuevo = buscarCliente(cedula);
+		for(Reserva i: hotel.getReservas()) {
+			if(i.getCliente() == clientenuevo) {
+				i.cancelar_reserva(clientenuevo);
+				break;
+			}
+		}
+		System.out.println("Reserva cancelada con exito.");
+	}
+	
+	
+	
 	// Metodos de busqueda
 	public static Cliente buscarCliente(long cedula) {
 		Cliente uno = null;
-		for (Cliente i : hotel.clientes) {
+		for (Cliente i : hotel.getClientes()) {
 			if (cedula == i.getId()) {
 				uno = i;
 				break;
