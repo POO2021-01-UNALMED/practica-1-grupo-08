@@ -28,14 +28,14 @@ public class Cliente implements Serializable{
 	private Servicio servicio;
 	
 	
-	//public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this.nombre = nombre;
 		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
 		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
@@ -47,13 +47,13 @@ public class Cliente implements Serializable{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
 		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
-		//Recepcion.hotel.getClientes().add(this);
+		Recepcion.hotel.getClientes().add(this);
 	}
 
 	
@@ -170,8 +170,8 @@ public class Cliente implements Serializable{
 	}
 
 
-	public String toString() {
+	/*public String toString() {
 		return "Cliente identificado con: " + nombre + "hospedado en la habitación: " + habitacion.getNumhabitacion();
-	}
+	}*/
 	
 }

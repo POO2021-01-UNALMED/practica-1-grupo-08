@@ -16,9 +16,10 @@ import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.*;
 
 public class Recepcion {
-	public static Administrador ad1 = new Administrador("Luis", 134344);
 	public static Hotel hotel = new Hotel();
-
+	public static Administrador ad1 = new Administrador("Luis", 134344);
+	
+	
 	static Scanner sc = new Scanner(System.in);
 
 	static long readLong() {
