@@ -2,6 +2,7 @@ package gestorAplicacion.Funcionamiento;
 
 import java.io.Serializable;
 import gestorAplicacion.Cliente;
+import uiMain.Recepcion;
 
 public class Servicio implements Serializable {
 	/**
@@ -14,6 +15,7 @@ public class Servicio implements Serializable {
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
 		cliente.setServicio(this);
+		Recepcion.hotel.getServicios().add(this);
 	}
 
 	public void setCliente(Cliente cliente) {

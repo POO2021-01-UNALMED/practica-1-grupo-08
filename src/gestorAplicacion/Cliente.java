@@ -28,7 +28,7 @@ public class Cliente implements Serializable{
 	private Servicio servicio;
 	
 	
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	//public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this.nombre = nombre;
@@ -53,7 +53,7 @@ public class Cliente implements Serializable{
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
-		Recepcion.hotel.getClientes().add(this);
+		//Recepcion.hotel.getClientes().add(this);
 	}
 
 	

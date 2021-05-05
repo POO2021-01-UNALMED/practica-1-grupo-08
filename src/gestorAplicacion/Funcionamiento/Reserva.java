@@ -20,6 +20,8 @@ public class Reserva implements Serializable {
 	private Cliente cliente;
 	// public Habitacion habitacion;
 	
+	//public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
 	public Reserva(String fecha_de_ingreso, String fecha_de_salida, Cliente cliente) {
 		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso);
 		this.fecha_de_ingreso = fecha_ingresar;
@@ -28,6 +30,7 @@ public class Reserva implements Serializable {
 		this.cliente = cliente;
 		Recepcion.hotel.asignarHabitacion(cliente);
 		cliente.setReserva(true);
+		//Recepcion.hotel.getReservas().add(this);
 
 	}
 

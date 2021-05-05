@@ -19,13 +19,13 @@ public class Mucama extends Empleado implements Serializable {
 		super(nombre, id, "Mucama", horasextras, cantidadHoras);
 		asignarSalario();
 		super.pagoHorasExtras();
-		//Recepcion.hotel.getMucamas().add(this);
+		Recepcion.hotel.getMucamas().add(this);
 	}
 
 	public Mucama(String nombre, long id) {
 		super(nombre, id, "Mucama");
 		asignarSalario();
-		//Recepcion.hotel.getMucamas().add(this);
+		Recepcion.hotel.getMucamas().add(this);
 	}
 
 	@Override

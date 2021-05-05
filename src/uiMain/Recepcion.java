@@ -31,9 +31,9 @@ public class Recepcion {
 	}
 	
 	
-	/*String fehca = "01/05/2021";
+	/*String fecha = "01/05/2021";
 	DateFormat sdfe = new SimpleDateFormat("dd/MM/yyyy");  //////
-	Date nuevo = sdfe.parse(fehca);
+	Date nuevo = sdfe.parse(fecha);
 	String fechafi = sdfe.format(nuevo);
 	System.out.println(fechafi);*/
 	
@@ -41,8 +41,28 @@ public class Recepcion {
 	public static void main(String[] args) {
 		int opcion;
 		
-		Defecto.ObjetosDefecto();
-
+		//Defecto.ObjetosDefecto();
+		
+		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
+		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
+		
+		System.out.println(Recepcion.hotel.getClientes());
+		
+		Habitacion hab3 = new Habitacion(101, 3);
+		Habitacion hab4 = new Habitacion(303, 4);
+				
+		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
+		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
+		
+		Servicio ser2 = new Servicio(cliente2);
+		Servicio ser3 = new Servicio(cliente3);
+		
+		Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
+		Mucama muc2 = new Mucama("Camila",102344333,HorasExtras.NOCTURNA,2);
+		
+		Reserva res1 = new Reserva("2021-06-23","2021-06-26",cliente2);
+		
+		
 
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -242,7 +262,7 @@ public class Recepcion {
 	public static void mostrarClientes() {
 		for (Cliente i : hotel.getClientes()) {
 			if (i.isReserva() == true) {
-			} else {
+			} else if(i.getHabitacion() != null){
 				System.out.println(i);
 			}
 		}

@@ -21,6 +21,7 @@ public class Empleado {
 		this.cargo = cargo;
 		this.horasextras = horasextras;
 		this.cantidadHoras = cantidadHoras;
+		Recepcion.hotel.getEmpleados().add(this);
 		asignarSalario();
 		pagoHorasExtras();
 	}
@@ -30,7 +31,7 @@ public class Empleado {
 		this.id = id;
 		this.cargo = cargo;
 		asignarSalario();
-		//Recepcion2.hotel.getEmpleados().add(this);
+		Recepcion.hotel.getEmpleados().add(this);
 
 	}
 
