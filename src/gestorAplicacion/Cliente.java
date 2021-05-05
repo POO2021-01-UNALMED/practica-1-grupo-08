@@ -40,8 +40,7 @@ public class Cliente implements Serializable{
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
 		this.idFamiliar = idFamiliar;
-		
-		
+		Recepcion.hotel.getClientes().add(this);
 	}
 	
 
@@ -54,6 +53,7 @@ public class Cliente implements Serializable{
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
+		Recepcion.hotel.getClientes().add(this);
 	}
 
 	

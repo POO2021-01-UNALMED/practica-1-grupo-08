@@ -1,5 +1,6 @@
 package gestorAplicacion.Personal;
 
+import baseDatos.Defecto;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Habitacion;
 import gestorAplicacion.Funcionamiento.Hotel;
@@ -26,11 +27,11 @@ public class Prueba {
 		 * System.out.println(c1.getSaldo()); System.out.println(c1.getCuentaFinal());
 		 */
 		//Hotel ht1=new Hotel(3);
-		Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
+		/*Cliente cliente1 = new Cliente("Nora", 21345687, "27/05/2021", "03/06/2021", 2, 15000000, 1000656556);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "03/06/2021", "15/06/2021", 4, 25000000);
 		Cliente cliente4 = new Cliente("Wilmar", 15670834, "28/05/2020", "07/06/2001", 4, 35000000, 4567234); ///// Solo																										///// titular.
-		Cliente cliente5 = new Cliente("Sofía", 4321689, "07/07/2020", "20/07/2020", 2, 15600000, 115467300);
+		Cliente cliente5 = new Cliente("Sofía", 4321689, "07/07/2020", "20/07/2020", 2, 15600000, 115467300);*/
 
 		/*Habitacion hab1 = new Habitacion(103, 2);
 		Habitacion hab2 = new Habitacion(202, 4);
@@ -42,6 +43,7 @@ public class Prueba {
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
 		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");*/
 		
+		Defecto.ObjetosDefecto();
 		
 		System.out.println(Recepcion.hotel.getClientes());
 

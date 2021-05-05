@@ -12,13 +12,13 @@ public class Defecto {
 
 	public static void ObjetosDefecto() {
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
-		Recepcion.hotel.getClientes().add(cliente2);
+		//Recepcion.hotel.getClientes().add(cliente2);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
-		Recepcion.hotel.getClientes().add(cliente3);
+		//Recepcion.hotel.getClientes().add(cliente3);
 		Cliente cliente4 = new Cliente("Manuel", 15670834, "2020-05-28", "2021-06-07", 4, 35000000, 4567234); ///// Solo
-		Recepcion.hotel.getClientes().add(cliente4);																								///// titular.
+		//Recepcion.hotel.getClientes().add(cliente4);																								///// titular.
 		Cliente cliente5 = new Cliente("Sofía", 4321689, "2020-07-07", "2020-07-20", 2, 15600000, 115467300);
-		Recepcion.hotel.getClientes().add(cliente5);
+		//Recepcion.hotel.getClientes().add(cliente5);
 		Habitacion hab1 = new Habitacion(103, 2);
 		Recepcion.hotel.getHabitaciones().add(hab1);
 		//Habitacion hab2 = new Habitacion(202, 4);
