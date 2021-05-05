@@ -44,13 +44,16 @@ public class Prueba {
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
 		Empleado emp3 = new Empleado("Mario", 10595906,"Rececionista");*/
 		
-		Cliente clientep = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
+		/*Cliente clientep = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "03/06/2021", "15/06/2021", 4, 25000000);
 		Reserva res = new Reserva("20/06/2021","26/06/2021",clientep);
 		Habitacion hab = new Habitacion(202, 4);
 		
 		System.out.println(clientep.getFecha_entrada() + res.getFecha_de_ingreso());
-
+*/
+		Empleado emp2 = new Mucama("Karla", 3544565);
+		System.out.println(emp2.getSalario());
+		((Empleado)emp2).setCantidadHoras(6);;
 	}
 
 }

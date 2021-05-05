@@ -52,7 +52,7 @@ public class Recepcion {
 		Habitacion hab3 = new Habitacion(101, 3);
 		Habitacion hab4 = new Habitacion(303, 4);
 				
-		Empleado emp1 = new Empleado("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
+		Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
 		
 		Servicio ser2 = new Servicio(cliente2);

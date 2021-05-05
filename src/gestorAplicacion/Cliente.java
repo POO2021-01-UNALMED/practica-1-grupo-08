@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable,Persona{
 	/**
 	 * 
 	 */
@@ -31,14 +31,7 @@ public class Cliente implements Serializable{
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
-		this.nombre = nombre;
-		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
-		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
-		this.fecha_salida= fecha_salir;
-		this.numAcompanantes = numAcompanantes;
-		this.saldo = saldo;
+		this(nombre, id, fecha_entrada, fecha_salida, numAcompanantes,saldo);
 		this.idFamiliar = idFamiliar;
 		Recepcion.hotel.getClientes().add(this);
 	}

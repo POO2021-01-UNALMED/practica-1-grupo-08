@@ -13,7 +13,6 @@ public class Administrador extends Empleado implements Serializable {
 
 	public Administrador(String nombre, long id) {
 		super(nombre, id, "Administrador");
-		asignarSalario();
 	}
 
 	@Override
