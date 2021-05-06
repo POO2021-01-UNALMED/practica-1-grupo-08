@@ -40,9 +40,9 @@ public class Cliente implements Serializable,Persona{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes ,int saldo) {
 		this.nombre = nombre;
 		this.id = id;
-		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada,convertidor);
+		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
 		this.fecha_entrada= fecha_entrar;
-		LocalDate fecha_salir = LocalDate.parse(fecha_salida,convertidor);
+		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
@@ -163,8 +163,8 @@ public class Cliente implements Serializable,Persona{
 	}
 
 
-	/*public String toString() {
-		return "Cliente identificado con: " + nombre + "hospedado en la habitación: " + habitacion.getNumhabitacion();
-	}*/
+	public String toString() {
+		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion;
+	}
 	
 }

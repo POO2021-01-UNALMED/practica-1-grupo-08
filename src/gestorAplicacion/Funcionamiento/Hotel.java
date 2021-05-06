@@ -24,9 +24,8 @@ public class Hotel implements Serializable {
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
 	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-	private ArrayList<Mucama> mucamas = new ArrayList<Mucama>();
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-
+	private int ingresos;
 	/*public Hotel() {
 		Deserializacion.deserializar(this);
 		
@@ -35,6 +34,15 @@ public class Hotel implements Serializable {
 	public Hotel(){
 		
 	}
+	
+	public int getIngresos() {
+		return ingresos;
+	}
+
+	public void setIngresos(int ingresos) {
+		this.ingresos += ingresos;
+	}
+
 	public ArrayList<Habitacion> getHabitaciones() {
 		return habitaciones;
 	}
@@ -65,14 +73,6 @@ public class Hotel implements Serializable {
 
 	public void setEmpleados(ArrayList<Empleado> listaempleados) {
 		empleados = listaempleados;
-	}
-
-	public ArrayList<Mucama> getMucamas() {
-		return mucamas;
-	}
-
-	public void setMucamas(ArrayList<Mucama> listamucamas) {
-		mucamas = listamucamas;
 	}
 
 	public ArrayList<Cliente> getClientes() {
@@ -156,19 +156,11 @@ public class Hotel implements Serializable {
 		cliente.setCuentaFinal(gastoser + preciofin);
 		int nuevosaldo = cliente.getSaldo() - cliente.getCuentaFinal();
 		cliente.setSaldo(nuevosaldo);
-		int rd = (int) (Math.random() * (Recepcion.hotel.getMucamas().size() + 1));
-		Recepcion.hotel.getMucamas().get(rd).limpiarHabitacion(cliente.getHabitacion().getNumhabitacion());// Asignación
-																											// de mucama
-		cliente.getHabitacion().setCliente(null);
-		cliente.setHabitacion(null);
+		Recepcion.hotel.setIngresos(cliente.getCuentaFinal());
 	}
-
+	
 	public int gananciaNeta() {
-		int total = 0;
-		for (Cliente i : Recepcion.hotel.getClientes()) {
-			total += i.getCuentaFinal();
-		}
 		int salario = Recepcion.ad1.pagarSalario();
-		return total - salario;
+		return ingresos - salario;
 	}
 }

@@ -51,9 +51,10 @@ public class Prueba {
 		
 		System.out.println(clientep.getFecha_entrada() + res.getFecha_de_ingreso());
 */
-		Empleado emp2 = new Mucama("Karla", 3544565);
-		System.out.println(emp2.getSalario());
-		((Empleado)emp2).setCantidadHoras(6);;
+		/*Cliente clientep = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
+		clientep.setHabitacion(new Habitacion(23434,4));
+		System.out.println(Recepcion.hotel.getClientes());*/
+
 	}
 
 }

@@ -27,4 +27,5 @@ public class Administrador extends Empleado implements Serializable {
 		}
 		return totalSalario;
 	}
-}
+	
+	}

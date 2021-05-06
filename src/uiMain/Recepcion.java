@@ -47,7 +47,7 @@ public class Recepcion {
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
 		
-		System.out.println(Recepcion.hotel.getClientes());
+
 		
 		Habitacion hab3 = new Habitacion(101, 3);
 		Habitacion hab4 = new Habitacion(303, 4);
@@ -255,17 +255,32 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
 		long cedula = readLong();
 		Cliente clientesalida = buscarCliente(cedula);
-		clientesalida.getHabitacion().setDisponibilidadHab(true);
+		hotel.cobrarDeudas(clientesalida);
 		System.out.println("¡Gracias por visitarnos, vuelva pronto!");
+		for(int i=0;i< Recepcion.hotel.getEmpleados().size();i++) {
+			int rd = (int) (Math.random() * (hotel.getEmpleados().size() + 1));
+			if(hotel.getEmpleados().get(rd) instanceof Mucama) {
+				System.out.println(hotel.getEmpleados().get(rd));
+				((Mucama)hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
+				clientesalida.getHabitacion().setCliente(null); //habitacion
+				clientesalida.setHabitacion(null);
+				((Mucama)hotel.getEmpleados().get(rd)).setHabitacion(null);
+				break;
+			}
 		hotel.getClientes().remove(clientesalida);
+		
 	}
-
+	}
+	
 	public static void mostrarClientes() {
+		
 		for (Cliente i : hotel.getClientes()) {
 			if (i.isReserva() == true) {
-			} else if(i.getHabitacion() != null){
+			}
+			if(i.getHabitacion()!=null) {
 				System.out.println(i);
 			}
+			
 		}
 	}
 

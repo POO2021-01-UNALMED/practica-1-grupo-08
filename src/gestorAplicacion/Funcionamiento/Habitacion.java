@@ -22,7 +22,7 @@ public class Habitacion implements Serializable {
 	private Cliente cliente;
 	private Reserva reserva;
 	private int precio;
-
+	
 	public Habitacion(int numHabitacion, int tipoCapacidad) {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
