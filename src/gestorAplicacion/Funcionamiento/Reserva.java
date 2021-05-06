@@ -30,7 +30,7 @@ public class Reserva implements Serializable {
 		this.cliente = cliente;
 		Recepcion.hotel.asignarHabitacion(cliente);
 		cliente.setReserva(true);
-		//Recepcion.hotel.getReservas().add(this);
+		Recepcion.hotel.getReservas().add(this);
 
 	}
 
@@ -100,4 +100,9 @@ public class Reserva implements Serializable {
 
 	}
 
+	public void cancelar_reserva() {
+		Recepcion.hotel.getClientes().remove(this.getCliente());
+		Recepcion.hotel.getReservas().remove(this);
+		
+	}
 }

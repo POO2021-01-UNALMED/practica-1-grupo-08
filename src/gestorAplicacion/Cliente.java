@@ -164,7 +164,7 @@ public class Cliente implements Serializable,Persona{
 
 
 	public String toString() {
-		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion;
+		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion.getNumhabitacion();
 	}
 	
 }

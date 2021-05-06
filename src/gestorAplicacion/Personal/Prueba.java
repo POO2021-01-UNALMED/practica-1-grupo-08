@@ -51,9 +51,9 @@ public class Prueba {
 		
 		System.out.println(clientep.getFecha_entrada() + res.getFecha_de_ingreso());
 */
-		/*Cliente clientep = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
-		clientep.setHabitacion(new Habitacion(23434,4));
-		System.out.println(Recepcion.hotel.getClientes());*/
+		Cliente clientep = new Cliente("Fabio", 21356780, "02/06/2021", "06/06/2021", 3, 20000000);
+		//clientep.setHabitacion(new Habitacion(23434,4));
+		System.out.println(Recepcion.hotel.getClientes());
 
 	}
 

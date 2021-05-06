@@ -46,12 +46,10 @@ public class Recepcion {
 		
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
-		
 
+		Habitacion hab4 = new Habitacion(303, 5);
+		Habitacion hab3 = new Habitacion(101, 4);
 		
-		Habitacion hab3 = new Habitacion(101, 3);
-		Habitacion hab4 = new Habitacion(303, 4);
-				
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
 		
@@ -61,9 +59,7 @@ public class Recepcion {
 		Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
 		Mucama muc2 = new Mucama("Camila",102344333,HorasExtras.NOCTURNA,2);
 		
-		Reserva res1 = new Reserva("2021-06-23","2021-06-26",cliente2);
-		
-		
+		//Reserva res1 = new Reserva("2021-06-23","2021-06-26",cliente2);
 
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -147,9 +143,12 @@ public class Recepcion {
 
 	static void hacerReserva() {
 		System.out.println("Ingrese C.C. del cliente: ");
-		long cedula = readLong();// Desde el momento que se hace una reserva la habitacion queda ocupada
+		long cedula = sc.nextLong();// Desde el momento que se hace una reserva la habitacion queda ocupada
 		Cliente clientenuevo = buscarCliente(cedula);
-		//PREGUNTAR//
+		if (clientenuevo.isReserva()==true) {
+			System.out.println("Usted ya tiene una reserva asignada a la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
+		    return;
+		}
 		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada(), clientenuevo.getFecha_salida(), clientenuevo);
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No se encontraron habitaciones,¿desea reasignar o cancelar la reserva?");
@@ -167,9 +166,10 @@ public class Recepcion {
 				LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
 				reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString());
 				System.out.println("Reserva reasignada con éxito.");
-			} else if (respuesta.equals("cancelar")) {///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
+			} else if (respuesta.equals("cancelar")) {
+              	reserva1.cancelar_reserva(); ///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
 				System.out.println("¡Gracias por elegirnos!");
-				hotel.getClientes().remove(clientenuevo);
+				
 			}
 		}
 		clientenuevo.setReserva(true);
@@ -267,21 +267,16 @@ public class Recepcion {
 				((Mucama)hotel.getEmpleados().get(rd)).setHabitacion(null);
 				break;
 			}
-		hotel.getClientes().remove(clientesalida);
-		
 	}
 	}
 	
 	public static void mostrarClientes() {
 		
 		for (Cliente i : hotel.getClientes()) {
-			if (i.isReserva() == true) {
-			}
-			if(i.getHabitacion()!=null) {
-				System.out.println(i);
-			}
-			
+			if ((i.isReserva() == false) && (i.getHabitacion()!=null)) {
+				System.out.println(i);		
 		}
+	}
 	}
 
 	
@@ -292,9 +287,11 @@ public class Recepcion {
 		for(Reserva i: hotel.getReservas()) {
 			if(i.getCliente() == clientenuevo) {
 				i.cancelar_reserva(clientenuevo);
+				hotel.getReservas().remove(i);
 				break;
 			}
 		}
+		
 		System.out.println("Reserva cancelada con exito.");
 	}
 	

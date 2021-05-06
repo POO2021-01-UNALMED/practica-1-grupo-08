@@ -154,5 +154,8 @@ public class Habitacion implements Serializable {
 			precio = 170000;
 		}
 	}
+	public void precioHabitacion(Cliente cliente) {
+		precioHabitacion();
+	}
 
 }

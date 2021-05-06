@@ -151,6 +151,7 @@ public class Hotel implements Serializable {
 	public void cobrarDeudas(Cliente cliente) {
 		Recepcion.hotel.descuentoPorConsumo(cliente);
 		Recepcion.hotel.descuentoFamiliar(cliente);
+		cliente.getHabitacion().precioHabitacion();
 		int preciofin = cliente.getHabitacion().getPrecio();
 		int gastoser = cliente.getServicio().getGastosServicios();
 		cliente.setCuentaFinal(gastoser + preciofin);
@@ -160,7 +161,11 @@ public class Hotel implements Serializable {
 	}
 	
 	public int gananciaNeta() {
+		int total = 0;
+		for (Cliente i : Recepcion.hotel.getClientes()) {
+			total += i.getCuentaFinal();
+		}
 		int salario = Recepcion.ad1.pagarSalario();
-		return ingresos - salario;
+		return total - salario;
 	}
 }
