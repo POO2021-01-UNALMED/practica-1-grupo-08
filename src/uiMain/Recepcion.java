@@ -16,10 +16,9 @@ import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.*;
 
 public class Recepcion {
-	public static Hotel hotel = new Hotel();
-	public static Administrador ad1 = new Administrador("Luis", 134344);
-	
-	
+	private static Hotel hotel = new Hotel();
+	private static Administrador ad1 = new Administrador("Luis", 134344);
+		
 	static Scanner sc = new Scanner(System.in);
 
 	static long readLong() {
@@ -37,8 +36,7 @@ public class Recepcion {
 	Date nuevo = sdfe.parse(fecha);
 	String fechafi = sdfe.format(nuevo);
 	System.out.println(fechafi);*/
-	
-	
+
 	public static void main(String[] args) {
 		int opcion;
 		
@@ -48,7 +46,7 @@ public class Recepcion {
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
 
 		Habitacion hab4 = new Habitacion(303, 5);
-		Habitacion hab3 = new Habitacion(101, 4);
+		Habitacion hab3 = new Habitacion(101, 2);
 		
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
@@ -320,5 +318,19 @@ public class Recepcion {
 		Serializacion.serializacion(hotel);
 		System.exit(0);
 	}
+	public static Hotel getHotel() {
+		return hotel;
+	}
 
+	public static void setHotel(Hotel hotel) {
+		Recepcion.hotel = hotel;
+	}
+
+	public static Administrador getAd1() {
+		return ad1;
+	}
+
+	public static void setAd1(Administrador ad1) {
+		Recepcion.ad1 = ad1;
+	}
 }

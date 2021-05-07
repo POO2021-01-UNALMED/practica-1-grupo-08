@@ -28,9 +28,9 @@ public class Reserva implements Serializable {
 		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida);
 		this.fecha_de_salida = fecha_salir;
 		this.cliente = cliente;
-		Recepcion.hotel.asignarHabitacion(cliente);
+		Recepcion.getHotel().asignarHabitacion(cliente);
 		cliente.setReserva(true);
-		Recepcion.hotel.getReservas().add(this);
+		Recepcion.getHotel().getReservas().add(this);
 
 	}
 
@@ -87,12 +87,12 @@ public class Reserva implements Serializable {
 			Habitacion.setCapacidad5(cap5 + 1);
 		}
 		cliente.setReserva(false);
-		for (int i = 0; i < Recepcion.hotel.getReservas().size(); i++) {
-			if (Recepcion.hotel.getReservas().get(i).cliente.equals(cliente)) {
-				Recepcion.hotel.getReservas().remove(Recepcion.hotel.getReservas().get(i));
-				Recepcion.hotel.getClientes().get(i).setHabitacion(null);;
-				Recepcion.hotel.getHabitaciones().get(i).setCliente(null);
-				Recepcion.hotel.getClientes().remove(cliente);
+		for (int i = 0; i < Recepcion.getHotel().getReservas().size(); i++) {
+			if (Recepcion.getHotel().getReservas().get(i).cliente.equals(cliente)) {
+				Recepcion.getHotel().getReservas().remove(Recepcion.getHotel().getReservas().get(i));
+				Recepcion.getHotel().getClientes().get(i).setHabitacion(null);;
+				Recepcion.getHotel().getHabitaciones().get(i).setCliente(null);
+				Recepcion.getHotel().getClientes().remove(cliente);
 				break;
 		}
 			break;
@@ -101,8 +101,8 @@ public class Reserva implements Serializable {
 	}
 
 	public void cancelar_reserva() {
-		Recepcion.hotel.getClientes().remove(this.getCliente());
-		Recepcion.hotel.getReservas().remove(this);
+		Recepcion.getHotel().getClientes().remove(this.getCliente());
+		Recepcion.getHotel().getReservas().remove(this);
 		
 	}
 }

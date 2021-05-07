@@ -38,7 +38,7 @@ public class Mucama extends Empleado implements Serializable {
 
 	public void limpiarHabitacion(Habitacion habitacion) {
 		this.habitacion=habitacion;
-	for (Habitacion i : Recepcion.hotel.getHabitaciones()) {
+	for (Habitacion i : Recepcion.getHotel().getHabitaciones()) {
 			int cap2 = Habitacion.getCapacidad2();
 			int cap3 = Habitacion.getCapacidad3();
 			int cap4 = Habitacion.getCapacidad4();

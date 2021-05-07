@@ -37,7 +37,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getHabitaciones());
+					oos.writeObject(Recepcion.getHotel().getHabitaciones());
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -47,7 +47,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getReservas());
+					oos.writeObject(Recepcion.getHotel().getReservas());
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -57,7 +57,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getServicios());
+					oos.writeObject(Recepcion.getHotel().getServicios());
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -67,7 +67,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getEmpleados());
+					oos.writeObject(Recepcion.getHotel().getEmpleados());
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -78,7 +78,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.hotel.getClientes());
+					oos.writeObject(Recepcion.getHotel().getClientes());
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

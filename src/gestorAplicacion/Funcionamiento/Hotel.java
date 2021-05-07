@@ -104,12 +104,12 @@ public class Hotel implements Serializable {
 			} else if ((cliente.getNumAcompanantes() + 1 == 5)) {
 				Habitacion.setCapacidad5(cap5 - 1);
 			}
-			for (int i = 0; i < Recepcion.hotel.getHabitaciones().size(); i++) {
-				if (Recepcion.hotel.getHabitaciones().get(i).getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
-					cliente.setHabitacion(Recepcion.hotel.getHabitaciones().get(i));
+			for (int i = 0; i < Recepcion.getHotel().getHabitaciones().size(); i++) {
+				if (Recepcion.getHotel().getHabitaciones().get(i).getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
+					cliente.setHabitacion(Recepcion.getHotel().getHabitaciones().get(i));
 					//System.out.println(cliente.getHabitacion()); ///////////////////////
-					Recepcion.hotel.getHabitaciones().get(i).setCliente(cliente);
-					Recepcion.hotel.getHabitaciones().get(i).disponibilidadHab = false;
+					Recepcion.getHotel().getHabitaciones().get(i).setCliente(cliente);
+					Recepcion.getHotel().getHabitaciones().get(i).disponibilidadHab = false;
 					break;
 				}
 			}
@@ -125,8 +125,8 @@ public class Hotel implements Serializable {
 
 	public void descuentoFamiliar(Cliente cliente) {
 		if (cliente.getIdFamiliar() != 0) {
-			for (int i = 0; i < Recepcion.hotel.getEmpleados().size(); i++) {
-				if (Recepcion.hotel.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
+			for (int i = 0; i < Recepcion.getHotel().getEmpleados().size(); i++) {
+				if (Recepcion.getHotel().getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
 					int descuento = cliente.getServicio().getGastosServicios() - 40000;
 					cliente.getServicio().setGastosServicios(descuento);
 					break;
@@ -149,23 +149,23 @@ public class Hotel implements Serializable {
 
 	// Probar
 	public void cobrarDeudas(Cliente cliente) {
-		Recepcion.hotel.descuentoPorConsumo(cliente);
-		Recepcion.hotel.descuentoFamiliar(cliente);
+		Recepcion.getHotel().descuentoPorConsumo(cliente);
+		Recepcion.getHotel().descuentoFamiliar(cliente);
 		cliente.getHabitacion().precioHabitacion();
 		int preciofin = cliente.getHabitacion().getPrecio();
 		int gastoser = cliente.getServicio().getGastosServicios();
 		cliente.setCuentaFinal(gastoser + preciofin);
 		int nuevosaldo = cliente.getSaldo() - cliente.getCuentaFinal();
 		cliente.setSaldo(nuevosaldo);
-		Recepcion.hotel.setIngresos(cliente.getCuentaFinal());
+		Recepcion.getHotel().setIngresos(cliente.getCuentaFinal());
 	}
 	
 	public int gananciaNeta() {
 		int total = 0;
-		for (Cliente i : Recepcion.hotel.getClientes()) {
+		for (Cliente i : Recepcion.getHotel().getClientes()) {
 			total += i.getCuentaFinal();
 		}
-		int salario = Recepcion.ad1.pagarSalario();
+		int salario = Recepcion.getAd1().pagarSalario();
 		return total - salario;
 	}
 }

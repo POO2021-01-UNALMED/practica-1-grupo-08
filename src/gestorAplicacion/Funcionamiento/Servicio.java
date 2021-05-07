@@ -15,7 +15,7 @@ public class Servicio implements Serializable {
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
 		cliente.setServicio(this);
-		Recepcion.hotel.getServicios().add(this);
+		Recepcion.getHotel().getServicios().add(this);
 	}
 
 	public void setCliente(Cliente cliente) {

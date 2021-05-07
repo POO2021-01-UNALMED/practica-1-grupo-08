@@ -20,7 +20,7 @@ public abstract class Empleado implements Persona {
 	this(nombre,id,cargo.toLowerCase());
 	this.horasextras = horasextras;
 	this.cantidadHoras = cantidadHoras;
-	Recepcion.hotel.getEmpleados().add(this);
+	Recepcion.getHotel().getEmpleados().add(this);
 	this.asignarSalario();
 	pagoHorasExtras();
 }
@@ -29,7 +29,7 @@ public abstract class Empleado implements Persona {
 		this.id = id;
 		this.cargo = cargo.toLowerCase();
 		this.asignarSalario();
-		Recepcion.hotel.getEmpleados().add(this);
+		Recepcion.getHotel().getEmpleados().add(this);
 	}
 	// Métodos
 	abstract void asignarSalario(); 

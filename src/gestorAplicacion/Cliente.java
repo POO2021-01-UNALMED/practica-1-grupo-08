@@ -33,7 +33,7 @@ public class Cliente implements Serializable,Persona{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this(nombre, id, fecha_entrada, fecha_salida, numAcompanantes,saldo);
 		this.idFamiliar = idFamiliar;
-		Recepcion.hotel.getClientes().add(this);
+		Recepcion.getHotel().getClientes().add(this);
 	}
 	
 
@@ -46,7 +46,7 @@ public class Cliente implements Serializable,Persona{
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
 		this.saldo = saldo;
-		Recepcion.hotel.getClientes().add(this);
+		Recepcion.getHotel().getClientes().add(this);
 	}
 
 	

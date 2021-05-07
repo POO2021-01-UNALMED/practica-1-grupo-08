@@ -40,7 +40,7 @@ public class Habitacion implements Serializable {
 			capacidad5++;
 		}
 		
-		Recepcion.hotel.getHabitaciones().add(this);
+		Recepcion.getHotel().getHabitaciones().add(this);
 	}
 
 	public void setTipoCapacidad(int num) {
