@@ -17,7 +17,7 @@ import gestorAplicacion.Personal.*;
 
 public class Recepcion {
 	private static Hotel hotel = new Hotel();
-	private static Administrador ad1 = new Administrador("Luis", 134344);
+	private static Administrador ad1 = new Administrador("Julián", 134344);
 		
 	static Scanner sc = new Scanner(System.in);
 
@@ -74,6 +74,7 @@ public class Recepcion {
 		Servicio ser5 = new Servicio(cliente5);
 		Servicio ser6 = new Servicio(cliente6);*/
 		
+		System.out.println(Habitacion.getCapacidad3());
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -119,6 +120,8 @@ public class Recepcion {
 				break;
 			}
 		} while (opcion != 8);
+		
+		
 	}
 
 	static void tomarHabitacion() {
@@ -287,8 +290,9 @@ public class Recepcion {
 	public static void mostrarClientes() {
 		
 		for (Cliente i : hotel.getClientes()) {
-			i.toString();		
+			System.out.println(i.toString());		
 		}
+		
 	}
 	
 

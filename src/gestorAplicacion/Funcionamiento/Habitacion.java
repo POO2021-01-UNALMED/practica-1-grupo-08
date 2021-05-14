@@ -27,20 +27,20 @@ public class Habitacion implements Serializable {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
 		this.tipoCapacidad = tipoCapacidad;
-		if (tipoCapacidad == 2) {
-			capacidad2++;
-		}
-		if (tipoCapacidad == 3) {
-			capacidad3++;
-		}
-		if (tipoCapacidad == 4) {
-			capacidad4++;
-		}
-		if (tipoCapacidad == 5) {
-			capacidad5++;
-		}
-		
 		Recepcion.getHotel().getHabitaciones().add(this);
+		if (tipoCapacidad == 2) {
+			capacidad2 = capacidad2+1;
+		}
+		else if (tipoCapacidad == 3) {
+			capacidad3 = capacidad3+1;
+		}
+		else if (tipoCapacidad == 4) {
+			capacidad4 = capacidad4+1;
+		}
+		else if (tipoCapacidad == 5) {
+			capacidad5 = capacidad5+1;
+		}
+
 	}
 
 	public void setTipoCapacidad(int num) {

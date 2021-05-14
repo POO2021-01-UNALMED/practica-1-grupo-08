@@ -52,9 +52,11 @@ public class Prueba {
 		System.out.println(clientep.getFecha_entrada() + res.getFecha_de_ingreso());
 */
 		//Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
-		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000, 1223234);
-		System.out.println(Recepcion.getHotel().getClientes());
+		//Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000, 1223234);
+		
+		Empleado emp1 = new OficiosVarios("Luis", 2489364,"Recepcionista", HorasExtras.DIURNA, 10);
 
+		System.out.println(Recepcion.getHotel().getEmpleados().get(1).getSalario());
 	}
 
 }

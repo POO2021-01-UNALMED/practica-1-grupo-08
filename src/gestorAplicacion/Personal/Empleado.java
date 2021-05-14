@@ -22,7 +22,7 @@ public abstract class Empleado implements Persona, Serializable {
 	this.horasextras = horasextras;
 	this.cantidadHoras = cantidadHoras;
 	this.asignarSalario();
-	pagoHorasExtras();
+	this.pagoHorasExtras();
 }
 	public Empleado(String nombre, long id, String cargo) {
 		this.nombre = nombre;
@@ -36,7 +36,7 @@ public abstract class Empleado implements Persona, Serializable {
 
 	public void pagoHorasExtras() {
 		if (horasextras.getPrecioHora() == 4731) {
-			salario = salario + 4731 * (cantidadHoras);
+			salario = salario + (4731 * (cantidadHoras));
 		} else if (horasextras.getPrecioHora() == 6624) {
 			salario = salario + 6624 * (cantidadHoras);
 		} else if (horasextras.getPrecioHora() == 7570) {
