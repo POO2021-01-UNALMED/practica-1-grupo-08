@@ -33,7 +33,6 @@ public class Cliente implements Serializable,Persona{
 	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
 		this(nombre, id, fecha_entrada, fecha_salida, numAcompanantes,saldo);
 		this.idFamiliar = idFamiliar;
-		Recepcion.getHotel().getClientes().add(this);
 	}
 	
 
@@ -164,6 +163,9 @@ public class Cliente implements Serializable,Persona{
 
 
 	public String toString() {
+		if (habitacion == null) {
+			return "Cliente identificado con " + id + " sin habitación asignada";
+		}
 		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion.getNumhabitacion();
 	}
 	

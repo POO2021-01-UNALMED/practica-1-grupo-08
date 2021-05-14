@@ -9,7 +9,7 @@ import uiMain.Recepcion;
 public class Defecto {
 
 	public static void ObjetosDefecto() {
-		/*Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
+		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
 		//Recepcion.hotel.getClientes().add(cliente2);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
 		//Recepcion.hotel.getClientes().add(cliente3);
@@ -19,7 +19,7 @@ public class Defecto {
 		//Recepcion.hotel.getClientes().add(cliente5);
 		Habitacion hab1 = new Habitacion(103, 2);
 		Recepcion.hotel.getHabitaciones().add(hab1);
-		//Habitacion hab2 = new Habitacion(202, 4);
+		Habitacion hab2 = new Habitacion(202, 4);
 		//Recepcion.hotel.getHabitaciones().add(hab2);
 		Habitacion hab3 = new Habitacion(101, 3);
 		Recepcion.hotel.getHabitaciones().add(hab3);
@@ -47,6 +47,6 @@ public class Defecto {
 		Recepcion.hotel.getEmpleados().add(muc2);
 		Reserva res1 = new Reserva("2021-06-23","2021-06-26",cliente2);
 		Recepcion.hotel.getReservas().add(res1);
-		*/
+		
 	}
 }

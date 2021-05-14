@@ -1,6 +1,8 @@
 package gestorAplicacion.Personal;
 
-public class OficiosVarios extends Empleado {
+import java.io.Serializable;
+
+public class OficiosVarios extends Empleado implements Serializable {
  
 	public OficiosVarios(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
 		super(nombre,id,cargo,horasextras,cantidadHoras);

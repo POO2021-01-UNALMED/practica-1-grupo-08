@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
-import baseDatos.Defecto;
+import baseDatos.*;
 import baseDatos.Serializacion;
 import gestorAplicacion.*;
 import gestorAplicacion.Funcionamiento.*;
@@ -37,28 +37,44 @@ public class Recepcion {
 	String fechafi = sdfe.format(nuevo);
 	System.out.println(fechafi);*/
 
+	
 	public static void main(String[] args) {
 		int opcion;
+		Deserializacion.deserializar(hotel);
 		
-		//Defecto.ObjetosDefecto();
-		
+		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0, 9000000);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
-
+		Cliente cliente4 = new Cliente("Manuel", 15670834, "2021-05-28", "2021-06-07", 4, 35000000, 4567234);
+		Cliente cliente5 = new Cliente("Sofía", 4321689, "2021-03-07", "2021-03-20", 2, 15600000, 115467300);
+		Cliente cliente6 = new Cliente("Ximena", 49759459, "2021-02-10", "2021-02-20", 3, 14300000, 9890773);
+		Cliente cliente7 = new Cliente("Yojan", 10493043, "2021-07-07", "2021-07-20", 1, 10000000, 48374574);
+		Cliente cliente8 = new Cliente("Verónica", 1007253340, "2021-02-21", "2021-03-06", 4, 17600000);
+        
+		Habitacion hab1 = new Habitacion(103, 2);
+		Habitacion hab2 = new Habitacion(202, 4);
+        Habitacion hab3 = new Habitacion(101, 5);
 		Habitacion hab4 = new Habitacion(303, 5);
-		Habitacion hab3 = new Habitacion(101, 2);
-		
+		Habitacion hab5 = new Habitacion(205, 4);
+		Habitacion hab6 = new Habitacion(217, 3);
+
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
-		
-		Servicio ser2 = new Servicio(cliente2);
-		Servicio ser3 = new Servicio(cliente3);
-		
-		Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
+		Empleado emp3 = new OficiosVarios("Mario", 10595906,"Recepcionista");
+        Empleado emp4 = new Mucama("Yaneth", 4375434);
+		Empleado emp5 = new OficiosVarios("Raúl", 158394934, "Bartender", HorasExtras.NOCTURNA, 15);
+		Empleado emp6 = new OficiosVarios("Giussepe", 16890495, "CHEF",HorasExtras.NOCTURNADOMINICAL, 5);
+        Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
 		Mucama muc2 = new Mucama("Camila",102344333,HorasExtras.NOCTURNA,2);
 		
-		//Reserva res1 = new Reserva("2021-06-23","2021-06-26",cliente2);
-
+		Servicio ser1 = new Servicio(cliente1);
+		Servicio ser2 = new Servicio(cliente2);
+		Servicio ser3 = new Servicio(cliente3);
+		Servicio ser4 = new Servicio(cliente4);
+		Servicio ser5 = new Servicio(cliente5);
+		Servicio ser6 = new Servicio(cliente6);*/
+		
+		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			System.out.println("1. Tomar una habitación");
@@ -271,11 +287,10 @@ public class Recepcion {
 	public static void mostrarClientes() {
 		
 		for (Cliente i : hotel.getClientes()) {
-			if ((i.isReserva() == false) && (i.getHabitacion()!=null)) {
-				System.out.println(i);		
+			i.toString();		
 		}
 	}
-	}
+	
 
 	
 	public static void cancelarReserva() {

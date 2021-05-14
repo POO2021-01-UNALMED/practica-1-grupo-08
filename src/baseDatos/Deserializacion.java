@@ -45,6 +45,8 @@ public class Deserializacion {
 											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
 											 * deserializó
 											 */
+					ois.close();
+					fis.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -58,11 +60,9 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setReservas((ArrayList<Reserva>) ois.readObject()); /*
-											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
-											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
-											 * deserializó
-											 */
+					hotel.setReservas((ArrayList<Reserva>) ois.readObject()); 
+					ois.close();
+					fis.close();						
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -75,11 +75,9 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setServicios((ArrayList<Servicio>) ois.readObject()); /*
-											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
-											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
-											 * deserializó
-											 */
+					hotel.setServicios((ArrayList<Servicio>) ois.readObject()); 
+					ois.close();
+					fis.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -92,11 +90,9 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setEmpleados((ArrayList<Empleado>) ois.readObject()); /*
-											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
-											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
-											 * deserializó
-											 */
+					hotel.setEmpleados((ArrayList<Empleado>) ois.readObject()); 
+				    ois.close();
+					fis.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -109,11 +105,9 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setCliente((ArrayList<Cliente>) ois.readObject()); /*
-											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
-											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
-											 * deserializó
-											 */
+					hotel.setCliente((ArrayList<Cliente>) ois.readObject()); 
+					ois.close();
+					fis.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

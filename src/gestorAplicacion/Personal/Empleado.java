@@ -4,9 +4,10 @@ import gestorAplicacion.Persona;
 import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Empleado implements Persona {
+public abstract class Empleado implements Persona, Serializable {
 
 	private String nombre;
     private long id;
@@ -16,15 +17,14 @@ public abstract class Empleado implements Persona {
     private int cantidadHoras;
 
 	// Constructores
-	protected Empleado(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
+	public Empleado(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
 	this(nombre,id,cargo.toLowerCase());
 	this.horasextras = horasextras;
 	this.cantidadHoras = cantidadHoras;
-	Recepcion.getHotel().getEmpleados().add(this);
 	this.asignarSalario();
 	pagoHorasExtras();
 }
-	protected Empleado(String nombre, long id, String cargo) {
+	public Empleado(String nombre, long id, String cargo) {
 		this.nombre = nombre;
 		this.id = id;
 		this.cargo = cargo.toLowerCase();
