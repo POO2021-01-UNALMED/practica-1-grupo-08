@@ -29,15 +29,7 @@ public class Recepcion {
 		sc.nextLine();
 		return sc.nextLine();
 	}
-	
-	
-	/*String fecha = "01/05/2021";
-	DateFormat sdfe = new SimpleDateFormat("dd/MM/yyyy");  //////
-	Date nuevo = sdfe.parse(fecha);
-	String fechafi = sdfe.format(nuevo);
-	System.out.println(fechafi);*/
-
-	
+		
 	public static void main(String[] args) {
 		int opcion;
 		Deserializacion.deserializar(hotel);
@@ -74,8 +66,6 @@ public class Recepcion {
 		Servicio ser4 = new Servicio(cliente4);
 		Servicio ser5 = new Servicio(cliente5);
 		Servicio ser6 = new Servicio(cliente6);*/
-		
-		System.out.println(Habitacion.getCapacidad2());
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -129,9 +119,8 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
-		//System.out.println(Habitacion.disponibilidad(clientenuevo.getNumAcompanantes()));
 		if (clientenuevo.getHabitacion() !=null) {
-			System.out.println("La habitación con el número" + clientenuevo.getHabitacion().getNumhabitacion() + " ya le ha sido asignada");
+			System.out.println("La habitación con el número " + clientenuevo.getHabitacion().getNumhabitacion() + " ya le ha sido asignada");
 		    return;
 		}
 		hotel.asignarHabitacion(clientenuevo); // ¿Si no encuentra habitación?
@@ -148,7 +137,6 @@ public class Recepcion {
 				String fecha_s = sc.nextLine();
 				//LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
 				System.out.println("Ingreso: "+ fecha + " Salida: " + fecha_s);
-			//PREGUNTAR//
 				new Reserva(fecha,fecha_s,clientenuevo);
 				System.out.println("Reserva realizada con éxito");
 				return;
@@ -157,13 +145,9 @@ public class Recepcion {
 				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 			}
 		}
-		System.out.println(Habitacion.disponibilidad(clientenuevo.getNumAcompanantes()));
-
 		if (clientenuevo.getHabitacion() != null) {
 			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().getNumhabitacion());
 		}
-		
-
 	}
 
 	static void hacerReserva() {
@@ -174,7 +158,23 @@ public class Recepcion {
 			System.out.println("Usted ya tiene una reserva asignada a la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
 		    return;
 		}
-		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada(), clientenuevo.getFecha_salida(), clientenuevo);
+		System.out.println("Ingrese la fecha de entrada de su proxima reserva: ");
+		sc.nextLine();
+		String fecha_nuevares = sc.nextLine();
+		LocalDate fechanuevares = LocalDate.parse(fecha_nuevares);
+		if (clientenuevo.getFecha_salida().compareTo(fechanuevares) >= 0 ) {
+			System.out.println("Fecha inválida, ingrese una fecha superior a la actual");
+			return;
+		}
+		
+		System.out.println("Ingrese la fecha de salida en formato dd/mm/yyyy: ");
+		String fecha_nuevasal = sc.nextLine();
+		LocalDate fechanuevasal = LocalDate.parse(fecha_nuevares);
+		clientenuevo.setFecha_entrada(fechanuevares.toString());
+		clientenuevo.setFecha_salida(fechanuevasal.toString());
+		
+		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(), clientenuevo.getFecha_salida().toString(), clientenuevo);
+		
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No se encontraron habitaciones,¿desea reasignar o cancelar la reserva?");
 			String res = readIn();// Debe reasignar o cancelar
@@ -192,13 +192,18 @@ public class Recepcion {
 				reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString());
 				System.out.println("Reserva reasignada con éxito.");
 			} else if (respuesta.equals("cancelar")) {
-              	reserva1.cancelar_reserva(); ///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
-				System.out.println("¡Gracias por elegirnos!");
+              	reserva1.cancelar_reserva();///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
+				clientenuevo.setReserva(false);
+              	System.out.println("¡Gracias por elegirnos!");
 				
 			}
 		}
-		clientenuevo.setReserva(true);
-		reserva1.setCliente(clientenuevo);
+		
+		if (clientenuevo.isReserva() == true) {
+			reserva1.setCliente(clientenuevo);
+			System.out.println("Reserva asignada con éxito");
+		}
+		
 	}
 
 	static void elegirMenu() {

@@ -68,8 +68,8 @@ public class Cliente implements Serializable,Persona{
 		this.id = id;
 	}
 
-	public String getFecha_entrada() {
-		return fecha_entrada.toString();
+	public LocalDate getFecha_entrada() {
+		return fecha_entrada;
 	}
 
     
@@ -79,8 +79,8 @@ public class Cliente implements Serializable,Persona{
 		}
 
 
-	public String getFecha_salida() {
-		return fecha_salida.toString();
+	public LocalDate getFecha_salida() {
+		return fecha_salida;
 	}
 
 
