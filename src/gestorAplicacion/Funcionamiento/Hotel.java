@@ -3,13 +3,9 @@ package gestorAplicacion.Funcionamiento;
 import uiMain.*;
 
 import java.io.Serializable;
-import java.lang.Math.*;
 import java.util.ArrayList;
-
-import baseDatos.Deserializacion;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
-import gestorAplicacion.Personal.Mucama;
 
 public class Hotel implements Serializable {
 
@@ -91,10 +87,26 @@ public class Hotel implements Serializable {
 		int cap4 = Habitacion.getCapacidad4();
 		int cap5 = Habitacion.getCapacidad5();
 		if (Habitacion.disponibilidad(cliente.getNumAcompanantes()) == true) {// va a disponibilidad con el parametro de
-																				// num de clientes
-			if ((cliente.getNumAcompanantes() + 1 == 1) || (cliente.getNumAcompanantes() + 1 == 2)) {
+			
+			for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
+				if (cliente.getNumAcompanantes() == 0){
+					if((i.getTipoCapacidad() == 2) && (i.isDisponibilidadHab() == true)){
+						cliente.setHabitacion(i);
+						i.setCliente(cliente);
+						i.setDisponibilidadHab(false);
+						break;
+					}
+				} else if ((i.getTipoCapacidad() == (cliente.getNumAcompanantes() + 1)) && (i.isDisponibilidadHab() == true)){
+					cliente.setHabitacion(i);
+					i.setCliente(cliente);
+					i.setDisponibilidadHab(false);
+					break;
+			  }
+			}
+			if ((cliente.getNumAcompanantes() + 1) == 1) {
 				Habitacion.setCapacidad2(cap2 - 1);
-
+			} else if (cliente.getNumAcompanantes() + 1 == 2){
+				Habitacion.setCapacidad2(cap2 - 1);
 			} else if ((cliente.getNumAcompanantes() + 1 == 3)) {
 				Habitacion.setCapacidad3(cap3 - 1);
 
@@ -103,15 +115,6 @@ public class Hotel implements Serializable {
 
 			} else if ((cliente.getNumAcompanantes() + 1 == 5)) {
 				Habitacion.setCapacidad5(cap5 - 1);
-			}
-			for (int i = 0; i < Recepcion.getHotel().getHabitaciones().size(); i++) {
-				if (Recepcion.getHotel().getHabitaciones().get(i).getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
-					cliente.setHabitacion(Recepcion.getHotel().getHabitaciones().get(i));
-					//System.out.println(cliente.getHabitacion()); ///////////////////////
-					Recepcion.getHotel().getHabitaciones().get(i).setCliente(cliente);
-					Recepcion.getHotel().getHabitaciones().get(i).disponibilidadHab = false;
-					break;
-				}
 			}
 			return;
 		}

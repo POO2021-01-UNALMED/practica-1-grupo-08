@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class OficiosVarios extends Empleado implements Serializable {
  
+	private static final long serialVersionUID = 1L;
+
 	public OficiosVarios(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
 		super(nombre,id,cargo,horasextras,cantidadHoras);
 	}

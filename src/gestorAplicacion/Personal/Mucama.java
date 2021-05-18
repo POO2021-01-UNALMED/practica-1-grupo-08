@@ -1,17 +1,13 @@
 package gestorAplicacion.Personal;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
 import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
 
 public class Mucama extends Empleado implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Habitacion habitacion;
 	// public Hotel hotel;
 

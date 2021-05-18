@@ -41,7 +41,7 @@ public class Recepcion {
 	public static void main(String[] args) {
 		int opcion;
 		Deserializacion.deserializar(hotel);
-		
+
 		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0, 9000000);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4, 25000000);
@@ -74,7 +74,7 @@ public class Recepcion {
 		Servicio ser5 = new Servicio(cliente5);
 		Servicio ser6 = new Servicio(cliente6);*/
 		
-		System.out.println(Habitacion.getCapacidad3());
+		System.out.println(Habitacion.getCapacidad2());
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -128,6 +128,11 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
+		//System.out.println(Habitacion.disponibilidad(clientenuevo.getNumAcompanantes()));
+		if (clientenuevo.getHabitacion() !=null) {
+			System.out.println("La habitación con el número" + clientenuevo.getHabitacion().getNumhabitacion() + " ya le ha sido asignada");
+		    return;
+		}
 		hotel.asignarHabitacion(clientenuevo); // ¿Si no encuentra habitación?
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No hay habitaciones disponibles,¿desea hacer una reserva?");
@@ -141,7 +146,7 @@ public class Recepcion {
 				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
 				String fecha_s = sc.nextLine();
 				//LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
-				System.out.println("ingreso: "+ fecha + " salida:" + fecha_s);
+				System.out.println("Ingreso: "+ fecha + " Salida: " + fecha_s);
 			//PREGUNTAR//
 				new Reserva(fecha,fecha_s,clientenuevo);
 				System.out.println("Reserva realizada con éxito");
@@ -151,6 +156,8 @@ public class Recepcion {
 				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 			}
 		}
+		System.out.println(Habitacion.disponibilidad(clientenuevo.getNumAcompanantes()));
+
 		if (clientenuevo.getHabitacion() != null) {
 			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().getNumhabitacion());
 		}

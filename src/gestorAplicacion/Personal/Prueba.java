@@ -1,6 +1,5 @@
 package gestorAplicacion.Personal;
 
-import baseDatos.Defecto;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Habitacion;
 import gestorAplicacion.Funcionamiento.Hotel;

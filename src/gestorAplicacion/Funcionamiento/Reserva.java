@@ -5,7 +5,6 @@ import java.util.Date;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import uiMain.*;
 
 public class Reserva implements Serializable {

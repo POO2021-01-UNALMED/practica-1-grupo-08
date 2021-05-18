@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public abstract class Empleado implements Persona, Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private String nombre;
     private long id;
 	private String cargo;

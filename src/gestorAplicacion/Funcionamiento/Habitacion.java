@@ -1,19 +1,17 @@
 package gestorAplicacion.Funcionamiento;
 
 import gestorAplicacion.Cliente;
-import gestorAplicacion.Personal.Mucama;
 import uiMain.Recepcion;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Habitacion implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private int numHabitacion;
-	public boolean disponibilidadHab;
+	private boolean disponibilidadHab;
 	private int tipoCapacidad;
 	private static int capacidad2 = 0;
 	private static int capacidad3 = 0;
@@ -28,18 +26,7 @@ public class Habitacion implements Serializable {
 		this.disponibilidadHab = true;
 		this.tipoCapacidad = tipoCapacidad;
 		Recepcion.getHotel().getHabitaciones().add(this);
-		if (tipoCapacidad == 2) {
-			capacidad2 = capacidad2+1;
-		}
-		else if (tipoCapacidad == 3) {
-			capacidad3 = capacidad3+1;
-		}
-		else if (tipoCapacidad == 4) {
-			capacidad4 = capacidad4+1;
-		}
-		else if (tipoCapacidad == 5) {
-			capacidad5 = capacidad5+1;
-		}
+		
 
 	}
 
@@ -123,13 +110,18 @@ public class Habitacion implements Serializable {
 		this.precio = precio;
 	}
 
+	public int getNumHabitacion() {
+		return numHabitacion;
+	}
+
+	
 	public static boolean disponibilidad(int numAcompanantes) {
-		// validar que todas las cantidades sean positivas. ¿static?
-		// Validar el número de acompañantes ¿Desde el constructor?
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;
 
-		if ((totalPersonas == 1 || totalPersonas == 2) && capacidad2 == 0) {
+		if ((totalPersonas == 1) && capacidad2 == 0) {
+			confirmacion = false;
+		} else if ((totalPersonas == 2) && capacidad2 == 0) {
 			confirmacion = false;
 		} else if (totalPersonas == 3 && capacidad3 == 0) {
 			confirmacion = false;
@@ -142,7 +134,7 @@ public class Habitacion implements Serializable {
 		return confirmacion;
 
 	}
-
+    
 	public void precioHabitacion() {
 		if (tipoCapacidad == 2) {
 			precio = 70000;
