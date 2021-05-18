@@ -149,5 +149,22 @@ public class Habitacion implements Serializable {
 	public void precioHabitacion(Cliente cliente) {
 		precioHabitacion();
 	}
+	
+	public static void aumentarCapacidad() {
+		for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
+			if (i.tipoCapacidad == 2) {
+				capacidad2 = capacidad2+1;
+			}
+			else if (i.tipoCapacidad == 3) {
+				capacidad3 = capacidad3+1;
+			}
+			else if (i.tipoCapacidad == 4) {
+				capacidad4 = capacidad4+1;
+			}
+			else if (i.tipoCapacidad == 5) {
+				capacidad5 = capacidad5+1;
+			}
+		}
+	}
 
 }

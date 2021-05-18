@@ -41,6 +41,7 @@ public class Recepcion {
 	public static void main(String[] args) {
 		int opcion;
 		Deserializacion.deserializar(hotel);
+		Habitacion.aumentarCapacidad();
 
 		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0, 9000000);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3, 20000000);
