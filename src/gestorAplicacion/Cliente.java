@@ -93,10 +93,6 @@ public class Cliente implements Serializable,Persona{
 		return numAcompanantes;
 	}
 
-	public void setNumAcompañantes(int numAcompañantes) {
-		this.numAcompanantes = numAcompañantes;
-	}
-
 	public boolean isReserva() {
 		return reserva;
 	}
@@ -145,18 +141,6 @@ public class Cliente implements Serializable,Persona{
 		return this.idFamiliar;
 	}
 	
-	
-	
-	public void setFecha_entrada(LocalDate fecha_entrada) {
-		this.fecha_entrada = fecha_entrada;
-	}
-
-
-	public void setFecha_salida(LocalDate fecha_salida) {
-		this.fecha_salida = fecha_salida;
-	}
-
-
 	public void setNumAcompanantes(int numAcompanantes) {
 		this.numAcompanantes = numAcompanantes;
 	}

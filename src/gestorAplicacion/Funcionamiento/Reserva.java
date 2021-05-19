@@ -65,6 +65,7 @@ public class Reserva implements Serializable {
 	public void reasignar_reserva(String nueva_fecha_ing, String nueva_fecha_sal) {
 		cliente.setFecha_entrada(nueva_fecha_ing);
 		cliente.setFecha_salida(nueva_fecha_sal);
+		Recepcion.getHotel().asignarHabitacion(cliente);
 	}
 
 	public void cancelar_reserva(Cliente cliente) {

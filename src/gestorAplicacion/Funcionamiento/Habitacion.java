@@ -110,11 +110,6 @@ public class Habitacion implements Serializable {
 		this.precio = precio;
 	}
 
-	public int getNumHabitacion() {
-		return numHabitacion;
-	}
-
-	
 	public static boolean disponibilidad(int numAcompanantes) {
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;

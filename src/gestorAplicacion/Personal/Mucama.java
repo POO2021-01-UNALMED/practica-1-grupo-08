@@ -34,32 +34,33 @@ public class Mucama extends Empleado implements Serializable {
 
 	public void limpiarHabitacion(Habitacion habitacion) {
 		this.habitacion=habitacion;
-	for (Habitacion i : Recepcion.getHotel().getHabitaciones()) {
 			int cap2 = Habitacion.getCapacidad2();
 			int cap3 = Habitacion.getCapacidad3();
 			int cap4 = Habitacion.getCapacidad4();
 			int cap5 = Habitacion.getCapacidad5();
-			if (habitacion.equals(i)) {
-				i.setDisponibilidadHab(true);// cambio la disponibilidad de la																	// habitacion
-				if (i.getTipoCapacidad() == 2) {
-					Habitacion.setCapacidad2(cap2 + 1); // si la cap es de 2, aumento en habitacion esa capacidad
-					break;
-				} else if (i.getTipoCapacidad() == 3) {
+			
+				habitacion.setDisponibilidadHab(true);// cambio la disponibilidad de la																	// habitacion
+				if (habitacion.getTipoCapacidad() == 2) {
+					Habitacion.setCapacidad2(cap2 + 1); // si la cap es de 2, aumento en habitacion esa capacida
+					return;
+				} else if (habitacion.getTipoCapacidad() == 3) {
 					Habitacion.setCapacidad3(cap3 + 1);
-					break;
-				} else if (i.getTipoCapacidad() == 4) {
+					return;
+				} else if (habitacion.getTipoCapacidad() == 4) {
 					Habitacion.setCapacidad4(cap4 + 1);
-					break;
-				} else if (i.getTipoCapacidad() == 5) {
+					return;
+				} else if (habitacion.getTipoCapacidad() == 5) {
 					Habitacion.setCapacidad5(cap5 + 1);
-					break;
+					return;
 				}
 
-			}
-		}
+			
 	}
 	
 	public String toString() {
+		if (habitacion == null) {
+			return "Mucama identificada con " + getId() + " sin habitaciones asignadas";
+		}
 		return "Mucama con identificación: " + getId() + "con habitación asignada: " + habitacion.getNumhabitacion();
 		
 	}

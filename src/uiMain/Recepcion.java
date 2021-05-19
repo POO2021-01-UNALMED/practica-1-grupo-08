@@ -50,6 +50,7 @@ public class Recepcion {
 		Habitacion hab4 = new Habitacion(303, 5);
 		Habitacion hab5 = new Habitacion(205, 4);
 		Habitacion hab6 = new Habitacion(217, 3);
+		Habitacion hab7 = new Habitacion(402, 2);
 
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
 		Empleado emp2 = new Mucama("Karla", 3544565, HorasExtras.DIURNADOMINICAL, 9);
@@ -70,14 +71,13 @@ public class Recepcion {
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			System.out.println("1. Tomar una habitación");
-			System.out.println("2. Hacer una reserva");
-			System.out.println("3. Cancelar una reserva");
-			System.out.println("4. Elegir menú del restaurante");
-			System.out.println("5. Elegir atracción");
-			System.out.println("6. Mostrar ganancias netas");
-			System.out.println("7. Dar salida a un cliente");
-			System.out.println("8. Mostrar lista de clientes que se encuentren en el hotel");
-			System.out.println("9. Terminar");
+			System.out.println("2. Cancelar una reserva");
+			System.out.println("3. Elegir menú del restaurante");
+			System.out.println("4. Elegir atracción");
+			System.out.println("5. Mostrar ganancias netas");
+			System.out.println("6. Dar salida a un cliente");
+			System.out.println("7. Mostrar lista de clientes que se encuentren en el hotel");
+			System.out.println("8. Terminar");
 			System.out.println("Teclee su opción: ");
 			opcion = (int) readLong();
 
@@ -86,27 +86,24 @@ public class Recepcion {
 				tomarHabitacion();
 				break;
 			case 2:
-				hacerReserva();
-				break;
-			case 3:
 				cancelarReserva();
 				break;
-			case 4:
+			case 3:
 				elegirMenu();
 				break;
-			case 5:
+			case 4:
 				elegirAtraccion();
 				break; 
-			case 6:
+			case 5:
 				gananciasNetas();
 				break;
-			case 7:
+			case 6:
 				salidaCliente();
 				break;
-			case 8:
+			case 7:
 				mostrarClientes();
 				break;
-			case 9:
+			case 8:
 				salirDelsistema();
 				break;
 			}
@@ -150,58 +147,43 @@ public class Recepcion {
 		}
 	}
 
-	static void hacerReserva() {
-		System.out.println("Ingrese C.C. del cliente: ");
-		long cedula = sc.nextLong();// Desde el momento que se hace una reserva la habitacion queda ocupada
-		Cliente clientenuevo = buscarCliente(cedula);
+	static void hacerReserva(Cliente clientenuevo) {
 		if (clientenuevo.isReserva()==true) {
 			System.out.println("Usted ya tiene una reserva asignada a la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
 		    return;
 		}
+		
 		System.out.println("Ingrese la fecha de entrada de su proxima reserva: ");
-		sc.nextLine();
 		String fecha_nuevares = sc.nextLine();
 		LocalDate fechanuevares = LocalDate.parse(fecha_nuevares);
-		if (clientenuevo.getFecha_salida().compareTo(fechanuevares) >= 0 ) {
-			System.out.println("Fecha inválida, ingrese una fecha superior a la actual");
-			return;
-		}
 		
+		while (clientenuevo.getFecha_salida().compareTo(fechanuevares) >= 0 ) {
+			System.out.println("Fecha inválida, ingrese una fecha superior a la actual");
+			String fecha_nuevareser = sc.nextLine();
+			LocalDate fechanuevareser = LocalDate.parse(fecha_nuevareser);
+			fechanuevares = fechanuevareser;
+		}
+
 		System.out.println("Ingrese la fecha de salida en formato dd/mm/yyyy: ");
 		String fecha_nuevasal = sc.nextLine();
-		LocalDate fechanuevasal = LocalDate.parse(fecha_nuevares);
+		System.out.println("Ingrese el número de acompañantes");
+		long nuevo_numacom = readLong();
+		clientenuevo.setNumAcompanantes((int)nuevo_numacom);
 		clientenuevo.setFecha_entrada(fechanuevares.toString());
-		clientenuevo.setFecha_salida(fechanuevasal.toString());
+		clientenuevo.setFecha_salida(fecha_nuevasal);
+		
 		
 		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(), clientenuevo.getFecha_salida().toString(), clientenuevo);
 		
 		if (clientenuevo.getHabitacion() == null) {
-			System.out.println("No se encontraron habitaciones,¿desea reasignar o cancelar la reserva?");
-			String res = readIn();// Debe reasignar o cancelar
-			
-			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);
-			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
-
-			if (respuesta.equals("reasignar")) {
-				System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
-				String fecha = sc.nextLine();
-				LocalDate fecha_nueva = LocalDate.parse(fecha);
-				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
-				String fecha_s = sc.nextLine();
-				LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
-				reserva1.reasignar_reserva(fecha_nueva.toString(), fecha_nueva_salida.toString());
-				System.out.println("Reserva reasignada con éxito.");
-			} else if (respuesta.equals("cancelar")) {
+			    clientenuevo.setReserva(false);
               	reserva1.cancelar_reserva();///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
-				clientenuevo.setReserva(false);
-              	System.out.println("¡Gracias por elegirnos!");
-				
-			}
+              	System.out.println("Lo sentimos, no hay habitaciones disponibles");	
 		}
 		
 		if (clientenuevo.isReserva() == true) {
 			reserva1.setCliente(clientenuevo);
-			System.out.println("Reserva asignada con éxito");
+			System.out.println("Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
 		}
 		
 	}
@@ -280,24 +262,32 @@ public class Recepcion {
 		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta()+ "\n");
 	}
 
-	public static void salidaCliente() {
-		tomarHabitacion(); //////////////////////Necesitamos las bases de datos.
+	public static void salidaCliente() { 
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
 		long cedula = readLong();
 		Cliente clientesalida = buscarCliente(cedula);
 		hotel.cobrarDeudas(clientesalida);
-		System.out.println("¡Gracias por visitarnos, vuelva pronto!");
+
 		for(int i=0;i< Recepcion.hotel.getEmpleados().size();i++) {
 			int rd = (int) (Math.random() * (hotel.getEmpleados().size() + 1));
 			if(hotel.getEmpleados().get(rd) instanceof Mucama) {
-				System.out.println(hotel.getEmpleados().get(rd));
 				((Mucama)hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
 				clientesalida.getHabitacion().setCliente(null); //habitacion
 				clientesalida.setHabitacion(null);
 				((Mucama)hotel.getEmpleados().get(rd)).setHabitacion(null);
 				break;
 			}
-	}
+		}
+
+			System.out.println("¿Desea hacer una nueva reserva?");
+			sc.nextLine();
+			String respuesta = sc.nextLine();
+			String cadenaNormalize = Normalizer.normalize(respuesta.toLowerCase(), Normalizer.Form.NFD);
+			String respuestan = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+			if (respuestan.equals("si")) {
+				hacerReserva(clientesalida);
+			}
+			System.out.println("¡Gracias por visitarnos, vuelva pronto!");
 	}
 	
 	public static void mostrarClientes() {
