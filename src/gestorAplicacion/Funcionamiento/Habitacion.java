@@ -1,6 +1,7 @@
 package gestorAplicacion.Funcionamiento;
 
 import gestorAplicacion.Cliente;
+import static java.time.temporal.ChronoUnit.DAYS;
 import uiMain.Recepcion;
 import java.io.Serializable;
 
@@ -131,20 +132,18 @@ public class Habitacion implements Serializable {
 	}
     
 	public void precioHabitacion() {
+		long diff = DAYS.between(cliente.getFecha_entrada(),cliente.getFecha_salida());
 		if (tipoCapacidad == 2) {
-			precio = 70000;
+			precio = 70000*(int)diff;
 		} else if (tipoCapacidad == 3) {
-			precio = 100000;
+			precio = 100000*(int)diff;
 		} else if (tipoCapacidad == 4) {
-			precio = 130000;
+			precio = 130000*(int)diff;
 		} else if (tipoCapacidad == 5) {
-			precio = 170000;
+			precio = 170000*(int)diff;
 		}
 	}
-	public void precioHabitacion(Cliente cliente) {
-		precioHabitacion();
-	}
-	
+
 	public static void aumentarCapacidad() {
 		for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
 			if (i.tipoCapacidad == 2) {

@@ -87,12 +87,12 @@ public class Reserva implements Serializable {
 			Habitacion.setCapacidad5(cap5 + 1);
 		}
 		cliente.setReserva(false);
+		
 		for (int i = 0; i < Recepcion.getHotel().getReservas().size(); i++) {
 			if (Recepcion.getHotel().getReservas().get(i).cliente.equals(cliente)) {
 				Recepcion.getHotel().getReservas().remove(Recepcion.getHotel().getReservas().get(i));
 				Recepcion.getHotel().getClientes().get(i).setHabitacion(null);;
 				Recepcion.getHotel().getHabitaciones().get(i).setCliente(null);
-				Recepcion.getHotel().getClientes().remove(cliente);
 				break;
 		}
 			break;
@@ -101,8 +101,8 @@ public class Reserva implements Serializable {
 	}
 
 	public void cancelar_reserva() {
-		Recepcion.getHotel().getClientes().remove(this.getCliente());
 		Recepcion.getHotel().getReservas().remove(this);
+		cliente.setReserva(false);
 		
 	}
 }

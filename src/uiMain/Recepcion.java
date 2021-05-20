@@ -66,7 +66,9 @@ public class Recepcion {
 		Servicio ser3 = new Servicio(cliente3);
 		Servicio ser4 = new Servicio(cliente4);
 		Servicio ser5 = new Servicio(cliente5);
-		Servicio ser6 = new Servicio(cliente6);*/
+		Servicio ser6 = new Servicio(cliente6);
+		Servicio ser7 = new Servicio(cliente7);
+		Servicio ser8 = new Servicio(cliente8);*/
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
@@ -221,6 +223,7 @@ public class Recepcion {
 				System.out.println("Dígito ingresado inválido");
 				return;
 			}
+			System.out.println(cliente.getServicio());
 			cliente.getServicio().tipoMenu(opcionCarta, eleccion, cliente);
 			System.out.println("¿Desea elegir otro platillo?");
 			String respSalir = readIn();
@@ -235,6 +238,7 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente cliente = buscarCliente(cedula);
+		
 
 		String respFinal;
 		do {
@@ -304,18 +308,18 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
-		for(Reserva i: hotel.getReservas()) {
-			if(i.getCliente() == clientenuevo) {
-				i.cancelar_reserva(clientenuevo);
-				hotel.getReservas().remove(i);
-				break;
+		if (clientenuevo.isReserva() == true) {
+			for(Reserva i: hotel.getReservas()) {
+				if(i.getCliente() == clientenuevo) {
+					i.cancelar_reserva(clientenuevo);
+					break;
+				}
 			}
+			System.out.println("Reserva cancelada con éxito.");
+		}else {
+			System.out.println("Usted no tiene reservas para cancelar");	
 		}
-		
-		System.out.println("Reserva cancelada con exito.");
 	}
-	
-	
 	
 	// Metodos de busqueda
 	public static Cliente buscarCliente(long cedula) {

@@ -10,6 +10,11 @@ import uiMain.*;
 public class Prueba {
 
 	public static void main(String[] args) {
+		Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0, 9000000);
+		Habitacion hab1 = new Habitacion(103, 2);
+		cliente1.setHabitacion(hab1);
+		hab1.setCliente(cliente1);
+		hab1.precioHabitacion();
 		/*
 		 * Cliente c1 = new Cliente("luis", 4874, "21/04/2021", "25/04/2021", 300000,
 		 * 87574); Empleado e1 = new Empleado("Veronica",87574,"ayudante");
@@ -55,7 +60,8 @@ public class Prueba {
 		
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"Recepcionista", HorasExtras.DIURNA, 10);
 
-		System.out.println(Recepcion.getHotel().getEmpleados().get(1).getSalario());
+		//System.out.println(Recepcion.getHotel().getEmpleados().get(1).getSalario());
+		System.out.println(hab1.getPrecio());
 	}
 
 }
