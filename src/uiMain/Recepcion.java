@@ -129,18 +129,9 @@ public class Recepcion {
 			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);
 			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 			if (respuesta.equals("si")) {
-				System.out.println("Ingrese su nueva fecha de ingreso en formato dd/mm/yyyy: ");
-				String fecha = sc.nextLine();
-				//LocalDate fecha_nueva = LocalDate.parse(fecha);
-				System.out.println("Ingrese su nueva fecha de salida en formato dd/mm/yyyy: ");
-				String fecha_s = sc.nextLine();
-				//LocalDate fecha_nueva_salida = LocalDate.parse(fecha_s);
-				System.out.println("Ingreso: "+ fecha + " Salida: " + fecha_s);
-				new Reserva(fecha,fecha_s,clientenuevo);
-				System.out.println("Reserva realizada con éxito");
+				hacerReserva(clientenuevo);
 				return;
 			} else if (respuesta.equals("no")) {
-				hotel.getClientes().remove(clientenuevo);
 				System.out.println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 			}
 		}
@@ -195,6 +186,10 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente cliente = buscarCliente(cedula);
+		if(cliente.getHabitacion() == null || cliente.isReserva() == true) {
+			System.out.println("Debes estar hospedado en el hotel para acceder a estos servicios.");
+			return;
+		}
 
 		String respFinal;
 		do {
@@ -238,7 +233,10 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente cliente = buscarCliente(cedula);
-		
+		if(cliente.getHabitacion() == null || cliente.isReserva() == true) {
+			System.out.println("Debes estar hospedado en el hotel para acceder a estos servicios.");
+			return;
+		}
 
 		String respFinal;
 		do {
@@ -270,6 +268,11 @@ public class Recepcion {
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
 		long cedula = readLong();
 		Cliente clientesalida = buscarCliente(cedula);
+		if(clientesalida.getHabitacion() == null) {
+			System.out.println("Usted no se encuentra en el hotel y no tiene deudas pendientes.");
+			return;
+		}
+		
 		hotel.cobrarDeudas(clientesalida);
 
 		for(int i=0;i< Recepcion.hotel.getEmpleados().size();i++) {
@@ -295,9 +298,19 @@ public class Recepcion {
 	}
 	
 	public static void mostrarClientes() {
-		
+	int cont =0;
+	
+	System.out.println("Clientes hospedados en el hotel registrado con el código " + hotel.getcodigoRNT() + ":");
+	
 		for (Cliente i : hotel.getClientes()) {
-			System.out.println(i.toString());		
+			if(i.getHabitacion() != null) {
+				cont++;
+				System.out.println(i.toString());
+			}
+					
+		}
+		if(cont == 0) {
+			System.out.println("En el momento no se encuentran clientes en el hotel.");
 		}
 		
 	}

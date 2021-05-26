@@ -90,9 +90,9 @@ public class Reserva implements Serializable {
 		
 		for (int i = 0; i < Recepcion.getHotel().getReservas().size(); i++) {
 			if (Recepcion.getHotel().getReservas().get(i).cliente.equals(cliente)) {
+				Recepcion.getHotel().getReservas().get(i).getCliente().getHabitacion().setCliente(null);
+				Recepcion.getHotel().getReservas().get(i).getCliente().setHabitacion(null);
 				Recepcion.getHotel().getReservas().remove(Recepcion.getHotel().getReservas().get(i));
-				Recepcion.getHotel().getClientes().get(i).setHabitacion(null);;
-				Recepcion.getHotel().getHabitaciones().get(i).setCliente(null);
 				break;
 		}
 			break;

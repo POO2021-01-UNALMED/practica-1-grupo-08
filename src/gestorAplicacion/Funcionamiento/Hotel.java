@@ -7,13 +7,9 @@ import java.util.ArrayList;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
 
-public class Hotel implements Serializable {
+public class Hotel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+		
 	static final int codigoRNT = 10562;
 
 	private ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
@@ -22,13 +18,14 @@ public class Hotel implements Serializable {
 	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private int ingresos;
-	/*public Hotel() {
-		Deserializacion.deserializar(this);
-		
-	}*/
+
 	
 	public Hotel(){
 		
+	}
+	
+	public int getcodigoRNT() {
+		return codigoRNT;
 	}
 	
 	public int getIngresos() {
