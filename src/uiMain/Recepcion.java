@@ -218,7 +218,6 @@ public class Recepcion {
 				System.out.println("Dígito ingresado inválido");
 				return;
 			}
-			System.out.println(cliente.getServicio());
 			cliente.getServicio().tipoMenu(opcionCarta, eleccion, cliente);
 			System.out.println("¿Desea elegir otro platillo?");
 			String respSalir = readIn();
@@ -276,7 +275,7 @@ public class Recepcion {
 		hotel.cobrarDeudas(clientesalida);
 
 		for(int i=0;i< Recepcion.hotel.getEmpleados().size();i++) {
-			int rd = (int) (Math.random() * (hotel.getEmpleados().size() + 1));
+			int rd = (int) (Math.random() * (hotel.getEmpleados().size()));
 			if(hotel.getEmpleados().get(rd) instanceof Mucama) {
 				((Mucama)hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
 				clientesalida.getHabitacion().setCliente(null); //habitacion

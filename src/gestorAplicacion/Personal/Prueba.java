@@ -61,7 +61,8 @@ public class Prueba {
 		Empleado emp1 = new OficiosVarios("Luis", 2489364,"Recepcionista", HorasExtras.DIURNA, 10);
 
 		//System.out.println(Recepcion.getHotel().getEmpleados().get(1).getSalario());
-		System.out.println(hab1.getPrecio());
+		
+		
 	}
 
 }
