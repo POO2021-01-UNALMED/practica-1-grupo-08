@@ -1,38 +1,40 @@
 package gestorAplicacion.Funcionamiento;
-
 import java.io.Serializable;
 import gestorAplicacion.Cliente;
 import uiMain.Recepcion;
 
 public class Servicio implements Serializable {
-	/**
-	 * 
-	 */
+	
+	//ATRIBUTOS.
 	private static final long serialVersionUID = 1L;
 	private int gastosServicios;
 	private Cliente cliente;
 
+	//CONSTRUCTOR.
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
 		cliente.setServicio(this);
 		Recepcion.getHotel().getServicios().add(this);
 	}
 
+	//MÉTODOS SET Y GET: permiten acceder y modificar el valor de los atributos. 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public Cliente getCliente() {
-		return this.cliente;
 	}
 
 	public void setGastosServicios(int valorGasto) {
 		this.gastosServicios = valorGasto;
 	}
+	
+	public Cliente getCliente() {
+		return this.cliente;
+	}
 
 	public int getGastosServicios() {
 		return this.gastosServicios;
 	}
+	
+	//MÉTODOS
 
 	public void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
 		int valorTotalServicio = gastosServicios;
@@ -135,7 +137,6 @@ public class Servicio implements Serializable {
 			valorTotalServicio = valorTotalServicio + 15000;
 			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
-
 		}
 
 	}

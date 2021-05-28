@@ -1,48 +1,46 @@
 package gestorAplicacion.Funcionamiento;
-
 import gestorAplicacion.Cliente;
 import static java.time.temporal.ChronoUnit.DAYS;
 import uiMain.Recepcion;
 import java.io.Serializable;
 
+/*Autores: Ximena Castañeda.
+ *Componentes: Atributos,constructor,métodos get y set,métodos disponibilidad,precioHabitacion y aumentarCapacidad.
+ *Finalidad: Contiene información básica que registra un hotel de sus habitaciones y los métodos necesarios 
+ *para su control. Por tanto, permite crear instancias de tipo habitación, donde cada una será 
+ *relacionada con una instancia cliente cuando se haga una reserva o se tome una habitación; método tomarHabitación()
+ *y hacerReserva() en la clase hotel respectivamente.
+ *Esta clase contiene el atributo constante,serialVersionUID, necesario para la serizalización de las instancias
+ *y dos atributos de referencia, cliente y reserva, para establecer la relación entre objetos mencionada anteriormente.*/
+
+
 public class Habitacion implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
+	//ATRIBUTOS.
+	private static final long serialVersionUID = 1L;
 	private int numHabitacion;
-	private boolean disponibilidadHab;
+	//Cantidad de personas que pueden alojar una habitación.
 	private int tipoCapacidad;
+	private int precio;
+	private boolean disponibilidadHab;
+  /*Los atributos que tienen por nombre "capacidad" llevaran el conteo de cuántas habitaciones disponibles para 
+   * 1,2,3,4 y 5 personas tiene el hotel,por tal motivo son estáticos.*/
 	private static int capacidad2 = 0;
 	private static int capacidad3 = 0;
 	private static int capacidad4 = 0;
 	private static int capacidad5 = 0;
 	private Cliente cliente;
-	private Reserva reserva;
-	private int precio;
+	//private Reserva reserva; AQUÍ!!! Nunca se usa
 	
+	//CONSTRUCTOR.
 	public Habitacion(int numHabitacion, int tipoCapacidad) {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
 		this.tipoCapacidad = tipoCapacidad;
 		Recepcion.getHotel().getHabitaciones().add(this);
-		
-
 	}
 
-	public void setTipoCapacidad(int num) {
-		this.tipoCapacidad = num;
-	}
-
-	public int getTipoCapacidad() {
-		return this.tipoCapacidad;
-	}
-
-	public void setNumHabitacion(int num) {
-		this.numHabitacion = num;
-	}
-
+	//MÉTODOS SET Y GET: permiten acceder y modificar el valor de los atributos. 
 	public void setDisponibilidadHab(boolean disponibilidadHab) {
 		this.disponibilidadHab = disponibilidadHab;
 	}
@@ -67,8 +65,8 @@ public class Habitacion implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
+	public int getTipoCapacidad() {
+		return this.tipoCapacidad;
 	}
 
 	public int getNumhabitacion() {
@@ -95,14 +93,6 @@ public class Habitacion implements Serializable {
 		return capacidad5;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public Reserva getReserva() {
-		return this.reserva;
-	}
-
 	public int getPrecio() {
 		return precio;
 	}
@@ -111,6 +101,12 @@ public class Habitacion implements Serializable {
 		this.precio = precio;
 	}
 
+	//MÉTODOS.
+	
+	/*Verifica si hay una habitación disponible con la capacidad de personas requerida. Tiene como paramétro de entrada
+	 * un entero que indica el número de acompañantes del cliente a quien se asignará una habitación y retorna un boolean
+	 * que negará cuando no halla una habitación disponible para esa cantidad de personas; acompañantes más el cliente titular. 
+	 */
 	public static boolean disponibilidad(int numAcompanantes) {
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;
@@ -126,11 +122,12 @@ public class Habitacion implements Serializable {
 		} else if (totalPersonas == 5 && capacidad5 == 0) {
 			confirmacion = false;
 		}
-
 		return confirmacion;
-
 	}
     
+	/*Calcula el valor de la habitación según la cantidad de personas que aloja y los días de estadía del cliente.
+	 *Este métodos no tiene parámetros de entrada o salida,porque el valor resultante del cálculo es guardado en 
+	 *el atributo precio de cada instancia. */
 	public void precioHabitacion() {
 		long diff = DAYS.between(cliente.getFecha_entrada(),cliente.getFecha_salida());
 		if (tipoCapacidad == 2) {
@@ -144,6 +141,8 @@ public class Habitacion implements Serializable {
 		}
 	}
 
+	/*Modifica los atributos de clase. Según la capacidad de personas que aloja cada habitación perteneciente al hotel,
+	 * aumenta en uno el valor del atributo correspondiente,para esto se recorre el arreglo que almacena cada instancia habitación. */
 	public static void aumentarCapacidad() {
 		for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
 			if (i.tipoCapacidad == 2) {

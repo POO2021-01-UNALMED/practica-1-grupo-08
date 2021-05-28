@@ -1,17 +1,13 @@
 package gestorAplicacion.Funcionamiento;
-
 import uiMain.*;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Empleado;
 
 public class Hotel {
 
-		
+	//ATRIBUTOS	
 	static final int codigoRNT = 10562;
-
 	private ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
@@ -19,11 +15,12 @@ public class Hotel {
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private int ingresos;
 
-	
+	//CONSTRUCTOR
 	public Hotel(){
 		
 	}
 	
+	//MÉTODOS GET Y SET: permiten acceder y modificar el valor de los atributos. 
 	public int getcodigoRNT() {
 		return codigoRNT;
 	}
@@ -32,51 +29,52 @@ public class Hotel {
 		return ingresos;
 	}
 
-	public void setIngresos(int ingresos) {
-		this.ingresos += ingresos;
-	}
-
 	public ArrayList<Habitacion> getHabitaciones() {
 		return habitaciones;
 	}
+	
+	public ArrayList<Reserva> getReservas() {
+		return reservas;
+	}
 
+	public ArrayList<Servicio> getServicios() {
+		return servicios;
+	}
+	
+	public ArrayList<Empleado> getEmpleados() {
+		return empleados;
+	}
+	
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+	
 	public void setHabitaciones(ArrayList<Habitacion> habitaciones1) {
 		habitaciones = habitaciones1;
 	}
 
-	public ArrayList<Reserva> getReservas() {
-		return reservas;
+	public void setIngresos(int ingresos) {
+		this.ingresos += ingresos;
 	}
 
 	public void setReservas(ArrayList<Reserva> Listareservas) {
 		reservas = Listareservas;
 	}
 
-	public ArrayList<Servicio> getServicios() {
-		return servicios;
-	}
-
 	public void setServicios(ArrayList<Servicio> ListaServicios) {
 		servicios = ListaServicios;
-	}
-
-	public ArrayList<Empleado> getEmpleados() {
-		return empleados;
 	}
 
 	public void setEmpleados(ArrayList<Empleado> listaempleados) {
 		empleados = listaempleados;
 	}
 
-	public ArrayList<Cliente> getClientes() {
-		return clientes;
-	}
-
 	public void setCliente(ArrayList<Cliente> listaClientes) {
 		clientes = listaClientes;
 	}
 
-	// habitaciones con capacidad dos[[103,104,105,106,107],[103,104,105,106,107]]
+	//MÉTODOS.
+	
 	// si la habitacion es asignada cambiar disponibilidad
 	public void asignarHabitacion(Cliente cliente) {
 		int cap2 = Habitacion.getCapacidad2();
@@ -98,7 +96,7 @@ public class Hotel {
 					i.setCliente(cliente);
 					i.setDisponibilidadHab(false);
 					break;
-			  }
+				}
 			}
 			if ((cliente.getNumAcompanantes() + 1) == 1) {
 				Habitacion.setCapacidad2(cap2 - 1);
@@ -115,12 +113,6 @@ public class Hotel {
 			}
 			return;
 		}
-
-		// ¿desea hacer reserva? !!!!!
-
-		// Reserva reserva = new
-		// Reserva(cliente.getFecha_entrada(),cliente.getFecha_salida(), cliente);
-
 	}
 
 	public void descuentoFamiliar(Cliente cliente) {
@@ -143,11 +135,9 @@ public class Hotel {
 			int gasto = cliente.getServicio().getGastosServicios();
 			int porcentaje = (gasto - (int) ((gasto * 0.12)));
 			cliente.getServicio().setGastosServicios(porcentaje);
-
 		}
 	}
 
-	// Probar
 	public void cobrarDeudas(Cliente cliente) {
 		Recepcion.getHotel().descuentoPorConsumo(cliente);
 		Recepcion.getHotel().descuentoFamiliar(cliente);
@@ -159,6 +149,7 @@ public class Hotel {
 		cliente.setSaldo(nuevosaldo);
 		Recepcion.getHotel().setIngresos(cliente.getCuentaFinal());
 	}
+	//AQUI!!
 	
 	public int gananciaNeta() {
 		int total = 0;

@@ -1,50 +1,44 @@
 package baseDatos;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.List;
-
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.Empleado;
 
-public class Deserializacion {
-	private static File rutaTemp = new File("src\\basedatos\\temp");
-	/*
-	 * Atributo de tipo archivo. que define la ruta del directorio que contiene las
-	 * clases. Me dice donde están los archivos que guardé por ultima vez
-	 */
+/*Esta clase permite crear las instancias de las clases de acuerdo a la última información guarda en los archivos.*/
 
-	/*
-	 * Se ejecuta al inicio. Como lo primero que hace el programa es crear el objeto
-	 * hotel, su constructor llama a este método)
-	 */
+public class Deserializacion {
+	
+	/*Atributo de tipo archivo que define la ruta del directorio donde están los archivos txt que contienen la
+	 *información de cada instancia.*/
+	private static File rutaTemp = new File("src\\basedatos\\temp");
+
+	
+	//Primer método que se debe llamar al ejecutar el programa.
 	public static void deserializar(Hotel hotel) {
-		File[] docs = rutaTemp.listFiles(); /*
-								 * Es un arreglo que me traerá todos los archivos que están en ese directorio.
-								 */
-		FileInputStream fis; /* me permitirá leer el archivo en texto */
-		ObjectInputStream ois; /* deserializará los datos primitivos y los objetos */
+		//Es un arreglo que listará todos los archivos que están en esa ruta.
+		File[] docs = rutaTemp.listFiles(); 
+		
+		FileInputStream fis;  
+		ObjectInputStream ois;
 
 		for (File archivo : docs) {
+			//getAbsolutePath() trae la dirección del archivo para mirar si correpsonde al archivo habitaciones.
 			if (archivo.getAbsolutePath().contains("habitaciones")) {
-				/*
-				 * getAbsolutePath() trae la dirección del archivo para mirar si correpsonde al
-				 * archivo asignaturas
-				 */
 				try {
+					//Leerá el archivo de texto.
 					fis = new FileInputStream(archivo);
+					//Deserializará los datos primitivos y los objetos.
 					ois = new ObjectInputStream(fis);
 
-					hotel.setHabitaciones((ArrayList<Habitacion>) ois.readObject()); /*
-											 * Departamento tiene como atributo un arreglo de asignaturas, aqui le estoy
-											 * enviando ese arreglo. ois.readObject está leyendo todos los objetos de
-											 * deserializó
-											 */
+					/*Hotel tiene como atributo un arreglo de habitaciones,en la siguiente línea se está 
+					 * modificando ese arreglo ya que ois.readObject lee todos los objetos que deserializó
+					 * y se castea a un arreglo. */
+					hotel.setHabitaciones((ArrayList<Habitacion>) ois.readObject()); 
 					ois.close();
 					fis.close();
 				} catch (FileNotFoundException e) {
