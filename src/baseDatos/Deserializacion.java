@@ -27,7 +27,7 @@ public class Deserializacion {
 		ObjectInputStream ois;
 
 		for (File archivo : docs) {
-			//getAbsolutePath() trae la dirección del archivo para mirar si correpsonde al archivo habitaciones.
+			//getAbsolutePath() trae la dirección del archivo para mirar si corresponde al archivo habitaciones.
 			if (archivo.getAbsolutePath().contains("habitaciones")) {
 				try {
 					//Leerá el archivo de texto.
