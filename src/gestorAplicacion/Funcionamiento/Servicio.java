@@ -3,6 +3,16 @@ import java.io.Serializable;
 import gestorAplicacion.Cliente;
 import uiMain.Recepcion;
 
+/*Autores: Ximena Castañeda.
+ *Componentes: Atributos,constructor,métodos get y set,métodos tipoMenu y tipoAtraccion.
+ *Finalidad: Esta clase simula los servicios que ofrece el hotel; restaurante y área de atracciones.
+ *Su finalidad es identificar el total gastado por cada cliente y sus acompañantes en estas dos zonas,por esto, cada instancia
+ *de tipo cliente tendrá relacionado por medio de un atributo una instancia servicio y viceversa.
+ *Esta clase contiene el atributo constante,serialVersionUID, necesario para la serizalización de los objetos, un  atributo entero
+ *que sirve de acumulador y un atributo de referencia de tipo cliente.*/
+ 
+
+
 public class Servicio implements Serializable {
 	
 	//ATRIBUTOS.
@@ -36,9 +46,11 @@ public class Servicio implements Serializable {
 	
 	//MÉTODOS.
 	
-	/*Este método permite modificar el valor del atributo gastosServicios,el cual lleva la sumatoria del gasto en el restaurante 
-	 *y área de atracciones, por tal motivo no tiene parámetro de retorno.Por el contrario recive dos varibales enteros y isntancia cliente;
-	 *opcion carta  */
+	/*Este método permite modificar el atributo gastosServicios,el cual guarda el total del gasto en el restaurante 
+	 *y área de atracciones del cliente,por tal motivo no tiene parámetro de retorno. Recibe dos variables enteras 
+	 *y una instancia cliente; "opcionCarta" que indica si se escogió menú vegetariano o tradicional, "eleccion" que representa 
+	 *el platillo que desea y "cliente" que permite saber a que servicio se le suma lo consumido,por medio del atributo 
+	 *"cliente" de servicio.*/
 	public void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
 		int valorTotalServicio = gastosServicios;
 
@@ -97,6 +109,10 @@ public class Servicio implements Serializable {
 		}
 	}
 
+	/*Este método permite modificar el atributo gastosServicios,el cual guarda el total del gasto en el restaurante 
+	 *y área de atracciones del cliente,por tal motivo no tiene parámetro de retorno. Recibe una variable entera 
+	 *y una instancia cliente; "eleccion" que representa la atracción que escogió y "cliente" que permite saber a que 
+	 *servicio se le suma lo consumido, por medio del atributo "cliente" de servicio.*/
 	public void tipoAtraccion(int eleccion, Cliente cliente) {
 		int valorTotalServicio = gastosServicios;
 
