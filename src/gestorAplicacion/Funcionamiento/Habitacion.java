@@ -103,7 +103,7 @@ public class Habitacion implements Serializable {
 
 	//MÉTODOS.
 	
-	/*Verifica si hay una habitación disponible con la capacidad de personas requerida. Tiene como paramétro de entrada
+	/*Verifica si hay una habitación disponible con la capacidad de personas requerida.Tiene como paramétro de entrada
 	 * un entero que indica el número de acompañantes del cliente a quien se asignará una habitación y retorna un boolean
 	 * que negará cuando no halla una habitación disponible para esa cantidad de personas; acompañantes más el cliente titular. 
 	 */
@@ -142,7 +142,8 @@ public class Habitacion implements Serializable {
 	}
 
 	/*Modifica los atributos de clase. Según la capacidad de personas que aloja cada habitación perteneciente al hotel,
-	 * aumenta en uno el valor del atributo correspondiente,para esto se recorre el arreglo que almacena cada instancia habitación. */
+	 *aumenta en uno el valor del atributo correspondiente,para esto se recorre el arreglo que almacena cada instancia habitación.
+	 *No recibe ni retorna paramétros ya que el valor cálculo modifica el atributos estáticos y no es necesario su retorno.*/
 	public static void aumentarCapacidad() {
 		for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
 			if (i.tipoCapacidad == 2) {

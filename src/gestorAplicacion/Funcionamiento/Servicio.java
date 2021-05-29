@@ -34,8 +34,11 @@ public class Servicio implements Serializable {
 		return this.gastosServicios;
 	}
 	
-	//MÉTODOS
-
+	//MÉTODOS.
+	
+	/*Este método permite modificar el valor del atributo gastosServicios,el cual lleva la sumatoria del gasto en el restaurante 
+	 *y área de atracciones, por tal motivo no tiene parámetro de retorno.Por el contrario recive dos varibales enteros y isntancia cliente;
+	 *opcion carta  */
 	public void tipoMenu(int opcionCarta, int eleccion, Cliente cliente) {
 		int valorTotalServicio = gastosServicios;
 
