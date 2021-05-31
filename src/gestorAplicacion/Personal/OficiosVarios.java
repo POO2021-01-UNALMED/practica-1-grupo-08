@@ -7,13 +7,14 @@ import java.io.Serializable;
  * funcionamiento del hotel. */
 public class OficiosVarios extends Empleado implements Serializable {
  
+// El siguiente atributo es necesario para la serizalización de las instancias de esta clase.
 	private static final long serialVersionUID = 1L;
 
 	//CONSTRUCTORES 
 /* Se usarán los constructores de su clase padre Empleado, el tipo de constructor a usar
 	 * dependerá si la empleado tiene horas extras por pagar o no. 
 	 * 
-	 * El cargo que se debe ingresar debe ser especificamente uno de los siguientes:
+	 * El cargo que se debe ingresar debe ser específicamente uno de los siguientes:
 	 * chef, recepcionista, vigilante o bartender. 
 	 * */
 	public OficiosVarios(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {

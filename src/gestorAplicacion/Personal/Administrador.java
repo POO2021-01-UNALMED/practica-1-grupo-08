@@ -9,12 +9,14 @@ public class Administrador extends Empleado implements Serializable {
 	/* Autores: Verónica Seguro Varela.
 	 * Componentes: Constructor, métodos asignarSalario() y pagarSalario()
 	 * Finalidad: El hotel sólo tendrá un administrador el cual será el encargado
-	 * de llevar la contabilidad del hotel y para esto deberá tener el valor final
+	 * de llevar la contabilidad  y para esto deberá tener el valor final
 	 * del salario de todos los empleados (incluido el pago de las horas extras).
 	 * El administrador deberá conocer los ingresos del hotel y con esto pagarles
 	 * a sus empleados, dicha acción se realiza en el método gananciaNeta() de la 
 	 * clase Hotel. 
 	 */
+	
+// El siguiente atributo es necesario para la serizalización de las instancias de esta clase.
 	private static final long serialVersionUID = 1L;
     
 	//CONSTRUCTOR 
@@ -27,7 +29,7 @@ public class Administrador extends Empleado implements Serializable {
 
 	//MÉTODOS
 	
-	/* Se le asignará al administrador un salario de $3.500.000
+	/* Se le asignará al administrador un salario fijo de $3.500.000
 	 * */
 	@Override
 	public void asignarSalario() {

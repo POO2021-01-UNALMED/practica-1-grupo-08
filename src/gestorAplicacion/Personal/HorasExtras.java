@@ -2,12 +2,10 @@ package gestorAplicacion.Personal;
 
 /* Autores: Verónica Seguro Varela
  * Componentes: Un atributo y tres métodos.
- * Finalidad : Clase numérica que tiene como objetivo identificar el tipo de
+ * Finalidad : Clase enumerada que tiene como objetivo identificar el tipo de
  * hora extra realizada por el empleado y de acuerdo a esto aumentar su salario 
- * teniendo en cuenta los diferentes valores cada tipo de hora extra, estos
- * componentes son usados para el método pagarHorasExtras() de la clase Empleado 
- * encargado de aumentar el salario de acuerdo del tipo de hora extra y de la 
- * cantidad de horas trabajadas. 
+ * teniendo en cuenta los diferentes valores, estos componentes son usados en el método
+ * pagarHorasExtras() de la clase Empleado.
  * */
 public enum HorasExtras {
 	//Constantes que definen el valor por hora de cada tipo de hora extra.
@@ -22,7 +20,7 @@ public enum HorasExtras {
 	private HorasExtras(int x) {
 		precioHora = x;
 	}
-    // Get y set
+    // MÉTODO GET Y SET: para el acceso y modificación del atributo.
 	public int getPrecioHora() {
 		return precioHora;
 	}

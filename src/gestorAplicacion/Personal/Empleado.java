@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 /*Autores: Verónica Seguro Varela. 
  * Componentes: Atributos,constructores, un método abstracto, métodos gets y sets,
- * métodos para el pago de salario de los distintos empleados.   
+ * métodos asignarSalario(), pagoHorasExtras().   
  * Finalidad: Clase abstracta en donde se busca que los tipos de 
  * empleados hereden la mayoría de estos métodos y atributos, esta superclase busca 
  * crear empleados que especifiquen si han pagado horas extras y la cantidad horas 
@@ -17,16 +17,18 @@ import java.util.ArrayList;
  * Cada empleado que sea creado se agregará a la lista de empleados de la clase
  * Hotel  
  * */
+
 public abstract class Empleado implements Persona, Serializable {
     //ATRIBUTOS
+	// El siguiente atributo es necesario para la serizalización de las instancias de esta clase.
 	private static final long serialVersionUID = 1L;
     
 	private String nombre;
     private long id;
 	private String cargo;
 	private int salario;
-	private HorasExtras horasextras; /*Atributo de la clase numérica HorasExtras 
-	que será utilizado en caso de que el empleado haya trabajado por fuera de su
+	private HorasExtras horasextras; /*Atributo de la clase enumerada HorasExtras 
+	que será utilizada en caso de que el empleado haya trabajado por fuera de su
 	jornada laboral, pueden ser horas diurnas, nocturnas, diurnas dominicales y 
 	nocturnas dominicales, cada tipo de hora extra tiene un valor diferente. */
     private int cantidadHoras;
@@ -63,10 +65,11 @@ public abstract class Empleado implements Persona, Serializable {
 	}
 	// MÉTODOS
 	
-	abstract void asignarSalario(); // Las clases creadas a partir de esta
-	//para identificar el tipo de empleado deberán implementar este método.
+	/* Las clases creadas a partir de esta deberán implementar este método para identificar
+	 * el tipo de empleado y de acuerdo a esto asignarle el salario correspondiente.*/
+	abstract void asignarSalario(); 
 
-	/* Este método será el encargado realizar el pago de horas extras y aumentar
+	/* Este método será el encargado de realizar el pago de horas extras y aumentar
 	 * dicho pago en el salario de los empleados que en su efecto hayan extendido su
 	 * jornada laboral (empleados creados con el constructor 1).
 	 * */
@@ -81,7 +84,7 @@ public abstract class Empleado implements Persona, Serializable {
 			salario = salario + 9463 * (cantidadHoras);
 		}
 	}
-	// Getters y Setters
+	// MÉTODOS GET Y SET: para el acceso y modificación (cuando sea necesario) de los atributos.
 	public String getNombre() {
 		return nombre;
 	}
@@ -112,9 +115,7 @@ public abstract class Empleado implements Persona, Serializable {
 	public HorasExtras getHorasextras() {
 		return horasextras;
 	}
-	/*public void setHorasextras(HorasExtras horasextras) {
-		this.horasextras = horasextras;
-	}*/
+
 	public int getCantidadHoras() {
 		return cantidadHoras;
 	}

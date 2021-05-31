@@ -9,10 +9,10 @@ import uiMain.*;
 /*Autores: Yojan Andrés Alcaraz Pérez.
  ** Componentes: El presente módulo contiene la clase Reserva, sus atributos, su constructor, 
  * los respectivos métodos get y set de cada uno de los atributos que lo requieren y los métodos
- * para reasignar y cancelar reservas.
+ * reasignar_reserva() y cancelar_reserva().
  ** Funcionalidad y finalidad: Esta clase permite almacenar información sobre las reservas que 
  * realizarán los clientes, por lo que es necesario aquí un atributo de tipo Cliente.
- */
+ * Cada objeto de esta clase será almacenado en la lista reservas de la clase Hotel.*/
 
 public class Reserva implements Serializable {
 
@@ -20,6 +20,7 @@ public class Reserva implements Serializable {
 	 * 
 	 */
 	// ATRIBUTOS.
+	//El siguiente atributo es necesario para la serizalización de las instancias de esta clase.
 	private static final long serialVersionUID = 1L;
 	private LocalDate fecha_de_ingreso;
 	private LocalDate fecha_de_salida;
@@ -84,13 +85,13 @@ public class Reserva implements Serializable {
 		Recepcion.getHotel().asignarHabitacion(cliente);
 	}
 	
-	/* El método que permite a los clientes cancelar sus reservas, habilita la disponibilidad de la habitación
-	 *  que había sido asiganada al cliente al momento de realizar la reserva, para ello, verifica la capacidad 
-	 *  de dicha habitación y aumenta la disponibilidad del tipo de habitaciones acorde a su capacidad en uno,
-	 *  posteriormente, elimina la relación entre la habitación y el cliente y finalmente elimina la reserva 
-	 *  de la lista de reservas que hay en la clase "Hotel".
+	/* El método permite a los clientes cancelar sus reservas, da la disponibilidad de la habitación
+	 * que había sido asignada al cliente al momento de realizar la reserva, para ello, verifica la capacidad 
+	 * de dicha habitación y aumenta en uno la disponibilidad del tipo de habitaciones acorde a su capacidad,
+	 * posteriormente, elimina la relación entre la habitación y el cliente y finalmente elimina la reserva 
+	 * de la lista de reservas que hay en la clase "Hotel".
 	 * El parámetro de entrada es el cliente que reservó y no posee parámetros de salida, pues lo que hace 
-	 * es la modificación de atributos y eliminación de una lista.
+	 * es la modificación de atributos y eliminación de una instancia en la lista.
 	 */
 
 	public void cancelar_reserva(Cliente cliente) {
@@ -124,9 +125,9 @@ public class Reserva implements Serializable {
 	}
 	
 	/*
-	 * El siguiente es una sobrecarga del método anterior, cuya funcionalidad es eliminar la reserva de la 
-	 * lista de reservas, el método es utilizado si al intentar asignar una habitación a un cliente al momento 
-	 * de reservar no hay disponibles.
+	 * El siguiente método es una sobrecarga del método anterior, cuya funcionalidad es eliminar la reserva de la 
+	 * lista de reservas, el método es utilizado si al intentar asignar una habitación a un cliente no hay disponibilidad
+	 * de acuerdo a la capacidad que necesita 
 	 */
 	public void cancelar_reserva() {
 		Recepcion.getHotel().getReservas().remove(this);

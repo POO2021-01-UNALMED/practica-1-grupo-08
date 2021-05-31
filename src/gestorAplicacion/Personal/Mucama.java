@@ -40,7 +40,7 @@ import uiMain.Recepcion;
 	public void asignarSalario() {
 		super.setSalario(915000);
 	}
-	//Get y Set 
+	//MÉTODO GET Y SET: para el acceso y modificación.
 	public Habitacion getHabitacion() {
 		return habitacion;
 	}
@@ -52,7 +52,7 @@ import uiMain.Recepcion;
 	/* Método que recibe un atributo de tipo habitación el cual será la habitación 
 	 * que se le asignará a la mucama para limpiar, este método tiene como
 	 * objetivo dejar disponible la habitación que se le asigna a la mucama 
-	 * para ser usada por otro cliente, por ende este método será llamada cada vez
+	 * para ser usada por otro cliente, por ende este método será llamado cada vez
 	 * que un cliente salga de un hotel.
 	 * */
 	public void limpiarHabitacion(Habitacion habitacion) {
@@ -62,9 +62,9 @@ import uiMain.Recepcion;
 			int cap4 = Habitacion.getCapacidad4();
 			int cap5 = Habitacion.getCapacidad5();
 			
-				habitacion.setDisponibilidadHab(true);// cambio la disponibilidad de la																	// habitacion
+				habitacion.setDisponibilidadHab(true);																	// habitacion
 				if (habitacion.getTipoCapacidad() == 2) {
-					Habitacion.setCapacidad2(cap2 + 1); // si la cap es de 2, aumento en habitacion esa capacida
+					Habitacion.setCapacidad2(cap2 + 1); 
 					return;
 				} else if (habitacion.getTipoCapacidad() == 3) {
 					Habitacion.setCapacidad3(cap3 + 1);
@@ -80,13 +80,4 @@ import uiMain.Recepcion;
 			
 	}
 	
-	//?????????????
-	/*
-	public String toString() {
-		if (habitacion == null) {
-			return "Mucama identificada con " + getId() + " sin habitaciones asignadas";
-		}
-		return "Mucama con identificación: " + getId() + "con habitación asignada: " + habitacion.getNumhabitacion();
-		
-	}*/
 }

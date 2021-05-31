@@ -11,11 +11,13 @@ import java.util.Date;
 /*Autores: Yojan Andrés Alcaraz Pérez.
  ** Componentes: El presente módulo contiene la clase Cliente, sus atributos, su constructor y un caso 
  * de sobrecarga de este, los respectivos métodos get y set de cada uno de los atributos que lo requieren 
- * y un método toString.
+ * y un método toString().
  ** Funcionalidad y finalidad: La clase Cliente permite almacenar información sobre los clientes que se 
- * hospedarán en el hotel, pemitiendo crear objetos de tipo Cliente que serán relacionados con sus respectivas 
- * instancias de tipo Habitación en el momento que el cliente tome una habitación y Servicio cuando el cliente 
- * haga uso de un servicio, para ello, la clase cuentas con dos atributos de referencia, habitacion y servicio. 
+ * hospedarán en el hotel, permitiendo crear objetos de tipo Cliente que serán relacionados con sus respectivas 
+ * instancias de tipo Habitación en el momento en que el cliente tome una habitación y Servicio cuando el cliente 
+ * haga uso ya sea del restaurante o de la zona de atracciones, para ello, la clase cuenta con dos atributos 
+ * de referencia, habitacion y servicio. 
+ * Cada objeto de esta clase será almacenado en la lista clientes de la clase Hotel.
  */
 
 public class Cliente implements Serializable,Persona{
@@ -41,7 +43,6 @@ public class Cliente implements Serializable,Persona{
 	private int numAcompanantes;
 	private boolean reserva;
 	private int cuentaFinal; // Que almacenará los gastos totales del cliente durante su estancia en el hotel.
-	private int saldo;
 	private Habitacion habitacion;
 	private Servicio servicio;
 	
@@ -49,14 +50,15 @@ public class Cliente implements Serializable,Persona{
 	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // ¡¡!! TENER EN CUENTA //////
 	
 	// CONSTRUCTORES.
-	
-	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes,int saldo, long idFamiliar) {
-		this(nombre, id, fecha_entrada, fecha_salida, numAcompanantes,saldo);
+	/* Este constructor será usado en el caso en que el cliente tenga un familiar en el personal del hotel 
+	 * para aplicar a descuentos durante su estancia.*/
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes, long idFamiliar) {
+		this(nombre, id, fecha_entrada, fecha_salida, numAcompanantes);
 		this.idFamiliar = idFamiliar;
 	}
 	
-
-	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes ,int saldo) {
+    // Constructor en el caso en que el cliente no tenga parentesco con el personal.
+	public Cliente(String nombre,long id,String fecha_entrada,String fecha_salida, int numAcompanantes) {
 		this.nombre = nombre;
 		this.id = id;
 		LocalDate fecha_entrar = LocalDate.parse(fecha_entrada);
@@ -64,7 +66,6 @@ public class Cliente implements Serializable,Persona{
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
-		this.saldo = saldo;
 		Recepcion.getHotel().getClientes().add(this);
 	}
 
@@ -126,14 +127,6 @@ public class Cliente implements Serializable,Persona{
 		this.cuentaFinal = cuentaFinal;
 	}
 
-	public int getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(int saldo) {
-		this.saldo = saldo;
-	}
-
 	public Habitacion getHabitacion() {
 		return habitacion;
 	}
@@ -165,8 +158,8 @@ public class Cliente implements Serializable,Persona{
 
 	// MÉTODOS.
 	
-	/*El siguiente método toString será utilizado en la funcionalidad "Mostrar clientes" que nos permitirá 
-	 * obtener la lista de clientes que al momento se encuentran hospedados en el hotel.
+	/*El siguiente método toString será utilizado en la clase Recepcion en el método "mostrarClientes()" que nos 
+	 * permitirá obtener la lista de clientes que al momento se encuentran hospedados en el hotel.
 	 * 
 	 */
 	public String toString() {
