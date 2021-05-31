@@ -15,10 +15,20 @@ import gestorAplicacion.*;
 import gestorAplicacion.Funcionamiento.*;
 import gestorAplicacion.Personal.*;
 
+/* Autores: Verónica Seguro Varela, Ximena Castañeda Ochoa, Yojan Andrés Alcaraz Pérez.
+ * La clase Recepción, que es el programa main, permitirá implementar la interacción del usuario con el sistema.
+ ** Componentes: El presente módulo contiene la clase Recepción, sus atributos, que son instancias de la clase Hotel
+ * y la clase Administrador, los respectivos métodos que permiten la lectura y procesamiento de la información 
+ * brindada por el usuario, el menú y desarrollo de cada una de las funcionalidades del sistema, los métodos de 
+ * búsqueda necesarios para el procesamiento de los datos, el método que nos permite abandornar el programa y 
+ * los métodos get y set para el acceso y modificación de los atributos.
+ */
 public class Recepcion {
 	private static Hotel hotel = new Hotel();
 	private static Administrador ad1 = new Administrador("Julián", 134344);
-		
+	
+	// MÉTODOS DE ENTRADA Y LECTURA POR CONSOLA:
+	
 	static Scanner sc = new Scanner(System.in);
 
 	static long readLong() {
@@ -29,7 +39,8 @@ public class Recepcion {
 		sc.nextLine();
 		return sc.nextLine();
 	}
-		
+	
+	// 	PROGRAMA MAIN:
 	public static void main(String[] args) {
 		int opcion;
 		Deserializacion.deserializar(hotel);
@@ -70,6 +81,11 @@ public class Recepcion {
 		Servicio ser7 = new Servicio(cliente7);
 		Servicio ser8 = new Servicio(cliente8);*/
 		
+		/* MENÚ GENÉRICO DE CONSOLA: que abarcará todas las funcionalidades disponibles y que permite mostrar 
+		 * al usuario el menú con cada una de las funcionalidades de las que podrá hacer uso, así, el usuario 
+		 * digitará en su momento la opción correspondiente a la acción que desee realizar. 
+		 */
+		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
 			System.out.println("1. Tomar una habitación");
@@ -109,20 +125,29 @@ public class Recepcion {
 				salirDelsistema();
 				break;
 			}
-		} while (opcion != 8);
-		
-		
+		} while (opcion != 8);	
 	}
+	
 
+	/* FUNCIONALIDAD 1: Tomar habitación:
+	 * Este método pide al usuario ingresar el número de identificación del cliente para posteriormente
+	 *  hacer uso del método de búsqueda del cliente y verificar que el cliente aún no tenga asignada
+	 *  una habitación, luego se mostrará al usuario la habitación asignada al cliente llamando después 
+	 *  el método "asignarHabitacion" de la clase "Hotel", si al momento no hay habitaciones disponibles 
+	 *  se dará al cliente la opción de realizar una reserva, el cliente debe responder si desea o no 
+	 *  hacer la reserva y así proceder según su respuesta, de ser afirmativa, se llamará el método "hacerReserva".
+	 */
 	static void tomarHabitacion() {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
 		if (clientenuevo.getHabitacion() !=null) {
-			System.out.println("La habitación con el número " + clientenuevo.getHabitacion().getNumhabitacion() + " ya le ha sido asignada");
+			System.out.println("La habitación con el número " + clientenuevo.getHabitacion().getNumhabitacion() + 
+					" ya le ha sido asignada");
 		    return;
 		}
-		hotel.asignarHabitacion(clientenuevo); // ¿Si no encuentra habitación?
+		hotel.asignarHabitacion(clientenuevo);
+		
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No hay habitaciones disponibles,¿desea hacer una reserva?");
 			String res = readIn();// Debe responder si o no y sin tilde
@@ -139,6 +164,14 @@ public class Recepcion {
 			System.out.println("Su habitación asignada es: " + clientenuevo.getHabitacion().getNumhabitacion());
 		}
 	}
+	
+	/* FUNCIONALIDAD 2: Permite al usuario realizar una reserva después de verifivar que el cliente no tenga ya 
+	 * una asignada, posteriormente, se pedirá al usuario ingresar por consola los parámetros requeridos para 
+	 * hacer una reserva y luego se procede a efecturla, si en este proceso al intentar asignar una habitación 
+	 * no hay disponibles, se procederá a cancelar la reserva, de lo contrario, se mostrará la habitación para 
+	 * la que fue realizada la reserva. 
+	 * El método tiene como parámetro de entrada el respectivo cliente y no tiene ningún valor de salida.
+	 */
 
 	static void hacerReserva(Cliente clientenuevo) {
 		if (clientenuevo.isReserva()==true) {
@@ -170,17 +203,23 @@ public class Recepcion {
 		
 		if (clientenuevo.getHabitacion() == null) {
 			    clientenuevo.setReserva(false);
-              	reserva1.cancelar_reserva();///// Solo cancela si al intentar asignarle una habitación no hay disponibles.
+              	reserva1.cancelar_reserva();// Solo cancela si al intentar asignarle una habitación no hay disponibles.
               	System.out.println("Lo sentimos, no hay habitaciones disponibles");	
 		}
 		
 		if (clientenuevo.isReserva() == true) {
 			reserva1.setCliente(clientenuevo);
 			System.out.println("Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
-		}
-		
+		}	
 	}
-
+	
+	/* FUNCIONALIDAD 3: Permite al usuario mostrar el menú del restaurante y las atracciones con las que cuenta
+	 * el hotel para que el cliente haga su elección y esta sea ingresada por consola. El usuario ingresa la 
+	 * cédula del cliente y se verifica si este tiene asignada una habitación o si la reserva ya fue efectuada, 
+	 * si es así se procede a mostrar el menú y a ingresar cada una de las elecciones del cliente y finalmente, 
+	 * se procede a relacionar estas elecciones con el servicio del cliente a través de los métodos "tipoMenu" 
+	 * y "tipoAtraccion" de la clase servicio.
+	 */
 	static void elegirMenu() {
 		System.out.println("BIENVENIDO AL RESTAURANTE.");
 		System.out.println("Ingrese C.C. del cliente: ");
@@ -258,10 +297,24 @@ public class Recepcion {
 		} while (respFinal.equals("si"));
 		System.out.println("¡Disfrute del juego!");
 	}
-
+	
+	/* FUNCIONALIDAD 4: Esta funcionalidad permite mostrar las ganancias totales del hotel a través del método 
+	 * "gananciaNeta" de la clase "Hotel".
+	 */
+	
 	public static void gananciasNetas() {
 		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta()+ "\n");
 	}
+	
+	/* FUNCIONALIDAD 5: La funcionalidad que permite dar salida al cliente del hotel se encarga de pedir por 
+	 * consola la cédula del cliente para hacer uso del método de búsqueda de los clientes y verificar que 
+	 * efectivamente el cliente se encuentra en el hotel, para ello verifica si el cliente tiene asignada 
+	 * una habitación, posteriormetne se hace un llamado al método "cobrarDeudas" de la clase "Hotel". Luego, 
+	 * se asigna de manera aleatoria una mucama a la habitación que el cliente en cuestión deja vacía para 
+	 * con esta mucama hacer el llamado al método "limpiarHabitacion" de la clase "Mucama" y así proceder a 
+	 * deshacer la relación cliente-habitación. Finalmente se da al cliente la opción de realizar inmediatamente 
+	 * una próxima reserva.
+	 */
 
 	public static void salidaCliente() { 
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
@@ -296,6 +349,9 @@ public class Recepcion {
 			System.out.println("¡Gracias por visitarnos, vuelva pronto!");
 	}
 	
+	/* MÉTODO: El siguiente método permite mostrar la lista de clientes que actualmente se encuentran hospedados
+	 * en el hotel.
+	 */
 	public static void mostrarClientes() {
 	int cont =0;
 	
@@ -314,8 +370,11 @@ public class Recepcion {
 		
 	}
 	
-
-	
+	/* MÉTODO: Permite a usuario cancelar una reserva realizada previamente, primero pide ingresar la cédula del 
+	 * cliente que tiene la reserva, para luego verificar si dicho cliente tiene reservas, recorrer la lista de 
+	 * reservas y cancelar la reserva de interés.
+	 * 
+	 */
 	public static void cancelarReserva() {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
@@ -333,7 +392,11 @@ public class Recepcion {
 		}
 	}
 	
-	// Metodos de busqueda
+	/* MÉTODOS DE BÚSQUEDA: Permite buscar entre la lista de clientes aquel que está interesado en cualquiera
+	 * de las funcionalidades anteriores, el método recibe como parámetro la cédula del cliente y retorna el  
+	 * objeto de tipo cliente asociado a la cédula ingresada como parámetro.
+	 */
+	 
 	public static Cliente buscarCliente(long cedula) {
 		Cliente uno = null;
 		for (Cliente i : hotel.getClientes()) {
@@ -349,26 +412,29 @@ public class Recepcion {
 
 		return uno;
 	}
-	// Método
+	// MÉTODO: El siguiente método permite llevar a cabo el proceso de serialización, para luego salir del programa.
 
 	private static void salirDelsistema() {
 		System.out.println("¡Vuelva pronto!");
 		Serializacion.serializacion(hotel);
 		System.exit(0);
 	}
+	
+	// MÉTODOS GET Y SET: para el acceso y modificación de los atributos.
+	
 	public static Hotel getHotel() {
 		return hotel;
 	}
 
-	public static void setHotel(Hotel hotel) {
+	/*public static void setHotel(Hotel hotel) {
 		Recepcion.hotel = hotel;
-	}
+	}*/
 
 	public static Administrador getAd1() {
 		return ad1;
 	}
 
-	public static void setAd1(Administrador ad1) {
+	/*public static void setAd1(Administrador ad1) {
 		Recepcion.ad1 = ad1;
-	}
+	}*/
 }
