@@ -137,12 +137,12 @@ public class Servicio implements Serializable {
 			break;
 
 		case 5:
-			valorTotalServicio = valorTotalServicio + 8000;
+			valorTotalServicio = valorTotalServicio + 9000;
 			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
 		case 6:
-			valorTotalServicio = valorTotalServicio + 8000;
+			valorTotalServicio = valorTotalServicio + 9000;
 			cliente.getServicio().setGastosServicios(valorTotalServicio);
 			break;
 
