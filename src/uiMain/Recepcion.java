@@ -138,7 +138,7 @@ public class Recepcion {
 	 *  hacer la reserva y así proceder según su respuesta.
 	 *  En el caso que se encuentre habitaciones disponibles se mostrará al usuario la habitación asignada al cliente. 
 	 */
-	static void tomarHabitacion() {
+	private static void tomarHabitacion() {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
@@ -174,7 +174,7 @@ public class Recepcion {
 	 * El método tiene como parámetro de entrada el respectivo cliente y no tiene ningún valor de salida.
 	 */
 
-	static void hacerReserva(Cliente clientenuevo) {
+	private static void hacerReserva(Cliente clientenuevo) {
 		if (clientenuevo.isReserva()==true) {
 			System.out.println("Usted ya tiene una reserva asignada a la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
 		    return;
@@ -219,7 +219,7 @@ public class Recepcion {
 	 * instancias de esta clase y cancelar la reserva de interés.
 	 * 
 	 */
-	public static void cancelarReserva() {
+	private static void cancelarReserva() {
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
@@ -243,7 +243,7 @@ public class Recepcion {
 	 * se procede a relacionar estas elecciones con el servicio del cliente a través de los métodos "tipoMenu()" 
 	 * y "tipoAtraccion()" de la clase Servicio.
 	 */
-	static void elegirMenu() {
+	private static void elegirMenu() {
 		System.out.println("BIENVENIDO AL RESTAURANTE.");
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
@@ -289,7 +289,7 @@ public class Recepcion {
 		System.out.println("¡Buen provecho!");
 	}
 
-	static void elegirAtraccion() {
+	private static void elegirAtraccion() {
 		System.out.println("BIENVENIDO AL PARQUE DE DIVERSIONES.");
 		System.out.println("Ingrese C.C. del cliente: ");
 		long cedula = readLong();
@@ -324,7 +324,7 @@ public class Recepcion {
 	/* FUNCIONALIDAD 4: Esta funcionalidad permite mostrar las ganancias totales del hotel a través del método 
 	 * "gananciaNeta()" de la clase "Hotel".
 	 */
-	public static void gananciasNetas() {
+	private static void gananciasNetas() {
 		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta()+ "\n");
 	}
 	
@@ -336,7 +336,7 @@ public class Recepcion {
 	 * da al cliente la opción de realizar inmediatamente una próxima reserva.
 	 */
 
-	public static void salidaCliente() { 
+	private static void salidaCliente() { 
 		System.out.println("Ingrese C.C. del cliente para dar salida: ");
 		long cedula = readLong();
 		Cliente clientesalida = buscarCliente(cedula);
@@ -372,7 +372,7 @@ public class Recepcion {
 	/* MÉTODO: El siguiente método permite mostrar la lista de clientes que actualmente se encuentran hospedados
 	 * en el hotel.
 	 */
-	public static void mostrarClientes() {
+	private static void mostrarClientes() {
 	int cont =0;
 	
 	System.out.println("Clientes hospedados en el hotel registrado con el código " + hotel.getcodigoRNT() + ":");
@@ -395,7 +395,7 @@ public class Recepcion {
 	 * objeto de tipo cliente asociado. 
 	 */
 	 
-	public static Cliente buscarCliente(long cedula) {
+	private static Cliente buscarCliente(long cedula) {
 		Cliente uno = null;
 		for (Cliente i : hotel.getClientes()) {
 			if (cedula == i.getId()) {
