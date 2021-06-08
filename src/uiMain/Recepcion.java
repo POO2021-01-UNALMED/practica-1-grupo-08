@@ -130,11 +130,11 @@ public class Recepcion {
 	
 
 	/* FUNCIONALIDAD 1: Tomar habitación:
-	 * Este método pide al usuario(Recepcionista o Administrador) ingresar el número de identificación del cliente para posteriormente
-	 *  hacer uso del método de búsqueda del cliente y verificar que este aún no tenga asignada
-	 *  una habitación, llamará entonces al método "asignarHabitacion()" de la clase "Hotel", si en el momento no hay habitaciones disponibles 
-	 *  se dará al cliente la opción de realizar una reserva, el cliente debe responder si desea o no 
-	 *  hacer la reserva y así proceder según su respuesta.
+	 * Este método pide al usuario(Recepcionista o Administrador) ingresar el número de identificación del cliente 
+	 *  para posteriormente hacer uso del método de búsqueda del cliente y verificar que este aún no tenga asignada
+	 *  una habitación, llamará entonces al método "asignarHabitacion()" de la clase "Hotel", si en el momento no hay 
+	 *  habitaciones disponibles se dará al cliente la opción de realizar una reserva, el cliente debe responder si 
+	 *  desea o no hacer la reserva y así proceder según su respuesta.
 	 *  En el caso que se encuentre habitaciones disponibles se mostrará al usuario la habitación asignada al cliente. 
 	 */
 	private static void tomarHabitacion() {
@@ -165,11 +165,11 @@ public class Recepcion {
 		}
 	}
 	
-	/* FUNCIONALIDAD 2 (Control de Reservas): Permite al usuario realizar una reserva después de verificar que el cliente no tenga ya 
-	 * una asignada, posteriormente, se pedirá al usuario ingresar por consola los parámetros requeridos para 
-	 * hacer una reserva y luego se procede a efecturla, si en este proceso al intentar asignar una habitación 
-	 * no hay disponibles, se procederá a cancelar la reserva, de lo contrario, se mostrará la habitación para 
-	 * la que fue realizada la reserva. 
+	/* FUNCIONALIDAD 2 (Control de Reservas): Permite al usuario realizar una reserva después de verificar que 
+	 * el cliente no tenga ya una asignada, posteriormente, se pedirá al usuario ingresar por consola los parámetros
+	 * requeridos para hacer una reserva y luego se procede a efecturla, si en este proceso al intentar asignar una 
+	 * habitación no hay disponibles, se procederá a cancelar la reserva, de lo contrario, se mostrará la habitación 
+	 * para la que fue realizada la reserva. 
 	 * El método tiene como parámetro de entrada el respectivo cliente y no tiene ningún valor de salida.
 	 */
 
