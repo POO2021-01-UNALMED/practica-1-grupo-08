@@ -73,7 +73,7 @@ public abstract class Empleado implements Persona, Serializable {
 	 * dicho pago en el salario de los empleados que en su efecto hayan extendido su
 	 * jornada laboral (empleados creados con el constructor 1).
 	 * */
-	public void pagoHorasExtras() {
+	protected void pagoHorasExtras() {
 		if (horasextras.getPrecioHora() == 4731) {
 			salario = salario + (4731 * (cantidadHoras));
 		} else if (horasextras.getPrecioHora() == 6624) {

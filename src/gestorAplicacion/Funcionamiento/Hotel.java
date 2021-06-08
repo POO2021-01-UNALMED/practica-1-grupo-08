@@ -22,7 +22,7 @@ public class Hotel {
 
 	//ATRIBUTOS	
 	//Atributo constante único para el hotel ya que indica su registro turístico.
-	static final int codigoRNT = 10562;
+	private static final int codigoRNT = 10562;
 	private ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();

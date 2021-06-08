@@ -107,7 +107,7 @@ public class Habitacion implements Serializable {
 	 * un entero que indica el número de acompañantes del cliente a quien se asignará una habitación y retorna un boolean
 	 * que negará cuando no halla una habitación disponible para esa cantidad de personas acompañantes más el cliente titular. 
 	 */
-	public static boolean disponibilidad(int numAcompanantes) {
+	static boolean disponibilidad(int numAcompanantes) {
 		int totalPersonas = 1 + numAcompanantes;
 		boolean confirmacion = true;
 
@@ -128,7 +128,7 @@ public class Habitacion implements Serializable {
 	/*Calcula el valor de la habitación según la cantidad de personas que aloja y los días de estadía del cliente.
 	 *Este método no tiene parámetros de entrada o salida,porque el valor resultante del cálculo es guardado en 
 	 *el atributo precio de cada instancia. */
-	public void precioHabitacion() {
+	void precioHabitacion() {
 		long diff = DAYS.between(cliente.getFecha_entrada(),cliente.getFecha_salida());/*
 		Hace el cálculo de días entre dos fechas, en este caso la fecha de entrada y la fecha de
 		salida del cliente*/
