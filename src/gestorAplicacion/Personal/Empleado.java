@@ -42,16 +42,16 @@ public abstract class Empleado implements Persona, Serializable {
      * Cabe aclarar que el empleado sólo podrá tener un tipo de hora extra ya sea 
      * diurna, nocturna, diurna dominical o nocturna dominical.
      * */
-	public Empleado(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
-	this(nombre,id,cargo.toLowerCase()); /* Se usa el método toLowerCase() dado que
+    public Empleado(String nombre, long id, String cargo, HorasExtras horasextras, int cantidadHoras) {
+    	this(nombre,id,cargo.toLowerCase()); /* Se usa el método toLowerCase() dado que
 	se necesita que el cargo del empleado esté en minúscula para un correcto
 	funcionamiento del método asignarSalario() de la clase OficiosVarios.
-	 */ 
-	this.horasextras = horasextras;
-	this.cantidadHoras = cantidadHoras;
-	this.asignarSalario();
-	this.pagoHorasExtras();
-}
+    	 */ 
+    	this.horasextras = horasextras;
+    	this.cantidadHoras = cantidadHoras;
+    	this.asignarSalario();
+    	this.pagoHorasExtras();
+    }
 	/* CONSTRUCTOR 2
 	 * Este será usado en el caso en que el empleado no tenga horas extras que
 	 * cobrar y por lo tanto su salario no será modificado.
@@ -89,17 +89,10 @@ public abstract class Empleado implements Persona, Serializable {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public long getId() {
 		return id;
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+	
 	public String getCargo() {
 		return cargo;
 	}
