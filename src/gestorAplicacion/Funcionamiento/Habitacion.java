@@ -37,7 +37,7 @@ public class Habitacion implements Serializable {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
 		this.tipoCapacidad = tipoCapacidad;
-		Recepcion.getHotel().getHabitaciones().add(this);
+		Hotel.getHabitaciones().add(this);
 	}
 
 	//MÉTODOS SET Y GET: permiten acceder y modificar el valor de los atributos. 
@@ -147,7 +147,7 @@ public class Habitacion implements Serializable {
 	 *aumenta en uno el valor del atributo correspondiente,para esto se recorre el arreglo que almacena cada instancia habitación.
 	 *No recibe ni retorna paramétros ya que modifica los atributos estáticos y no es necesario su retorno.*/
 	public static void aumentarCapacidad() {
-		for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
+		for (Habitacion i: Hotel.getHabitaciones()) {
 			if (i.tipoCapacidad == 2) {
 				capacidad2 = capacidad2+1;
 			}

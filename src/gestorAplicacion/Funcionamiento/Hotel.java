@@ -23,56 +23,56 @@ public class Hotel {
 	//ATRIBUTOS	
 	//Atributo constante único para el hotel ya que indica su registro turístico.
 	private static final int codigoRNT = 10562;
-	private ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
-	private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+	private static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	private static ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	
 
 	
 	//MÉTODOS GET Y SET: permiten acceder y modificar el valor de los atributos. 
-	public int getcodigoRNT() {
+	public static int getcodigoRNT() {
 		return codigoRNT;
 	}
 	
-	public ArrayList<Habitacion> getHabitaciones() {
+	public static ArrayList<Habitacion> getHabitaciones() {
 		return habitaciones;
 	}
 	
-	public ArrayList<Reserva> getReservas() {
+	public static ArrayList<Reserva> getReservas() {
 		return reservas;
 	}
 
-	public ArrayList<Servicio> getServicios() {
+	public static ArrayList<Servicio> getServicios() {
 		return servicios;
 	}
 	
-	public ArrayList<Empleado> getEmpleados() {
+	public static ArrayList<Empleado> getEmpleados() {
 		return empleados;
 	}
 	
-	public ArrayList<Cliente> getClientes() {
+	public static ArrayList<Cliente> getClientes() {
 		return clientes;
 	}
 	
-	public void setHabitaciones(ArrayList<Habitacion> habitaciones1) {
+	public static void setHabitaciones(ArrayList<Habitacion> habitaciones1) {
 		habitaciones = habitaciones1;
 	}
 
-	public void setReservas(ArrayList<Reserva> Listareservas) {
+	public static void setReservas(ArrayList<Reserva> Listareservas) {
 		reservas = Listareservas;
 	}
 
-	public void setServicios(ArrayList<Servicio> ListaServicios) {
+	public static void setServicios(ArrayList<Servicio> ListaServicios) {
 		servicios = ListaServicios;
 	}
 
-	public void setEmpleados(ArrayList<Empleado> listaempleados) {
+	public static void setEmpleados(ArrayList<Empleado> listaempleados) {
 		empleados = listaempleados;
 	}
 
-	public void setCliente(ArrayList<Cliente> listaClientes) {
+	public static void setCliente(ArrayList<Cliente> listaClientes) {
 		clientes = listaClientes;
 	}
 
@@ -84,14 +84,14 @@ public class Hotel {
 	 *Luego, disminuye el número de habitaciones disponibles con la capacidad requerida por el cliente, restando uno a los 
 	 *atributos estáticos de capacidad en la clase habitación.
 	 *Recibe como parámetro una instancia cliente para realizar la relación descrita anteriormente y no retorna ningún valor.*/
-	public void asignarHabitacion(Cliente cliente) {
+	public static void asignarHabitacion(Cliente cliente) {
 		int cap2 = Habitacion.getCapacidad2();
 		int cap3 = Habitacion.getCapacidad3();
 		int cap4 = Habitacion.getCapacidad4();
 		int cap5 = Habitacion.getCapacidad5();
 		if (Habitacion.disponibilidad(cliente.getNumAcompanantes()) == true) {
 			
-			for (Habitacion i: Recepcion.getHotel().getHabitaciones()) {
+			for (Habitacion i: Hotel.getHabitaciones()) {
 				if (cliente.getNumAcompanantes() == 0){
 					if((i.getTipoCapacidad() == 2) && (i.isDisponibilidadHab() == true)){
 						cliente.setHabitacion(i);
@@ -127,10 +127,10 @@ public class Hotel {
 	 * entrada una instancia cliente para verificar el parentesco, se utiliza su atributo "idFamiliar" que indica 
 	 * la cédula del empleado y dicho descuento es hecho sobre el gasto en servicios que lleva el cliente.
 	 * Por ser una operación interna no retorna ningún valor.*/
-	public void descuentoFamiliar(Cliente cliente) {
+	public static void descuentoFamiliar(Cliente cliente) {
 		if (cliente.getIdFamiliar() != 0) {
-			for (int i = 0; i < Recepcion.getHotel().getEmpleados().size(); i++) {
-				if (Recepcion.getHotel().getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
+			for (int i = 0; i < Hotel.getEmpleados().size(); i++) {
+				if (Hotel.getEmpleados().get(i).getId() == cliente.getIdFamiliar()) {
 					int descuento = cliente.getServicio().getGastosServicios() - 40000;
 					cliente.getServicio().setGastosServicios(descuento);
 					break;
@@ -144,7 +144,7 @@ public class Hotel {
 	 * Tiene como parámetro de entrada una instancia cliente para que a través de su atributo de referencia "servicio",
 	 * se realice el descuento sobre el valor del atributo "gastoServicio".
 	 * Por ser una operación interna no retorna ningún valor.*/
-	public void descuentoPorConsumo(Cliente cliente) {
+	public static void descuentoPorConsumo(Cliente cliente) {
 		if (cliente.getServicio().getGastosServicios() > 150000) {
 			int gasto = cliente.getServicio().getGastosServicios();
 			int porcentaje = (gasto - (int) ((gasto * 0.12)));
@@ -156,9 +156,9 @@ public class Hotel {
 	 *cliente, para conocer el valor de la habitación en que se alojó, los gastos en servicios y si aplica a alguno de los
 	 *dos descuentos.Después de calcular el valor final a pagar, se guarda en el atributo "cuentaFinal" 
 	 */
-	public void cobrarDeudas(Cliente cliente) {
-		Recepcion.getHotel().descuentoPorConsumo(cliente);
-		Recepcion.getHotel().descuentoFamiliar(cliente);
+	public static void cobrarDeudas(Cliente cliente) {
+		Hotel.descuentoPorConsumo(cliente);
+		Hotel.descuentoFamiliar(cliente);
 		cliente.getHabitacion().precioHabitacion();
 		int preciofin = cliente.getHabitacion().getPrecio();
 		int gastoser = cliente.getServicio().getGastosServicios();
@@ -168,9 +168,9 @@ public class Hotel {
 	/*Calcula la ganancia neta del hotel,sumando el dinero recibido por la cuenta Final de cada cliente alojado y restando 
 	 * el pago de salario a cada empleado. Tiene como parámetro de retorno un entero que indica el valor final de la 
 	 * ganancia neta.*/
-	public int gananciaNeta() {
+	public static int gananciaNeta() {
 		int total = 0;
-		for (Cliente i : Recepcion.getHotel().getClientes()) {
+		for (Cliente i : Hotel.getClientes()) {
 			total += i.getCuentaFinal();
 		}
 		int salario = Recepcion.getAd1().pagarSalario();

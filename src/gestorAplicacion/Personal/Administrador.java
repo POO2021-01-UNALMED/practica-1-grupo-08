@@ -2,6 +2,7 @@ package gestorAplicacion.Personal;
 
 import java.io.Serializable;
 
+import gestorAplicacion.Funcionamiento.Hotel;
 import uiMain.Recepcion;
 
 public class Administrador extends Empleado implements Serializable {
@@ -43,8 +44,8 @@ public class Administrador extends Empleado implements Serializable {
 	 * */
 	public int pagarSalario() {
 		int totalSalario = 0;
-		for (int i = 0; i < Recepcion.getHotel().getEmpleados().size(); i++) {
-			totalSalario += Recepcion.getHotel().getEmpleados().get(i).getSalario();
+		for (int i = 0; i < Hotel.getEmpleados().size(); i++) {
+			totalSalario += Hotel.getEmpleados().get(i).getSalario();
 		}
 		return totalSalario;
 	}

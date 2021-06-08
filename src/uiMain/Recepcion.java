@@ -23,7 +23,6 @@ import gestorAplicacion.Personal.*;
  * los métodos get y set para el acceso y modificación de los atributos.
  */
 public class Recepcion {
-	private static Hotel hotel = new Hotel();
 	private static Administrador ad1 = new Administrador("Julián", 134344);
 	
 	// MÉTODOS DE ENTRADA Y LECTURA POR CONSOLA:
@@ -44,7 +43,7 @@ public class Recepcion {
 	// 	PROGRAMA MAIN:
 	public static void main(String[] args) {
 		int opcion;
-		Deserializacion.deserializar(hotel);
+		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
 
 		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0);
@@ -147,7 +146,7 @@ public class Recepcion {
 					" ya le ha sido asignada");
 		    return;
 		}
-		hotel.asignarHabitacion(clientenuevo);
+		Hotel.asignarHabitacion(clientenuevo);
 		
 		if (clientenuevo.getHabitacion() == null) {
 			System.out.println("No hay habitaciones disponibles,¿desea hacer una reserva?");
@@ -224,7 +223,7 @@ public class Recepcion {
 		long cedula = readLong();
 		Cliente clientenuevo = buscarCliente(cedula);
 		if (clientenuevo.isReserva() == true) {
-			for(Reserva i: hotel.getReservas()) {
+			for(Reserva i: Hotel.getReservas()) {
 				if(i.getCliente() == clientenuevo) {
 					i.cancelar_reserva(clientenuevo);
 					break;
@@ -325,7 +324,7 @@ public class Recepcion {
 	 * "gananciaNeta()" de la clase "Hotel".
 	 */
 	private static void gananciasNetas() {
-		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + hotel.gananciaNeta()+ "\n");
+		System.out.println("Las ganancias netas del hotel hasta el momento son iguales a: " + Hotel.gananciaNeta()+ "\n");
 	}
 	
 	/* FUNCIONALIDAD 5: La funcionalidad que permite dar salida al cliente del hotel se encarga de pedir por 
@@ -345,15 +344,15 @@ public class Recepcion {
 			return;
 		}
 		
-		hotel.cobrarDeudas(clientesalida);
+		Hotel.cobrarDeudas(clientesalida);
 
-		for(int i=0;i< Recepcion.hotel.getEmpleados().size();i++) {
-			int rd = (int) (Math.random() * (hotel.getEmpleados().size()));
-			if(hotel.getEmpleados().get(rd) instanceof Mucama) {
-				((Mucama)hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
+		for(int i=0;i< Hotel.getEmpleados().size();i++) {
+			int rd = (int) (Math.random() * (Hotel.getEmpleados().size()));
+			if(Hotel.getEmpleados().get(rd) instanceof Mucama) {
+				((Mucama)Hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
 				clientesalida.getHabitacion().setCliente(null); //habitacion
 				clientesalida.setHabitacion(null);
-				((Mucama)hotel.getEmpleados().get(rd)).setHabitacion(null);
+				((Mucama)Hotel.getEmpleados().get(rd)).setHabitacion(null);
 				break;
 			}
 		}
@@ -375,9 +374,9 @@ public class Recepcion {
 	private static void mostrarClientes() {
 	int cont =0;
 	
-	System.out.println("Clientes hospedados en el hotel registrado con el código " + hotel.getcodigoRNT() + ":");
+	System.out.println("Clientes hospedados en el hotel registrado con el código " + Hotel.getcodigoRNT() + ":");
 	
-		for (Cliente i : hotel.getClientes()) {
+		for (Cliente i : Hotel.getClientes()) {
 			if(i.getHabitacion() != null) {
 				cont++;
 				System.out.println(i.toString());
@@ -397,7 +396,7 @@ public class Recepcion {
 	 
 	private static Cliente buscarCliente(long cedula) {
 		Cliente uno = null;
-		for (Cliente i : hotel.getClientes()) {
+		for (Cliente i : Hotel.getClientes()) {
 			if (cedula == i.getId()) {
 				uno = i;
 				break;
@@ -414,16 +413,12 @@ public class Recepcion {
 
 	private static void salirDelsistema() {
 		System.out.println("¡Vuelva pronto!");
-		Serializacion.serializacion(hotel);
+		Serializacion.serializacion();
 		System.exit(0);
 	}
 	
 	// MÉTODOS GET Y SET: para el acceso y modificación de los atributos.
 	
-	public static Hotel getHotel() {
-		return hotel;
-	}
-
 	public static Administrador getAd1() {
 		return ad1;
 	}

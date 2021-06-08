@@ -23,7 +23,7 @@ public class Servicio implements Serializable {
 	public Servicio(Cliente cliente) {
 		this.cliente = cliente;
 		cliente.setServicio(this);
-		Recepcion.getHotel().getServicios().add(this);
+		Hotel.getServicios().add(this);
 	}
 
 	//MÉTODOS SET Y GET: permiten acceder y modificar el valor de los atributos. 

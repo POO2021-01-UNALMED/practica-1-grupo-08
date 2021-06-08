@@ -35,12 +35,12 @@ public class Reserva implements Serializable {
 		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida);
 		this.fecha_de_salida = fecha_salir;
 		this.cliente = cliente;
-		Recepcion.getHotel().asignarHabitacion(cliente);
+		Hotel.asignarHabitacion(cliente);
 		/* Se hace el llamado al método asignarHabitacion() de la clase "Hotel" porque las habitaciones 
 		 * son asignadas al momento en el que el cliente realiza la reserva. 
 		 */
 		cliente.setReserva(true);
-		Recepcion.getHotel().getReservas().add(this);
+		Hotel.getReservas().add(this);
 	}
 
 	// MÉTODOS GET Y SET: que permiten el acceso y modificación de los atributos que así lo requieran.
@@ -82,7 +82,7 @@ public class Reserva implements Serializable {
 	public void reasignar_reserva(String nueva_fecha_ing, String nueva_fecha_sal) {
 		cliente.setFecha_entrada(nueva_fecha_ing);
 		cliente.setFecha_salida(nueva_fecha_sal);
-		Recepcion.getHotel().asignarHabitacion(cliente);
+		Hotel.asignarHabitacion(cliente);
 	}
 	
 	/* El método permite a los clientes cancelar sus reservas, da la disponibilidad de la habitación
@@ -113,11 +113,11 @@ public class Reserva implements Serializable {
 		}
 		cliente.setReserva(false);
 		
-		for (int i = 0; i < Recepcion.getHotel().getReservas().size(); i++) {
-			if (Recepcion.getHotel().getReservas().get(i).cliente.equals(cliente)) {
-				Recepcion.getHotel().getReservas().get(i).getCliente().getHabitacion().setCliente(null);
-				Recepcion.getHotel().getReservas().get(i).getCliente().setHabitacion(null);
-				Recepcion.getHotel().getReservas().remove(Recepcion.getHotel().getReservas().get(i));
+		for (int i = 0; i < Hotel.getReservas().size(); i++) {
+			if (Hotel.getReservas().get(i).cliente.equals(cliente)) {
+				Hotel.getReservas().get(i).getCliente().getHabitacion().setCliente(null);
+				Hotel.getReservas().get(i).getCliente().setHabitacion(null);
+				Hotel.getReservas().remove(Hotel.getReservas().get(i));
 				break;
 		}
 			break;
@@ -130,7 +130,7 @@ public class Reserva implements Serializable {
 	 * de acuerdo a la capacidad que necesita 
 	 */
 	public void cancelar_reserva() {
-		Recepcion.getHotel().getReservas().remove(this);
+		Hotel.getReservas().remove(this);
 		cliente.setReserva(false);
 	}
 }

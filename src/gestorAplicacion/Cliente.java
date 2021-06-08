@@ -66,7 +66,7 @@ public class Cliente implements Serializable,Persona{
 		LocalDate fecha_salir = LocalDate.parse(fecha_salida);
 		this.fecha_salida= fecha_salir;
 		this.numAcompanantes = numAcompanantes;
-		Recepcion.getHotel().getClientes().add(this);
+		Hotel.getClientes().add(this);
 	}
 
 	

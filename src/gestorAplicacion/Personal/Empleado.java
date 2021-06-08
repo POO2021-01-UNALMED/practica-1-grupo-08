@@ -61,7 +61,7 @@ public abstract class Empleado implements Persona, Serializable {
 		this.id = id;
 		this.cargo = cargo.toLowerCase();
 		this.asignarSalario();
-		Recepcion.getHotel().getEmpleados().add(this);
+		Hotel.getEmpleados().add(this);
 	}
 	// MÉTODOS
 	

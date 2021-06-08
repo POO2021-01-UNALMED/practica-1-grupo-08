@@ -19,7 +19,7 @@ public class Deserializacion {
 
 	
 	//Primer método que se debe llamar al ejecutar el programa.
-	public static void deserializar(Hotel hotel) {
+	public static void deserializar() {
 		//Es un arreglo que listará todos los archivos que están en esa ruta.
 		File[] docs = rutaTemp.listFiles(); 
 		
@@ -38,7 +38,7 @@ public class Deserializacion {
 					/*Hotel tiene como atributo un arreglo de habitaciones,en la siguiente línea se está 
 					 * modificando ese arreglo ya que ois.readObject lee todos los objetos que deserializó
 					 * y se castea a un arreglo. */
-					hotel.setHabitaciones((ArrayList<Habitacion>) ois.readObject()); 
+					Hotel.setHabitaciones((ArrayList<Habitacion>) ois.readObject()); 
 					ois.close();
 					fis.close();
 				} catch (FileNotFoundException e) {
@@ -54,7 +54,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setReservas((ArrayList<Reserva>) ois.readObject()); 
+					Hotel.setReservas((ArrayList<Reserva>) ois.readObject()); 
 					ois.close();
 					fis.close();						
 				} catch (FileNotFoundException e) {
@@ -69,7 +69,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setServicios((ArrayList<Servicio>) ois.readObject()); 
+					Hotel.setServicios((ArrayList<Servicio>) ois.readObject()); 
 					ois.close();
 					fis.close();
 				} catch (FileNotFoundException e) {
@@ -84,7 +84,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setEmpleados((ArrayList<Empleado>) ois.readObject()); 
+					Hotel.setEmpleados((ArrayList<Empleado>) ois.readObject()); 
 				    ois.close();
 					fis.close();
 				} catch (FileNotFoundException e) {
@@ -99,7 +99,7 @@ public class Deserializacion {
 					fis = new FileInputStream(archivo);
 					ois = new ObjectInputStream(fis);
 
-					hotel.setCliente((ArrayList<Cliente>) ois.readObject()); 
+					Hotel.setCliente((ArrayList<Cliente>) ois.readObject()); 
 					ois.close();
 					fis.close();
 				} catch (FileNotFoundException e) {

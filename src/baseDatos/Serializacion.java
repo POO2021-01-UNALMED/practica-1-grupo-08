@@ -14,7 +14,7 @@ public class Serializacion {
 	private static File rutaTemp = new File("src\\baseDatos\\temp");
 
 	//Este método debe ir en el momento que se requiera guardar la infromación agregada y modificada de cada instancia.
-	public static void serializacion(Hotel hotel) {
+	public static void serializacion() {
 		//Permitirá la serialización.
 		FileOutputStream fos;
 		ObjectOutputStream oos; 
@@ -38,7 +38,7 @@ public class Serializacion {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
 					//Escribirá en el archivo la información del objeto que hay en cada posiicón del arreglo.
-					oos.writeObject(Recepcion.getHotel().getHabitaciones());
+					oos.writeObject(Hotel.getHabitaciones());
 					oos.close();
 					fos.close();
 				} catch (FileNotFoundException e) {
@@ -50,7 +50,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.getHotel().getReservas());
+					oos.writeObject(Hotel.getReservas());
 					oos.close();
 					fos.close();
 				} catch (FileNotFoundException e) {
@@ -62,7 +62,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.getHotel().getServicios());
+					oos.writeObject(Hotel.getServicios());
 					oos.close();
 					fos.close();
 				} catch (FileNotFoundException e) {
@@ -74,7 +74,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.getHotel().getEmpleados());
+					oos.writeObject(Hotel.getEmpleados());
 					oos.close();
 					fos.close();
 				} catch (FileNotFoundException e) {
@@ -86,7 +86,7 @@ public class Serializacion {
 				try {
 					fos = new FileOutputStream(archivo);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(Recepcion.getHotel().getClientes());
+					oos.writeObject(Hotel.getClientes());
 					oos.close();
 					fos.close();
 				} catch (FileNotFoundException e) {
