@@ -18,7 +18,7 @@ import gestorAplicacion.Personal.Empleado;
  */
 
 
-public class Hotel {
+public abstract class Hotel {
 
 	//ATRIBUTOS	
 	//Atributo constante único para el hotel ya que indica su registro turístico.
