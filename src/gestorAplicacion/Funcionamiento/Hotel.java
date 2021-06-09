@@ -13,9 +13,7 @@ import gestorAplicacion.Personal.Empleado;
  *Además, los métodos que define son complementarios a los métodos que desarrollan las funcionalidades principales 
  *del programa (Recepcion).*/
 
-/*Esta clase no se definió serializable, ya que al ser la clase central solo es necesario una instancia de su tipo. Dicha
- * instancia es creada en la clase "Recepcion" y sus atributos son llenados al ejecutar el programa (excepto codigoRNT).
- */
+/*Esta clase no se definió serializable, ya que al ser la clase central no es necesario una instancia de su tipo. */
 
 
 public abstract class Hotel {
