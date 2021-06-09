@@ -133,13 +133,13 @@ public class Habitacion implements Serializable {
 		Hace el cálculo de días entre dos fechas, en este caso la fecha de entrada y la fecha de
 		salida del cliente*/
 		if (tipoCapacidad == 2) {
-			precio = 150000*(int)diff;
+			precio = 170000*(int)diff;
 		} else if (tipoCapacidad == 3) {
-			precio = 300000*(int)diff;
+			precio = 320000*(int)diff;
 		} else if (tipoCapacidad == 4) {
-			precio = 450000*(int)diff;
+			precio = 470000*(int)diff;
 		} else if (tipoCapacidad == 5) {
-			precio = 600000*(int)diff;
+			precio = 620000*(int)diff;
 		}
 	}
 

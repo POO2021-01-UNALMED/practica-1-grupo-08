@@ -39,6 +39,7 @@ import uiMain.Recepcion;
 	@Override
 	public void asignarSalario() {
 		super.setSalario(915000);
+		bono();
 	}
 	//MÉTODO GET Y SET: para el acceso y modificación.
 	public Habitacion getHabitacion() {

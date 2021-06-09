@@ -42,6 +42,18 @@ public class OficiosVarios extends Empleado implements Serializable {
 		if ((this.getCargo().equals("vigilante")) || (this.getCargo().equals("bartender"))) {
 			this.setSalario(1600000);
 		}
+		bono();
+	}
+	
+	protected void bono() {
+		if(getCargo().equals("vigilante") || getCargo().equals("bartender") ) {
+			int totalbono = (int) (getSalario() * 0.05);
+			setSalario(getSalario() - totalbono);
+		}else {
+			int totalbono = (int) (getSalario() * 0.1);
+			setSalario(getSalario() - totalbono);
+		}
+		
 	}
 
 }

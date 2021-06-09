@@ -35,6 +35,7 @@ public class Administrador extends Empleado implements Serializable {
 	@Override
 	public void asignarSalario() {
 		super.setSalario(3500000);
+		bono();
 	}
 
 	/* Este método recorre la lista de empleados de la clase Hotel obteniendo de 

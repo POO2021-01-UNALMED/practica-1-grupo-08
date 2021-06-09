@@ -33,6 +33,7 @@ public abstract class Empleado implements Persona, Serializable {
 	nocturnas dominicales, cada tipo de hora extra tiene un valor diferente. */
     private int cantidadHoras;
 
+
 	// CONSTRUCTOR 1
     /* Este constructor será usado en el caso de que el empleados tenga horas 
      * extras por cobrar,deberá especificar el tipo de hora extra pagada y 
@@ -84,6 +85,13 @@ public abstract class Empleado implements Persona, Serializable {
 			salario = salario + 9463 * (cantidadHoras);
 		}
 	}
+	
+	protected void bono() {
+		int totalbono = (int) (salario * 0.1);
+		salario = salario - totalbono;
+	}
+	
+	
 	// MÉTODOS GET Y SET: para el acceso y modificación (cuando sea necesario) de los atributos.
 	public String getNombre() {
 		return nombre;

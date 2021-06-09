@@ -45,7 +45,7 @@ public class Recepcion {
 		int opcion;
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
-
+	
 		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15", 0);
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02", "2021-06-06", 3);
 		Cliente cliente3 = new Cliente("Yesenia", 21724520, "2021-06-03", "2021-06-15", 4);
@@ -70,7 +70,7 @@ public class Recepcion {
 		Empleado emp5 = new OficiosVarios("Raúl", 158394934, "Bartender", HorasExtras.NOCTURNA, 15);
 		Empleado emp6 = new OficiosVarios("Giussepe", 16890495, "CHEF",HorasExtras.NOCTURNADOMINICAL, 5);
         Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
-		Mucama muc2 = new Mucama("Camila",102344333,HorasExtras.NOCTURNA,2);
+		Mucama muc2 = new Mucama("Julia",102344333,HorasExtras.NOCTURNA,2);
 		
 		Servicio ser1 = new Servicio(cliente1);
 		Servicio ser2 = new Servicio(cliente2);
@@ -85,6 +85,8 @@ public class Recepcion {
 		 * al usuario el menú con cada una de las funcionalidades de las que podrá hacer uso, así, el usuario 
 		 * digitará en su momento la opción correspondiente a la acción que desee realizar. 
 		 */
+		
+		System.out.println(Hotel.getEmpleados().get(3).getSalario() + "l" + Hotel.getEmpleados().get(6).getSalario());
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
