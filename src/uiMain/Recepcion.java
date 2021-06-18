@@ -86,7 +86,6 @@ public class Recepcion {
 		 * digitará en su momento la opción correspondiente a la acción que desee realizar. 
 		 */
 		
-		System.out.println(Hotel.getEmpleados().get(3).getSalario() + "l" + Hotel.getEmpleados().get(6).getSalario());
 		
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
