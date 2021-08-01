@@ -155,9 +155,6 @@ public class Cliente implements Serializable,Persona{
 	 * 
 	 */
 	public String toString() {
-		if (habitacion == null) {
-			return "Cliente identificado con " + id + " sin habitación asignada";
-		}
 		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion.getNumhabitacion();
 	}
 	

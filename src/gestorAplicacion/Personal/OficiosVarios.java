@@ -5,7 +5,7 @@ import java.io.Serializable;
  * Componentes: Constructores, método asignarsalario()
  * Finalidad: Crear empleados con diferentes cargos que permitan un correcto
  * funcionamiento del hotel. */
-public class OficiosVarios extends Empleado implements Serializable {
+public class OficiosVarios extends Empleado {
  
 // El siguiente atributo es necesario para la serizalización de las instancias de esta clase.
 	private static final long serialVersionUID = 1L;

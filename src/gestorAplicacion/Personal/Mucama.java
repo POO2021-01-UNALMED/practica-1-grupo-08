@@ -12,7 +12,7 @@ import uiMain.Recepcion;
  * al ser llamadas a través del método limpiarHabitacion() tendrán una habitación
  * asignada la cual dejarán disponible para un nuevo cliente.
  *  */
-   public class Mucama extends Empleado implements Serializable {
+   public class Mucama extends Empleado {
 
 	private static final long serialVersionUID = 1L;
 	

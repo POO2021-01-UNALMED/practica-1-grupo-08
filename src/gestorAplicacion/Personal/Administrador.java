@@ -5,7 +5,7 @@ import java.io.Serializable;
 import gestorAplicacion.Funcionamiento.Hotel;
 import uiMain.Recepcion;
 
-public class Administrador extends Empleado implements Serializable {
+public class Administrador extends Empleado{
 
 	/* Autores: Verónica Seguro Varela.
 	 * Componentes: Constructor, métodos asignarSalario() y pagarSalario()

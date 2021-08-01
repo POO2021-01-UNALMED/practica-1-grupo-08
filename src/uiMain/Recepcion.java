@@ -375,7 +375,7 @@ public class Recepcion {
 	private static void mostrarClientes() {
 	int cont =0;
 	
-	System.out.println("Clientes hospedados en el hotel registrado con el código " + Hotel.getcodigoRNT() + ":");
+	System.out.println("Clientes hospedados en el hotel registrado con el código " + Hotel.getcodigoRNT() + ":\n");
 	
 		for (Cliente i : Hotel.getClientes()) {
 			if(i.getHabitacion() != null) {
