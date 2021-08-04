@@ -50,40 +50,42 @@ public class Recepcion {
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
 
-		/*
-		 * Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15",
-		 * 0); Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02",
-		 * "2021-06-06", 3); Cliente cliente3 = new Cliente("Yesenia", 21724520,
-		 * "2021-06-03", "2021-06-15", 4); Cliente cliente4 = new Cliente("Manuel",
-		 * 15670834, "2021-05-28", "2021-06-07", 4, 4567234); Cliente cliente5 = new
-		 * Cliente("Sofía", 4321689, "2021-03-07", "2021-03-20", 2, 115467300); Cliente
-		 * cliente6 = new Cliente("Ximena", 49759459, "2021-02-10", "2021-02-20", 3,
-		 * 9890773); Cliente cliente7 = new Cliente("Yojan", 10493043, "2021-07-07",
-		 * "2021-07-20", 1, 48374574); Cliente cliente8 = new Cliente("Verónica",
-		 * 1007253340, "2021-02-21", "2021-03-06", 4);
-		 * 
-		 * Habitacion hab1 = new Habitacion(103, 2); Habitacion hab2 = new
-		 * Habitacion(202, 4); Habitacion hab3 = new Habitacion(101, 5); Habitacion hab4
-		 * = new Habitacion(303, 5); Habitacion hab5 = new Habitacion(205, 4);
-		 * Habitacion hab6 = new Habitacion(217, 3); Habitacion hab7 = new
-		 * Habitacion(402, 2);
-		 * 
-		 * Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante",
-		 * HorasExtras.DIURNA, 10); Empleado emp2 = new Mucama("Karla", 3544565,
-		 * HorasExtras.DIURNADOMINICAL, 9); Empleado emp3 = new OficiosVarios("Mario",
-		 * 10595906,"Recepcionista"); Empleado emp4 = new Mucama("Yaneth", 4375434);
-		 * Empleado emp5 = new OficiosVarios("Raúl", 158394934, "Bartender",
-		 * HorasExtras.NOCTURNA, 15); Empleado emp6 = new OficiosVarios("Giussepe",
-		 * 16890495, "CHEF",HorasExtras.NOCTURNADOMINICAL, 5); Mucama muc1 = new
-		 * Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4); Mucama muc2 = new
-		 * Mucama("Julia",102344333,HorasExtras.NOCTURNA,2);
-		 * 
-		 * Servicio ser1 = new Servicio(cliente1); Servicio ser2 = new
-		 * Servicio(cliente2); Servicio ser3 = new Servicio(cliente3); Servicio ser4 =
-		 * new Servicio(cliente4); Servicio ser5 = new Servicio(cliente5); Servicio ser6
-		 * = new Servicio(cliente6); Servicio ser7 = new Servicio(cliente7); Servicio
-		 * ser8 = new Servicio(cliente8);
-		 */
+		
+		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15",0); 
+		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02","2021-06-06", 3); 
+		Cliente cliente3 = new Cliente("Yesenia", 21724520,"2021-06-03", "2021-06-15", 4); 
+		Cliente cliente4 = new Cliente("Manuel", 15670834, "2021-05-28", "2021-06-07", 4, 4567234);
+		Cliente cliente5 = new Cliente("Sofía", 4321689, "2021-03-07", "2021-03-20", 2, 115467300); 
+		Cliente cliente6 = new Cliente("Ximena", 49759459, "2021-02-10", "2021-02-20", 3, 9890773); 
+		Cliente cliente7 = new Cliente("Yojan", 10493043, "2021-07-07", "2021-07-20", 1, 48374574);
+		Cliente cliente8 = new Cliente("Verónica", 1007253340, "2021-02-21", "2021-03-06", 4);
+		 
+		 Habitacion hab1 = new Habitacion(103, 2); 
+		 Habitacion hab2 = new Habitacion(202, 4);
+		 Habitacion hab3 = new Habitacion(101, 5); 
+		 Habitacion hab4 = new Habitacion(303, 5); 
+		 Habitacion hab5 = new Habitacion(205, 4);
+		 Habitacion hab6 = new Habitacion(217, 3); 
+		 Habitacion hab7 = new Habitacion(402, 2);
+		 
+		 Empleado emp1 = new OficiosVarios("Luis", 2489364,"vigilante", HorasExtras.DIURNA, 10);
+		 Empleado emp2 = new Mucama("Karla", 3544565,HorasExtras.DIURNADOMINICAL, 9); 
+		 Empleado emp3 = new OficiosVarios("Mario", 10595906,"Recepcionista"); 
+		 Empleado emp4 = new Mucama("Yaneth", 4375434);
+		 Empleado emp5 = new OficiosVarios("Raúl", 158394934, "Bartender",HorasExtras.NOCTURNA, 15);
+		 Empleado emp6 = new OficiosVarios("Giussepe", 16890495, "CHEF",HorasExtras.NOCTURNADOMINICAL, 5); 
+		 Mucama muc1 = new Mucama("Camila",1023456789,HorasExtras.DIURNADOMINICAL,4);
+		 Mucama muc2 = new Mucama("Julia",102344333,HorasExtras.NOCTURNA,2);
+		 
+		 Servicio ser1 = new Servicio(cliente1); 
+		 Servicio ser2 = new Servicio(cliente2); 
+		 Servicio ser3 = new Servicio(cliente3);
+		 Servicio ser4 = new Servicio(cliente4); 
+		 Servicio ser5 = new Servicio(cliente5); 
+		 Servicio ser6 = new Servicio(cliente6); 
+		 Servicio ser7 = new Servicio(cliente7); 
+		 Servicio ser8 = new Servicio(cliente8);*/
+		 
 
 		/*
 		 * MENÚ GENÉRICO DE CONSOLA: Abarcará todas las funcionalidades disponibles y
@@ -193,23 +195,23 @@ public class Recepcion {
 			return;
 		}
 
-		System.out.println("Ingrese la fecha de entrada de su proxima reserva: ");
+		System.out.println("Ingrese la fecha de entrada de su proxima reserva en formato yyyy/mm/dd: ");
 		String fecha_nuevares = sc.nextLine();
 		LocalDate fechanuevares = LocalDate.parse(fecha_nuevares);
 
 		while (clientenuevo.getFecha_salida().isAfter(fechanuevares)) {
-			System.out.println("Fecha inválida, ingrese una fecha superior a la actual");
+			System.out.println("Fecha inválida, ingrese una fecha superior a " + clientenuevo.getFecha_salida());
 			String fecha_nuevareser = sc.nextLine();
 			LocalDate fechanuevareser = LocalDate.parse(fecha_nuevareser);
 			fechanuevares = fechanuevareser;
 		}
 
-		System.out.println("Ingrese la fecha de salida en formato dd/mm/yyyy: ");
+		System.out.println("Ingrese la fecha de salida en formato yyyy/mm/dd: ");
 		String fecha_nuevasal = sc.nextLine();
 		LocalDate fechanuevasalida = LocalDate.parse(fecha_nuevasal);
 
 		while (fechanuevares.isAfter(fechanuevasalida)) {
-			System.out.println("Fecha inválida, ingrese una fecha de salida superior a la fecha de entrada");
+			System.out.println("Fecha inválida, ingrese una fecha de salida superior a la fecha de entrada " + fechanuevares);
 			String fecha_nuevasali = sc.nextLine();
 			LocalDate fechanuevasalidas = LocalDate.parse(fecha_nuevasali);
 			fechanuevasalida = fechanuevasalidas;
@@ -388,6 +390,11 @@ public class Recepcion {
 		Cliente clientesalida = buscarCliente(cedula);
 		if (clientesalida.getHabitacion() == null) {
 			System.out.println("Usted no se encuentra en el hotel y no tiene deudas pendientes.");
+			return;
+		}
+		
+		if(clientesalida.isReserva()) {
+			System.out.println("Usted tiene una reserva asignada, si desea cancelarla digite el número 2 del menú principal.");
 			return;
 		}
 

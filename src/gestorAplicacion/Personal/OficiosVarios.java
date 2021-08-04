@@ -34,13 +34,13 @@ public class OficiosVarios extends Empleado {
 	 * */
 	public void asignarSalario() {
 		if (this.getCargo().equals("chef")) {
-			this.setSalario(3000000);
+			this.setSalario(200000);
 		}
 		if (this.getCargo().equals("recepcionista")) {
-			this.setSalario(1500000);
+			this.setSalario(150000);
 		}
 		if ((this.getCargo().equals("vigilante")) || (this.getCargo().equals("bartender"))) {
-			this.setSalario(1600000);
+			this.setSalario(160000);
 		}
 		bono();
 	}

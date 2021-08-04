@@ -34,7 +34,7 @@ public class Administrador extends Empleado{
 	 * */
 	@Override
 	public void asignarSalario() {
-		super.setSalario(3500000);
+		super.setSalario(500000);
 		bono();
 	}
 
