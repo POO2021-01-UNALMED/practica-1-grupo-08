@@ -1,6 +1,8 @@
 package gestorAplicacion.Personal;
 
 import java.io.Serializable;
+
+import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.*;
 import uiMain.Recepcion;
 /* Autor: Verónica Seguro Varela.
@@ -31,9 +33,11 @@ import uiMain.Recepcion;
 		super(nombre, id, "Mucama");
 	}
 
-	//MÉTODOS 
-	
-   /* Método que le asignará a los objetos de tipo mucama un salario fijo de
+   public Mucama() {
+		
+	}
+
+	/* Método que le asignará a los objetos de tipo mucama un salario fijo de
     * $915.000 
     */
 	@Override
@@ -50,24 +54,19 @@ import uiMain.Recepcion;
 		this.habitacion = habitacion;
 	}
 
-	/* Método que recibe un atributo de tipo habitación el cual será la habitación 
-	 * que se le asignará a la mucama para limpiar, este método tiene como
-	 * objetivo dejar disponible la habitación que se le asigna a la mucama 
-	 * para ser usada por otro cliente, por ende este método será llamado cada vez
-	 * que un cliente salga de un hotel.
-	 * */
+	/* SOBRECARGA DE MÉTODOS.*/
+
+	/* Este método será usado cuando al salir el cliente, la lista de clientes que hay para su habitación
+	asignada queda vacía, por lo tanto, modifica las capacidades y da la disponibilidad de la habitación.*/
 	public void limpiarHabitacion(Habitacion habitacion) {
 		this.habitacion=habitacion;
+			
 			int cap2 = Habitacion.getCapacidad2();
 			int cap3 = Habitacion.getCapacidad3();
 			int cap4 = Habitacion.getCapacidad4();
 			int cap5 = Habitacion.getCapacidad5();
 			
-			if(habitacion.getClientes().size() == 0) {
-				habitacion.setDisponibilidadHab(true);
-			}
-			
-			/*habitacion.setDisponibilidadHab(true);																	// habitacion
+			habitacion.setDisponibilidadHab(true);																	// habitacion
 				if (habitacion.getTipoCapacidad() == 2) {
 					Habitacion.setCapacidad2(cap2 + 1); 
 					return;
@@ -80,7 +79,21 @@ import uiMain.Recepcion;
 				} else if (habitacion.getTipoCapacidad() == 5) {
 					Habitacion.setCapacidad5(cap5 + 1);
 					return;
-				}	*/	
+				}		
 	}
-	
+
+	/*Este método será llamado cuando al salir el cliente, la habitación tiene aun reservas pendientes, por lo
+	 * tanto, el cliente que está en la primera posición de la lista pasa a ocupar la habitación.*/
+	public void limpiarHabitacion(Cliente cliente) {
+		this.habitacion = cliente.getHabitacion();
+		
+		habitacion.getClientes().get(0).setReserva(false);
+		
+		for(Reserva i : Hotel.getReservas()) {
+			if(i.getCliente().equals(cliente)) {
+				Hotel.getReservas().remove(i);
+			}
+		}
+		
+	}
 }

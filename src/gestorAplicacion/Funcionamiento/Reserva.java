@@ -70,64 +70,27 @@ public class Reserva implements Serializable {
 
 	/// MÉTODOS:
 	
-	/*
-	 * El siguiente método reasigna una reserva cuando el cliente así lo desee, los parámetros de entrada 
-	 * son las fechas de ingreso y salida de la nueva reserva y no tiene ningún tipo de retorno, pues lo 
-	 * único que se hace es la modificación, mediante el método set de las fechas que son ingresadas como 
-	 * parámetro en el constructor.
-	 */
-	public void reasignar_reserva(String nueva_fecha_ing, String nueva_fecha_sal) {
-		cliente.setFecha_entrada(nueva_fecha_ing);
-		cliente.setFecha_salida(nueva_fecha_sal);
-		Hotel.asignarHabitacion(cliente);
-	}
-	
-	/* El método permite a los clientes cancelar sus reservas, da la disponibilidad de la habitación
-	 * que había sido asignada al cliente al momento de realizar la reserva, para ello, verifica la capacidad 
-	 * de dicha habitación y aumenta en uno la disponibilidad del tipo de habitaciones acorde a su capacidad,
-	 * posteriormente, elimina la relación entre la habitación y el cliente y finalmente elimina la reserva 
-	 * de la lista de reservas que hay en la clase "Hotel".
+		
+	/* El método permite a los clientes cancelar sus reservas, eliminar de la lista de reservas para quitar
+	 * la relación reserva - cliente y viceversa, al igual que la relación cliente - habitación.
 	 * El parámetro de entrada es el cliente que reservó y no posee parámetros de salida, pues lo que hace 
 	 * es la modificación de atributos y eliminación de una instancia en la lista.
 	 */
 
 	public void cancelar_reserva(Cliente cliente) {
-		cliente.getHabitacion().setDisponibilidadHab(true);
-		int cap2 = Habitacion.getCapacidad2();
-		int cap3 = Habitacion.getCapacidad3();
-		int cap4 = Habitacion.getCapacidad4();
-		int cap5 = Habitacion.getCapacidad5();
-		int totalPersonas = 1 + cliente.getNumAcompanantes();
-
-		if ((totalPersonas == 1 || totalPersonas == 2)) {
-			Habitacion.setCapacidad2(cap2 + 1);
-		} else if (totalPersonas == 3) {
-			Habitacion.setCapacidad3(cap3 + 1);
-		} else if (totalPersonas == 4) {
-			Habitacion.setCapacidad4(cap4 + 1);
-		} else if (totalPersonas == 5) {
-			Habitacion.setCapacidad5(cap5 + 1);
-		}
+		cliente.getHabitacion().getClientes().remove(cliente);
+		
 		cliente.setReserva(false);
 		
 		for (int i = 0; i < Hotel.getReservas().size(); i++) {
 			if (Hotel.getReservas().get(i).cliente.equals(cliente)) {
-				Hotel.getReservas().get(i).getCliente().getHabitacion().setCliente(null);
 				Hotel.getReservas().get(i).getCliente().setHabitacion(null);
 				Hotel.getReservas().remove(Hotel.getReservas().get(i));
 				break;
-		}
-			break;
+			}
+			
 		}
 	}
 	
-	/*
-	 * El siguiente método es una sobrecarga del método anterior, cuya funcionalidad es eliminar la reserva de la 
-	 * lista de reservas, el método es utilizado si al intentar asignar una habitación a un cliente no hay disponibilidad
-	 * de acuerdo a la capacidad que necesita 
-	 */
-	public void cancelar_reserva() {
-		Hotel.getReservas().remove(this);
-		cliente.setReserva(false);
-	}
+
 }

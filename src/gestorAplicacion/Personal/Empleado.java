@@ -33,6 +33,10 @@ public abstract class Empleado implements Persona, Serializable {
 	nocturnas dominicales, cada tipo de hora extra tiene un valor diferente. */
     private int cantidadHoras;
 
+    // CONSTRUCTOR VACÍO.
+    public Empleado() {
+    	
+    }
 
 	// CONSTRUCTOR 1
     /* Este constructor será usado en el caso de que el empleados tenga horas 
