@@ -93,13 +93,13 @@ public abstract class Hotel {
 				if (cliente.getNumAcompanantes() == 0){
 					if((i.getTipoCapacidad() == 2) && (i.isDisponibilidadHab() == true)){
 						cliente.setHabitacion(i);
-						i.setCliente(cliente);
+						i.setClientes(cliente);
 						i.setDisponibilidadHab(false);
 						break;
 					}
 				} else if ((i.getTipoCapacidad() == (cliente.getNumAcompanantes() + 1)) && (i.isDisponibilidadHab() == true)){
 					cliente.setHabitacion(i);
-					i.setCliente(cliente);
+					i.setClientes(cliente);
 					i.setDisponibilidadHab(false);
 					break;
 				}

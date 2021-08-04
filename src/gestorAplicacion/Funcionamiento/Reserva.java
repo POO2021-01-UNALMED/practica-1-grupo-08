@@ -35,10 +35,7 @@ public class Reserva implements Serializable {
 		LocalDate fecha_salir = LocalDate.parse(fecha_de_salida);
 		this.fecha_de_salida = fecha_salir;
 		this.cliente = cliente;
-		Hotel.asignarHabitacion(cliente);
-		/* Se hace el llamado al método asignarHabitacion() de la clase "Hotel" porque las habitaciones 
-		 * son asignadas al momento en el que el cliente realiza la reserva. 
-		 */
+		
 		cliente.setReserva(true);
 		Hotel.getReservas().add(this);
 	}

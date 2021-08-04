@@ -184,33 +184,53 @@ public class Recepcion {
 		String fecha_nuevares = sc.nextLine();
 		LocalDate fechanuevares = LocalDate.parse(fecha_nuevares);
 		
-		while (clientenuevo.getFecha_salida().compareTo(fechanuevares) >= 0 ) {
+		while (clientenuevo.getFecha_salida().isBefore(fechanuevares)) {
 			System.out.println("Fecha inválida, ingrese una fecha superior a la actual");
 			String fecha_nuevareser = sc.nextLine();
 			LocalDate fechanuevareser = LocalDate.parse(fecha_nuevareser);
 			fechanuevares = fechanuevareser;
 		}
-
+		
 		System.out.println("Ingrese la fecha de salida en formato dd/mm/yyyy: ");
 		String fecha_nuevasal = sc.nextLine();
+		LocalDate fechanuevasalida = LocalDate.parse(fecha_nuevasal);
+		
+		while(fechanuevares.isBefore(fechanuevasalida)) {
+			System.out.println("Fecha inválida, ingrese una fecha de salida superior a la fecha de entrada");
+			String fecha_nuevasali = sc.nextLine();
+			LocalDate fechanuevasalidas = LocalDate.parse(fecha_nuevasali);
+			fechanuevasalida = fechanuevasalidas;
+		}
+		
 		System.out.println("Ingrese el número de acompañantes");
 		long nuevo_numacom = readLong();
 		clientenuevo.setNumAcompanantes((int)nuevo_numacom);
 		clientenuevo.setFecha_entrada(fechanuevares.toString());
-		clientenuevo.setFecha_salida(fecha_nuevasal);
+		clientenuevo.setFecha_salida(fechanuevasalida.toString());
 		
-		
-		Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(), clientenuevo.getFecha_salida().toString(), clientenuevo);
-		
-		if (clientenuevo.getHabitacion() == null) {
-			    clientenuevo.setReserva(false);
-              	reserva1.cancelar_reserva();// Solo cancela si al intentar asignarle una habitación no hay disponibles.
-              	System.out.println("Lo sentimos, no hay habitaciones disponibles");	
+		Habitacion habauxiliar = new Habitacion();
+		for(Habitacion i : Hotel.getHabitaciones()) {
+			int conta = 0;
+			if(i.getTipoCapacidad() == clientenuevo.getNumAcompanantes()+1) {
+				if(conta > 0) {
+					if(habauxiliar.getClientes().size() < i.getClientes().size()) {
+						habauxiliar = i;
+					}
+						
+				}else {
+					habauxiliar = i;
+					conta += 1;
+				}
+			}
 		}
 		
-		if (clientenuevo.isReserva() == true) {
-			reserva1.setCliente(clientenuevo);
+		if(clientenuevo.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
+			Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(), clientenuevo.getFecha_salida().toString(), clientenuevo);
+			habauxiliar.setClientes(clientenuevo);
+			clientenuevo.setHabitacion(habauxiliar);
 			System.out.println("Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
+		}else {
+			System.out.println("Lo sentimos, no hay habitaciones disponibles");	
 		}	
 	}
 	
@@ -351,7 +371,7 @@ public class Recepcion {
 			int rd = (int) (Math.random() * (Hotel.getEmpleados().size()));
 			if(Hotel.getEmpleados().get(rd) instanceof Mucama) {
 				((Mucama)Hotel.getEmpleados().get(rd)).limpiarHabitacion(clientesalida.getHabitacion());// Asignación
-				clientesalida.getHabitacion().setCliente(null); //habitacion
+				clientesalida.getHabitacion().getClientes().remove(0);
 				clientesalida.setHabitacion(null);
 				((Mucama)Hotel.getEmpleados().get(rd)).setHabitacion(null);
 				break;

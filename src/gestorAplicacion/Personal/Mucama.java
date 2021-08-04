@@ -63,7 +63,11 @@ import uiMain.Recepcion;
 			int cap4 = Habitacion.getCapacidad4();
 			int cap5 = Habitacion.getCapacidad5();
 			
-				habitacion.setDisponibilidadHab(true);																	// habitacion
+			if(habitacion.getClientes().size() == 0) {
+				habitacion.setDisponibilidadHab(true);
+			}
+			
+			/*habitacion.setDisponibilidadHab(true);																	// habitacion
 				if (habitacion.getTipoCapacidad() == 2) {
 					Habitacion.setCapacidad2(cap2 + 1); 
 					return;
@@ -76,9 +80,7 @@ import uiMain.Recepcion;
 				} else if (habitacion.getTipoCapacidad() == 5) {
 					Habitacion.setCapacidad5(cap5 + 1);
 					return;
-				}
-
-			
+				}	*/	
 	}
 	
 }

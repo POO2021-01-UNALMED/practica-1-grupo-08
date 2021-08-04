@@ -3,6 +3,7 @@ import gestorAplicacion.Cliente;
 import static java.time.temporal.ChronoUnit.DAYS;
 import uiMain.Recepcion;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /*Autores: Ximena Castañeda.
  *Componentes: Atributos,constructor,métodos get y set,métodos disponibilidad(),precioHabitacion() y aumentarCapacidad().
@@ -30,9 +31,16 @@ public class Habitacion implements Serializable {
 	private static int capacidad3 = 0;
 	private static int capacidad4 = 0;
 	private static int capacidad5 = 0;
-	private Cliente cliente;
+	/*El siguiente ArrayList nos permitirá validar la disponibilidad de una habitación para una porterior asignación de reservas,
+	 * para ello, se irán asignando clientes a una habitación en orden cronológico, siendo la ultima posición la última reserva 
+	 * y la primera posición es el cliente que al momento ocupa la habitación. 
+	 */
+	private ArrayList<Cliente> clientes = new ArrayList<Cliente>(); 
 	
-	//CONSTRUCTOR.
+	//CONSTRUCTORES.
+	public Habitacion() {
+	}
+	
 	public Habitacion(int numHabitacion, int tipoCapacidad) {
 		this.numHabitacion = numHabitacion;
 		this.disponibilidadHab = true;
@@ -60,9 +68,13 @@ public class Habitacion implements Serializable {
 	public static void setCapacidad5(int capacidad5) {
 		Habitacion.capacidad5 = capacidad5;
 	}
+	
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClientes(Cliente cliente) {
+		clientes.add(cliente);
 	}
 
 	public int getTipoCapacidad() {
@@ -96,10 +108,12 @@ public class Habitacion implements Serializable {
 	public int getPrecio() {
 		return precio;
 	}
-
-	public void setPrecio(int precio) {
-		this.precio = precio;
+	
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
 	}
+
+	
 
 	//MÉTODOS.
 	
@@ -129,9 +143,10 @@ public class Habitacion implements Serializable {
 	 *Este método no tiene parámetros de entrada o salida,porque el valor resultante del cálculo es guardado en 
 	 *el atributo precio de cada instancia. */
 	void precioHabitacion() {
-		long diff = DAYS.between(cliente.getFecha_entrada(),cliente.getFecha_salida());/*
+		long diff = DAYS.between(clientes.get(0).getFecha_entrada(),clientes.get(0).getFecha_salida());/*
 		Hace el cálculo de días entre dos fechas, en este caso la fecha de entrada y la fecha de
-		salida del cliente*/
+		salida del cliente en la posición 0 quien es el que actualmente ocupa la habitación, los demás clientes 
+		son clientes que tienen reservas*/
 		if (tipoCapacidad == 2) {
 			precio = 170000*(int)diff;
 		} else if (tipoCapacidad == 3) {
