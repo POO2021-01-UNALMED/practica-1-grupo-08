@@ -190,8 +190,7 @@ public class Recepcion {
 
 	private static void hacerReserva(Cliente clientenuevo) {
 		if (clientenuevo.isReserva() == true) {
-			System.out.println("Usted ya tiene una reserva asignada a la habitación "
-					+ clientenuevo.getHabitacion().getNumhabitacion());
+			System.out.println("Usted ya tiene una reserva asignada a la habitación "+ clientenuevo.getHabitacion().getNumhabitacion());
 			return;
 		}
 
@@ -238,15 +237,19 @@ public class Recepcion {
 				}
 			}
 		}
+		
+		if(habauxiliar.getClientes().size() == 0) {
+			Hotel.asignarHabitacion(clientenuevo);
+			System.out.println("Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
+			clientenuevo.setReserva(false);
+			return;
+		}
 
-		if (clientenuevo.getFecha_entrada()
-				.isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size() - 1).getFecha_salida())) {
-			Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(),
-					clientenuevo.getFecha_salida().toString(), clientenuevo);
+		if (clientenuevo.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
+			Reserva reserva1 = new Reserva(clientenuevo.getFecha_entrada().toString(), clientenuevo.getFecha_salida().toString(), clientenuevo);
 			habauxiliar.setClientes(clientenuevo);
 			clientenuevo.setHabitacion(habauxiliar);
-			System.out.println(
-					"Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
+			System.out.println("Reserva asignada con éxito para la habitación " + clientenuevo.getHabitacion().getNumhabitacion());
 		} else {
 			System.out.println("Lo sentimos, no hay habitaciones disponibles para reservar.");
 		}

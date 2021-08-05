@@ -26,8 +26,6 @@ public class Reserva implements Serializable {
 	private LocalDate fecha_de_salida;
 	private Cliente cliente;
 	
-	//public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
 	// CONSTRUCTOR:
 	public Reserva(String fecha_de_ingreso, String fecha_de_salida, Cliente cliente) {
 		LocalDate fecha_ingresar = LocalDate.parse(fecha_de_ingreso);
