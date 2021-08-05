@@ -155,7 +155,10 @@ public class Cliente implements Serializable,Persona{
 	 * 
 	 */
 	public String toString() {
+		if (this.reserva == false) {
 		return "Cliente identificado con " + id + ", hospedado en la habitación " + habitacion.getNumhabitacion();
+		}
+		return " ";
 	}
 	
 }

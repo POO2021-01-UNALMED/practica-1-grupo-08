@@ -78,7 +78,7 @@ public abstract class Hotel {
 	
 	/*Asigna una habitación al cliente después de comprobar que hay habitaciones disponibles para el número de personas que
 	 *necesita; establece la relación habitación-cliente por medio de los atributos de referencia en cada instancia y cambia
-	 *la disponiblidad de la habitación a "false" para que no sea asignada a otro cliente.
+	 *la disponiblidad de la habitación a "false" para que no sea asignada a otro cliente a no ser que sea por medio de una reserva.
 	 *Luego, disminuye el número de habitaciones disponibles con la capacidad requerida por el cliente, restando uno a los 
 	 *atributos estáticos de capacidad en la clase habitación.
 	 *Recibe como parámetro una instancia cliente para realizar la relación descrita anteriormente y no retorna ningún valor.*/
