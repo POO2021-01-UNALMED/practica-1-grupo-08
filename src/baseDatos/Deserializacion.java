@@ -15,7 +15,7 @@ public class Deserializacion {
 	
 	/*Atributo de tipo archivo que define la ruta del directorio donde están los archivos txt que contienen la
 	 *información de cada instancia.*/
-	private static File rutaTemp = new File("src\\basedatos\\temp");
+	private static File rutaTemp = new File("src\\baseDatos\\temp");
 
 	
 	//Primer método que se debe llamar al ejecutar el programa.
