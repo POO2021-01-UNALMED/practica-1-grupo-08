@@ -47,8 +47,6 @@ public class Cliente implements Serializable,Persona{
 	private Servicio servicio;
 	
 	
-	public static DateTimeFormatter convertidor = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // ¡¡!! TENER EN CUENTA //////
-	
 	// CONSTRUCTORES.
 	/* Este constructor será usado en el caso en que el cliente tenga un familiar en el personal del hotel 
 	 * para aplicar a descuentos durante su estancia.*/
