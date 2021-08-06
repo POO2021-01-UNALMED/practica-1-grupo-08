@@ -96,14 +96,14 @@ public class Recepcion {
 
 		do {
 			System.out.println("\nBienvenidos al hotel, ¿qué acción desea realizar ahora?");
-			System.out.println("1. Tomar una habitación");
-			System.out.println("2. Cancelar una reserva");
-			System.out.println("3. Elegir menú del restaurante");
-			System.out.println("4. Elegir atracción");
-			System.out.println("5. Mostrar ganancias netas");
-			System.out.println("6. Dar salida a un cliente");
-			System.out.println("7. Mostrar lista de clientes que se encuentren en el hotel");
-			System.out.println("8. Terminar");
+			System.out.println("1. Tomar una habitación.");
+			System.out.println("2. Cancelar una reserva.");
+			System.out.println("3. Elegir menú del restaurante.");
+			System.out.println("4. Elegir atracción.");
+			System.out.println("5. Mostrar ganancias netas.");
+			System.out.println("6. Dar salida a un cliente.");
+			System.out.println("7. Mostrar lista de clientes que se encuentren en el hotel.");
+			System.out.println("8. Terminar.");
 			System.out.println("Teclee su opción: ");
 			opcion = (int) readLong();
 
@@ -153,7 +153,7 @@ public class Recepcion {
 		Cliente clientenuevo = buscarCliente(cedula);
 		if (clientenuevo.getHabitacion() != null) {
 			System.out.println("La habitación con el número " + clientenuevo.getHabitacion().getNumhabitacion()
-					+ " ya le ha sido asignada");
+					+ " ya le ha sido asignada.");
 			return;
 		}
 		Hotel.asignarHabitacion(clientenuevo);
@@ -163,7 +163,7 @@ public class Recepcion {
 		}
 
 		if (clientenuevo.getHabitacion() == null) {
-			System.out.println("No hay habitaciones disponibles,¿desea hacer una reserva?");
+			System.out.println("No hay habitaciones disponibles, ¿desea hacer una reserva?");
 			String res = readIn();// Debe responder si o no y sin tilde
 			String cadenaNormalize = Normalizer.normalize(res.toLowerCase(), Normalizer.Form.NFD);
 			String respuesta = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
@@ -216,7 +216,7 @@ public class Recepcion {
 			fechanuevasalida = fechanuevasalidas;
 		}
 
-		System.out.println("Ingrese el número de acompañantes");
+		System.out.println("Ingrese el número de acompañantes: ");
 		long nuevo_numacom = readLong();
 		clientenuevo.setNumAcompanantes((int) nuevo_numacom);
 		clientenuevo.setFecha_entrada(fechanuevares.toString());
@@ -275,7 +275,7 @@ public class Recepcion {
 			}
 			System.out.println("Reserva cancelada con éxito.");
 		} else {
-			System.out.println("Usted no tiene reservas para cancelar");
+			System.out.println("Usted no tiene reservas para cancelar.");
 		}
 	}
 
@@ -470,16 +470,18 @@ public class Recepcion {
 
 	private static Cliente buscarCliente(long cedula) {
 		Cliente uno = null;
-		for (Cliente i : Hotel.getClientes()) {
+		
+		while (uno == null) {
+			for (Cliente i : Hotel.getClientes()) {
 			if (cedula == i.getId()) {
 				uno = i;
-				break;
+				return uno;
 			}
-		}
-		if (uno == null) {
+			}
+			
 			System.out.println("Cliente no encontrado, ingrese una nueva cédula: ");
 			long c1 = readLong();
-			buscarCliente(c1);
+			cedula = c1;
 		}
 
 		return uno;
