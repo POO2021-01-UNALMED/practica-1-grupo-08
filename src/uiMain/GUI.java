@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,7 +26,7 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 	
 	 public void start(Stage ventana) throws Exception{
-		   	ventana.setTitle("Hotel.");
+		   	ventana.setTitle("Hotel");
 		   			   	
 		   	//Panel vertical para almacenar saludo e imagenes del hotel.
 		   	VBox p1 = new VBox();
@@ -101,6 +103,11 @@ public class GUI extends Application {
 		   	barramenu.getMenus().add(inicio);
 		   	principal.setTop(barramenu);
 		   	principal.setStyle("-fx-background-color:#FCF3CF ;");
+		   	MenuItem salir = new MenuItem("Salir");
+			MenuItem descripcion = new MenuItem("Descripción");
+			
+			SeparatorMenuItem separador = new SeparatorMenuItem();
+			inicio.getItems().addAll(salir,separador,descripcion);
 		   		
 		   	//Escena 1: Ventana de incio.
 		   	Scene escena1 = new Scene(principal,800,550);
