@@ -14,8 +14,6 @@ public class Funcionalidades extends Application {
 		   	VBox principal = new VBox(); // Contendrá todas zonas de la ventana de funcionalidades.
 		   	Label nombre = new Label("Servicios del hotel");
 		   	
-		   	
-		   	//HBox menus = new HBox(); // Contendrá todos los menús de la ventana principal (Archivo, consultas y ayudas)
 		   	MenuBar barramenu = new MenuBar();
 		   	
 		   	Menu archivo = new Menu("Archivo");
@@ -38,8 +36,6 @@ public class Funcionalidades extends Application {
 			ayuda.getItems().add(acerca);
 			
 			barramenu.getMenus().addAll(archivo,procesos,ayuda);
-			
-			//principal.getChildren().addAll(barramenu);
 			
 			principal.getChildren().addAll(nombre,barramenu);
 			
