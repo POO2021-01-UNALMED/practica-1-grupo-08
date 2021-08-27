@@ -7,28 +7,30 @@ import javafx.scene.layout.*;
 
 public class FieldPane extends Pane{
 	private String tituloCriterios;
-	private ArrayList<String> criterios = new ArrayList<String>();
+	private String[] criterios;
 	private String tituloValores;
-	private ArrayList<String> valores = new  ArrayList<String>();
-	private ArrayList<Boolean> habilitado = new ArrayList<Boolean>(); 
+	private String[] valores;
+	private Boolean[] habilitado; 
 	
-	public FieldPane(String tituloCriterios, ArrayList<String> criterios, String tituloValores, ArrayList<String> valores, ArrayList<Boolean> habilitado) {
+	GridPane grid = new GridPane();
+	
+	public FieldPane(String tituloCriterios, String criterios [], String tituloValores, String valores [], Boolean habilitado[]) {
 		this.tituloCriterios = tituloCriterios;	
 		this.criterios = criterios;
 		this.tituloValores = tituloValores;
 		this.valores = valores;
 		this.habilitado = habilitado;
 		
-		GridPane grid = new GridPane();
-		Label criterio = new Label("Criterio");
-		Label valor = new Label ("Valor"); 
+	
+		Label criterio = new Label(tituloCriterios);
+		Label valor = new Label (tituloValores); 
 		grid.addRow(0,criterio, valor);
 		
-		for(int i = 0; i<criterios.size(); i++) {
-			Label label = new Label(criterios.get(i));
-			TextField tx  = new TextField(valores.get(i));
-			if(!habilitado.get(i)){
-				tx.setDisable(false);
+		for(int i = 0; i<criterios.length; i++) {
+			Label label = new Label(criterios[i]);
+			TextField tx  = new TextField(valores[i]);
+			if(!habilitado[i]){
+				tx.setDisable(true);
 				grid.addRow(i+1, label, tx);	
 			}else {
 			grid.addRow(i+1, label, tx);}	
@@ -41,13 +43,17 @@ public class FieldPane extends Pane{
 	
 	public String getValue(String criterio) {
 		String aux = null;
-		for(int i = 0; i< criterios.size(); i++) {
-			if(criterios.get(i).equals(criterio)) {
-				aux = valores.get(i);				
+		for(int i = 0; i< criterios.length; i++) {
+			if(criterios[i].equals(criterio)) {
+				aux = valores[i];				
 			} 
-		}
+	}
 		return aux; //Crear excepción si retorna un null
 		}
+	
+	public GridPane getFieldPane() {
+		return grid;
+	}
 	
 	
 	

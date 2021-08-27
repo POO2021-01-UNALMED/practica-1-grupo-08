@@ -1,8 +1,13 @@
 package uiMain;
 
+import java.util.ArrayList;
+
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -38,6 +43,26 @@ public class Funcionalidades extends Application {
 			barramenu.getMenus().addAll(archivo,procesos,ayuda);
 			
 			principal.getChildren().addAll(nombre,barramenu);
+			
+			//Formulario Reserva
+			/*VBox formulario = new VBox();
+			Label titulo = new Label("Titulo ensayo");
+			Label descripcion = new Label("Ensayo descripcion");
+			
+			String[] criterios = {"Cedula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
+			String[] valores = {"3254654","Luisa",null,null,null};
+			Boolean[] habilitados = {false,false,true,true,true};
+			FieldPane campos = new FieldPane("Criterio",criterios,"Valor",valores, habilitados );
+			
+			formulario.getChildren().addAll(titulo,descripcion,campos.getFieldPane());
+			principal.getChildren().add(formulario);*/
+			
+			Label titulo = new Label("Bienvenido al hotel.");
+			Label descripcion = new Label("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
+		   	Label label = new Label("", new ImageView(imagen));
+		   	principal.getChildren().addAll(titulo,descripcion,label);
+		   	principal.setAlignment(Pos.TOP_CENTER);
 			
 			Scene estandar = new Scene(principal,800,550);
 			ventanaF.setResizable(false);

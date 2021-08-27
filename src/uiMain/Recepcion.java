@@ -477,7 +477,7 @@ public class Recepcion {
 				uno = i;
 				return uno;
 			}
-			}
+		}
 			
 			System.out.println("Cliente no encontrado, ingrese una nueva cédula: ");
 			long c1 = readLong();
