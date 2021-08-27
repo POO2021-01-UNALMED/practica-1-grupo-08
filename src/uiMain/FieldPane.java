@@ -13,7 +13,7 @@ public class FieldPane extends Pane{
 	private Boolean[] habilitado; 
 	
 	GridPane grid = new GridPane();
-	
+	//Organizar fechas que indiquen el formato
 	public FieldPane(String tituloCriterios, String criterios [], String tituloValores, String valores [], Boolean habilitado[]) {
 		this.tituloCriterios = tituloCriterios;	
 		this.criterios = criterios;

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import baseDatos.Deserializacion;
 import gestorAplicacion.Funcionamiento.Habitacion;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,7 +19,8 @@ public class Funcionalidades extends Application {
 	public static VBox principal;
 	public static MenuBar barramenu;
 	public static Stage ventanaF;
-	
+	public static Label titulo;
+	public static Label descripcion;
 	
 	 public void start(Stage ventanaF) throws Exception{
 		 	Funcionalidades.ventanaF = ventanaF;
@@ -32,6 +35,7 @@ public class Funcionalidades extends Application {
 		   	
 		   	Menu procesos = new Menu("Procesos y consultas");
 			MenuItem fun1 = new MenuItem("Tomar habitación");
+			fun1.setOnAction(new Eventos());
 			MenuItem fun2 = new MenuItem("Cancelar reserva");
 			MenuItem fun3 = new MenuItem("Elegir menú del restaurante");
 			MenuItem fun4 = new MenuItem("Elegir atracción");
@@ -49,18 +53,20 @@ public class Funcionalidades extends Application {
 			principal.getChildren().addAll(barramenu);
 			
 						
-			Label titulo = new Label("Bienvenido al hotel.");
-			Label descripcion = new Label("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+			titulo = new Label("Bienvenido al hotel.");
+			descripcion = new Label("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
 			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
 		   	Label label = new Label("", new ImageView(imagen));
 		   	principal.getChildren().addAll(titulo,descripcion,label);
 		   	principal.setAlignment(Pos.TOP_CENTER);
 		   			   	
 			
-		   	TomarHabitacion ensayo = new TomarHabitacion();
-		   	principal.getChildren().add(ensayo.getTomarHabitacion());
+		   	//TomarHabitacion ensayo = new TomarHabitacion();
+		   	//principal.getChildren().add(ensayo.getTomarHabitacion());
 		   	
-		   
+		   	//Tomarhabitación
+		   	
+		   	
 		   	
 			Scene estandar = new Scene(principal,800,550);
 			ventanaF.setResizable(false);
@@ -68,11 +74,26 @@ public class Funcionalidades extends Application {
 			ventanaF.show();
 
 	 }
-
+	 
 	public static void main(String[] args) {
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
 		launch(args);
 	}
+}	
+	class Eventos implements EventHandler<ActionEvent>{
+
+		public void handle(ActionEvent e) {
+			MenuItem opcion = (MenuItem) e.getSource();
+			if(opcion.getText().equals("Tomar habitación")) {
+				GridPane hab = new TomarHabitacion().getTomarHabitacion();
+				Funcionalidades.titulo.setText(("Tomar una habitación."));
+				Funcionalidades.descripcion.setText("Para que le sea asignada una habitación por favor ingrese su número de cédula.");
+				Funcionalidades.principal.getChildren().add(hab);
+				Funcionalidades.principal.getChildren().remove(3);
+				
+			}
+		}
+	}
 	
-}
+

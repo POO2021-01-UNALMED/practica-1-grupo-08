@@ -13,8 +13,8 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 public class TomarHabitacion {
-	Label titulo = new Label("Tomar una habitación.");
-	Label descripcion = new Label("Para que le sea asignada una habitación por favor ingrese su número de cédula.");
+	//Label titulo = new Label("Tomar una habitación.");
+	//Label descripcion = new Label("Para que le sea asignada una habitación por favor ingrese su número de cédula.");
 	Label criterio = new Label("Cédula:");
 	TextField campo = new TextField();
 	Button enviar = new Button("Enviar");
@@ -23,8 +23,8 @@ public class TomarHabitacion {
 	public TomarHabitacion() {
 		buscarCliente oyente = new buscarCliente();
 		enviar.setOnAction(oyente);
-		panel1.addRow(0, titulo);
-		panel1.addRow(1, descripcion);
+		//panel1.addRow(0, titulo);
+		//panel1.addRow(1, descripcion);
 		panel1.addRow(2, criterio, campo, enviar);
 	}
 
@@ -98,7 +98,7 @@ public class TomarHabitacion {
 						Label descripcion = new Label("Ensayo descripcion");
 						
 						String[] criterios = {"Cedula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
-						String[] valores = {String.valueOf(clienteNuevo.getId()),clienteNuevo.getNombre(),"yyyy/mm/dd","yyyy/mm/dd",null};
+						String[] valores = {String.valueOf(clienteNuevo.getId()),clienteNuevo.getNombre(),null,null,null};
 						Boolean[] habilitados = {false,false,true,true,true};
 						FieldPane campos = new FieldPane("Criterio",criterios,"Valor",valores, habilitados );
 						
