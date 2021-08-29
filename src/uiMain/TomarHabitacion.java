@@ -1,6 +1,5 @@
 package uiMain;
 
-import java.text.Normalizer;
 import java.util.Optional;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
@@ -15,7 +14,7 @@ import javafx.scene.layout.*;
 public class TomarHabitacion {
 	//Label titulo = new Label("Tomar una habitación.");
 	//Label descripcion = new Label("Para que le sea asignada una habitación por favor ingrese su número de cédula.");
-	Label criterio = new Label("Cédula:");
+	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
 	Button enviar = new Button("Enviar");
 	GridPane panel1 = new GridPane();
@@ -25,7 +24,7 @@ public class TomarHabitacion {
 		enviar.setOnAction(oyente);
 		//panel1.addRow(0, titulo);
 		//panel1.addRow(1, descripcion);
-		panel1.addRow(2, criterio, campo, enviar);
+		panel1.addRow(0, criterio, campo, enviar);
 	}
 
 	class buscarCliente implements EventHandler<ActionEvent> {
@@ -94,8 +93,8 @@ public class TomarHabitacion {
 					} else if (resultado.get().equals(noHabitacion.getButtonTypes().get(0))) {
 						//Formulario Reserva
 						VBox formulario = new VBox();
-						Label titulo = new Label("Titulo ensayo");
-						Label descripcion = new Label("Ensayo descripcion");
+						Label titulo = new Label("Formulario nueva reserva.");
+						Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva.");
 						
 						String[] criterios = {"Cedula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
 						String[] valores = {String.valueOf(clienteNuevo.getId()),clienteNuevo.getNombre(),null,null,null};
