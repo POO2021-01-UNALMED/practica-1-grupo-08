@@ -103,7 +103,6 @@ public class Funcionalidades extends Application {
 				Funcionalidades.titulo.setText(("Cancelar una reserva."));
 				Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
 				Funcionalidades.principal.getChildren().add(reserva);
-				//Siempre remover el 3 porque es el último nodo que se agrega, y es el único que cambia.
 				Funcionalidades.principal.getChildren().remove(3);
 			}else if(opcion.getText().equals("Dar salida a un cliente")) {
 				GridPane salida = new DarSalida().getDarSalida();
