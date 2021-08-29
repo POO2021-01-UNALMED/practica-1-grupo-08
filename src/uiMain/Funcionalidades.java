@@ -111,6 +111,14 @@ public class Funcionalidades extends Application {
 				Funcionalidades.descripcion.setText("Para retirarse del hotel, por favor ingrese su cédula.");
 				Funcionalidades.principal.getChildren().add(salida);
 				Funcionalidades.principal.getChildren().remove(3);
+			}else if (opcion.getText().equals("Elegir menú del restaurante")) {
+				GridPane elemenu = new ElegirMenu().getElegirMenu();
+				Funcionalidades.titulo.setText(("Elegir menú del restaurante"));
+				Funcionalidades.descripcion.setText("Para elegir el menú que desea, por favor ingrese su cédula.");
+				Funcionalidades.principal.getChildren().add(elemenu);
+				Funcionalidades.principal.getChildren().remove(3);
+				
+				
 			}
 		}
 	}
