@@ -101,7 +101,7 @@ public class TomarHabitacion {
 						Boolean[] habilitados = {false,false,true,true,true};
 						FieldPane campos = new FieldPane("Criterio",criterios,"Valor",valores, habilitados );
 						
-						formulario.getChildren().addAll(Funcionalidades.barramenu,titulo,descripcion,campos.getFieldPane());
+						formulario.getChildren().addAll(titulo,descripcion,campos.getFieldPane());
 						Scene tomarHabitacion = new Scene(formulario,800,550);
 						Funcionalidades.ventanaF.setScene(tomarHabitacion);
 						

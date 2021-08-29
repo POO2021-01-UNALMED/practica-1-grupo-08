@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class Funcionalidades extends Application {
 	public static VBox principal;
-	public static MenuBar barramenu;
+	public MenuBar barramenu;
 	public static Stage ventanaF;
 	public static Label titulo;
 	public static Label descripcion;
@@ -30,7 +30,7 @@ public class Funcionalidades extends Application {
 		    principal = new VBox(); // Contendrá todas zonas de la ventana de funcionalidades.
 		   	barramenu = new MenuBar();
 		   	
-		   	
+		   	Menu inicio = new Menu("Inicio");
 		   	Menu archivo = new Menu("Archivo");
 		   	MenuItem aplicacion = new MenuItem("Aplicación");
 		   	MenuItem salir = new MenuItem("Salir");
@@ -53,7 +53,7 @@ public class Funcionalidades extends Application {
 			MenuItem acerca = new MenuItem("Acerca de");
 			ayuda.getItems().add(acerca);
 			
-			barramenu.getMenus().addAll(archivo,procesos,ayuda);
+			barramenu.getMenus().addAll(inicio,archivo,procesos,ayuda);
 			
 			principal.getChildren().addAll(barramenu);
 							
@@ -92,13 +92,13 @@ public class Funcionalidades extends Application {
 				
 			}else if(opcion.getText().equals("Cancelar reserva")) {
 				//PARA ENSAYAR EL MÉTODO CANCELAR
-				for (Cliente i : Hotel.getClientes()) {
+				/*for (Cliente i : Hotel.getClientes()) {
 					i.setHabitacion(Hotel.getHabitaciones().get(0));
 					if (38836489 == i.getId()) {
 						Reserva re = new Reserva("2021-02-10","2021-02-15",i);
 						break;
 					}
-				}
+				}*/
 				GridPane reserva = new CancelarReserva().getCancelarReserva();
 				Funcionalidades.titulo.setText(("Cancelar una reserva."));
 				Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");

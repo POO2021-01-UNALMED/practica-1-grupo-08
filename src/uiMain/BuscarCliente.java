@@ -11,13 +11,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class BuscarCliente implements EventHandler<ActionEvent> {
+public class BuscarCliente {
 	private TextField campo;
 	Cliente clienteNuevo;
 	public BuscarCliente(TextField c) {
 		campo = c;
 	}
-	public void handle(ActionEvent evento) {
+	public void handle() {
 		Long cedula = Long.parseLong(campo.getText());
 		boolean confirmacion = false;
 		 clienteNuevo = null;

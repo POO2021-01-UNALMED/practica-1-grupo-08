@@ -21,11 +21,9 @@ public class DarSalida {
 
 	// Constructor
 	public DarSalida() {
-		ensayo oyente = new ensayo();// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
+		ensayo oyente = new ensayo(campo);// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
 										// cedula)
 		enviar.setOnAction(oyente);
-		// panel1.addRow(0, titulo);
-		// panel1.addRow(1, descripcion);
 		panel1.addRow(0, criterio, campo, enviar);
 	}
 
@@ -35,14 +33,21 @@ public class DarSalida {
 
 // Buscar cliente
 	class ensayo implements EventHandler<ActionEvent> {
-		/*
-		 * TextField campo;
-		 * 
-		 * public ensayo(TextField c) { campo = c; }
-		 */
-		
-		  public void handle(ActionEvent evento) { Long cedula =
-		  Long.parseLong(campo.getText());
+		TextField campo;
+		 
+		public ensayo(TextField c) {
+			campo = c; 
+		}
+		public void handle(ActionEvent evento) {
+			BuscarCliente oidor= new BuscarCliente(campo);
+			oidor.handle();
+			Cliente cliente = oidor.getBuscarCliente();
+			if (cliente == null){
+				return;
+			}
+			
+		/*  public void handle(ActionEvent evento) {
+		  Long cedula = Long.parseLong(campo.getText());
 		  boolean confirmacion = false; 
 		  Cliente cliente = null;
 		  
@@ -63,7 +68,7 @@ public class DarSalida {
 		      return;
 		      }
 		 
-		
+		*/
 		//public void handle(ActionEvent evento) {
 			//BuscarCliente cliente = new BuscarCliente(campo);
 			
@@ -142,7 +147,7 @@ public class DarSalida {
 				Boolean[] habilitados = { false, false, true, true, true };
 				FieldPane campos = new FieldPane("Criterio", criterios, "Valor", valores, habilitados);
 
-				formulario.getChildren().addAll(Funcionalidades.barramenu, titulo, descripcion, campos.getFieldPane());
+				formulario.getChildren().addAll(titulo, descripcion, campos.getFieldPane());
 				Scene salidaCliente = new Scene(formulario, 800, 550);
 				Funcionalidades.ventanaF.setScene(salidaCliente);
 

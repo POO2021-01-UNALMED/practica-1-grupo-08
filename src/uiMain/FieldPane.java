@@ -37,7 +37,8 @@ public class FieldPane extends Pane{
 			
 		Button aceptar = new Button("Aceptar");
 		Button borrar = new Button("Borrar");
-		grid.addRow(grid.getRowCount()+1, aceptar, borrar);
+		Button regresar = new Button("Regresar");
+		grid.addRow(grid.getRowCount()+1, aceptar, borrar, regresar);
 	}
 	
 	public String getValue(String criterio) {
