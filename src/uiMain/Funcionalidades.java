@@ -92,13 +92,13 @@ public class Funcionalidades extends Application {
 				
 			}else if(opcion.getText().equals("Cancelar reserva")) {
 				//PARA ENSAYAR EL MÉTODO CANCELAR
-				/*for (Cliente i : Hotel.getClientes()) {
+				for (Cliente i : Hotel.getClientes()) {
 					i.setHabitacion(Hotel.getHabitaciones().get(0));
 					if (38836489 == i.getId()) {
 						Reserva re = new Reserva("2021-02-10","2021-02-15",i);
 						break;
 					}
-				}*/
+				}
 				GridPane reserva = new CancelarReserva().getCancelarReserva();
 				Funcionalidades.titulo.setText(("Cancelar una reserva."));
 				Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");

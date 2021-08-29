@@ -49,7 +49,6 @@ public class Recepcion {
 		int opcion;
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
-
 		
 		/*Cliente cliente1 = new Cliente("Ana", 38836489, "2021-01-05","2021-01-15",0); 
 		Cliente cliente2 = new Cliente("Fabio", 21356780, "2021-06-02","2021-06-06", 3); 
