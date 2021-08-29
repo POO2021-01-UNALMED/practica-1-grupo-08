@@ -45,6 +45,7 @@ public class Funcionalidades extends Application {
 			MenuItem fun4 = new MenuItem("Elegir atracción");
 			MenuItem fun5 = new MenuItem("Mostrar ganancias netas");
 			MenuItem fun6 = new MenuItem("Dar salida a un cliente");
+			fun6.setOnAction(new Eventos());
 			MenuItem fun7 = new MenuItem("Mostrar clientes");
 			procesos.getItems().addAll(fun1,fun2,fun3,fun4,fun5,fun6,fun7);
 			
@@ -103,6 +104,12 @@ public class Funcionalidades extends Application {
 				Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
 				Funcionalidades.principal.getChildren().add(reserva);
 				//Siempre remover el 3 porque es el último nodo que se agrega, y es el único que cambia.
+				Funcionalidades.principal.getChildren().remove(3);
+			}else if(opcion.getText().equals("Dar salida a un cliente")) {
+				GridPane salida = new DarSalida().getDarSalida();
+				Funcionalidades.titulo.setText(("Salida del hotel"));
+				Funcionalidades.descripcion.setText("Para retirarse del hotel, por favor ingrese su cédula.");
+				Funcionalidades.principal.getChildren().add(salida);
 				Funcionalidades.principal.getChildren().remove(3);
 			}
 		}
