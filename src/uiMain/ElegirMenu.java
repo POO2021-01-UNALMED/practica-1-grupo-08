@@ -86,7 +86,7 @@ public class ElegirMenu {
 				
 				System.out.println(eleccion.getText());
 				
-				/*if (eleccion.getText().equals("Carta tradicional")) {
+				if (eleccion.getText().equals("Carta tradicional")) {
 					GridPane platos = new GridPane();
 					Label cabecera = new Label("Seleccione los platos que desea:");
 					Label respuesta = new Label("No ha seleccionado ningún plato");
@@ -152,14 +152,13 @@ public class ElegirMenu {
 
 					platos.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, seleccionados);
 
-					/*
-					 * public void mostrar() { String platosselect = "";
-					 * 
-					 * 
-					 * }
-					 */
+					
+					 void mostrar() { 
+						 String platosselect = "";
+					 }
+					 
 
-				//} cierra if
+				}// cierra if
 			}
 
 			/*Button confirmar = new Button("Confirmar elección");
