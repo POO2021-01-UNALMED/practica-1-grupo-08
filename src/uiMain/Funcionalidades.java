@@ -126,7 +126,7 @@ public class Funcionalidades extends Application {
 					Funcionalidades.descripcion.setText("Administrador(a) " + Hotel.getAd1().getNombre() + ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
 					TextArea info = new TextArea();
 					info.setWrapText(true);
-					info.setText("his" + Hotel.getAd1().pagarSalario());
+					
 					info.setText("Ingresos por cuentas finales de clientes: " + total + "\n" + "Egresos por pago de salarios a empleados: " + (-1)*(Hotel.gananciaNeta()-total) + "\n" + "Ganancias netas: " + Hotel.gananciaNeta());
 					info.setDisable(true);
 					Funcionalidades.principal.getChildren().add(info);
