@@ -153,9 +153,9 @@ public class ElegirMenu {
 					platos.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, seleccionados);
 
 					
-					 void mostrar() { 
+					/* void mostrar() { 
 						 String platosselect = "";
-					 }
+					 }*/
 					 
 
 				}// cierra if

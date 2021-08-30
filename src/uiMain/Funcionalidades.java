@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -30,8 +31,14 @@ public class Funcionalidades extends Application {
 		   	barramenu = new MenuBar();
 		   	
 		   	Menu inicio = new Menu("Inicio");
+		   	//inicio.setOnAction(new Inicio());
+		   	MenuItem regresar = new MenuItem("Regresar");
+		   	regresar.setOnAction(new Inicio());
+		   	inicio.getItems().add(regresar);
+		   	
 		   	Menu archivo = new Menu("Archivo");
 		   	MenuItem aplicacion = new MenuItem("Aplicación");
+		   	aplicacion.setOnAction(new Eventos());
 		   	MenuItem salir = new MenuItem("Salir");
 		   	archivo.getItems().addAll(aplicacion,salir);
 		   	
@@ -93,7 +100,7 @@ public class Funcionalidades extends Application {
 				
 			}else if(opcion.getText().equals("Cancelar reserva")) {
 				//PARA ENSAYAR EL MÉTODO CANCELAR
-			/*	for (Cliente i : Hotel.getClientes()) {
+				/*for (Cliente i : Hotel.getClientes()) {
 					i.setHabitacion(Hotel.getHabitaciones().get(0));
 					if (38836489 == i.getId()) {
 						Reserva re = new Reserva("2021-02-10","2021-02-15",i);
@@ -141,7 +148,34 @@ public class Funcionalidades extends Application {
 					info2.getItems().addAll("Ganancias netas: " + Hotel.gananciaNeta());
 					Funcionalidades.principal.getChildren().add(info2);*/
 			}
+			
+			
+			if(opcion.getText().equals("Aplicación")) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Descripción de la aplicación.");
+				alert.setHeaderText("¿O null? ¿O Sitema de información hotel?");
+				alert.setContentText("La aplicación permite realizar las diferentes funciones que se presentan en un hotel,"
+						+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades,"
+						+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
+						+ "\n" + "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
+						+ "hotel, entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
+						+ "las horas extras que estos validen, las mucamas encargadas de mantener las habitaciones en orden y disponibles "
+						+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
+						+ "en general.");
+				alert.show();
+			}
 		}
 	}
 	
-
+	class Inicio implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent e) {
+				System.out.println("Paso por aquí");
+				Funcionalidades.ventanaF.setScene(Funcionalidades.estandar);
+				Funcionalidades.titulo.setText("Bienvenido al hotel.");
+				Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+				Funcionalidades.principal.getChildren().remove(3);
+				Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
+			   	Label label = new Label("", new ImageView(imagen));
+			   	Funcionalidades.principal.getChildren().addAll(label);
+		}
+	}
