@@ -33,7 +33,7 @@ public class CancelarReserva {
 		
 		public Cancelar(TextField c) {
 			campoBuscar = c; 
-		}
+	}
 		
 		public void handle(ActionEvent evento) {
 			BuscarCliente oidor = new BuscarCliente(campoBuscar);

@@ -127,11 +127,19 @@ public class Funcionalidades extends Application {
 					Funcionalidades.descripcion.setText("Administrador(a) " + Hotel.getAd1().getNombre() + ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
 					TextArea info = new TextArea();
 					info.setWrapText(true);
-					
-					info.setText("Ingresos por cuentas finales de clientes: " + total + "\n" + "Egresos por pago de salarios a empleados: " + (-1)*(Hotel.gananciaNeta()-total) + "\n" + "Ganancias netas: " + Hotel.gananciaNeta());
-					info.setDisable(true);
+					info.setText("- Ingresos por cuentas finales de clientes: " + total + "\n" + "\n" +
+							"- Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario() + "\n" + "\n" +
+							"- Ganancias netas: " + Hotel.gananciaNeta());
+					info.setEditable(false);
 					Funcionalidades.principal.getChildren().add(info);
 					Funcionalidades.principal.getChildren().remove(3);
+					//text.setStyle("-fx-font-weight:bold");
+					//CON LIST VIEW
+					ListView<String> info2 = new ListView<String>();
+					info2.getItems().addAll("Ingresos por cuentas finales de clientes: " + total);
+					info2.getItems().addAll("Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario());
+					info2.getItems().addAll("Ganancias netas: " + Hotel.gananciaNeta());
+					Funcionalidades.principal.getChildren().add(info2);
 			}
 		}
 	}
