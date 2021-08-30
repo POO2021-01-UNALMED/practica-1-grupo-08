@@ -1,5 +1,8 @@
 package uiMain;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,8 +27,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
+	public static Stage ventana;
 	
 	 public void start(Stage ventana) throws Exception{
+		 	GUI.ventana = ventana;
 		   	ventana.setTitle("Hotel");
 		   			   	
 		   	//Panel vertical para almacenar saludo e imagenes del hotel.
@@ -104,6 +109,7 @@ public class GUI extends Application {
 		   	principal.setTop(barramenu);
 		   	principal.setStyle("-fx-background-color:#FCF3CF ;");
 		   	MenuItem salir = new MenuItem("Salir");
+		   	salir.setOnAction(new Eventos());
 			MenuItem descripcion = new MenuItem("Descripción");
 			
 			SeparatorMenuItem separador = new SeparatorMenuItem();
@@ -121,5 +127,13 @@ public class GUI extends Application {
 		launch(args);
 	}
 	
+	class Eventos implements EventHandler<ActionEvent>{
+			public void handle(ActionEvent e) {
+				MenuItem opcion = (MenuItem) e.getSource();
+				if(opcion.getText().equals("Salir")) {
+					Platform.exit();
+				}
+			}
+	}
 	
 }

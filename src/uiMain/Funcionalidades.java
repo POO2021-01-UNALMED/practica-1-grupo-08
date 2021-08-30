@@ -40,6 +40,7 @@ public class Funcionalidades extends Application {
 		   	MenuItem aplicacion = new MenuItem("Aplicación");
 		   	aplicacion.setOnAction(new Eventos());
 		   	MenuItem salir = new MenuItem("Salir");
+		   	salir.setOnAction(new Eventos());
 		   	archivo.getItems().addAll(aplicacion,salir);
 		   	
 		   	Menu procesos = new Menu("Procesos y consultas");
@@ -163,6 +164,10 @@ public class Funcionalidades extends Application {
 						+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
 						+ "en general.");
 				alert.show();
+			}
+			
+			if(opcion.getText().equals("Salir")) {
+				GUI.ventana.show();
 			}
 		}
 	}
