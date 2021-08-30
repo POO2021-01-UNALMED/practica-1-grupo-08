@@ -2,6 +2,7 @@ package gestorAplicacion.Funcionamiento;
 import uiMain.*;
 import java.util.ArrayList;
 import gestorAplicacion.*;
+import gestorAplicacion.Personal.Administrador;
 import gestorAplicacion.Personal.Empleado;
 
 /*Autores: Veronica Seguro, Ximena Castañeda y Yojan Alcaraz.
@@ -26,7 +27,7 @@ public abstract class Hotel {
 	private static ArrayList<Servicio> servicios = new ArrayList<Servicio>();
 	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-	
+	private static Administrador ad1 = new Administrador("Julián", 134344);
 
 	
 	//MÉTODOS GET Y SET: permiten acceder y modificar el valor de los atributos. 
@@ -171,7 +172,12 @@ public abstract class Hotel {
 		for (Cliente i : Hotel.getClientes()) {
 			total += i.getCuentaFinal();
 		}
-		int salario = Recepcion.getAd1().pagarSalario();
+				
+		int salario = Hotel.getAd1().pagarSalario();
 		return total - salario;
+	}
+	
+	public static Administrador getAd1() {
+		return ad1;
 	}
 }

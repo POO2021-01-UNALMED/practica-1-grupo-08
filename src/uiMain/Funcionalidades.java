@@ -2,9 +2,8 @@ package uiMain;
 
 import baseDatos.Deserializacion;
 import gestorAplicacion.Cliente;
-import gestorAplicacion.Funcionamiento.Habitacion;
-import gestorAplicacion.Funcionamiento.Hotel;
-import gestorAplicacion.Funcionamiento.Reserva;
+import gestorAplicacion.Funcionamiento.*;
+import gestorAplicacion.Personal.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,6 +43,7 @@ public class Funcionalidades extends Application {
 			MenuItem fun3 = new MenuItem("Elegir menú del restaurante");
 			MenuItem fun4 = new MenuItem("Elegir atracción");
 			MenuItem fun5 = new MenuItem("Mostrar ganancias netas");
+			fun5.setOnAction(new Eventos());
 			MenuItem fun6 = new MenuItem("Dar salida a un cliente");
 			fun6.setOnAction(new Eventos());
 			MenuItem fun7 = new MenuItem("Mostrar clientes");
@@ -92,13 +92,13 @@ public class Funcionalidades extends Application {
 				
 			}else if(opcion.getText().equals("Cancelar reserva")) {
 				//PARA ENSAYAR EL MÉTODO CANCELAR
-				for (Cliente i : Hotel.getClientes()) {
+			/*	for (Cliente i : Hotel.getClientes()) {
 					i.setHabitacion(Hotel.getHabitaciones().get(0));
 					if (38836489 == i.getId()) {
 						Reserva re = new Reserva("2021-02-10","2021-02-15",i);
 						break;
 					}
-				}
+				}*/
 				GridPane reserva = new CancelarReserva().getCancelarReserva();
 				Funcionalidades.titulo.setText(("Cancelar una reserva."));
 				Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
@@ -116,8 +116,21 @@ public class Funcionalidades extends Application {
 				Funcionalidades.descripcion.setText("Para elegir el menú que desea, por favor ingrese su cédula.");
 				Funcionalidades.principal.getChildren().add(elemenu);
 				Funcionalidades.principal.getChildren().remove(3);
-				
-				
+			}else if(opcion.getText().equals("Mostrar ganancias netas")) {
+					int total = 0;
+										
+					for (Cliente i : Hotel.getClientes()) {
+						total += i.getCuentaFinal();
+					}
+					Funcionalidades.titulo.setText(("Informe de ganancias netas."));
+					Funcionalidades.descripcion.setText("Administrador(a) " + Hotel.getAd1().getNombre() + ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
+					TextArea info = new TextArea();
+					info.setWrapText(true);
+					info.setText("his" + Hotel.getAd1().pagarSalario());
+					info.setText("Ingresos por cuentas finales de clientes: " + total + "\n" + "Egresos por pago de salarios a empleados: " + (-1)*(Hotel.gananciaNeta()-total) + "\n" + "Ganancias netas: " + Hotel.gananciaNeta());
+					info.setDisable(true);
+					Funcionalidades.principal.getChildren().add(info);
+					Funcionalidades.principal.getChildren().remove(3);
 			}
 		}
 	}
