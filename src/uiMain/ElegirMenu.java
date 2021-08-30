@@ -27,7 +27,7 @@ public class ElegirMenu {
 	GridPane infoCed = new GridPane();
 
 	public ElegirMenu() {
-		ElegirM oyente = new ElegirM();// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
+		ElegirM oyente = new ElegirM(campo);// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
 										// cedula)
 		enviar.setOnAction(oyente);
 		infoCed.addRow(0, criterio, campo, enviar);
@@ -38,42 +38,33 @@ public class ElegirMenu {
 	}
 
 	class ElegirM implements EventHandler<ActionEvent> {
-		Cliente clienteNuevo = null;
-
+	
+		TextField campo;
+		 
+		public ElegirM(TextField c) {
+			campo = c; 
+		}
 		public void handle(ActionEvent evento) {
-			Long cedula = Long.parseLong(campo.getText().trim());
-			boolean confirmacion = false;
-
-			for (Cliente i : Hotel.getClientes()) {
-				if (cedula == i.getId()) {
-					clienteNuevo = i;
-					confirmacion = true;
-					break;
-				}
+			BuscarCliente oidor= new BuscarCliente(campo);
+			oidor.handle();
+			Cliente clienteNuevo = oidor.getBuscarCliente();
+			if (clienteNuevo == null){
+				return;
 			}
-			if (confirmacion == false) {
-				Alert sinCliente = new Alert(AlertType.ERROR);
-				sinCliente.setTitle("Error");
-				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText("Por favor ingrese una nueva cédula.");
-				Optional<ButtonType> result = sinCliente.showAndWait();
-
-				if (result.get() == ButtonType.OK) {
-					campo.clear();
-				}
-			} else if (clienteNuevo.getHabitacion() == null || clienteNuevo.isReserva() == true) {
+			
+ if (clienteNuevo.getHabitacion() == null || clienteNuevo.isReserva() == true) {
 				Alert noHospedado = new Alert(AlertType.INFORMATION);
 				noHospedado.setTitle("Información");
 				noHospedado.setHeaderText("Debes estar hospedado en el hotel para acceder a estos servicios.");
 				noHospedado.setContentText(
-						"Si desea acceder a nuestros servicios le invitamos a dirigirse al menú y realizar una reserva.");//// ¿AQUÍ
+						"Si desea acceder a nuestros servicios le invitamos a dirigirse al menú y tomar una habitación.");//// ¿AQUÍ
 																															//// CÓMO
 																															//// PROCEDE?
 				Optional<ButtonType> resulta = noHospedado.showAndWait();
 				if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
-			} else if (confirmacion == true) {
+			} else if (clienteNuevo != null) {
 				GridPane eleccionmenu = new GridPane();
 				Label titulo = new Label("Opciones de carta y platos.");
 				Label descripcion = new Label("Elija a continuación el tipo de carta y los platos que desee.");
@@ -84,15 +75,17 @@ public class ElegirMenu {
 				combomenu.valueProperty().addListener(new ChangeListener<String>() {
 					public void changed(ObservableValue ov, String t, String t1) {
 						eleccion.setText(t1);
+						/*if() {
+							
+					}*/
 					}
 				});
 				Button confirmar = new Button("Confirmar elección");
 				Button regresar = new Button("Regresar");
 				eleccionmenu.addRow(0, titulo);
 				eleccionmenu.addRow(1, descripcion);
-				eleccionmenu.addRow(2, combomenu);
-				eleccionmenu.addRow(3, eleccion);
-				eleccionmenu.addRow(4, confirmar,regresar);
+				eleccionmenu.addRow(2, combomenu,eleccion);
+				eleccionmenu.addRow(3, confirmar,regresar);
 				Scene elegirMenu = new Scene(eleccionmenu, 800, 550);
 				Funcionalidades.ventanaF.setScene(elegirMenu);
 				confirmar.setOnAction(new EventHandler<ActionEvent>() {
@@ -114,7 +107,6 @@ public class ElegirMenu {
 							Optional<ButtonType> resultado = pedido.showAndWait();
 							if (resultado.get() == ButtonType.OK) {
 								eleccionmenu.getChildren().removeAll(confirmar);
-								descripcion.setText("No hay reservas por cancelar.");
 								/// NECESITO LIMPIAR LAS ELECCIONES.
 							}
 						}

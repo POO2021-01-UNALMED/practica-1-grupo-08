@@ -41,6 +41,7 @@ public class Funcionalidades extends Application {
 			MenuItem fun2 = new MenuItem("Cancelar reserva");
 			fun2.setOnAction(new Eventos());
 			MenuItem fun3 = new MenuItem("Elegir menú del restaurante");
+			fun3.setOnAction(new Eventos());
 			MenuItem fun4 = new MenuItem("Elegir atracción");
 			MenuItem fun5 = new MenuItem("Mostrar ganancias netas");
 			fun5.setOnAction(new Eventos());
