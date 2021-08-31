@@ -48,7 +48,7 @@ public class ElegirMenu {
 			campo = c;
 		}
 
-		public void handle(ActionEvent evento) { /// Renombré el método
+		public void handle(ActionEvent evento) { 
 			BuscarCliente oidor = new BuscarCliente(campo);
 			oidor.handle();
 			Cliente clienteNuevo = oidor.getBuscarCliente();
