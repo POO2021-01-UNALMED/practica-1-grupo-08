@@ -21,7 +21,7 @@ public class DarSalida {
 
 	// Constructor
 	public DarSalida() {
-		ensayo oyente = new ensayo(campo);// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
+		evento oyente = new evento(campo);// Se le ingresa como parámetro el TextField campo(donde se le ingresa la
 										// cedula)
 		enviar.setOnAction(oyente);
 		panel1.addRow(0, criterio, campo, enviar);
@@ -32,10 +32,10 @@ public class DarSalida {
 	}
 
 // Buscar cliente
-	class ensayo implements EventHandler<ActionEvent> {
+	class evento implements EventHandler<ActionEvent> {
 		TextField campo;
 		 
-		public ensayo(TextField c) {
+		public evento(TextField c) {
 			campo = c; 
 		}
 		public void handle(ActionEvent evento) {

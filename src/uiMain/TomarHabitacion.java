@@ -47,8 +47,8 @@ public class TomarHabitacion {
 				sinCliente.setHeaderText("Cliente no encontrado.");
 				sinCliente.setContentText("Por favor ingrese una nueva cédula.");
 				Optional<ButtonType> result = sinCliente.showAndWait();
-
-				if (result.get() == ButtonType.OK) {
+				if (!result.isPresent()) {}
+				else if (result.get() == ButtonType.OK) {
 					campo.clear();
 				}
 			} else if (clienteNuevo.getHabitacion() != null) {
@@ -57,6 +57,7 @@ public class TomarHabitacion {
 				siHabitacion.setHeaderText("Usted ya tiene una habitación asignada.");
 				siHabitacion.setContentText("Ya puedes acceder a nuestros servicios,dirígete a la barra superior.");
 				Optional<ButtonType> resulta = siHabitacion.showAndWait();
+				if (!resulta.isPresent()) {}
 				if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
@@ -70,7 +71,8 @@ public class TomarHabitacion {
 					siHabitacion.setContentText("La habitación que le ha sido asignada es: "
 							+ clienteNuevo.getHabitacion().getNumhabitacion());
 					Optional<ButtonType> resultad = siHabitacion.showAndWait();
-					if (resultad.get() == ButtonType.OK) {
+					if (!resultad.isPresent()) {}
+					else if (resultad.get() == ButtonType.OK) {
 						campo.clear();
 					}
 				} else if (clienteNuevo.getHabitacion() == null) {
@@ -81,9 +83,9 @@ public class TomarHabitacion {
 					ButtonType si = new ButtonType("Sí", ButtonBar.ButtonData.YES);
 					ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 					noHabitacion.getButtonTypes().setAll(si, no);
-					
 					Optional<ButtonType> resultado = noHabitacion.showAndWait();
-					if (resultado.get().equals(noHabitacion.getButtonTypes().get(1))) {
+					if (!resultado.isPresent()) {}
+					else if (resultado.get().equals(noHabitacion.getButtonTypes().get(1))) {
 						campo.clear();
 						Alert adios = new Alert(AlertType.INFORMATION);
 						adios.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/triste.png"),50,50,false,false)));

@@ -1,5 +1,7 @@
 package uiMain;
 
+import java.util.Optional;
+
 import baseDatos.Deserializacion;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.*;
@@ -56,10 +58,12 @@ public class Funcionalidades extends Application {
 			MenuItem fun6 = new MenuItem("Dar salida a un cliente");
 			fun6.setOnAction(new Eventos());
 			MenuItem fun7 = new MenuItem("Mostrar clientes");
+			fun7.setOnAction(new Eventos());
 			procesos.getItems().addAll(fun1,fun2,fun3,fun4,fun5,fun6,fun7);
 			
 			Menu ayuda = new Menu("Ayuda");
 			MenuItem acerca = new MenuItem("Acerca de");
+			acerca.setOnAction(new Eventos());
 			ayuda.getItems().add(acerca);
 			
 			barramenu.getMenus().addAll(inicio,archivo,procesos,ayuda);
@@ -126,8 +130,7 @@ public class Funcionalidades extends Application {
 				Funcionalidades.principal.getChildren().add(elemenu);
 				Funcionalidades.principal.getChildren().remove(3);
 			}else if(opcion.getText().equals("Mostrar ganancias netas")) {
-					int total = 0;
-										
+					int total = 0;						
 					for (Cliente i : Hotel.getClientes()) {
 						total += i.getCuentaFinal();
 					}
@@ -148,8 +151,41 @@ public class Funcionalidades extends Application {
 					info2.getItems().addAll("Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario());
 					info2.getItems().addAll("Ganancias netas: " + Hotel.gananciaNeta());
 					Funcionalidades.principal.getChildren().add(info2);*/
+			}else if(opcion.getText().equals("Mostrar clientes")) {
+				Funcionalidades.titulo.setText("Mostrar clientes");
+				Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel");
+				int cont = 0;
+				for (Cliente i : Hotel.getClientes()) {
+					if (i.getHabitacion() != null && i.isReserva() == false) {
+						cont++;
+					}
+				}
+				if(cont == 0) {			    
+				    /*TextArea sinclientes = new TextArea();
+				    sinclientes.setWrapText(true);
+				    sinclientes.setText("En el momento no se encuentran clientes hospedados en el hotel.");//O con una alerta ?
+				    Funcionalidades.principal.getChildren().add(sinclientes);		*/	
+					Alert nulo = new Alert(AlertType.INFORMATION);
+					nulo.setTitle("Información");
+					nulo.setHeaderText("En el momento no se encuentran clientes hospedados en el hotel.");
+					Optional<ButtonType> resulta = nulo.showAndWait();
+					if (!resulta.isPresent()) {}
+					if (resulta.get() == ButtonType.OK) {
+						Funcionalidades.ventanaF.setScene(Funcionalidades.estandar);
+						Funcionalidades.titulo.setText("Bienvenido al hotel.");
+						Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+					}
+			    }
+				else {
+					Funcionalidades.principal.getChildren().remove(3);
+					for (Cliente i : Hotel.getClientes()) {
+						if (i.getHabitacion() != null && i.isReserva() == false) {
+							Label cliente = new Label("Cliente identificado con " + i.getId() + ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion()+".");
+							Funcionalidades.principal.getChildren().add(cliente);
+						}
+					}
+				}
 			}
-			
 			
 			if(opcion.getText().equals("Aplicación")) {
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -165,9 +201,23 @@ public class Funcionalidades extends Application {
 						+ "en general.");
 				alert.show();
 			}
+			if(opcion.getText().equals("Acerca de")) {
+				Alert nombres = new Alert(AlertType.INFORMATION);
+				nombres.setTitle("Creadores");
+				nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andres Alcaráz \nVerónica Seguro Varela");
+				Optional<ButtonType> resulta = nombres.showAndWait();
+				if (!resulta.isPresent()) {}
+				else if(resulta.get() == ButtonType.OK) {
+					Funcionalidades.ventanaF.setScene(Funcionalidades.estandar);
+					Funcionalidades.titulo.setText("Bienvenido al hotel.");
+					Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+				}
+				
+			}
 			
 			if(opcion.getText().equals("Salir")) {
-				GUI.ventana.show();
+				//GUI.ventana.show();
+				//Funcionalidades.ventanaF.setScene(GUI.escena1);
 			}
 		}
 	}

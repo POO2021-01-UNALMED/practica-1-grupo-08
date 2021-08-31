@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
 	public static Stage ventana;
+	public static Scene escena1;
 	
 	 public void start(Stage ventana) throws Exception{
 		 	GUI.ventana = ventana;
@@ -116,7 +117,7 @@ public class GUI extends Application {
 			inicio.getItems().addAll(salir,separador,descripcion);
 		   		
 		   	//Escena 1: Ventana de incio.
-		   	Scene escena1 = new Scene(principal,800,550);
+		   	escena1 = new Scene(principal,800,550);
 		   	ventana.setResizable(false);
 		   	ventana.setScene(escena1);
 	        ventana.show();
