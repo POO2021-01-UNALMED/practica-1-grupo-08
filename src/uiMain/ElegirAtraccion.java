@@ -10,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import uiMain.ElegirMenu.ElegirM;
 
 public class ElegirAtraccion {
-	public class ElegirAtraccion {
 		Label criterio = new Label("Cédula: ");
 		TextField campo = new TextField();
 		Button enviar = new Button("Enviar");
@@ -40,6 +39,8 @@ public class ElegirAtraccion {
 				if (clienteNuevo == null) {
 					return;
 				}
+				
+				
 			}
 			
 			
