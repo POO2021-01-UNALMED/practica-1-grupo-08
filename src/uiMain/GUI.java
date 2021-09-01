@@ -1,4 +1,6 @@
 package uiMain;
+import baseDatos.Deserializacion;
+import gestorAplicacion.Funcionamiento.Habitacion;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -130,7 +132,10 @@ public class GUI extends Application {
 	
 	
 	public static void main(String[] args) {
+		Deserializacion.deserializar();
+		Habitacion.aumentarCapacidad();
 		launch(args);
+	
 	}
 	
 	public Scene getEscenaGUI() {

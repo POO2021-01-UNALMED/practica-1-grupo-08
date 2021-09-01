@@ -123,8 +123,9 @@ class Eventos implements EventHandler<ActionEvent> {
 			GridPane elemenu = new ElegirMenu().getElegirMenu();
 			Funcionalidades.titulo.setText(("Elegir menú del restaurante"));
 			Funcionalidades.descripcion.setText("Para elegir el menú que desea, por favor ingrese su cédula.");
-			Funcionalidades.principal.getChildren().add(elemenu);
 			Funcionalidades.principal.getChildren().remove(3);
+			Funcionalidades.principal.getChildren().add(elemenu);
+
 		} else if (opcion.getText().equals("Mostrar ganancias netas")) {
 			int total = 0;
 			for (Cliente i : Hotel.getClientes()) {
