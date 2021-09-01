@@ -120,22 +120,19 @@ public class ElegirMenu {
 			ArrayList<Integer> opcarta = new ArrayList<Integer>();
 			confirmar.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					
-					/*int numselect = 0;
-					CheckBox[] op = {op1,op2,op3,op4,op5};
-					for (int i=0; i<op.length;i++) {
-						if(op[i].isSelected() == true) {
-							numselect ++;
-						}
-					}*/
+
+					/*
+					 * int numselect = 0; CheckBox[] op = {op1,op2,op3,op4,op5}; for (int i=0;
+					 * i<op.length;i++) { if(op[i].isSelected() == true) { numselect ++; } }
+					 */
 					if (opcarta.size() == 0) {
 						Alert noselect = new Alert(AlertType.WARNING);
 						noselect.setTitle("Advertencia");
 						noselect.setHeaderText("Por favor selecciona como mínimo un plato.");
 						noselect.show();
 						return;
-						
-						}
+
+					}
 					Alert confirmacion = new Alert(AlertType.CONFIRMATION);
 					confirmacion.setTitle("Confirmación.");
 					confirmacion.setHeaderText("Elección de platos");
@@ -152,8 +149,8 @@ public class ElegirMenu {
 						pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
 						Optional<ButtonType> resultado = pedido.showAndWait();
 						if (resultado.get() == ButtonType.OK) {
-							//combomenu.valueProperty().set(null);
-							 //combomenu.getSelectionModel().clearSelection();
+							// combomenu.valueProperty().set(null);
+							// combomenu.getSelectionModel().clearSelection();
 							op1.setSelected(false);
 							op2.setSelected(false);
 							op3.setSelected(false);
@@ -174,7 +171,6 @@ public class ElegirMenu {
 
 				// Crear otro arreglo para tradicional y al final se envían los dos. Serían dos
 				// líneas en comparación a otras 5
-				
 
 				// Acciones:
 				op1.setOnAction(new EventHandler<ActionEvent>() {
@@ -185,7 +181,7 @@ public class ElegirMenu {
 						} else {
 
 							respuesta.setText("Quitaste el plato: Espirales con setas y verduras");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 1) {
 									opcarta.remove(i);
@@ -203,7 +199,7 @@ public class ElegirMenu {
 							opcarta.add(2);
 						} else {
 							respuesta.setText("Quitaste el plato: Ensala de espárragos y requesón");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 2) {
 									opcarta.remove(i);
@@ -220,7 +216,7 @@ public class ElegirMenu {
 							opcarta.add(3);
 						} else {
 							respuesta.setText("Quitaste el plato: Lasaña vegetal");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 3) {
 									opcarta.remove(i);
@@ -237,7 +233,7 @@ public class ElegirMenu {
 							opcarta.add(4);
 						} else {
 							respuesta.setText("Quitaste el plato: Alcachofas rellenas de quinoa");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 4) {
 									opcarta.remove(i);
@@ -254,7 +250,7 @@ public class ElegirMenu {
 							opcarta.add(5);
 						} else {
 							respuesta.setText("Quitaste el plato: Hamburguesa vegetariana");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 5) {
 									opcarta.remove(i);
@@ -266,14 +262,12 @@ public class ElegirMenu {
 
 				// void mostrar() { String platosselect = ""; }
 
-			} else if(combomenu.getValue().equals("Carta tradicional")) {
+			} else if (combomenu.getValue().equals("Carta tradicional")) {
 				op1.setText("Alitas orientales - $15000.");
 				op2.setText("Arroz atollado - $18000.");
 				op3.setText("Bandeja paisa - $25000.");
 				op4.setText("Crema de champiñones - $15000.");
 				op5.setText("Hígado encebollado - $20000.");
-				
-				
 
 				// Acciones:
 				op1.setOnAction(new EventHandler<ActionEvent>() {
@@ -284,7 +278,7 @@ public class ElegirMenu {
 						} else {
 
 							respuesta.setText("Quitaste el plato: Espirales con setas y verduras");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 1) {
 									opcarta.remove(i);
@@ -302,7 +296,7 @@ public class ElegirMenu {
 							opcarta.add(2);
 						} else {
 							respuesta.setText("Quitaste el plato: Ensala de espárragos y requesón");
-						
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 2) {
 									opcarta.remove(i);
@@ -319,7 +313,7 @@ public class ElegirMenu {
 							opcarta.add(3);
 						} else {
 							respuesta.setText("Quitaste el plato: Lasaña vegetal");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 3) {
 									opcarta.remove(i);
@@ -336,7 +330,7 @@ public class ElegirMenu {
 							opcarta.add(4);
 						} else {
 							respuesta.setText("Quitaste el plato: Alcachofas rellenas de quinoa");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 4) {
 									opcarta.remove(i);
@@ -353,7 +347,7 @@ public class ElegirMenu {
 							opcarta.add(5);
 						} else {
 							respuesta.setText("Quitaste el plato: Hamburguesa vegetariana");
-							
+
 							for (int i = 0; i < opcarta.size(); i++) {
 								if (opcarta.get(i) == 5) {
 									opcarta.remove(i);
@@ -362,7 +356,6 @@ public class ElegirMenu {
 						}
 					}
 				});
-
 
 			}
 
