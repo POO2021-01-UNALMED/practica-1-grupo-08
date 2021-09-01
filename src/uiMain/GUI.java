@@ -30,6 +30,8 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 	public static Stage ventana;
 	public static Scene escena1;
+	Scene  escenaFun = new Funcionalidades().getEscenaFun();
+	
 	
 	 public void start(Stage ventana) throws Exception{
 		 	GUI.ventana = ventana;
@@ -131,7 +133,12 @@ public class GUI extends Application {
 		launch(args);
 	}
 	
+	public Scene getEscenaGUI() {
+		return escena1;
+	}
+	
 	class Eventos implements EventHandler<ActionEvent>{
+		
 			public void handle(ActionEvent e) {
 				Object control = e.getSource();
 				if (control instanceof MenuItem) { 
@@ -141,11 +148,12 @@ public class GUI extends Application {
 					}
 				else if(control instanceof Button) {
 					if(((Button) control).getText().equals("Menú principal.")) {
-						GUI.ventana.setScene(Fun.estandar);
+							GUI.ventana.setScene(escenaFun);
 						}
 					}
 				}
-				}
 	}
+	
+}
 	
 

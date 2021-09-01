@@ -105,7 +105,7 @@ public class TomarHabitacion {
 						
 						formulario.getChildren().addAll(titulo,descripcion,campos.getFieldPane());
 						Scene tomarHabitacion = new Scene(formulario,800,550);
-						Funcionalidades.ventanaF.setScene(tomarHabitacion);
+						GUI.ventana.setScene(tomarHabitacion);
 						
 					}
 					/*

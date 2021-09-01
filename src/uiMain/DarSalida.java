@@ -149,7 +149,7 @@ public class DarSalida {
 
 				formulario.getChildren().addAll(titulo, descripcion, campos.getFieldPane());
 				Scene salidaCliente = new Scene(formulario, 800, 550);
-				Funcionalidades.ventanaF.setScene(salidaCliente);
+				GUI.ventana.setScene(salidaCliente);
 
 			}
 		}
