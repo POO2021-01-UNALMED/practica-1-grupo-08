@@ -162,7 +162,6 @@ public class ElegirMenu {
 			});
 
 			if (combomenu.getValue().equals("Carta vegetariana")) {
-				System.out.println("Holi");
 				op1.setText("Espirales con setas y verduras. - $20000");
 				op2.setText("Ensala de espárragos y requesón - $18000");
 				op3.setText("Lasaña vegetal - $15000");
