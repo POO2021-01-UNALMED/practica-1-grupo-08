@@ -135,7 +135,7 @@ public class Funcionalidades extends Application {
 						total += i.getCuentaFinal();
 					}
 					Funcionalidades.titulo.setText(("Informe de ganancias netas."));
-					Funcionalidades.descripcion.setText("Administrador(a) " + Hotel.getAd1().getNombre() + ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
+					Funcionalidades.descripcion.setText("Administrador " + Hotel.getAd1().getNombre() + ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
 					TextArea info = new TextArea();
 					info.setWrapText(true);
 					info.setText("- Ingresos por cuentas finales de clientes: " + total + "\n" + "\n" +
@@ -190,8 +190,8 @@ public class Funcionalidades extends Application {
 			if(opcion.getText().equals("Aplicación")) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Descripción de la aplicación.");
-				alert.setHeaderText("¿O null? ¿O Sitema de información hotel?");
-				alert.setContentText("La aplicación permite realizar las diferentes funciones que se presentan en un hotel,"
+				alert.setHeaderText("Información hotel.");
+				alert.setContentText("La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
 						+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades,"
 						+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
 						+ "\n" + "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
@@ -204,7 +204,8 @@ public class Funcionalidades extends Application {
 			if(opcion.getText().equals("Acerca de")) {
 				Alert nombres = new Alert(AlertType.INFORMATION);
 				nombres.setTitle("Creadores");
-				nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andres Alcaráz \nVerónica Seguro Varela");
+				nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
+				nombres.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"),50,50,false,false)));
 				Optional<ButtonType> resulta = nombres.showAndWait();
 				if (!resulta.isPresent()) {}
 				else if(resulta.get() == ButtonType.OK) {
@@ -224,7 +225,6 @@ public class Funcionalidades extends Application {
 	
 	class Inicio implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
-				System.out.println("Paso por aquí");
 				Funcionalidades.ventanaF.setScene(Funcionalidades.estandar);
 				Funcionalidades.titulo.setText("Bienvenido al hotel.");
 				Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
