@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -51,6 +52,8 @@ public class GUI extends Application {
 		   	//Panel para imagenes hotal y boton para ventana principal
 		   	BorderPane pimagenes = new BorderPane();
 		   	Button botonprincipal = new Button("Menú principal.");
+		   	botonprincipal.setOnAction(new Eventos());
+		   	
 		   	pimagenes.setPrefSize(300, 300);
 		   	//Etiqueta para agregar imagenes
 		   	Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
@@ -130,11 +133,19 @@ public class GUI extends Application {
 	
 	class Eventos implements EventHandler<ActionEvent>{
 			public void handle(ActionEvent e) {
-				MenuItem opcion = (MenuItem) e.getSource();
-				if(opcion.getText().equals("Salir")) {
-					Platform.exit();
+				Object control = e.getSource();
+				if (control instanceof MenuItem) { 
+					if(((MenuItem) control).getText().equals("Salir")) {
+						Platform.exit();
+						}
+					}
+				else if(control instanceof Button) {
+					if(((Button) control).getText().equals("Menú principal.")) {
+						GUI.ventana.setScene(Fun.estandar);
+						}
+					}
 				}
-			}
+				}
 	}
 	
-}
+

@@ -187,7 +187,7 @@ public class Funcionalidades extends Application {
 				}
 			}
 			
-			if(opcion.getText().equals("Aplicación")) {
+			else if(opcion.getText().equals("Aplicación")) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Descripción de la aplicación.");
 				alert.setHeaderText("Información hotel.");
@@ -201,7 +201,7 @@ public class Funcionalidades extends Application {
 						+ "en general.");
 				alert.show();
 			}
-			if(opcion.getText().equals("Acerca de")) {
+			else if(opcion.getText().equals("Acerca de")) {
 				Alert nombres = new Alert(AlertType.INFORMATION);
 				nombres.setTitle("Creadores");
 				nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
@@ -216,9 +216,12 @@ public class Funcionalidades extends Application {
 				
 			}
 			
-			if(opcion.getText().equals("Salir")) {
+			else if(opcion.getText().equals("Salir")) {
 				//GUI.ventana.show();
-				//Funcionalidades.ventanaF.setScene(GUI.escena1);
+				
+				//Funcionalidades.ventanaF=GUI.ventana;
+				//Funcionalidades.ventanaF.show();
+				
 			}
 		}
 	}

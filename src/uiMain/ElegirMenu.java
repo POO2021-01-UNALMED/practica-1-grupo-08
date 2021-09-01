@@ -43,8 +43,6 @@ public class ElegirMenu {
 
 	class ElegirM implements EventHandler<ActionEvent> {
 		TextField campo;
-		// GridPane eleccionmenu;
-		// GridPane platos;
 
 		public ElegirM(TextField c) {
 			campo = c;
@@ -83,7 +81,7 @@ public class ElegirMenu {
 				String tipomenu[] = { "Carta vegetariana", "Carta tradicional" };
 				ComboBox<String> combomenu = new ComboBox<String>(FXCollections.observableArrayList(tipomenu));
 				combomenu.setPromptText("Tipo de carta");
-				oyenteComboM elemenu = new oyenteComboM(combomenu);
+				oyenteComboM elemenu = new oyenteComboM(combomenu, clienteNuevo);
 				combomenu.setOnAction(elemenu);
 				infoCed.addRow(0, combomenu);
 
@@ -93,6 +91,7 @@ public class ElegirMenu {
 	}
 
 	class oyenteComboM implements EventHandler<ActionEvent> {
+		Cliente clienteNuevo;
 		ComboBox<String> combomenu;
 		VBox eleccionmenu = new VBox();
 		Label cabecera;
@@ -105,7 +104,8 @@ public class ElegirMenu {
 		Label respuesta;
 		Label seleccionados;
 
-		public oyenteComboM(ComboBox<String> combomenu) {
+		public oyenteComboM(ComboBox<String> combomenu, Cliente cl) {
+			clienteNuevo = cl;
 			this.combomenu = combomenu;
 			infoCed.addRow(1, eleccionmenu);
 			respuesta = new Label("No ha seleccionado ningún plato");
@@ -144,6 +144,10 @@ public class ElegirMenu {
 					if (respuesta.get().equals(confirmacion.getButtonTypes().get(1))) {
 						// mande a escoger platillo
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
+						//Gastos Servicios
+						for(int i = 0; i< opcarta.size();i++) {
+							clienteNuevo.getServicio().tipoMenu(1, opcarta.get(i), clienteNuevo);
+						}
 						Alert pedido = new Alert(AlertType.INFORMATION);
 						pedido.setTitle("Información");
 						pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
