@@ -77,7 +77,7 @@ public class ElegirMenu {
 				}
 			} else if (clienteNuevo != null) {
 				infoCed.getChildren().clear();
-				
+
 				Funcionalidades.titulo.setText("Opciones de tipo de carta y platos");
 				Funcionalidades.descripcion.setText("Elija a continuación el tipo de carta y los platos que desee.");
 				String tipomenu[] = { "Carta vegetariana", "Carta tradicional" };
@@ -86,30 +86,56 @@ public class ElegirMenu {
 				oyenteComboM elemenu = new oyenteComboM(combomenu);
 				combomenu.setOnAction(elemenu);
 				infoCed.addRow(0, combomenu);
-				
+
 			}
 		}
-		
-		
+
 	}
 
-	class oyenteComboM implements  EventHandler<ActionEvent>{
+	class oyenteComboM implements EventHandler<ActionEvent> {
 		ComboBox<String> combomenu;
 		VBox eleccionmenu = new VBox();
-		Label cabecera = new Label("Seleccione los platos que desea:");
+		Label cabecera;
 		Button confirmar = new Button("Confirmar elección");
-		/**/
-		
+		CheckBox op1;
+		CheckBox op2 = new CheckBox();
+		CheckBox op3 = new CheckBox();
+		CheckBox op4 = new CheckBox();
+		CheckBox op5 = new CheckBox();
+		Label respuesta;
+		Label seleccionados;
+
 		public oyenteComboM(ComboBox<String> combomenu) {
 			this.combomenu = combomenu;
+			infoCed.addRow(1, eleccionmenu);
+			respuesta = new Label("No ha seleccionado ningún plato");
+			seleccionados = new Label("Platos seleccionados: <none>");
+			cabecera = new Label("Seleccione los platos que desea:");
+			op1 = new CheckBox();
 		}
-		
-		
-		
+
 		public void handle(ActionEvent e) {
-			eleccionmenu.getChildren().add(cabecera);
+			eleccionmenu.getChildren().clear();
+			eleccionmenu.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, seleccionados, confirmar);
+			ArrayList<Integer> opcarta = new ArrayList<Integer>();
 			confirmar.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
+					
+					/*int numselect = 0;
+					CheckBox[] op = {op1,op2,op3,op4,op5};
+					for (int i=0; i<op.length;i++) {
+						if(op[i].isSelected() == true) {
+							numselect ++;
+						}
+					}*/
+					if (opcarta.size() == 0) {
+						Alert noselect = new Alert(AlertType.WARNING);
+						noselect.setTitle("Advertencia");
+						noselect.setHeaderText("Por favor selecciona como mínimo un plato.");
+						noselect.show();
+						return;
+						
+						}
 					Alert confirmacion = new Alert(AlertType.CONFIRMATION);
 					confirmacion.setTitle("Confirmación.");
 					confirmacion.setHeaderText("Elección de platos");
@@ -123,27 +149,32 @@ public class ElegirMenu {
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
 						Alert pedido = new Alert(AlertType.INFORMATION);
 						pedido.setTitle("Información");
-						pedido.setContentText("Disfrute su plato. ¡Buen provecho! ");
+						pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
 						Optional<ButtonType> resultado = pedido.showAndWait();
 						if (resultado.get() == ButtonType.OK) {
-							combomenu.valueProperty().set(null);
+							//combomenu.valueProperty().set(null);
+							 //combomenu.getSelectionModel().clearSelection();
+							op1.setSelected(false);
+							op2.setSelected(false);
+							op3.setSelected(false);
+							op4.setSelected(false);
+							op5.setSelected(false);
 						}
 					}
 				}
 			});
-			
-			if(combomenu.getValue().equals("Carta vegetariana")) {
+
+			if (combomenu.getValue().equals("Carta vegetariana")) {
+				System.out.println("Holi");
+				op1.setText("Espirales con setas y verduras. - $20000");
+				op2.setText("Ensala de espárragos y requesón - $18000");
+				op3.setText("Lasaña vegetal - $15000");
+				op4.setText("Alcachofas rellenas de quinoa - $22000");
+				op5.setText("Hamburguesa vegetariana - $15000");
+
+				// Crear otro arreglo para tradicional y al final se envían los dos. Serían dos
+				// líneas en comparación a otras 5
 				
-				Label respuesta = new Label("No ha seleccionado ningún plato");
-				Label seleccionados = new Label("Platos seleccionados: <none>");
-				CheckBox op1 = new CheckBox("Espirales con setas y verduras. - $20000");
-				CheckBox op2 = new CheckBox("Ensala de espárragos y requesón - $18000");
-				CheckBox op3 = new CheckBox("Lasaña vegetal - $15000");
-				CheckBox op4 = new CheckBox("Alcachofas rellenas de quinoa - $22000");
-				CheckBox op5 = new CheckBox("Hamburguesa vegetariana - $15000");
-				eleccionmenu.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, seleccionados);
-				eleccionmenu.getChildren().remove(op1, op2, op3, op4, op5, respuesta, seleccionados);
-				ArrayList<Integer> opcarta = new ArrayList<Integer>();
 
 				// Acciones:
 				op1.setOnAction(new EventHandler<ActionEvent>() {
@@ -152,8 +183,14 @@ public class ElegirMenu {
 							respuesta.setText("Espirales con setas y verduras seleccionados.");
 							opcarta.add(1);
 						} else {
+
 							respuesta.setText("Quitaste el plato: Espirales con setas y verduras");
-							opcarta.remove(1);
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 1) {
+									opcarta.remove(i);
+								}
+							}
 
 						}
 					}
@@ -166,7 +203,12 @@ public class ElegirMenu {
 							opcarta.add(2);
 						} else {
 							respuesta.setText("Quitaste el plato: Ensala de espárragos y requesón");
-							opcarta.remove(2);
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 2) {
+									opcarta.remove(i);
+								}
+							}
 						}
 					}
 				});
@@ -178,7 +220,12 @@ public class ElegirMenu {
 							opcarta.add(3);
 						} else {
 							respuesta.setText("Quitaste el plato: Lasaña vegetal");
-							opcarta.remove(3);
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 3) {
+									opcarta.remove(i);
+								}
+							}
 						}
 					}
 				});
@@ -190,7 +237,12 @@ public class ElegirMenu {
 							opcarta.add(4);
 						} else {
 							respuesta.setText("Quitaste el plato: Alcachofas rellenas de quinoa");
-							opcarta.remove(4);
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 4) {
+									opcarta.remove(i);
+								}
+							}
 						}
 					}
 				});
@@ -202,42 +254,119 @@ public class ElegirMenu {
 							opcarta.add(5);
 						} else {
 							respuesta.setText("Quitaste el plato: Hamburguesa vegetariana");
-							opcarta.remove(5);
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 5) {
+									opcarta.remove(i);
+								}
+							}
 						}
 					}
 				});
-				infoCed.addRow(1, eleccionmenu);
-				infoCed.addRow(2, confirmar);
+
+				// void mostrar() { String platosselect = ""; }
+
+			} else if(combomenu.getValue().equals("Carta tradicional")) {
+				op1.setText("Alitas orientales - $15000.");
+				op2.setText("Arroz atollado - $18000.");
+				op3.setText("Bandeja paisa - $25000.");
+				op4.setText("Crema de champiñones - $15000.");
+				op5.setText("Hígado encebollado - $20000.");
 				
 				
-				
-				//void mostrar() { String platosselect = ""; }
-				
-				
-				
-			}else {
-				//VBox eleccionmenu = new VBox();
+
+				// Acciones:
+				op1.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						if (op1.isSelected()) {
+							respuesta.setText("Espirales con setas y verduras seleccionados.");
+							opcarta.add(1);
+						} else {
+
+							respuesta.setText("Quitaste el plato: Espirales con setas y verduras");
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 1) {
+									opcarta.remove(i);
+								}
+							}
+
+						}
+					}
+				});
+
+				op2.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						if (op2.isSelected()) {
+							respuesta.setText("Ensala de espárragos y requesón seleccionados.");
+							opcarta.add(2);
+						} else {
+							respuesta.setText("Quitaste el plato: Ensala de espárragos y requesón");
+						
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 2) {
+									opcarta.remove(i);
+								}
+							}
+						}
+					}
+				});
+
+				op3.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						if (op3.isSelected()) {
+							respuesta.setText("Lasaña vegetal seleccionada.");
+							opcarta.add(3);
+						} else {
+							respuesta.setText("Quitaste el plato: Lasaña vegetal");
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 3) {
+									opcarta.remove(i);
+								}
+							}
+						}
+					}
+				});
+
+				op4.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						if (op4.isSelected()) {
+							respuesta.setText("Alcachofas rellenas de quinoa seleccionadas.");
+							opcarta.add(4);
+						} else {
+							respuesta.setText("Quitaste el plato: Alcachofas rellenas de quinoa");
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 4) {
+									opcarta.remove(i);
+								}
+							}
+						}
+					}
+				});
+
+				op5.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						if (op5.isSelected()) {
+							respuesta.setText("Hamburguesa vegetariana seleccionados.");
+							opcarta.add(5);
+						} else {
+							respuesta.setText("Quitaste el plato: Hamburguesa vegetariana");
+							
+							for (int i = 0; i < opcarta.size(); i++) {
+								if (opcarta.get(i) == 5) {
+									opcarta.remove(i);
+								}
+							}
+						}
+					}
+				});
+
+
 			}
-			
-			
-			
+
 		}
-		
 	}
 
-				
-					
-
-					
-					 
-					 
-
-					
-					
-					
-
-					
-				
-		
-	
 }
