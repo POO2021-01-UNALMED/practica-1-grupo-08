@@ -102,21 +102,20 @@ public class ElegirMenu {
 		CheckBox op4 = new CheckBox();
 		CheckBox op5 = new CheckBox();
 		Label respuesta;
-		Label seleccionados;
+		
 
 		public oyenteComboM(ComboBox<String> combomenu, Cliente cl) {
 			clienteNuevo = cl;
 			this.combomenu = combomenu;
 			infoCed.addRow(1, eleccionmenu);
 			respuesta = new Label("No ha seleccionado ningún plato");
-			seleccionados = new Label("Platos seleccionados: <none>");
 			cabecera = new Label("Seleccione los platos que desea:");
 			op1 = new CheckBox();
 		}
 
 		public void handle(ActionEvent e) {
 			eleccionmenu.getChildren().clear();
-			eleccionmenu.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, seleccionados, confirmar);
+			eleccionmenu.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, confirmar);
 			ArrayList<Integer> opcarta = new ArrayList<Integer>();
 			confirmar.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
@@ -263,7 +262,7 @@ public class ElegirMenu {
 					}
 				});
 
-				// void mostrar() { String platosselect = ""; }
+				
 
 			} else if (combomenu.getValue().equals("Carta tradicional")) {
 				op1.setText("Alitas orientales - $15000.");
@@ -295,7 +294,7 @@ public class ElegirMenu {
 				op2.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent e) {
 						if (op2.isSelected()) {
-							respuesta.setText("Ensala de espárragos y requesón seleccionados.");
+							respuesta.setText("Ensala de espárragos y requesón seleccionada.");
 							opcarta.add(2);
 						} else {
 							respuesta.setText("Quitaste el plato: Ensala de espárragos y requesón");
@@ -346,7 +345,7 @@ public class ElegirMenu {
 				op5.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent e) {
 						if (op5.isSelected()) {
-							respuesta.setText("Hamburguesa vegetariana seleccionados.");
+							respuesta.setText("Hamburguesa vegetariana seleccionada.");
 							opcarta.add(5);
 						} else {
 							respuesta.setText("Quitaste el plato: Hamburguesa vegetariana");

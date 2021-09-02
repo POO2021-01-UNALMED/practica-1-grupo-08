@@ -51,6 +51,7 @@ public class Funcionalidades {
 		MenuItem fun3 = new MenuItem("Elegir menú del restaurante");
 		fun3.setOnAction(new Eventos());
 		MenuItem fun4 = new MenuItem("Elegir atracción");
+		fun4.setOnAction(new Eventos());
 		MenuItem fun5 = new MenuItem("Mostrar ganancias netas");
 		fun5.setOnAction(new Eventos());
 		MenuItem fun6 = new MenuItem("Dar salida a un cliente");
@@ -125,8 +126,13 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.descripcion.setText("Para elegir el menú que desea, por favor ingrese su cédula.");
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.principal.getChildren().add(elemenu);
-
-		} else if (opcion.getText().equals("Mostrar ganancias netas")) {
+		} else if(opcion.getText().equals("Elegir atracción")){
+			GridPane eleatraccion = new ElegirAtraccion().getElegirAtraccion();
+			Funcionalidades.titulo.setText(("Elegir atracción"));
+			Funcionalidades.descripcion.setText("Para elegir la atracción que desea, por favor ingrese su cédula.");
+			Funcionalidades.principal.getChildren().remove(3);
+			Funcionalidades.principal.getChildren().add(eleatraccion);
+		}else if (opcion.getText().equals("Mostrar ganancias netas")) {
 			int total = 0;
 			for (Cliente i : Hotel.getClientes()) {
 				total += i.getCuentaFinal();
