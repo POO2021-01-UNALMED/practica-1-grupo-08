@@ -143,14 +143,6 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.principal.getChildren().add(info);
 			Funcionalidades.principal.getChildren().remove(3);
 			// text.setStyle("-fx-font-weight:bold");
-			// CON LIST VIEW
-			/*
-			 * ListView<String> info2 = new ListView<String>();
-			 * info2.getItems().addAll("Ingresos por cuentas finales de clientes: " +
-			 * total); info2.getItems().addAll("Egresos por pago de salarios a empleados: "
-			 * + Hotel.getAd1().pagarSalario()); info2.getItems().addAll("Ganancias netas: "
-			 * + Hotel.gananciaNeta()); Funcionalidades.principal.getChildren().add(info2);
-			 */
 		} else if (opcion.getText().equals("Mostrar clientes")) {
 			Funcionalidades.titulo.setText("Mostrar clientes");
 			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel");
@@ -161,12 +153,6 @@ class Eventos implements EventHandler<ActionEvent> {
 				}
 			}
 			if (cont == 0) {
-				/*
-				 * TextArea sinclientes = new TextArea(); sinclientes.setWrapText(true);
-				 * sinclientes.
-				 * setText("En el momento no se encuentran clientes hospedados en el hotel.");//
-				 * O con una alerta ? Funcionalidades.principal.getChildren().add(sinclientes);
-				 */
 				Alert nulo = new Alert(AlertType.INFORMATION);
 				nulo.setTitle("Información");
 				nulo.setHeaderText("En el momento no se encuentran clientes hospedados en el hotel.");
@@ -179,15 +165,15 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.descripcion.setText(
 							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
 				}
-			} else {
+			 }else {
 				Funcionalidades.principal.getChildren().remove(3);
+				ListView<String> clientes = new ListView<String>();
 				for (Cliente i : Hotel.getClientes()) {
 					if (i.getHabitacion() != null && i.isReserva() == false) {
-						Label cliente = new Label("Cliente identificado con " + i.getId()
-								+ ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
-						Funcionalidades.principal.getChildren().add(cliente);
+						clientes.getItems().add("Cliente identificado con " + i.getId() + ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
 					}
 				}
+				Funcionalidades.principal.getChildren().add(clientes);
 			}
 		}
 
