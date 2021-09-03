@@ -150,7 +150,8 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.principal.getChildren().remove(3);
 			// text.setStyle("-fx-font-weight:bold");
 		} else if (opcion.getText().equals("Mostrar clientes")) {
-			Funcionalidades.titulo.setText("Mostrar clientes");
+			Funcionalidades.principal.getChildren().remove(3);
+			Funcionalidades.titulo.setText("Mostrar clientes");			
 			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel");
 			int cont = 0;
 			for (Cliente i : Hotel.getClientes()) {
@@ -170,6 +171,9 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(
 							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+					Label label = new Label("", new ImageView(imagen));
+					Funcionalidades.principal.getChildren().addAll(label);
 				}
 			 }else {
 				Funcionalidades.principal.getChildren().remove(3);

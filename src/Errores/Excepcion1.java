@@ -10,8 +10,19 @@ public class Excepcion1 extends ErrorAplicacion {
 	public Excepcion1(TextField campo) {
 		super();
 		this.campo = campo;
+		//Throwable("cliente no registrado en la base de datos");
+	}
+	@Override
+	public String getMessage() {
+		return  super.getMessage()+" cliente no registrado en la base de datos";
 	}
 	
+	
+	
+	
+	
+	//Formato
+	//Fechas superiores
 /*	public String getMensaje() {
 		return super.getMessage()+" cliente no registrado en la base de datos";	}*/
 }

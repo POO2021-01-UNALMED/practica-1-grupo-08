@@ -32,16 +32,6 @@ public class BuscarCliente  {
 		}
 		if (confirmacion == false) {
 			throw new Excepcion1(campo);
-			/*System.out.println("Entra");
-			Alert sinCliente = new Alert(AlertType.ERROR);
-			sinCliente.setTitle("Error");
-			sinCliente.setHeaderText("Cliente no encontrado.");
-			sinCliente.setContentText("Por favor ingrese una nueva cédula.");
-			Optional<ButtonType> result = sinCliente.showAndWait();
-
-			if (result.get() == ButtonType.OK) {
-				campo.clear();
-			}*/
 		}
 	
 }

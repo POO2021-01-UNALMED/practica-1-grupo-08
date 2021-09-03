@@ -4,6 +4,7 @@ import java.awt.Checkbox;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import Errores.Excepcion1;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.beans.value.ChangeListener;
@@ -50,7 +51,20 @@ public class ElegirMenu {
 
 		public void handle(ActionEvent evento) {
 			BuscarCliente oidor = new BuscarCliente(campo);
-			oidor.handle();
+			try {
+			oidor.handle();}
+			catch(Excepcion1 e) {
+				Alert sinCliente = new Alert(AlertType.ERROR);
+				sinCliente.setTitle("Error");
+				sinCliente.setHeaderText("Cliente no encontrado.");
+				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+				}
+				else if (result.get() == ButtonType.OK) {
+					campo.clear();
+			}
+			}
 			Cliente clienteNuevo = oidor.getBuscarCliente();
 			if (clienteNuevo == null) {
 				return;

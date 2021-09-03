@@ -13,7 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import uiMain.TomarHabitacion.buscarCliente;
+//import uiMain.TomarHabitacion.buscarCliente;
 
 public class DarSalida {
 	Label criterio = new Label("Cédula: ");
@@ -48,7 +48,7 @@ public class DarSalida {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				sinCliente.setContentText(e.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
 				}

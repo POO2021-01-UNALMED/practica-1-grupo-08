@@ -1,6 +1,8 @@
 package uiMain;
 
 import java.util.Optional;
+
+import Errores.Excepcion1;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.event.ActionEvent;
@@ -12,46 +14,47 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 public class TomarHabitacion {
-	//Label titulo = new Label("Tomar una habitación.");
-	//Label descripcion = new Label("Para que le sea asignada una habitación por favor ingrese su número de cédula.");
 	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
 	Button enviar = new Button("Enviar");
 	GridPane panel1 = new GridPane();
 	
 	public TomarHabitacion() {
-		buscarCliente oyente = new buscarCliente();
+		evento oyente = new evento(campo);
 		enviar.setOnAction(oyente);
 		//panel1.addRow(0, titulo);
 		//panel1.addRow(1, descripcion);
 		panel1.addRow(0, criterio, campo, enviar);
 	}
 
-	class buscarCliente implements EventHandler<ActionEvent> {
+	class evento implements EventHandler<ActionEvent> {
+		TextField campo;
+		 
+		public evento(TextField c) {
+			campo = c; 
+		}
 		public void handle(ActionEvent evento) {
-			Long cedula = Long.parseLong(campo.getText());
-			boolean confirmacion = false;
-			Cliente clienteNuevo = null;
-
-			for (Cliente i : Hotel.getClientes()) {
-				if (cedula == i.getId()) {
-					clienteNuevo = i;
-					confirmacion = true;
-					break;
-				}
-			}
-
-			if (confirmacion == false) {
+			BuscarCliente oidor = new BuscarCliente(campo);
+			try {				
+				oidor.handle();}
+			catch(Excepcion1 e){
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText("Por favor ingrese una nueva cédula.");
+				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
 				Optional<ButtonType> result = sinCliente.showAndWait();
-				if (!result.isPresent()) {}
+				if (!result.isPresent()) {
+				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
-				}
-			} else if (clienteNuevo.getHabitacion() != null) {
+			}
+			}
+			
+			Cliente clienteNuevo = oidor.getBuscarCliente();
+			if (clienteNuevo == null){
+				return;
+			}
+			if (clienteNuevo.getHabitacion() != null) {
 				Alert siHabitacion = new Alert(AlertType.INFORMATION);
 				siHabitacion.setTitle("Información");
 				siHabitacion.setHeaderText("Usted ya tiene una habitación asignada.");
@@ -62,7 +65,7 @@ public class TomarHabitacion {
 					campo.clear();
 				}
 
-			} else if (confirmacion == true) {
+			} else if (clienteNuevo.getHabitacion() == null) {
 				Hotel.asignarHabitacion(clienteNuevo);
 				if (clienteNuevo.getHabitacion() != null) {
 					Alert siHabitacion = new Alert(AlertType.INFORMATION);
