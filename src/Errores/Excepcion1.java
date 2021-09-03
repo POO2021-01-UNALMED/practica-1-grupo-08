@@ -11,8 +11,7 @@ public class Excepcion1 extends ErrorAplicacion {
 		super();
 		this.campo = campo;
 	}
-	try {
-		BuscarCliente c1 = new BuscarCliente();
-	}
 	
+/*	public String getMensaje() {
+		return super.getMessage()+" cliente no registrado en la base de datos";	}*/
 }

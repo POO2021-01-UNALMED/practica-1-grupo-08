@@ -1,6 +1,8 @@
 package uiMain;
 
 import java.util.Optional;
+
+import Errores.Excepcion1;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import gestorAplicacion.Personal.Mucama;
@@ -40,37 +42,27 @@ public class DarSalida {
 		}
 		public void handle(ActionEvent evento) {
 			BuscarCliente oidor= new BuscarCliente(campo);
-			oidor.handle();
+			try {				
+				oidor.handle();}
+			catch(Excepcion1 e){
+				Alert sinCliente = new Alert(AlertType.ERROR);
+				sinCliente.setTitle("Error");
+				sinCliente.setHeaderText("Cliente no encontrado.");
+				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+				}
+				else if (result.get() == ButtonType.OK) {
+					campo.clear();
+			}
+			}
+			
+			
 			Cliente cliente = oidor.getBuscarCliente();
 			if (cliente == null){
 				return;
 			}
 			
-		/*  public void handle(ActionEvent evento) {
-		  Long cedula = Long.parseLong(campo.getText());
-		  boolean confirmacion = false; 
-		  Cliente cliente = null;
-		  
-		  for (Cliente i : Hotel.getClientes()) { 
-			  if (cedula == i.getId()) { 
-				  cliente = i; confirmacion = true; 
-				  break; } }
-		  
-		  if (confirmacion == false) {
-			  Alert sinCliente = new Alert(AlertType.ERROR);
-		      sinCliente.setTitle("Error");
-		      sinCliente.setHeaderText("Cliente no encontrado.");
-		      sinCliente.setContentText("Por favor ingrese una nueva cédula.");
-		      Optional<ButtonType> result = sinCliente.showAndWait();
-		  
-		      if (result.get() == ButtonType.OK) { 
-		    	  campo.clear(); } 
-		      return;
-		      }
-		 
-		*/
-		//public void handle(ActionEvent evento) {
-			//BuscarCliente cliente = new BuscarCliente(campo);
 			
 			if (cliente.getHabitacion() == null) {
 				Alert noregistrado = new Alert(AlertType.ERROR);

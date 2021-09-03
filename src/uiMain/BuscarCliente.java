@@ -18,7 +18,7 @@ public class BuscarCliente  {
 	public BuscarCliente(TextField c) {
 		campo = c;
 	}
-	public void handle(){
+	public void handle() throws Excepcion1{
 		Long cedula = Long.parseLong(campo.getText());
 		boolean confirmacion = false;
 		 clienteNuevo = null;
@@ -31,8 +31,8 @@ public class BuscarCliente  {
 			}
 		}
 		if (confirmacion == false) {
-			//throw new Excepcion1(campo);
-			System.out.println("Entra");
+			throw new Excepcion1(campo);
+			/*System.out.println("Entra");
 			Alert sinCliente = new Alert(AlertType.ERROR);
 			sinCliente.setTitle("Error");
 			sinCliente.setHeaderText("Cliente no encontrado.");
@@ -41,7 +41,7 @@ public class BuscarCliente  {
 
 			if (result.get() == ButtonType.OK) {
 				campo.clear();
-			}
+			}*/
 		}
 	
 }
