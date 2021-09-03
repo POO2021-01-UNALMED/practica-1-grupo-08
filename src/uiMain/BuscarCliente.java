@@ -2,6 +2,7 @@ package uiMain;
 
 import java.util.Optional;
 
+import Errores.Excepcion1;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.event.ActionEvent;
@@ -11,13 +12,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class BuscarCliente {
+public class BuscarCliente  {
 	private TextField campo;
 	Cliente clienteNuevo;
 	public BuscarCliente(TextField c) {
 		campo = c;
 	}
-	public void handle() {
+	public void handle(){
 		Long cedula = Long.parseLong(campo.getText());
 		boolean confirmacion = false;
 		 clienteNuevo = null;
@@ -30,6 +31,7 @@ public class BuscarCliente {
 			}
 		}
 		if (confirmacion == false) {
+			//throw new Excepcion1(campo);
 			System.out.println("Entra");
 			Alert sinCliente = new Alert(AlertType.ERROR);
 			sinCliente.setTitle("Error");

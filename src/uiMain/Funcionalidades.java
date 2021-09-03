@@ -214,7 +214,10 @@ class Eventos implements EventHandler<ActionEvent> {
 
 		}
 
-		else if (opcion.getText().equals("Salir")) {
+		else if (opcion.getText().equals("Salir")) {			
+			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
+			GUI.label.setGraphic( new ImageView(imagen));
+			GUI.label.setText("");
 			GUI.ventana.setScene(GUI.escena1);
 		}
 	}

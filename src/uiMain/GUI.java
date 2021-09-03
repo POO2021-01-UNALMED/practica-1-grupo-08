@@ -1,5 +1,6 @@
 package uiMain;
 import baseDatos.Deserializacion;
+import baseDatos.Serializacion;
 import gestorAplicacion.Funcionamiento.Habitacion;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -33,6 +34,7 @@ public class GUI extends Application {
 	public static Stage ventana;
 	public static Scene escena1;
 	Scene  escenaFun = new Funcionalidades().getEscenaFun();
+	public static Label label;
 	
 	
 	 public void start(Stage ventana) throws Exception{
@@ -61,7 +63,7 @@ public class GUI extends Application {
 		   	pimagenes.setPrefSize(300, 300);
 		   	//Etiqueta para agregar imagenes
 		   	Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
-		   	Label label = new Label("", new ImageView(imagen));
+		   	label = new Label("", new ImageView(imagen));
 		   	BorderPane.setAlignment(label, Pos.TOP_CENTER);
 		   	pimagenes.setTop(label);
 		   	p1.setStyle("-fx-background-color: #FCF3CF ;");
@@ -119,6 +121,7 @@ public class GUI extends Application {
 		   	MenuItem salir = new MenuItem("Salir");
 		   	salir.setOnAction(new Eventos());
 			MenuItem descripcion = new MenuItem("Descripción");
+			descripcion.setOnAction(new Eventos());
 			
 			SeparatorMenuItem separador = new SeparatorMenuItem();
 			inicio.getItems().addAll(salir,separador,descripcion);
@@ -148,17 +151,32 @@ public class GUI extends Application {
 				Object control = e.getSource();
 				if (control instanceof MenuItem) { 
 					if(((MenuItem) control).getText().equals("Salir")) {
+						//Serializacion.serializacion();
 						Platform.exit();
 						}
+					else if(((MenuItem) control).getText().equals("Descripción")) {
+						label.setText("La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
+					+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades,"
+					+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
+					+ "\n"
+					+ "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
+					+ "hotel, entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
+					+ "las horas extras que estos validen, las mucamas encargadas de mantener las habitaciones en orden y disponibles "
+					+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
+					+ "en general.");
+						label.setGraphic(null);
+						label.setWrapText(true);
+					}
 					}
 				else if(control instanceof Button) {
 					if(((Button) control).getText().equals("Menú principal.")) {
 							GUI.ventana.setScene(escenaFun);
 						}
 					}
-				}
+				
 	}
+			
 	
 }
 	
-
+}
