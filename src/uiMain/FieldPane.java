@@ -85,4 +85,12 @@ public class FieldPane extends Pane{
 			Funcionalidades.principal.getChildren().addAll(label);
 		}
 	}
+	
+	// Control de fechas. Una superior a otra.
+	class oyenteConfirmar implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent e)throws ExcepcionFechas {
+		
+		}
+	}
+	
 }
