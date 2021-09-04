@@ -2,12 +2,16 @@ package uiMain;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Optional;
 
 import Errores.ExcepcionFechas;
+import Errores.ExcepcionNulos;
 import gestorAplicacion.Cliente;
+import gestorAplicacion.Funcionamiento.Habitacion;
 import gestorAplicacion.Funcionamiento.Hotel;
+import gestorAplicacion.Funcionamiento.Reserva;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
@@ -75,8 +79,6 @@ public class FieldPane extends Pane{
 	
 	public void fechas() throws ExcepcionFechas{
 		String tipoError = null;
-		System.out.println(limpiar.get(0).getText());
-		System.out.println(limpiar.get(1).getText());
 		LocalDate fechanuevaEntrada = LocalDate.parse(limpiar.get(0).getText());
 		LocalDate fechanuevaSalida = LocalDate.parse(limpiar.get(1).getText());
 		
@@ -90,11 +92,17 @@ public class FieldPane extends Pane{
 		//Comparación salida cliente con entrada nueva
 		if(cliente.getFecha_salida().isAfter(fechanuevaEntrada)) {
 			tipoError = "Ingrese una fecha de entrada superior a " + cliente.getFecha_salida();
-			throw new ExcepcionFechas();
+			throw new ExcepcionFechas(tipoError);
 			
-		}else if(fechanuevaSalida.isAfter(fechanuevaEntrada)) {
+		}else if(fechanuevaEntrada.isAfter(fechanuevaSalida)) {
 			tipoError = "Ingrese una fecha de salida superior a la fecha de entrada " + fechanuevaEntrada;
-			throw new ExcepcionFechas();
+			throw new ExcepcionFechas(tipoError);
+		}
+	}
+	
+	public void nulos() throws ExcepcionNulos{
+		if((limpiar.get(0).getText() == null) || (limpiar.get(1).getText() == null) || (limpiar.get(2).getText() == null) ) {
+			throw new ExcepcionNulos();
 		}
 	}
 	
@@ -121,15 +129,20 @@ public class FieldPane extends Pane{
 	
 	// Control de fechas. Una superior a otra.
 	class oyenteConfirmar implements EventHandler<ActionEvent>{
-		String error;
+		
 		public void handle(ActionEvent e){
 			try {
-				error = fechas();
-			} catch (ExcepcionFechas e1) {
+				nulos();
+			}catch(ExcepcionNulos e3) {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
-				sinCliente.setHeaderText(e1.getMessage());
-				sinCliente.setContentText(error);
+				sinCliente.setHeaderText("Falta que ingreses el campo: ");
+				for(int i = 0; i<3; i++) {
+					if(limpiar.get(i).getText() == null) {
+						sinCliente.setHeaderText(sinCliente.getHeaderText() + "\n * "+ criterios[i+2]);
+					}
+				}
+				sinCliente.setContentText(e3.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
 					}
@@ -138,7 +151,112 @@ public class FieldPane extends Pane{
 					limpiar.get(1).clear();
 					limpiar.get(2).clear();
 				}
+				return;
 			}
+			
+			try {
+				fechas();
+				LocalDate fechanuevaEntrada = LocalDate.parse(limpiar.get(0).getText());
+				LocalDate fechanuevaSalida = LocalDate.parse(limpiar.get(1).getText());
+			} catch (ExcepcionFechas e1) {
+				Alert sinCliente = new Alert(AlertType.ERROR);
+				sinCliente.setTitle("Error");
+				sinCliente.setHeaderText(e1.getError());
+				sinCliente.setContentText(e1.getMessage());
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+					}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+				return;
+			}catch(DateTimeParseException e2) {
+				Alert sinCliente = new Alert(AlertType.ERROR);
+				sinCliente.setTitle("Error");
+				sinCliente.setHeaderText("Ingrese las fechas en formato yyyy-mm-dd");
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+					}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+				return;
+			}
+			
+			Habitacion habauxiliar = new Habitacion();
+			Cliente cliente = null;
+			for(Cliente i: Hotel.getClientes()) {
+				if(Long.parseLong(valores[0]) == i.getId()) {
+					cliente = i;
+				}
+			}
+			for (Habitacion i : Hotel.getHabitaciones()) {
+				int conta = 0;
+				if (i.getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
+					if (conta > 0) {
+						if (habauxiliar.getClientes().size() > i.getClientes().size()) {
+							habauxiliar = i;
+						}
+					} else {
+						habauxiliar = i;
+						conta += 1;
+					}
+				}
+			}
+			
+			if(habauxiliar.getClientes().size() == 0) {
+				Hotel.asignarHabitacion(cliente);
+				Alert sinCliente = new Alert(AlertType.INFORMATION);
+				sinCliente.setTitle("Información.");
+				sinCliente.setHeaderText("Reserva asignada con éxito.");
+				sinCliente.setContentText("Se le ha asignado la habitación " + cliente.getHabitacion().getNumhabitacion());
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+				}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+				cliente.setReserva(false);
+				return;
+			}
+
+			if (cliente.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
+				Reserva reserva1 = new Reserva(cliente.getFecha_entrada().toString(), cliente.getFecha_salida().toString(), cliente);
+				habauxiliar.setClientes(cliente);
+				cliente.setHabitacion(habauxiliar);
+				Alert sinCliente = new Alert(AlertType.INFORMATION);
+				sinCliente.setTitle("Información.");
+				sinCliente.setHeaderText("Reserva asignada con éxito.");
+				sinCliente.setContentText("Se le ha asignado la habitación " + cliente.getHabitacion().getNumhabitacion());
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+				}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+			} else {
+				Alert adios = new Alert(AlertType.INFORMATION);
+				adios.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/triste.png"),50,50,false,false)));
+				adios.setHeaderText("No se encuentran habitaciones disponibles para asignar tu reserva.");
+				adios.setContentText("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
+				Optional<ButtonType> result = adios.showAndWait();
+				if (!result.isPresent()) {
+				}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+			}
+			
 		}
 	}
 	

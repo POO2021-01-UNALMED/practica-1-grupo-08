@@ -47,7 +47,7 @@ public class TomarHabitacion {
 				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
-			}
+			 }
 			}
 			
 			Cliente clienteNuevo = oidor.getBuscarCliente();

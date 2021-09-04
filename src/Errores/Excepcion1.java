@@ -14,7 +14,7 @@ public class Excepcion1 extends ErrorAplicacion {
 	}
 	@Override
 	public String getMessage() {
-		return  super.getMessage()+" cliente no registrado en la base de datos";
+		return  super.getMessage()+"cliente no registrado en la base de datos";
 	}
 	
 	

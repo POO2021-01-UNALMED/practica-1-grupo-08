@@ -19,7 +19,22 @@ public class BuscarCliente  {
 		campo = c;
 	}
 	public void handle() throws Excepcion1{
-		Long cedula = Long.parseLong(campo.getText());
+		Long cedula = null;
+		try {
+			cedula = Long.parseLong(campo.getText());
+		}catch(NumberFormatException e) {
+			Alert sinCliente = new Alert(AlertType.WARNING);
+			sinCliente.setTitle("Advertencia.");
+			sinCliente.setHeaderText("Por favor, ingrese su cédula correctamente.");
+			Optional<ButtonType> result = sinCliente.showAndWait();
+			if (!result.isPresent()) {
+			}
+			else if (result.get() == ButtonType.OK) {
+				campo.clear();
+			}
+			return;
+		}
+		
 		boolean confirmacion = false;
 		 clienteNuevo = null;
 
