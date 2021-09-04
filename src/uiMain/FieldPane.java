@@ -1,11 +1,17 @@
 package uiMain;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
+import Errores.ExcepcionFechas;
+import gestorAplicacion.Cliente;
+import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -44,6 +50,7 @@ public class FieldPane extends Pane{
 		}
 			
 		Button aceptar = new Button("Aceptar");
+		aceptar.setOnAction(new oyenteConfirmar());
 		Button borrar = new Button("Borrar");
 		borrar.setOnAction(new oyenteBorrar());
 		Button regresar = new Button("Regresar");
@@ -51,6 +58,7 @@ public class FieldPane extends Pane{
 		grid.addRow(grid.getRowCount()+1, aceptar, borrar, regresar);
 	}
 	
+		
 	public String getValue(String criterio) {
 		String aux = null;
 		for(int i = 0; i< criterios.length; i++) {
@@ -63,6 +71,31 @@ public class FieldPane extends Pane{
 	
 	public GridPane getFieldPane() {
 		return grid;
+	}
+	
+	public void fechas() throws ExcepcionFechas{
+		String tipoError = null;
+		System.out.println(limpiar.get(0).getText());
+		System.out.println(limpiar.get(1).getText());
+		LocalDate fechanuevaEntrada = LocalDate.parse(limpiar.get(0).getText());
+		LocalDate fechanuevaSalida = LocalDate.parse(limpiar.get(1).getText());
+		
+		Cliente cliente = null;
+		for(Cliente i: Hotel.getClientes()) {
+			if(Long.parseLong(valores[0]) == i.getId()) {
+				cliente = i;
+			}
+		}
+		
+		//Comparación salida cliente con entrada nueva
+		if(cliente.getFecha_salida().isAfter(fechanuevaEntrada)) {
+			tipoError = "Ingrese una fecha de entrada superior a " + cliente.getFecha_salida();
+			throw new ExcepcionFechas();
+			
+		}else if(fechanuevaSalida.isAfter(fechanuevaEntrada)) {
+			tipoError = "Ingrese una fecha de salida superior a la fecha de entrada " + fechanuevaEntrada;
+			throw new ExcepcionFechas();
+		}
 	}
 	
 	class oyenteBorrar implements EventHandler<ActionEvent> {
@@ -88,8 +121,24 @@ public class FieldPane extends Pane{
 	
 	// Control de fechas. Una superior a otra.
 	class oyenteConfirmar implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent e)throws ExcepcionFechas {
-		
+		String error;
+		public void handle(ActionEvent e){
+			try {
+				error = fechas();
+			} catch (ExcepcionFechas e1) {
+				Alert sinCliente = new Alert(AlertType.ERROR);
+				sinCliente.setTitle("Error");
+				sinCliente.setHeaderText(e1.getMessage());
+				sinCliente.setContentText(error);
+				Optional<ButtonType> result = sinCliente.showAndWait();
+				if (!result.isPresent()) {
+					}
+				else if (result.get() == ButtonType.OK) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
+				}
+			}
 		}
 	}
 	
