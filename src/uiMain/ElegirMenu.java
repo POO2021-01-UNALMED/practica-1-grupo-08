@@ -12,6 +12,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -24,6 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class ElegirMenu {
 	Label criterio = new Label("Cédula: ");
@@ -36,6 +40,10 @@ public class ElegirMenu {
 		// cedula)
 		enviar.setOnAction(oyente);
 		infoCed.addRow(0, criterio, campo, enviar);
+		infoCed.setAlignment(Pos.CENTER);
+		GridPane.setMargin(campo, new Insets(20,20,20,20));
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTex);
 	}
 
 	public GridPane getElegirMenu() {
@@ -91,13 +99,14 @@ public class ElegirMenu {
 				infoCed.getChildren().clear();
 
 				Funcionalidades.titulo.setText("Opciones de tipo de carta y platos");
-				Funcionalidades.descripcion.setText("Elija a continuación el tipo de carta y los platos que desee.");
+				Funcionalidades.descripcion.setText("Elija a continuación el tipo de carta y los platos que desee:");
 				String tipomenu[] = { "Carta vegetariana", "Carta tradicional" };
 				ComboBox<String> combomenu = new ComboBox<String>(FXCollections.observableArrayList(tipomenu));
 				combomenu.setPromptText("Tipo de carta");
 				oyenteComboM elemenu = new oyenteComboM(combomenu, clienteNuevo);
 				combomenu.setOnAction(elemenu);
 				infoCed.addRow(0, combomenu);
+				GridPane.setMargin(combomenu, new Insets(20,20,20,20));
 
 			}
 		}
@@ -107,10 +116,10 @@ public class ElegirMenu {
 	class oyenteComboM implements EventHandler<ActionEvent> {
 		Cliente clienteNuevo;
 		ComboBox<String> combomenu;
-		VBox eleccionmenu = new VBox();
+		VBox eleccionmenu = new VBox(10);
 		Label cabecera;
 		Button confirmar = new Button("Confirmar elección");
-		CheckBox op1;
+		CheckBox op1= new CheckBox();;
 		CheckBox op2 = new CheckBox();
 		CheckBox op3 = new CheckBox();
 		CheckBox op4 = new CheckBox();
@@ -123,13 +132,24 @@ public class ElegirMenu {
 			this.combomenu = combomenu;
 			infoCed.addRow(1, eleccionmenu);
 			respuesta = new Label("No ha seleccionado ningún plato");
+			respuesta.setWrapText(true);
+			respuesta.setTextAlignment(TextAlignment.CENTER);
 			cabecera = new Label("Seleccione los platos que desea:");
-			op1 = new CheckBox();
+			Font tipoletra = new Font("Times New Roman", 18);
+			respuesta.setFont(tipoletra);
+			cabecera.setFont(tipoletra);
+			op1.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+			op2.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+			op3.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+			op4.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+			op5.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
 		}
 
 		public void handle(ActionEvent e) {
 			eleccionmenu.getChildren().clear();
 			eleccionmenu.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, respuesta, confirmar);
+			eleccionmenu.setPadding(new Insets(10,10,10,10));
+			eleccionmenu.setPrefSize(400,300);
 			ArrayList<Integer> opcarta = new ArrayList<Integer>();
 			confirmar.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {

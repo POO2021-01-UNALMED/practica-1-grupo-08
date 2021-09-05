@@ -7,6 +7,8 @@ import Errores.Excepcion1;
 import gestorAplicacion.Cliente;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -18,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import uiMain.ElegirMenu.ElegirM;
 
 public class ElegirAtraccion {
@@ -31,6 +34,10 @@ public class ElegirAtraccion {
 		// cedula)
 		enviar.setOnAction(oyente);
 		infoCed.addRow(0, criterio, campo, enviar);
+		infoCed.setAlignment(Pos.CENTER);
+		GridPane.setMargin(campo, new Insets(20,20,20,20));
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTex);
 	}
 
 	public GridPane getElegirAtraccion() {

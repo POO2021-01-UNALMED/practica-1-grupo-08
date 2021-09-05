@@ -14,11 +14,16 @@ import gestorAplicacion.Funcionamiento.Hotel;
 import gestorAplicacion.Funcionamiento.Reserva;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class FieldPane extends Pane{
 	private String tituloCriterios;
@@ -37,13 +42,25 @@ public class FieldPane extends Pane{
 		this.valores = valores;
 		this.habilitado = habilitado;
 		
+		
+		
 	
 		Label criterio = new Label(tituloCriterios);
 		Label valor = new Label (tituloValores); 
+		Font tipoletraTit = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTit);
+		criterio.setTextFill(Color.web("#873600"));
+		criterio.setTextAlignment(TextAlignment.CENTER);
+		valor.setFont(tipoletraTit);
+		valor.setTextFill(Color.web("#873600"));
+		valor.setTextAlignment(TextAlignment.CENTER);
+		
+		
 		grid.addRow(0,criterio, valor);
 		
 		for(int i = 0; i<criterios.length; i++) {
 			Label label = new Label(criterios[i]);
+			label.setFont(tipoletraTit);
 			TextField tx  = new TextField(valores[i]);
 			if(!habilitado[i]){
 				tx.setDisable(true);
@@ -60,6 +77,11 @@ public class FieldPane extends Pane{
 		Button regresar = new Button("Regresar");
 		regresar.setOnAction(new oyenteRegresar());
 		grid.addRow(grid.getRowCount()+1, aceptar, borrar, regresar);
+		
+		grid.setPadding(new Insets(15,15,15,15) );
+		grid.setHgap(10);
+		grid.setVgap(10);
+		grid.setAlignment(Pos.CENTER);
 	}
 	
 		
@@ -121,7 +143,7 @@ public class FieldPane extends Pane{
 			Funcionalidades.descripcion.setText(
 					"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
 			Funcionalidades.principal.getChildren().remove(3);
-			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
 			Label label = new Label("", new ImageView(imagen));
 			Funcionalidades.principal.getChildren().addAll(label);
 		}

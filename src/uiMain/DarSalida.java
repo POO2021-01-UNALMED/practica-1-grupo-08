@@ -8,12 +8,17 @@ import gestorAplicacion.Funcionamiento.Hotel;
 import gestorAplicacion.Personal.Mucama;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 //import uiMain.TomarHabitacion.buscarCliente;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class DarSalida {
 	Label criterio = new Label("Cédula: ");
@@ -27,6 +32,10 @@ public class DarSalida {
 										// cedula)
 		enviar.setOnAction(oyente);
 		panel1.addRow(0, criterio, campo, enviar);
+		panel1.setAlignment(Pos.CENTER);
+		GridPane.setMargin(campo, new Insets(20,20,20,20));
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTex);
 	}
 
 	public GridPane getDarSalida() {
@@ -129,11 +138,24 @@ public class DarSalida {
 				adios.show();
 			} else if (resultado.get().equals(hacerReserva.getButtonTypes().get(0))) {
 				// Formulario Reserva
-				VBox formulario = new VBox();
+				VBox formulario = new VBox(10);
+				VBox.setMargin(formulario, new Insets(20,20,20,20));
+				formulario.setStyle("-fx-background-color:#FCF3CF ;");
+				formulario.setAlignment(Pos.TOP_CENTER);
+				
 				Label titulo = new Label("Formulario nueva reserva.");
-				Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva.");
+				Font tipoletraTit = new Font("Times New Roman", 30);
+				titulo.setFont(tipoletraTit);
+				titulo.setTextFill(Color.web("#873600"));
+				titulo.setTextAlignment(TextAlignment.CENTER);
+				
+				Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva:");
+				Font tipoletraDes = new Font("Times New Roman", 18);
+				descripcion.setFont(tipoletraDes);
+				descripcion.setTextAlignment(TextAlignment.CENTER);
+				
 
-				String[] criterios = { "Cedula", "Nombre", "Fecha de entrada", "Fecha de salida",
+				String[] criterios = { "Cédula", "Nombre", "Fecha de entrada", "Fecha de salida",
 						"Número de acompañantes" };
 				String[] valores = { String.valueOf(cliente.getId()), cliente.getNombre(), null, null, null };
 				Boolean[] habilitados = { false, false, true, true, true };

@@ -146,12 +146,15 @@ class Eventos implements EventHandler<ActionEvent> {
 					+ "- Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario() + "\n" + "\n"
 					+ "- Ganancias netas: " + Hotel.gananciaNeta());
 			info.setEditable(false);
+			info.setPrefSize(50,150);
 			Funcionalidades.principal.getChildren().add(info);
 			Funcionalidades.principal.getChildren().remove(3);
+			VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(10,10,10,10));
+				
 		} else if (opcion.getText().equals("Mostrar clientes")) {
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.titulo.setText("Mostrar clientes");			
-			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel");
+			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel:");
 			int cont = 0;
 			for (Cliente i : Hotel.getClientes()) {
 				if (i.getHabitacion() != null && i.isReserva() == false) {
@@ -175,7 +178,7 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.principal.getChildren().addAll(label);
 				}
 			 }else {
-				Funcionalidades.principal.getChildren().remove(3);
+				//Funcionalidades.principal.getChildren().remove(3);
 				ListView<String> clientes = new ListView<String>();
 				for (Cliente i : Hotel.getClientes()) {
 					if (i.getHabitacion() != null && i.isReserva() == false) {
@@ -183,6 +186,7 @@ class Eventos implements EventHandler<ActionEvent> {
 					}
 				}
 				Funcionalidades.principal.getChildren().add(clientes);
+				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(20,20,20,20));
 			}
 		}
 
@@ -193,22 +197,21 @@ class Eventos implements EventHandler<ActionEvent> {
 			alert.setContentText("La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
 					+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades,"
 					+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
-					+ "\n"
+					+ "\n" + "\n"
 					+ "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
 					+ "hotel, entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
 					+ "las horas extras que estos validen, las mucamas encargadas de mantener las habitaciones en orden y disponibles "
 					+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
 					+ "en general.");
 			alert.show();
-			alert.getDialogPane().setStyle("-fx-alignment: CENTER");
-			//alert.getDialogPane().setStyle("-fx-font-weight: bold");
 
 			} else if (opcion.getText().equals("Acerca de")) {
 			Alert nombres = new Alert(AlertType.INFORMATION);
 			nombres.setTitle("Creadores");
 			nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
-			nombres.setGraphic(new ImageView(
-					new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
+			nombres.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
+			nombres.getDialogPane().setStyle("-fx-font-family: 'Times New Roman'; -fx-background-color: #F5F2BA ;");
+					
 			Optional<ButtonType> resulta = nombres.showAndWait();
 			if (!resulta.isPresent()) {
 			} else if (resulta.get() == ButtonType.OK) {

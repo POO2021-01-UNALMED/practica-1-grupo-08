@@ -14,7 +14,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class TomarHabitacion {
 	Label criterio = new Label("Cédula: ");
@@ -102,11 +104,21 @@ public class TomarHabitacion {
 						adios.show();
 					} else if (resultado.get().equals(noHabitacion.getButtonTypes().get(0))) {
 						//Formulario Reserva
-						VBox formulario = new VBox();
+						VBox formulario = new VBox(10);
+						formulario.setStyle("-fx-background-color:#FCF3CF ;");
+						formulario.setAlignment(Pos.CENTER);
 						Label titulo = new Label("Formulario nueva reserva.");
-						Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva.");
+						Font tipoletraTit = new Font("Times New Roman", 30);
+						titulo.setFont(tipoletraTit);
+						titulo.setTextFill(Color.web("#873600"));
+						titulo.setTextAlignment(TextAlignment.CENTER);
 						
-						String[] criterios = {"Cedula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
+						Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva:");
+						Font tipoletraDes = new Font("Times New Roman", 18);
+						descripcion.setFont(tipoletraDes);
+						descripcion.setTextAlignment(TextAlignment.CENTER);
+						
+						String[] criterios = {"Cédula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
 						String[] valores = {String.valueOf(clienteNuevo.getId()),clienteNuevo.getNombre(),null,null,null};
 						Boolean[] habilitados = {false,false,true,true,true};
 						FieldPane campos = new FieldPane("Criterio",criterios,"Valor",valores, habilitados );
