@@ -9,6 +9,7 @@ import gestorAplicacion.Personal.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,10 +17,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Funcionalidades {
-	public static VBox principal = new VBox();
+	public static VBox principal = new VBox(20);
 	public MenuBar barramenu = new MenuBar();;
 	// public static Stage ventanaF;
 	public static Label titulo;
@@ -31,7 +36,6 @@ public class Funcionalidades {
 	public void crearScene() {
 
 		Menu inicio = new Menu("Inicio");
-		// inicio.setOnAction(new Inicio());
 		MenuItem regresar = new MenuItem("Regresar");
 		regresar.setOnAction(new Inicio());
 		inicio.getItems().add(regresar);
@@ -64,24 +68,26 @@ public class Funcionalidades {
 		MenuItem acerca = new MenuItem("Acerca de");
 		acerca.setOnAction(new Eventos());
 		ayuda.getItems().add(acerca);
-
 		barramenu.getMenus().addAll(inicio, archivo, procesos, ayuda);
-
-		principal.getChildren().addAll(barramenu);
-
+				
 		titulo = new Label("Bienvenido al hotel.");
-		descripcion = new Label(
-				"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+		Font tipoletraTit = new Font("Times New Roman", 30);
+		titulo.setFont(tipoletraTit);
+		titulo.setTextFill(Color.web("#873600"));
+		titulo.setTextAlignment(TextAlignment.CENTER);
+		
+		descripcion = new Label("En la barra superior encontrarás los servicios que tenemos disponibles, esperamos que sean "
+				+ "de tu agrado.");
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		descripcion.setFont(tipoletraTex);
+		descripcion.setWrapText(true);
+		descripcion.setTextAlignment(TextAlignment.CENTER);
+		
+		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
-		principal.getChildren().addAll(titulo, descripcion, label);
+		principal.getChildren().addAll(barramenu, titulo, descripcion, label);
+		principal.setStyle("-fx-background-color:#FCF3CF ;");
 		principal.setAlignment(Pos.TOP_CENTER);
-
-		// TomarHabitacion ensayo = new TomarHabitacion();
-		// principal.getChildren().add(ensayo.getTomarHabitacion());
-		// Tomarhabitación
-
-		//estandar = new Scene(principal, 800, 550);
 	}
 
 
@@ -103,12 +109,6 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.principal.getChildren().remove(3);
 
 		} else if (opcion.getText().equals("Cancelar reserva")) {
-			// PARA ENSAYAR EL MÉTODO CANCELAR
-			/*
-			 * for (Cliente i : Hotel.getClientes()) {
-			 * i.setHabitacion(Hotel.getHabitaciones().get(0)); if (38836489 == i.getId()) {
-			 * Reserva re = new Reserva("2021-02-10","2021-02-15",i); break; } }
-			 */
 			GridPane reserva = new CancelarReserva().getCancelarReserva();
 			Funcionalidades.titulo.setText(("Cancelar una reserva."));
 			Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
@@ -148,7 +148,6 @@ class Eventos implements EventHandler<ActionEvent> {
 			info.setEditable(false);
 			Funcionalidades.principal.getChildren().add(info);
 			Funcionalidades.principal.getChildren().remove(3);
-			// text.setStyle("-fx-font-weight:bold");
 		} else if (opcion.getText().equals("Mostrar clientes")) {
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.titulo.setText("Mostrar clientes");			
@@ -201,7 +200,10 @@ class Eventos implements EventHandler<ActionEvent> {
 					+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
 					+ "en general.");
 			alert.show();
-		} else if (opcion.getText().equals("Acerca de")) {
+			alert.getDialogPane().setStyle("-fx-alignment: CENTER");
+			//alert.getDialogPane().setStyle("-fx-font-weight: bold");
+
+			} else if (opcion.getText().equals("Acerca de")) {
 			Alert nombres = new Alert(AlertType.INFORMATION);
 			nombres.setTitle("Creadores");
 			nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
@@ -231,10 +233,19 @@ class Inicio implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent e) {
 		GUI.ventana.setScene(Funcionalidades.estandar);
 		Funcionalidades.titulo.setText("Bienvenido al hotel.");
-		Funcionalidades.descripcion.setText(
-				"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+		Font tipoletraTit = new Font("Times New Roman", 30);
+		Funcionalidades.titulo.setFont(tipoletraTit);
+		Funcionalidades.titulo.setTextFill(Color.web("#873600"));
+		Funcionalidades.titulo.setTextAlignment(TextAlignment.CENTER);
+		
+		Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		Funcionalidades.descripcion.setFont(tipoletraTex);
+		Funcionalidades.descripcion.setWrapText(true);
+		Funcionalidades.descripcion.setTextAlignment(TextAlignment.CENTER);
+		
 		Funcionalidades.principal.getChildren().remove(3);
-		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
 		Funcionalidades.principal.getChildren().addAll(label);
 	}

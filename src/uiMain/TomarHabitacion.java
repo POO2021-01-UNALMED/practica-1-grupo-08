@@ -7,11 +7,14 @@ import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 public class TomarHabitacion {
 	Label criterio = new Label("Cédula: ");
@@ -22,9 +25,11 @@ public class TomarHabitacion {
 	public TomarHabitacion() {
 		evento oyente = new evento(campo);
 		enviar.setOnAction(oyente);
-		//panel1.addRow(0, titulo);
-		//panel1.addRow(1, descripcion);
 		panel1.addRow(0, criterio, campo, enviar);
+		panel1.setAlignment(Pos.CENTER);
+		GridPane.setMargin(campo, new Insets(20,20,20,20));
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTex);
 	}
 
 	class evento implements EventHandler<ActionEvent> {

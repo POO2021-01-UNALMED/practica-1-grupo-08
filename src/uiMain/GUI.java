@@ -55,7 +55,7 @@ public class GUI extends Application {
 		   	p1.setSpacing(10);
 		   	p1.setPrefSize(400, 550);
 		   		   	
-		   	//Panel para imagenes hotal y boton para ventana principal
+		   	//Panel para imagenes hotel y boton para ventana principal
 		   	BorderPane pimagenes = new BorderPane();
 		   	Button botonprincipal = new Button("Menú principal.");
 		   	botonprincipal.setOnAction(new Eventos());
@@ -64,7 +64,7 @@ public class GUI extends Application {
 		   	//Etiqueta para agregar imagenes
 		   	Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
 		   	label = new Label("", new ImageView(imagen));
-		   	BorderPane.setAlignment(label, Pos.TOP_CENTER);
+		   //BorderPane.setAlignment(label, Pos.TOP_CENTER);
 		   	pimagenes.setTop(label);
 		   	p1.setStyle("-fx-background-color: #FCF3CF ;");
 		   	pimagenes.setStyle("-fx-background-color:#FCF3CF ;");	   		   	
@@ -156,16 +156,19 @@ public class GUI extends Application {
 						}
 					else if(((MenuItem) control).getText().equals("Descripción")) {
 						label.setText("La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
-					+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades,"
+					+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades, "
 					+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
-					+ "\n"
+					+ "\n" + "\n" 
 					+ "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
-					+ "hotel, entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
-					+ "las horas extras que estos validen, las mucamas encargadas de mantener las habitaciones en orden y disponibles "
-					+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
+					+ "hotel. Entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
+					+ "las horas extras que estos validen; las mucamas, encargadas de mantener las habitaciones en orden y disponibles "
+					+ "cuando se requiera  y el recepcionista, quien tiene el control de la entrada y salida de los clientes y del hotel "
 					+ "en general.");
 						label.setGraphic(null);
 						label.setWrapText(true);
+						label.setTextAlignment(TextAlignment.JUSTIFY);
+						Font tipoletra = new Font("Times New Roman", 15);
+						label.setFont(tipoletra);
 					}
 					}
 				else if(control instanceof Button) {
@@ -173,7 +176,6 @@ public class GUI extends Application {
 							GUI.ventana.setScene(escenaFun);
 						}
 					}
-				
 	}
 			
 	

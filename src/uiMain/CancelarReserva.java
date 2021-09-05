@@ -7,9 +7,12 @@ import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import gestorAplicacion.Funcionamiento.Reserva;
 import javafx.event.*;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 public class CancelarReserva {
 	Label criterio = new Label("Cédula: ");
@@ -21,6 +24,10 @@ public class CancelarReserva {
 		Cancelar oyente = new Cancelar(campo);
 		enviar.setOnAction(oyente);
 		formCedula.addRow(0, criterio, campo, enviar);
+		formCedula.setAlignment(Pos.CENTER);
+		GridPane.setMargin(campo, new Insets(20,20,20,20));
+		Font tipoletraTex = new Font("Times New Roman", 18);
+		criterio.setFont(tipoletraTex);
 	}
 	
 	public GridPane getCancelarReserva() {
