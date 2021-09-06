@@ -154,10 +154,6 @@ public class ElegirMenu {
 			confirmar.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 
-					/*
-					 * int numselect = 0; CheckBox[] op = {op1,op2,op3,op4,op5}; for (int i=0;
-					 * i<op.length;i++) { if(op[i].isSelected() == true) { numselect ++; } }
-					 */
 					if (opcarta.size() == 0) {
 						Alert noselect = new Alert(AlertType.WARNING);
 						noselect.setTitle("Advertencia");
