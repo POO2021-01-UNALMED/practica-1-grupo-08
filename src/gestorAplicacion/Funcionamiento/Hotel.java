@@ -1,6 +1,8 @@
 package gestorAplicacion.Funcionamiento;
 import uiMain.*;
 import java.util.ArrayList;
+
+import Errores.ExcepcionNoGanancias;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Administrador;
 import gestorAplicacion.Personal.Empleado;
@@ -167,14 +169,18 @@ public abstract class Hotel {
 	/*Calcula la ganancia neta del hotel,sumando el dinero recibido por la cuenta Final de cada cliente alojado y restando 
 	 * el pago de salario a cada empleado. Tiene como parámetro de retorno un entero que indica el valor final de la 
 	 * ganancia neta.*/
-	public static int gananciaNeta() {
+	public static int gananciaNeta() throws ExcepcionNoGanancias {
 		int total = 0;
 		for (Cliente i : Hotel.getClientes()) {
 			total += i.getCuentaFinal();
 		}
 				
 		int salario = Hotel.getAd1().pagarSalario();
+		if(total-salario <= 0) {
+			throw new ExcepcionNoGanancias();
+		}
 		return total - salario;
+		
 	}
 	
 	public static Administrador getAd1() {

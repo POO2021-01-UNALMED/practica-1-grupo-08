@@ -82,6 +82,7 @@ public class DarSalida {
 				if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
+				return;
 
 			}
 			if (cliente.isReserva()) {
@@ -94,6 +95,7 @@ public class DarSalida {
 				if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
+				return;
 			}
 			Hotel.cobrarDeudas(cliente);
 

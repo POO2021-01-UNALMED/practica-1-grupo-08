@@ -2,6 +2,7 @@ package uiMain;
 
 import java.util.Optional;
 
+import Errores.ExcepcionNoGanancias;
 import baseDatos.Deserializacion;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.*;
@@ -69,20 +70,21 @@ public class Funcionalidades {
 		acerca.setOnAction(new Eventos());
 		ayuda.getItems().add(acerca);
 		barramenu.getMenus().addAll(inicio, archivo, procesos, ayuda);
-				
+
 		titulo = new Label("Bienvenido al hotel.");
 		Font tipoletraTit = new Font("Times New Roman", 30);
 		titulo.setFont(tipoletraTit);
 		titulo.setTextFill(Color.web("#873600"));
 		titulo.setTextAlignment(TextAlignment.CENTER);
-		
-		descripcion = new Label("En la barra superior encontrarás los servicios que tenemos disponibles, esperamos que sean "
-				+ "de tu agrado.");
+
+		descripcion = new Label(
+				"En la barra superior encontrarás los servicios que tenemos disponibles, esperamos que sean "
+						+ "de tu agrado.");
 		Font tipoletraTex = new Font("Times New Roman", 18);
 		descripcion.setFont(tipoletraTex);
 		descripcion.setWrapText(true);
 		descripcion.setTextAlignment(TextAlignment.CENTER);
-		
+
 		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
 		principal.getChildren().addAll(barramenu, titulo, descripcion, label);
@@ -90,13 +92,13 @@ public class Funcionalidades {
 		principal.setAlignment(Pos.TOP_CENTER);
 	}
 
-
 	public Scene getEscenaFun() {
 		crearScene();
 		return estandar;
 	}
 
 }
+
 class Eventos implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent e) {
 		MenuItem opcion = (MenuItem) e.getSource();
@@ -126,34 +128,54 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.descripcion.setText("Para elegir el menú que desea, por favor ingrese su cédula.");
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.principal.getChildren().add(elemenu);
-		} else if(opcion.getText().equals("Elegir atracción")){
+		} else if (opcion.getText().equals("Elegir atracción")) {
 			GridPane eleatraccion = new ElegirAtraccion().getElegirAtraccion();
 			Funcionalidades.titulo.setText(("Elegir atracción"));
 			Funcionalidades.descripcion.setText("Para elegir la atracción que desea, por favor ingrese su cédula.");
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.principal.getChildren().add(eleatraccion);
-		}else if (opcion.getText().equals("Mostrar ganancias netas")) {
+		} else if (opcion.getText().equals("Mostrar ganancias netas")) {
 			int total = 0;
 			for (Cliente i : Hotel.getClientes()) {
 				total += i.getCuentaFinal();
 			}
-			Funcionalidades.titulo.setText(("Informe de ganancias netas."));
-			Funcionalidades.descripcion.setText("Administrador " + Hotel.getAd1().getNombre()
-					+ ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
-			TextArea info = new TextArea();
-			info.setWrapText(true);
-			info.setText("- Ingresos por cuentas finales de clientes: " + total + "\n" + "\n"
-					+ "- Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario() + "\n" + "\n"
-					+ "- Ganancias netas: " + Hotel.gananciaNeta());
-			info.setEditable(false);
-			info.setPrefSize(50,150);
-			Funcionalidades.principal.getChildren().add(info);
-			Funcionalidades.principal.getChildren().remove(3);
-			VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(10,10,10,10));
-				
+			
+			int ganancias = 0;
+			try {
+				ganancias = Hotel.gananciaNeta();
+				Funcionalidades.titulo.setText(("Informe de ganancias netas."));
+				Funcionalidades.descripcion.setText("Administrador " + Hotel.getAd1().getNombre()
+						+ ", a continuación se detalla los egresos e ingresos del hotel hasta el momento: ");
+				TextArea info = new TextArea();
+				info.setWrapText(true);
+				info.setText("- Ingresos por cuentas finales de clientes: " + total + "\n" + "\n"
+						+ "- Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario() + "\n" + "\n"
+						+ "- Ganancias netas: " + ganancias);
+				info.setEditable(false);
+				info.setPrefSize(50, 150);
+				Funcionalidades.principal.getChildren().add(info);
+				Funcionalidades.principal.getChildren().remove(3);
+				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(10, 10, 10, 10));
+			} catch (ExcepcionNoGanancias e4) {
+				Alert sinGanancias = new Alert(AlertType.WARNING);
+				sinGanancias.setTitle("Advertencia");
+				sinGanancias.setContentText(e4.getMessage());
+				Optional<ButtonType> result = sinGanancias.showAndWait();
+				if (!result.isPresent()) {
+				} else if (result.get() == ButtonType.OK) {
+					/*GUI.ventana.setScene(Funcionalidades.estandar);
+					Funcionalidades.titulo.setText("Bienvenido al hotel.");
+					Funcionalidades.descripcion.setText(
+							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
+					Label label = new Label("", new ImageView(imagen));
+					Funcionalidades.principal.getChildren().addAll(label);*/
+				}
+			}
+
 		} else if (opcion.getText().equals("Mostrar clientes")) {
 			Funcionalidades.principal.getChildren().remove(3);
-			Funcionalidades.titulo.setText("Mostrar clientes");			
+			Funcionalidades.titulo.setText("Mostrar clientes");
 			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel:");
 			int cont = 0;
 			for (Cliente i : Hotel.getClientes()) {
@@ -173,20 +195,21 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(
 							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+							false);
 					Label label = new Label("", new ImageView(imagen));
 					Funcionalidades.principal.getChildren().addAll(label);
 				}
-			 }else {
-				//Funcionalidades.principal.getChildren().remove(3);
+			} else {
 				ListView<String> clientes = new ListView<String>();
 				for (Cliente i : Hotel.getClientes()) {
 					if (i.getHabitacion() != null && i.isReserva() == false) {
-						clientes.getItems().add("Cliente identificado con " + i.getId() + ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
+						clientes.getItems().add("Cliente identificado con " + i.getId()
+								+ ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
 					}
 				}
 				Funcionalidades.principal.getChildren().add(clientes);
-				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(20,20,20,20));
+				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(20, 20, 20, 20));
 			}
 		}
 
@@ -205,13 +228,14 @@ class Eventos implements EventHandler<ActionEvent> {
 					+ "en general.");
 			alert.show();
 
-			} else if (opcion.getText().equals("Acerca de")) {
+		} else if (opcion.getText().equals("Acerca de")) {
 			Alert nombres = new Alert(AlertType.INFORMATION);
 			nombres.setTitle("Creadores");
 			nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
-			nombres.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
+			nombres.setGraphic(new ImageView(
+					new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
 			nombres.getDialogPane().setStyle("-fx-font-family: 'Times New Roman'; -fx-background-color: #F5F2BA ;");
-					
+
 			Optional<ButtonType> resulta = nombres.showAndWait();
 			if (!resulta.isPresent()) {
 			} else if (resulta.get() == ButtonType.OK) {
@@ -223,9 +247,9 @@ class Eventos implements EventHandler<ActionEvent> {
 
 		}
 
-		else if (opcion.getText().equals("Salir")) {			
-			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
-			GUI.label.setGraphic( new ImageView(imagen));
+		else if (opcion.getText().equals("Salir")) {
+			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+			GUI.label.setGraphic(new ImageView(imagen));
 			GUI.label.setText("");
 			GUI.ventana.setScene(GUI.escena1);
 		}
@@ -240,17 +264,17 @@ class Inicio implements EventHandler<ActionEvent> {
 		Funcionalidades.titulo.setFont(tipoletraTit);
 		Funcionalidades.titulo.setTextFill(Color.web("#873600"));
 		Funcionalidades.titulo.setTextAlignment(TextAlignment.CENTER);
-		
-		Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+
+		Funcionalidades.descripcion.setText(
+				"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
 		Font tipoletraTex = new Font("Times New Roman", 18);
 		Funcionalidades.descripcion.setFont(tipoletraTex);
 		Funcionalidades.descripcion.setWrapText(true);
 		Funcionalidades.descripcion.setTextAlignment(TextAlignment.CENTER);
-		
+
 		Funcionalidades.principal.getChildren().remove(3);
 		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
 		Funcionalidades.principal.getChildren().addAll(label);
 	}
 }
-
