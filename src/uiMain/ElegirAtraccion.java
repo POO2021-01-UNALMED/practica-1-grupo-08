@@ -154,7 +154,7 @@ public class ElegirAtraccion {
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
 						// Gastos Servicios
 						for (int i = 0; i < opatraccion.size(); i++) {
-							clienteNuevo.getServicio().tipoMenu(1, opatraccion.get(i), clienteNuevo);
+							clienteNuevo.getServicio().tipoAtraccion(opatraccion.get(i), clienteNuevo);
 						}
 						Alert pedido = new Alert(AlertType.INFORMATION);
 						pedido.setTitle("Información");
