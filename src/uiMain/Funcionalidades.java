@@ -157,6 +157,7 @@ class Eventos implements EventHandler<ActionEvent> {
 				Funcionalidades.principal.getChildren().remove(3);
 				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(10, 10, 10, 10));
 			} catch (ExcepcionNoGanancias e4) {
+				System.out.println(ganancias);
 				Alert sinGanancias = new Alert(AlertType.WARNING);
 				sinGanancias.setTitle("Advertencia");
 				sinGanancias.setContentText(e4.getMessage());

@@ -132,6 +132,7 @@ public class ElegirAtraccion {
 					public void handle(ActionEvent e) {
 
 						if (opatraccion.size() == 0) {
+							respuesta.setText("No ha seleccionado ninguna atracción");
 							Alert noselect = new Alert(AlertType.WARNING);
 							noselect.setTitle("Advertencia");
 							noselect.setHeaderText("Por favor selecciona como mínimo una atracción");
@@ -146,14 +147,16 @@ public class ElegirAtraccion {
 						ButtonType si = new ButtonType("Sí", ButtonBar.ButtonData.YES);
 						ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 						confirmacion.getButtonTypes().setAll(si, no);
-						Optional<ButtonType> respuesta = confirmacion.showAndWait();
-						if (respuesta.get().equals(confirmacion.getButtonTypes().get(1))) {
+						Optional<ButtonType> respuest = confirmacion.showAndWait();
+						if (respuest.get().equals(confirmacion.getButtonTypes().get(1))) {
 							// mande al campo de escoger más atracciones
-						} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
+						} else if (respuest.get().equals(confirmacion.getButtonTypes().get(0))) {
 							// Gastos Servicios
 							for (int i = 0; i < opatraccion.size(); i++) {
 								clienteNuevo.getServicio().tipoAtraccion(opatraccion.get(i), clienteNuevo);
 							}
+							opatraccion.clear();
+							
 							Alert pedido = new Alert(AlertType.INFORMATION);
 							pedido.setTitle("Información");
 							pedido.setHeaderText(null);
@@ -191,9 +194,7 @@ public class ElegirAtraccion {
 							respuesta.setText("Montaña rusa seleccionada");
 							opatraccion.add(1);
 						} else {
-
 							respuesta.setText("Quitaste la atracción: Montaña rusa");
-
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 1) {
 									opatraccion.remove(i);
@@ -211,7 +212,6 @@ public class ElegirAtraccion {
 							opatraccion.add(2);
 						} else {
 							respuesta.setText("Quitaste la atracción: Paseo oscuro");
-
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 2) {
 									opatraccion.remove(i);
@@ -228,7 +228,6 @@ public class ElegirAtraccion {
 							opatraccion.add(3);
 						} else {
 							respuesta.setText("Quitaste la atracción: Carritos chocones");
-
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 3) {
 									opatraccion.remove(i);
@@ -245,7 +244,6 @@ public class ElegirAtraccion {
 							opatraccion.add(4);
 						} else {
 							respuesta.setText("Quitaste la atracción: Piscina");
-
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 4) {
 									opatraccion.remove(i);
@@ -262,7 +260,6 @@ public class ElegirAtraccion {
 							opatraccion.add(5);
 						} else {
 							respuesta.setText("Quitaste la atracción: Piscina de pelotas");
-
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 5) {
 									opatraccion.remove(i);
@@ -278,9 +275,8 @@ public class ElegirAtraccion {
 							respuesta.setText("Carrusel seleccionado.");
 							opatraccion.add(6);
 						} else {
-
 							respuesta.setText("Quitaste la atracción: Carrusel");
-
+							
 							for (int i = 0; i < opatraccion.size(); i++) {
 								if (opatraccion.get(i) == 6) {
 									opatraccion.remove(i);

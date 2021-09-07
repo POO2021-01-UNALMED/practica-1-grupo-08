@@ -173,10 +173,12 @@ public class ElegirMenu {
 					if (respuesta.get().equals(confirmacion.getButtonTypes().get(1))) {
 						// mande a escoger platillo
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
+						
 						//Gastos Servicios
 						for(int i = 0; i< opcarta.size();i++) {
 							clienteNuevo.getServicio().tipoMenu(1, opcarta.get(i), clienteNuevo);
 						}
+						opcarta.clear();
 						Alert pedido = new Alert(AlertType.INFORMATION);
 						pedido.setTitle("Información");
 						pedido.setHeaderText(null);
