@@ -64,7 +64,7 @@ public class CancelarReserva {
 				if (cliente == null){
 					return;
 				}
-				
+
 			//Revisar!!!!!!!	
 			if(cliente.isReserva()==false && cliente.getHabitacion().isDisponibilidadHab()==true) {
 				Alert eliminada = new Alert(AlertType.INFORMATION);
@@ -91,7 +91,6 @@ public class CancelarReserva {
 						info.setText("Número de habitación: " + cliente.getHabitacion().getNumhabitacion() + "\n" + "Número de acompañantes: " +cliente.getNumAcompanantes() + "\n" + "Fecha de ingreso: " + i.getFecha_de_ingreso() + "\n" + "Fecha de salida: " + i.getFecha_de_salida());
 						info.setDisable(true);
 						eliminar = new Button("Cancelar reserva");
-						//Button regresar = new Button("Regresar");
 						formCedula.addRow(0, info);
 						formCedula.addRow(1, eliminar);
 						eliminar.setOnAction(new EventHandler<ActionEvent>(){
@@ -127,18 +126,6 @@ public class CancelarReserva {
 									}
 								}
 							});
-							
-							/*regresar.setOnAction(new EventHandler<ActionEvent>(){
-								public void handle(ActionEvent e) {
-									Funcionalidades.titulo.setText("Bienvenido al hotel.");
-									Funcionalidades.descripcion.setText("En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-									Funcionalidades.principal.getChildren().remove(3);
-									Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
-								   	Label label = new Label("", new ImageView(imagen));
-								   	Funcionalidades.principal.getChildren().add(label);
-									Funcionalidades.ventanaF.setScene(Funcionalidades.estandar);
-								}
-							});*/
 							break;
 					}
 				}				

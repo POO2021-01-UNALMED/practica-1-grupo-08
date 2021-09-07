@@ -179,6 +179,7 @@ public class ElegirMenu {
 						}
 						Alert pedido = new Alert(AlertType.INFORMATION);
 						pedido.setTitle("Información");
+						pedido.setHeaderText(null);
 						pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
 						Optional<ButtonType> resultado = pedido.showAndWait();
 						if (resultado.get() == ButtonType.OK) {

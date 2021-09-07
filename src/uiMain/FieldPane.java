@@ -259,6 +259,7 @@ public class FieldPane extends Pane{
 				
 				habauxiliar.setClientes(cliente);
 				cliente.setHabitacion(habauxiliar);
+				habauxiliar.setDisponibilidadHab(false);
 				Alert sinCliente = new Alert(AlertType.INFORMATION);
 				sinCliente.setTitle("Información.");
 				sinCliente.setHeaderText("Reserva asignada con éxito.");

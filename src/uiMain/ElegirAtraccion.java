@@ -21,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import uiMain.ElegirMenu.ElegirM;
 
 public class ElegirAtraccion {
@@ -90,7 +91,7 @@ public class ElegirAtraccion {
 				}
 			} else if (clienteNuevo != null) {
 				infoCed.getChildren().clear();
-				VBox eleccionatr = new VBox();
+				VBox eleccionatr = new VBox(10);
 				Label cabecera;
 				Button confirmar = new Button("Confirmar elección");
 				CheckBox op1;
@@ -105,11 +106,27 @@ public class ElegirAtraccion {
 
 				infoCed.addRow(1, eleccionatr);
 				respuesta = new Label("No ha seleccionado ninguna atracción");
+				respuesta.setWrapText(true);
+				respuesta.setTextAlignment(TextAlignment.CENTER);
 				cabecera = new Label("Seleccione las atracciones que desea:");
 				op1 = new CheckBox();
+				
+				Font tipoletra = new Font("Times New Roman", 18);
+				respuesta.setFont(tipoletra);
+				cabecera.setFont(tipoletra);
+				op1.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op2.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op3.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op4.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op5.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op6.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op7.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
+				op8.setStyle("-fx-font-family: 'Times New Roman' ; -fx-font-size: 18px ;");
 
 				eleccionatr.getChildren().addAll(cabecera, op1, op2, op3, op4, op5, op6, op7, op8, respuesta,
 						confirmar);
+				eleccionatr.setPadding(new Insets(10,10,10,10));
+				eleccionatr.setPrefSize(400,300);
 				ArrayList<Integer> opatraccion = new ArrayList<Integer>();
 				confirmar.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent e) {
@@ -139,7 +156,8 @@ public class ElegirAtraccion {
 							}
 							Alert pedido = new Alert(AlertType.INFORMATION);
 							pedido.setTitle("Información");
-							pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
+							pedido.setHeaderText(null);
+							pedido.setContentText("Entrada a los juegos confirmada ¡Que se divierta!");
 							Optional<ButtonType> resultado = pedido.showAndWait();
 							if (resultado.get() == ButtonType.OK) {
 								// combomenu.valueProperty().set(null);
