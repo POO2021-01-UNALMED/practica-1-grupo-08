@@ -52,7 +52,6 @@ public class FieldPane extends Pane{
 		valor.setTextFill(Color.web("#873600"));
 		valor.setTextAlignment(TextAlignment.CENTER);
 		
-		
 		grid.addRow(0,criterio, valor);
 		
 		for(int i = 0; i<criterios.length; i++) {

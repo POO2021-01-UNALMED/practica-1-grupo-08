@@ -106,14 +106,16 @@ public class TomarHabitacion {
 					} else if (resultado.get().equals(noHabitacion.getButtonTypes().get(0))) {
 						//Formulario Reserva
 						VBox formulario = new VBox(10);
+						VBox.setMargin(formulario, new Insets(20,20,20,20));
 						formulario.setStyle("-fx-background-color:#FCF3CF ;");
-						formulario.setAlignment(Pos.CENTER);
+						formulario.setAlignment(Pos.TOP_CENTER);
+					
 						Label titulo = new Label("Formulario nueva reserva.");
 						Font tipoletraTit = new Font("Times New Roman", 30);
 						titulo.setFont(tipoletraTit);
 						titulo.setTextFill(Color.web("#873600"));
 						titulo.setTextAlignment(TextAlignment.CENTER);
-						
+						VBox.setMargin(titulo, new Insets(10,10,10,10));
 						Label descripcion = new Label("Por favor ingrese la siguiente información para realizar la reserva:");
 						Font tipoletraDes = new Font("Times New Roman", 18);
 						descripcion.setFont(tipoletraDes);
