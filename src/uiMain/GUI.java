@@ -2,6 +2,8 @@ package uiMain;
 import baseDatos.Deserializacion;
 import baseDatos.Serializacion;
 import gestorAplicacion.Funcionamiento.Habitacion;
+import gestorAplicacion.Funcionamiento.Hotel;
+import gestorAplicacion.Personal.Mucama;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,6 +21,7 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -88,8 +91,8 @@ public class GUI extends Application {
 		   	p2.getChildren().add(hojaVida);
 		    p2.setStyle("-fx-background-color: #FCF3CF ;");
 		   	p2.setPrefSize(400,550);
-		   	
-		   	//Grid para las imágenes
+		  
+		  //Grid para las imágenes
 		   	GridPane fotos = new GridPane();
 		   	fotos.setPrefSize(380, 200);
 		   	fotos.setStyle("-fx-background-color:#FCF3CF ;");
@@ -106,7 +109,45 @@ public class GUI extends Application {
 		   	fotos.add(label1, 0, 0);
 		   	fotos.add(label2, 1, 0);
 		   	fotos.add(label3, 0, 1);
-		   	fotos.add(label4, 1, 1);  	
+		   	fotos.add(label4, 1, 1); 
+		   	
+		   	p2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+		   		int cont = 0;	   					
+		   		public void handle(MouseEvent e) {		   					   			
+		   			String[] hv = {"h","                              Hoja de Vida \nNombres y apellidos: Ximena Castañeda Ochoa \nEdad: 19 años \nCorreo: xcastaneda@unal.edu.co \nEstudiante de Estadística en la Universidad Nacional de Colombia cuarto semestre. \nSoy una persona responsable, atenta y de aprendizaje rápido.", 
+		   					"                              Hoja de Vida \nNombres y apellidos: Yojan Andrés Alcaraz Pérez\nEdad: 19 años \nCorreo: yalcaraz@unal.edu.co \nEstudiante de Estadística en la Universidad Nacional de Colombia quinto semestre. \nSoy una persona responsable, respetuosa y dedicada.",
+		   					"                              Hoja de Vida \nNombres y apellidos: Verónica Seguro Varela \nEdad: 21 años \nCorreo: vseguro@unal.edu.co \nEstudiante de Estadística en la Universidad Nacional de Colombia quinto semestre. \nSoy una persona proactiva, tolerante y responsable."};
+		   			for(int i = 0; i<4; i++ ) {
+		   				int rd = (int) (Math.random() * 3+1);	
+		   				
+		   				if(hv[rd] != hojaVida.getText()) {
+		   					hojaVida.setText(hv[rd]);
+		   					hojaVida.setFont(new Font("Times New Roman", 18));
+		   					hojaVida.setTextAlignment(TextAlignment.JUSTIFY);
+		   					hojaVida.setTextFill(Color.web("black"));		   					
+		   					cont = rd;		   								   						
+		   				}
+		   				if (cont == 1) {
+		   					fotos.getChildren().clear();
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/imagen1.jpg"), 187.5, 150, false, false);
+		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/imagen2.jpg"), 187.5, 150, false, false);
+		   				   	Label label2= new Label("", new ImageView(imagen2));   	
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/imagen3.jpg"), 187.5, 150, false, false);
+		   				   	Label label3 = new Label("", new ImageView(imagen3));	
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/imagen4.jpg"), 187.5, 150, false, false);
+		   				   	Label label4 = new Label("", new ImageView(imagen4));
+		   				   	fotos.add(label1, 0, 0);
+		   				   	fotos.add(label2, 1, 0);
+		   				   	fotos.add(label3, 0, 1);
+		   				   	fotos.add(label4, 1, 1);
+		   				}
+		   			}
+		   		}
+		   	});
+		   	
+		   	 	
+		   	
 		   	p2.getChildren().add(fotos);
 		   
 		   	//Panel principal.

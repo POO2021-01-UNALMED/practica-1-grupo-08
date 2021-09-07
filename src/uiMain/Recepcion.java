@@ -120,7 +120,7 @@ public class Recepcion {
 				elegirAtraccion();
 				break;
 			case 5:
-				gananciasNetas();
+				//gananciasNetas();
 				break;
 			case 6:
 				salidaCliente();
@@ -370,10 +370,10 @@ public class Recepcion {
 	 * FUNCIONALIDAD 4: Esta funcionalidad permite mostrar las ganancias totales del
 	 * hotel a través del método "gananciaNeta()" de la clase "Hotel".
 	 */
-	private static void gananciasNetas() {
+	/*private static void gananciasNetas() {
 		System.out.println(
 				"Las ganancias netas del hotel hasta el momento son iguales a: " + Hotel.gananciaNeta() + "\n");
-	}
+	}*/
 
 	/*
 	 * FUNCIONALIDAD 5: La funcionalidad que permite dar salida al cliente del hotel
