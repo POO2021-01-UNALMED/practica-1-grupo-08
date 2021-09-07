@@ -150,27 +150,19 @@ class Eventos implements EventHandler<ActionEvent> {
 				info.setWrapText(true);
 				info.setText("- Ingresos por cuentas finales de clientes: " + total + "\n" + "\n"
 						+ "- Egresos por pago de salarios a empleados: " + Hotel.getAd1().pagarSalario() + "\n" + "\n"
-						+ "- Ganancias netas: " + ganancias);
+						+ "- Ganancias netas: " + Hotel.getGanancias());
 				info.setEditable(false);
 				info.setPrefSize(50, 150);
 				Funcionalidades.principal.getChildren().add(info);
 				Funcionalidades.principal.getChildren().remove(3);
 				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(10, 10, 10, 10));
-			} catch (ExcepcionNoGanancias e4) {
-				System.out.println(ganancias);
+			} catch (ExcepcionNoGanancias e4) {				
 				Alert sinGanancias = new Alert(AlertType.WARNING);
 				sinGanancias.setTitle("Advertencia");
 				sinGanancias.setContentText(e4.getMessage());
 				Optional<ButtonType> result = sinGanancias.showAndWait();
 				if (!result.isPresent()) {
-				} else if (result.get() == ButtonType.OK) {
-					/*GUI.ventana.setScene(Funcionalidades.estandar);
-					Funcionalidades.titulo.setText("Bienvenido al hotel.");
-					Funcionalidades.descripcion.setText(
-							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
-					Label label = new Label("", new ImageView(imagen));
-					Funcionalidades.principal.getChildren().addAll(label);*/
+				} else if (result.get() == ButtonType.OK) {					
 				}
 			}
 
@@ -227,6 +219,7 @@ class Eventos implements EventHandler<ActionEvent> {
 					+ "las horas extras que estos validen, las mucamas encargadas de mantener las habitaciones en orden y disponibles "
 					+ "cuando se requiera  y el recepcionista quien tiene el control de la entrada y salida de los clientes y del hotel "
 					+ "en general.");
+			alert.getDialogPane().setStyle("-fx-font-size: 18 ;-fx-font-family: 'Times New Roman' ; -fx-background-color: #F5F2BA ;");
 			alert.show();
 
 		} else if (opcion.getText().equals("Acerca de")) {
@@ -235,7 +228,7 @@ class Eventos implements EventHandler<ActionEvent> {
 			nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
 			nombres.setGraphic(new ImageView(
 					new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
-			nombres.getDialogPane().setStyle("-fx-font-family: 'Times New Roman'; -fx-background-color: #F5F2BA ;");
+			nombres.getDialogPane().setStyle("-fx-font-size: 18;-fx-font-family: 'Times New Roman',25 ; -fx-background-color: #F5F2BA ;");
 
 			Optional<ButtonType> resulta = nombres.showAndWait();
 			if (!resulta.isPresent()) {

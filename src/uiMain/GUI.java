@@ -60,8 +60,9 @@ public class GUI extends Application {
 		   		   	
 		   	//Panel para imagenes hotel y boton para ventana principal
 		   	BorderPane pimagenes = new BorderPane();
-		   	Button botonprincipal = new Button("Menú principal.");
+		   	Button botonprincipal = new Button("Menú principal");
 		   	botonprincipal.setOnAction(new Eventos());
+
 		   	
 		   	pimagenes.setPrefSize(300, 300);
 		   	//Etiqueta para agregar imagenes
@@ -267,7 +268,7 @@ public class GUI extends Application {
 						label.setGraphic(null);
 						label.setWrapText(true);
 						label.setTextAlignment(TextAlignment.JUSTIFY);
-						Font tipoletra = new Font("Times New Roman", 15);
+						Font tipoletra = new Font("Times New Roman", 18);
 						label.setFont(tipoletra);
 					}
 					}

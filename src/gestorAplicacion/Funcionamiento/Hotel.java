@@ -30,6 +30,7 @@ public abstract class Hotel {
 	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private static Administrador ad1 = new Administrador("Julián", 134344);
+	private static int ganancias;
 
 	
 	//MÉTODOS GET Y SET: permiten acceder y modificar el valor de los atributos. 
@@ -76,9 +77,16 @@ public abstract class Hotel {
 	public static void setCliente(ArrayList<Cliente> listaClientes) {
 		clientes = listaClientes;
 	}
+		
+	public static int getGanancias() {
+		return ganancias;
+	}
 
+	public static void setGanancias(int ganancias) {
+		Hotel.ganancias = ganancias;
+	}
+     
 	//MÉTODOS.
-	
 	/*Asigna una habitación al cliente después de comprobar que hay habitaciones disponibles para el número de personas que
 	 *necesita; establece la relación habitación-cliente por medio de los atributos de referencia en cada instancia y cambia
 	 *la disponiblidad de la habitación a "false" para que no sea asignada a otro cliente a no ser que sea por medio de una reserva.
@@ -163,7 +171,7 @@ public abstract class Hotel {
 		cliente.getHabitacion().precioHabitacion();
 		int preciofin = cliente.getHabitacion().getPrecio();
 		int gastoser = cliente.getServicio().getGastosServicios();
-		cliente.setCuentaFinal(gastoser + preciofin);	
+		cliente.setCuentaFinal(cliente.getCuentaFinal() + gastoser + preciofin);	
 	}
 	
 	/*Calcula la ganancia neta del hotel,sumando el dinero recibido por la cuenta Final de cada cliente alojado y restando 
@@ -179,6 +187,7 @@ public abstract class Hotel {
 		if(total-salario <= 0) {
 			throw new ExcepcionNoGanancias();
 		}
+		ganancias = total-salario;
 		return total - salario;
 		
 	}
