@@ -69,6 +69,30 @@ public class GUI extends Application {
 		   	label = new Label("", new ImageView(imagen));
 		   //BorderPane.setAlignment(label, Pos.TOP_CENTER);
 		   	pimagenes.setTop(label);
+		   	pimagenes.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		   		int cont = 0;
+		   		public void handle(MouseEvent e) {
+				   	Image h1 = new Image(getClass().getResourceAsStream("./Imagenes/hotel1.jpeg"),350,250,false,false);
+				   	Label hotel1 = new Label("", new ImageView(h1));
+				   	Image h2 = new Image(getClass().getResourceAsStream("./Imagenes/hotel2.jpeg"),350,250,false,false);
+				   	Label hotel2 = new Label("", new ImageView(h2));
+				   	Image h3 = new Image(getClass().getResourceAsStream("./Imagenes/hotel3.jpeg"),350,250,false,false);
+				   	Label hotel3 = new Label("", new ImageView(h3));
+				   	Image h4 = new Image(getClass().getResourceAsStream("./Imagenes/hotel4.jpeg"),350,250,false,false);
+				   	Label hotel4 = new Label("", new ImageView(h4));
+				   	Image h5 = new Image(getClass().getResourceAsStream("./Imagenes/hotel5.jpeg"),350,250,false,false);
+				   	Label hotel5 = new Label("", new ImageView(h5));
+				   	
+		   			Image[] hv = {imagen, h1, h2, h3, h4, h5};
+		   			for(int i = 0; i<4; i++ ) {
+		   				int rd = (int) (Math.random() * 5+1);	
+		   				
+		   				if(!label.getGraphic().equals(hv[rd])) {
+		   					label.setGraphic(new ImageView(hv[rd]));
+		   				}
+		   		}
+		   			}
+		   	});
 		   	p1.setStyle("-fx-background-color: #FCF3CF ;");
 		   	pimagenes.setStyle("-fx-background-color:#FCF3CF ;");	   		   	
 		   	pimagenes.setBottom(botonprincipal);
@@ -129,18 +153,51 @@ public class GUI extends Application {
 		   				}
 		   				if (cont == 1) {
 		   					fotos.getChildren().clear();
-		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/imagen1.jpg"), 187.5, 150, false, false);
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena1.jpeg"), 187.5, 150, false, false);
 		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
-		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/imagen2.jpg"), 187.5, 150, false, false);
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena2.jpeg"), 187.5, 150, false, false);
 		   				   	Label label2= new Label("", new ImageView(imagen2));   	
-		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/imagen3.jpg"), 187.5, 150, false, false);
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Ximena4.jpeg"), 187.5, 150, false, false);
 		   				   	Label label3 = new Label("", new ImageView(imagen3));	
-		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/imagen4.jpg"), 187.5, 150, false, false);
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena3.jpeg"), 187.5, 150, false, false);
 		   				   	Label label4 = new Label("", new ImageView(imagen4));
 		   				   	fotos.add(label1, 0, 0);
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
+		   				    p2.getChildren().add(fotos);
+		   				}
+		   				else if(cont == 2) {
+		   					fotos.getChildren().clear();
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan1.jpeg"), 187.5, 150, false, false);
+		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan2.jpeg"), 187.5, 150, false, false);
+		   				   	Label label2= new Label("", new ImageView(imagen2));   	
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Yojan4.jpeg"), 187.5, 150, false, false);
+		   				   	Label label3 = new Label("", new ImageView(imagen3));	
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan3.jpeg"), 187.5, 150, false, false);
+		   				   	Label label4 = new Label("", new ImageView(imagen4));
+		   				   	fotos.add(label1, 0, 0);
+		   				   	fotos.add(label2, 1, 0);
+		   				   	fotos.add(label3, 0, 1);
+		   				   	fotos.add(label4, 1, 1);
+		   				    p2.getChildren().add(fotos);
+		   				}
+		   				else if(cont == 3) {
+		   					fotos.getChildren().clear();
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica1.jpeg"), 187.5, 150, false, false);
+		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica2.jpeg"), 187.5, 150, false, false);
+		   				   	Label label2= new Label("", new ImageView(imagen2));   	
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Veronica4.jpeg"), 187.5, 150, false, false);
+		   				   	Label label3 = new Label("", new ImageView(imagen3));	
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica3.jpeg"), 187.5, 150, false, false);
+		   				   	Label label4 = new Label("", new ImageView(imagen4));
+		   				   	fotos.add(label1, 0, 0);
+		   				   	fotos.add(label2, 1, 0);
+		   				   	fotos.add(label3, 0, 1);
+		   				   	fotos.add(label4, 1, 1);
+		   				    p2.getChildren().add(fotos);
 		   				}
 		   			}
 		   		}
