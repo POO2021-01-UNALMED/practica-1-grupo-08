@@ -11,6 +11,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
@@ -52,9 +54,10 @@ public class CancelarReserva {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				sinCliente.setContentText(e.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					campo.clear();
 				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
@@ -65,21 +68,6 @@ public class CancelarReserva {
 					return;
 				}
 
-			//Revisar!!!!!!!	
-			/*if(cliente.isReserva()==false && cliente.getHabitacion().isDisponibilidadHab()==true) {
-				Alert eliminada = new Alert(AlertType.INFORMATION);
-				eliminada.setTitle("Información");
-				eliminada.setHeaderText("Reserva cancelada con éxito.");
-				eliminada.setContentText("Esperamos que pronto disfrutes de nuestros servicios.");
-				Optional<ButtonType> result = eliminada.showAndWait();
-				if (result.get() == ButtonType.OK) {
-					Funcionalidades.titulo.setText(("Cancelar una reserva."));
-					Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
-					campo.clear();
-					formCedula.getChildren().removeAll(info,eliminar);
-					formCedula.getChildren().addAll(criterio,campo,enviar);
-				}
-			}	*/
 			if (cliente.isReserva() == true) {
 				for (Reserva i : Hotel.getReservas()) {
 					if (i.getCliente() == cliente) {
@@ -103,20 +91,34 @@ public class CancelarReserva {
 								ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 								confirm.getButtonTypes().setAll(si, no);
 								Optional<ButtonType> resultado = confirm.showAndWait();
-									if (resultado.get().equals(confirm.getButtonTypes().get(1))) {
+								if (!resultado.isPresent()) {
+									return;
+								}
+								else if (resultado.get().equals(confirm.getButtonTypes().get(1))) {
 										Funcionalidades.titulo.setText(("Cancelar una reserva."));
 										Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
 										formCedula.getChildren().removeAll(info,eliminar);
 										campo.clear();
 										formCedula.getChildren().addAll(criterio,campo,enviar);
-									}else if(resultado.get().equals(confirm.getButtonTypes().get(0))) {
+								}else if(resultado.get().equals(confirm.getButtonTypes().get(0))) {
 										i.cancelar_reserva(cliente);
 										Alert eliminada = new Alert(AlertType.INFORMATION);
 										eliminada.setTitle("Información");
 										eliminada.setHeaderText("Reserva cancelada con éxito.");
 										eliminada.setContentText("Esperamos que pronto disfrutes de nuestros servicios.");
 										Optional<ButtonType> result = eliminada.showAndWait();
-										if (result.get() == ButtonType.OK) {
+										if (!result.isPresent()) {
+											Funcionalidades.principal.getChildren().remove(3);
+											GUI.ventana.setScene(Funcionalidades.estandar);
+											Funcionalidades.titulo.setText("Bienvenido al hotel.");
+											Funcionalidades.descripcion.setText(
+													"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+											Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+													false);
+											Label label = new Label("", new ImageView(imagen));
+											Funcionalidades.principal.getChildren().addAll(label);
+										}
+										else if (result.get() == ButtonType.OK) {
 											Funcionalidades.titulo.setText(("Cancelar una reserva."));
 											Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
 											campo.clear();
@@ -136,12 +138,16 @@ public class CancelarReserva {
 				noReserva.setHeaderText("Reserva no encontrada.");
 				noReserva.setContentText("Usted no tiene reservas para cancelar.");
 				Optional<ButtonType> result = noReserva.showAndWait();
-					if (result.get() == ButtonType.OK) {
+				if (!result.isPresent()) {
+					campo.clear();
+				}
+				else if (result.get() == ButtonType.OK) {
 						campo.clear();
 					}
 				}
 		}
 	}
 }
+
 
 

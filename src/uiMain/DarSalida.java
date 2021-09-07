@@ -60,6 +60,7 @@ public class DarSalida {
 				sinCliente.setContentText(e.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					campo.clear();
 				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
@@ -79,7 +80,10 @@ public class DarSalida {
 				noregistrado.setHeaderText("Usted no se encuentra en el hotel y no tiene deudas pendientes.");
 				// noregistrado.setContentText("");
 				Optional<ButtonType> resulta = noregistrado.showAndWait();
-				if (resulta.get() == ButtonType.OK) {
+				if (!resulta.isPresent()) {
+					campo.clear();
+				}
+				else if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
 				return;
@@ -92,6 +96,9 @@ public class DarSalida {
 				conreserva.setContentText(
 						"Si desea cancelarla, diríjase al menú y seleccione la opción 'Cancelar Reserva'");
 				Optional<ButtonType> resulta = conreserva.showAndWait();
+				if (!resulta.isPresent()) {
+					campo.clear();
+				}
 				if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
@@ -123,20 +130,18 @@ public class DarSalida {
 			Alert hacerReserva = new Alert(AlertType.CONFIRMATION);
 			hacerReserva.setTitle("Confirmación.");
 			hacerReserva.setHeaderText("¿Desea hacer una nuerva reserva?");
-			// noHabitacion.setContentText("¿Desea reservar una habitación?");
 			ButtonType si = new ButtonType("Sí", ButtonBar.ButtonData.YES);
 			ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 			hacerReserva.getButtonTypes().setAll(si, no);
 			Optional<ButtonType> resultado = hacerReserva.showAndWait();
-
-			if (resultado.get().equals(hacerReserva.getButtonTypes().get(1))) {
+			if (!resultado.isPresent()) {
+				campo.clear();
+				return;
+			}
+			else if (resultado.get().equals(hacerReserva.getButtonTypes().get(1))) {
 				campo.clear();
 				Alert adios = new Alert(AlertType.INFORMATION);
-				// adios.setGraphic(new ImageView(new
-				// Image(getClass().getResourceAsStream("./Imagenes/triste.png"),50,50,false,false)));
 				adios.setHeaderText("¡Gracias por visitarnos, vuelva pronto!");
-				// adios.setContentText("¡Gracias por elegirnos, esperamos tener disponibilidad
-				// la próxima ocasión!");
 				adios.show();
 			} else if (resultado.get().equals(hacerReserva.getButtonTypes().get(0))) {
 				// Formulario Reserva

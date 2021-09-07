@@ -48,9 +48,10 @@ public class TomarHabitacion {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				sinCliente.setContentText(e.getMessage() );
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					campo.clear();
 				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
@@ -67,8 +68,8 @@ public class TomarHabitacion {
 				siHabitacion.setHeaderText("Usted ya tiene una habitación asignada.");
 				siHabitacion.setContentText("Ya puedes acceder a nuestros servicios,dirígete a la barra superior.");
 				Optional<ButtonType> resulta = siHabitacion.showAndWait();
-				if (!resulta.isPresent()) {}
-				if (resulta.get() == ButtonType.OK) {
+				if (!resulta.isPresent()) {campo.clear();}
+				else if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 				}
 

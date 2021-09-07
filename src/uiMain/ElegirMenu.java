@@ -65,9 +65,10 @@ public class ElegirMenu {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText(e.getMessage() +" cliente no registrado en la base de datos");
+				sinCliente.setContentText(e.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					campo.clear();
 				}
 				else if (result.get() == ButtonType.OK) {
 					campo.clear();
@@ -83,18 +84,17 @@ public class ElegirMenu {
 				noHospedado.setTitle("Información");
 				noHospedado.setHeaderText("Debes estar hospedado en el hotel para acceder a estos servicios.");
 				noHospedado.setContentText(
-						"Si desea acceder a nuestros servicios le invitamos a dirigirse al menú y tomar una habitación.");//// ¿AQUÍ
-																															//// CÓMO
-																															//// PROCEDE?
+						"Si desea acceder a nuestros servicios le invitamos a dirigirse al menú y tomar una habitación.");																																																								
 				Optional<ButtonType> resulta = noHospedado.showAndWait();
-				if (resulta.get() == ButtonType.OK) {
+				if (!resulta.isPresent()) {
+					return;
+				}
+				else if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 					return;
 				}
 
-				if (!resulta.isPresent()) {
-					return;
-				}
+				
 			} else if (clienteNuevo != null) {
 				infoCed.getChildren().clear();
 
@@ -170,6 +170,9 @@ public class ElegirMenu {
 					ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 					confirmacion.getButtonTypes().setAll(si, no);
 					Optional<ButtonType> respuesta = confirmacion.showAndWait();
+					if (!respuesta.isPresent()) {
+						return;
+					}
 					if (respuesta.get().equals(confirmacion.getButtonTypes().get(1))) {
 						// mande a escoger platillo
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
@@ -184,6 +187,9 @@ public class ElegirMenu {
 						pedido.setHeaderText(null);
 						pedido.setContentText("Disfrute su plato. ¡Buen provecho!");
 						Optional<ButtonType> resultado = pedido.showAndWait();
+						if (!resultado.isPresent()) {
+							return;
+						}
 						if (resultado.get() == ButtonType.OK) {
 							// combomenu.valueProperty().set(null);
 							// combomenu.getSelectionModel().clearSelection();

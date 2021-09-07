@@ -27,12 +27,10 @@ import javafx.stage.StageStyle;
 public class Funcionalidades {
 	public static VBox principal = new VBox(20);
 	public MenuBar barramenu = new MenuBar();;
-	// public static Stage ventanaF;
 	public static Label titulo;
 	public static Label descripcion;
 	public static Scene estandar = new Scene(principal, 800, 550);
-	// principal=new VBox(); // Contendrá todas zonas de la ventana de
-	// funcionalidades.
+
 
 	public void crearScene() {
 
@@ -182,8 +180,16 @@ class Eventos implements EventHandler<ActionEvent> {
 				nulo.setHeaderText("En el momento no se encuentran clientes hospedados en el hotel.");
 				Optional<ButtonType> resulta = nulo.showAndWait();
 				if (!resulta.isPresent()) {
+					GUI.ventana.setScene(Funcionalidades.estandar);
+					Funcionalidades.titulo.setText("Bienvenido al hotel.");
+					Funcionalidades.descripcion.setText(
+							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
+					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+							false);
+					Label label = new Label("", new ImageView(imagen));
+					Funcionalidades.principal.getChildren().addAll(label);
 				}
-				if (resulta.get() == ButtonType.OK) {
+				else if (resulta.get() == ButtonType.OK) {
 					GUI.ventana.setScene(Funcionalidades.estandar);
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(

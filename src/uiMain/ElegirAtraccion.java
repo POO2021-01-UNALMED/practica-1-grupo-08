@@ -60,9 +60,10 @@ public class ElegirAtraccion {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
-				sinCliente.setContentText(e.getMessage() + " cliente no registrado en la base de datos");
+				sinCliente.setContentText(e.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					campo.clear();
 				} else if (result.get() == ButtonType.OK) {
 					campo.clear();
 				}
@@ -81,14 +82,15 @@ public class ElegirAtraccion {
 																															//// CÓMO
 																															//// PROCEDE?
 				Optional<ButtonType> resulta = noHospedado.showAndWait();
-				if (resulta.get() == ButtonType.OK) {
+				if (!resulta.isPresent()) {
+					return;
+				}
+				else if (resulta.get() == ButtonType.OK) {
 					campo.clear();
 					return;
 				}
 
-				if (!resulta.isPresent()) {
-					return;
-				}
+				
 			} else if (clienteNuevo != null) {
 				infoCed.getChildren().clear();
 				VBox eleccionatr = new VBox(10);
@@ -148,7 +150,9 @@ public class ElegirAtraccion {
 						ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
 						confirmacion.getButtonTypes().setAll(si, no);
 						Optional<ButtonType> respuest = confirmacion.showAndWait();
-						if (respuest.get().equals(confirmacion.getButtonTypes().get(1))) {
+						if (!respuest.isPresent()) {
+						}
+						else if (respuest.get().equals(confirmacion.getButtonTypes().get(1))) {
 							// mande al campo de escoger más atracciones
 						} else if (respuest.get().equals(confirmacion.getButtonTypes().get(0))) {
 							// Gastos Servicios
@@ -162,6 +166,9 @@ public class ElegirAtraccion {
 							pedido.setHeaderText(null);
 							pedido.setContentText("Entrada a los juegos confirmada ¡Que se divierta!");
 							Optional<ButtonType> resultado = pedido.showAndWait();
+							if (!resultado.isPresent()) {
+								return;
+							}
 							if (resultado.get() == ButtonType.OK) {
 								// combomenu.valueProperty().set(null);
 								// combomenu.getSelectionModel().clearSelection();

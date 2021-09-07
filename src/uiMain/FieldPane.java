@@ -41,10 +41,7 @@ public class FieldPane extends Pane{
 		this.tituloValores = tituloValores;
 		this.valores = valores;
 		this.habilitado = habilitado;
-		
-		
-		
-	
+					
 		Label criterio = new Label(tituloCriterios);
 		Label valor = new Label (tituloValores); 
 		Font tipoletraTit = new Font("Times New Roman", 18);
@@ -79,7 +76,7 @@ public class FieldPane extends Pane{
 		grid.addRow(grid.getRowCount()+1, aceptar, borrar, regresar);
 		
 		grid.setPadding(new Insets(15,15,15,15) );
-		grid.setHgap(10);
+		grid.setHgap(15);
 		grid.setVgap(10);
 		grid.setAlignment(Pos.CENTER);
 	}
@@ -167,6 +164,9 @@ public class FieldPane extends Pane{
 				sinCliente.setContentText(e3.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
 					}
 				else if (result.get() == ButtonType.OK) {
 					limpiar.get(0).clear();
@@ -187,6 +187,9 @@ public class FieldPane extends Pane{
 				sinCliente.setContentText(e1.getMessage());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
 					}
 				else if (result.get() == ButtonType.OK) {
 					limpiar.get(0).clear();
@@ -200,6 +203,9 @@ public class FieldPane extends Pane{
 				sinCliente.setHeaderText("Ingrese las fechas en formato yyyy-mm-dd");
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
 					}
 				else if (result.get() == ButtonType.OK) {
 					limpiar.get(0).clear();
@@ -246,6 +252,9 @@ public class FieldPane extends Pane{
 				sinCliente.setContentText("Se le ha asignado la habitación " + cliente.getHabitacion().getNumhabitacion());
 				Optional<ButtonType> result = sinCliente.showAndWait();
 				if (!result.isPresent()) {
+					limpiar.get(0).clear();
+					limpiar.get(1).clear();
+					limpiar.get(2).clear();
 				}
 				else if (result.get() == ButtonType.OK) {
 					limpiar.get(0).clear();
