@@ -66,7 +66,7 @@ public class CancelarReserva {
 				}
 
 			//Revisar!!!!!!!	
-			if(cliente.isReserva()==false && cliente.getHabitacion().isDisponibilidadHab()==true) {
+			/*if(cliente.isReserva()==false && cliente.getHabitacion().isDisponibilidadHab()==true) {
 				Alert eliminada = new Alert(AlertType.INFORMATION);
 				eliminada.setTitle("Información");
 				eliminada.setHeaderText("Reserva cancelada con éxito.");
@@ -79,7 +79,7 @@ public class CancelarReserva {
 					formCedula.getChildren().removeAll(info,eliminar);
 					formCedula.getChildren().addAll(criterio,campo,enviar);
 				}
-			}	
+			}	*/
 			if (cliente.isReserva() == true) {
 				for (Reserva i : Hotel.getReservas()) {
 					if (i.getCliente() == cliente) {
@@ -89,7 +89,7 @@ public class CancelarReserva {
 						info = new TextArea();
 						info.setWrapText(true);
 						info.setText("Número de habitación: " + cliente.getHabitacion().getNumhabitacion() + "\n" + "Número de acompañantes: " +cliente.getNumAcompanantes() + "\n" + "Fecha de ingreso: " + i.getFecha_de_ingreso() + "\n" + "Fecha de salida: " + i.getFecha_de_salida());
-						info.setDisable(true);
+						info.setEditable(false);
 						eliminar = new Button("Cancelar reserva");
 						formCedula.addRow(0, info);
 						formCedula.addRow(1, eliminar);

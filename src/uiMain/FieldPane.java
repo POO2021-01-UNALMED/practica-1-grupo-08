@@ -234,9 +234,12 @@ public class FieldPane extends Pane{
 				}
 			}
 			
-			if(habauxiliar.getClientes().size() == 0) {
-				System.out.println(cliente.isReserva());
-				Hotel.asignarHabitacion(cliente);
+			if(habauxiliar.getClientes().size() == 0) {				
+				Reserva reserva1 = new Reserva(cliente.getFecha_entrada().toString(), cliente.getFecha_salida().toString(), cliente);
+				habauxiliar.setClientes(cliente);
+				cliente.setHabitacion(habauxiliar);
+				habauxiliar.setDisponibilidadHab(true);
+				//Hotel.asignarHabitacion(cliente);
 				Alert sinCliente = new Alert(AlertType.INFORMATION);
 				sinCliente.setTitle("Información.");
 				sinCliente.setHeaderText("Reserva asignada con éxito.");
@@ -249,11 +252,12 @@ public class FieldPane extends Pane{
 					limpiar.get(1).clear();
 					limpiar.get(2).clear();
 				}
-				cliente.setReserva(false);
+				
+				
 				return;
 			}
 
-			if (cliente.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
+			else if (cliente.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
 				
 				Reserva reserva1 = new Reserva(cliente.getFecha_entrada().toString(), cliente.getFecha_salida().toString(), cliente);
 				
