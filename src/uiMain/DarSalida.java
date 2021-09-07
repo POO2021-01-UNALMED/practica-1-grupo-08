@@ -157,7 +157,7 @@ public class DarSalida {
 				descripcion.setTextAlignment(TextAlignment.CENTER);
 				
 
-				String[] criterios = { "Cédula", "Nombre", "Fecha de entrada", "Fecha de salida",
+				String[] criterios = { "Cédula", "Nombre", "Fecha de entrada en formato yyyy-mm-dd", "Fecha de salida en formato yyyy-mm-dd",
 						"Número de acompañantes" };
 				String[] valores = { String.valueOf(cliente.getId()), cliente.getNombre(), null, null, null };
 				Boolean[] habilitados = { false, false, true, true, true };

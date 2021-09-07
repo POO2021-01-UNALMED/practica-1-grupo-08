@@ -118,7 +118,7 @@ public class TomarHabitacion {
 						descripcion.setFont(tipoletraDes);
 						descripcion.setTextAlignment(TextAlignment.CENTER);
 						
-						String[] criterios = {"Cédula","Nombre","Fecha de entrada","Fecha de salida","Número de acompañantes"};
+						String[] criterios = {"Cédula","Nombre","Fecha de entrada en formato yyyy-mm-dd","Fecha de salida en formato yyyy-mm-dd","Número de acompañantes"};
 						String[] valores = {String.valueOf(clienteNuevo.getId()),clienteNuevo.getNombre(),null,null,null};
 						Boolean[] habilitados = {false,false,true,true,true};
 						FieldPane campos = new FieldPane("Criterio",criterios,"Valor",valores, habilitados );

@@ -65,6 +65,21 @@ public class CancelarReserva {
 					return;
 				}
 				
+			//Revisar!!!!!!!	
+			if(cliente.isReserva()==false && cliente.getHabitacion().isDisponibilidadHab()==true) {
+				Alert eliminada = new Alert(AlertType.INFORMATION);
+				eliminada.setTitle("Información");
+				eliminada.setHeaderText("Reserva cancelada con éxito.");
+				eliminada.setContentText("Esperamos que pronto disfrutes de nuestros servicios.");
+				Optional<ButtonType> result = eliminada.showAndWait();
+				if (result.get() == ButtonType.OK) {
+					Funcionalidades.titulo.setText(("Cancelar una reserva."));
+					Funcionalidades.descripcion.setText("Para cancelar su reserva por favor ingrese su número de cédula.");
+					campo.clear();
+					formCedula.getChildren().removeAll(info,eliminar);
+					formCedula.getChildren().addAll(criterio,campo,enviar);
+				}
+			}	
 			if (cliente.isReserva() == true) {
 				for (Reserva i : Hotel.getReservas()) {
 					if (i.getCliente() == cliente) {

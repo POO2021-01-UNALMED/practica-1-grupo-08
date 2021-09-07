@@ -152,7 +152,7 @@ public class FieldPane extends Pane{
 	// Control de fechas. Una superior a otra.
 	class oyenteConfirmar implements EventHandler<ActionEvent>{
 		
-		public void handle(ActionEvent e){
+		public void handle(ActionEvent e){						
 			try {
 				nulos();
 			}catch(ExcepcionNulos e3) {
@@ -216,6 +216,10 @@ public class FieldPane extends Pane{
 					cliente = i;
 				}
 			}
+			cliente.setNumAcompanantes((int) Integer.parseInt(limpiar.get(2).getText()));
+			cliente.setFecha_entrada(limpiar.get(0).getText());
+			cliente.setFecha_salida(limpiar.get(1).getText());
+			
 			for (Habitacion i : Hotel.getHabitaciones()) {
 				int conta = 0;
 				if (i.getTipoCapacidad() == cliente.getNumAcompanantes() + 1) {
@@ -231,6 +235,7 @@ public class FieldPane extends Pane{
 			}
 			
 			if(habauxiliar.getClientes().size() == 0) {
+				System.out.println(cliente.isReserva());
 				Hotel.asignarHabitacion(cliente);
 				Alert sinCliente = new Alert(AlertType.INFORMATION);
 				sinCliente.setTitle("Información.");
@@ -249,7 +254,9 @@ public class FieldPane extends Pane{
 			}
 
 			if (cliente.getFecha_entrada().isAfter(habauxiliar.getClientes().get(habauxiliar.getClientes().size()-1).getFecha_salida())) {
+				
 				Reserva reserva1 = new Reserva(cliente.getFecha_entrada().toString(), cliente.getFecha_salida().toString(), cliente);
+				
 				habauxiliar.setClientes(cliente);
 				cliente.setHabitacion(habauxiliar);
 				Alert sinCliente = new Alert(AlertType.INFORMATION);
