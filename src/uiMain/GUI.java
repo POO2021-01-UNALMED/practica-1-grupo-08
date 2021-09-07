@@ -61,6 +61,8 @@ public class GUI extends Application {
 		   	//Panel para imagenes hotel y boton para ventana principal
 		   	BorderPane pimagenes = new BorderPane();
 		   	Button botonprincipal = new Button("Menú principal");
+
+		   	botonprincipal.setStyle("-fx-font-size: 16;-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 5;" );
 		   	botonprincipal.setOnAction(new Eventos());
 
 		   	
@@ -273,7 +275,7 @@ public class GUI extends Application {
 					}
 					}
 				else if(control instanceof Button) {
-					if(((Button) control).getText().equals("Menú principal.")) {
+					if(((Button) control).getText().equals("Menú principal")) {
 							GUI.ventana.setScene(escenaFun);
 						}
 					}
