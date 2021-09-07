@@ -81,9 +81,15 @@ public class GUI extends Application {
 		   			for(int i = 0; i<4; i++ ) {
 		   				int rd = (int) (Math.random() * 5+1);	
 		   				
+		   				if(label.getGraphic() == null) {
+		   				label.setText("");
+		   				label.setGraphic(new ImageView(imagen));
+		   				}
+		   				
 		   				if(!label.getGraphic().equals(hv[rd])) {
 		   					label.setGraphic(new ImageView(hv[rd]));
 		   				}
+		   				
 		   		}
 		   			}
 		   	});
@@ -248,6 +254,7 @@ public class GUI extends Application {
 						Platform.exit();
 						}
 					else if(((MenuItem) control).getText().equals("Descripción")) {
+						label.setGraphic(null);
 						label.setText("La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
 					+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades, "
 					+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
