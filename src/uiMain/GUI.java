@@ -78,7 +78,7 @@ public class GUI extends Application {
 				   	Label hotel2 = new Label("", new ImageView(h2));
 				   	Image h3 = new Image(getClass().getResourceAsStream("./Imagenes/hotel3.jpeg"),350,250,false,false);
 				   	Label hotel3 = new Label("", new ImageView(h3));
-				   	Image h4 = new Image(getClass().getResourceAsStream("./Imagenes/hotel4.jpeg"),350,250,false,false);
+				   	Image h4 = new Image(getClass().getResourceAsStream("./Imagenes/hotel4.jpg"),350,250,false,false);
 				   	Label hotel4 = new Label("", new ImageView(h4));
 				   	Image h5 = new Image(getClass().getResourceAsStream("./Imagenes/hotel5.jpeg"),350,250,false,false);
 				   	Label hotel5 = new Label("", new ImageView(h5));
@@ -134,6 +134,7 @@ public class GUI extends Application {
 		   	fotos.add(label2, 1, 0);
 		   	fotos.add(label3, 0, 1);
 		   	fotos.add(label4, 1, 1); 
+		   	p2.getChildren().add(fotos);
 		   	
 		   	p2.setOnMouseClicked(new EventHandler<MouseEvent>(){
 		   		int cont = 0;	   					
@@ -165,7 +166,7 @@ public class GUI extends Application {
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
-		   				    p2.getChildren().add(fotos);
+		   				    //p2.getChildren().add(fotos);
 		   				}
 		   				else if(cont == 2) {
 		   					fotos.getChildren().clear();
@@ -181,7 +182,7 @@ public class GUI extends Application {
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
-		   				    p2.getChildren().add(fotos);
+		   				   // p2.getChildren().add(fotos);
 		   				}
 		   				else if(cont == 3) {
 		   					fotos.getChildren().clear();
@@ -197,7 +198,7 @@ public class GUI extends Application {
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
-		   				    p2.getChildren().add(fotos);
+		   				   // p2.getChildren().add(fotos);
 		   				}
 		   			}
 		   		}
@@ -205,7 +206,7 @@ public class GUI extends Application {
 		   	
 		   	 	
 		   	
-		   	p2.getChildren().add(fotos);
+		   	
 		   
 		   	//Panel principal.
 		   	BorderPane principal = new BorderPane();
