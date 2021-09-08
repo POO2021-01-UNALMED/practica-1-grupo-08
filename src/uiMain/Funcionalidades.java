@@ -92,7 +92,7 @@ public class Funcionalidades {
 		descripcion.setWrapText(true);
 		descripcion.setTextAlignment(TextAlignment.CENTER);
 
-		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
+		Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
 		principal.getChildren().addAll(barramenu, titulo, descripcion, label);
 		principal.setStyle("-fx-background-color:#FCF3CF ;");
@@ -200,7 +200,7 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(
 							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+					Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 350, 250, false,
 							false);
 					Label label = new Label("", new ImageView(imagen));
 					Funcionalidades.principal.getChildren().addAll(label);
@@ -210,7 +210,7 @@ class Eventos implements EventHandler<ActionEvent> {
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(
 							"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-					Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+					Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 350, 250, false,
 							false);
 					Label label = new Label("", new ImageView(imagen));
 					Funcionalidades.principal.getChildren().addAll(label);
@@ -239,7 +239,7 @@ class Eventos implements EventHandler<ActionEvent> {
 			nombres.setTitle("Creadores");
 			nombres.setHeaderText("Ximena Castañeda Ochoa \nYojan Andrés Alcaráz Pérez \nVerónica Seguro Varela");
 			nombres.setGraphic(new ImageView(
-					new Image(getClass().getResourceAsStream("./Imagenes/equipo.png"), 50, 50, false, false)));
+					new Image(getClass().getResourceAsStream("equipo.png"), 50, 50, false, false)));
 			nombres.getDialogPane().setStyle("-fx-font-size: 18;-fx-font-family: 'Times New Roman',25 ; -fx-background-color: #F5F2BA ;");
 
 			Optional<ButtonType> resulta = nombres.showAndWait();
@@ -254,7 +254,7 @@ class Eventos implements EventHandler<ActionEvent> {
 		}
 
 		else if (opcion.getText().equals("Salir")) {
-			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false, false);
+			Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 350, 250, false, false);
 			GUI.label.setGraphic(new ImageView(imagen));
 			GUI.label.setText("");
 			GUI.ventana.setScene(GUI.escena1);
@@ -279,7 +279,7 @@ class Inicio implements EventHandler<ActionEvent> {
 		Funcionalidades.descripcion.setTextAlignment(TextAlignment.CENTER);
 
 		Funcionalidades.principal.getChildren().remove(3);
-		Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
+		Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 450, 350, false, false);
 		Label label = new Label("", new ImageView(imagen));
 		Funcionalidades.principal.getChildren().addAll(label);
 	}

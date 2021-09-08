@@ -114,7 +114,7 @@ public class CancelarReserva {
 											Funcionalidades.titulo.setText("Bienvenido al hotel.");
 											Funcionalidades.descripcion.setText(
 													"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-											Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 350, 250, false,
+											Image imagen = new Image(getClass().getResourceAsStream("images.jpg"), 350, 250, false,
 													false);
 											Label label = new Label("", new ImageView(imagen));
 											Funcionalidades.principal.getChildren().addAll(label);

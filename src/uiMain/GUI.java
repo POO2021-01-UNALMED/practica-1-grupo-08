@@ -77,17 +77,17 @@ public class GUI extends Application {
 		   	
 		   	pimagenes.setPrefSize(300, 300);
 		   	//Etiqueta para agregar imagenes
-		   	Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
+		   	Image imagen = new Image(getClass().getResourceAsStream("images.jpg"),350,250,false,false);
 		   	label = new Label("", new ImageView(imagen));
 		   	pimagenes.setTop(label);
 		   	pimagenes.setOnMouseEntered(new EventHandler<MouseEvent>() {
 		   		int cont = 0;
 		   		public void handle(MouseEvent e) {
-				   	Image h1 = new Image(getClass().getResourceAsStream("./Imagenes/hotel1.jpeg"),350,250,false,false);
-				   	Image h2 = new Image(getClass().getResourceAsStream("./Imagenes/hotel2.jpeg"),350,250,false,false);
-				   	Image h3 = new Image(getClass().getResourceAsStream("./Imagenes/hotel3.jpeg"),350,250,false,false);
-				   	Image h4 = new Image(getClass().getResourceAsStream("./Imagenes/hotel4.jpg"),350,250,false,false);
-				   	Image h5 = new Image(getClass().getResourceAsStream("./Imagenes/hotel5.jpeg"),350,250,false,false);				   	
+				   	Image h1 = new Image(getClass().getResourceAsStream("hotel1.jpeg"),350,250,false,false);
+				   	Image h2 = new Image(getClass().getResourceAsStream("hotel2.jpeg"),350,250,false,false);
+				   	Image h3 = new Image(getClass().getResourceAsStream("hotel3.jpeg"),350,250,false,false);
+				   	Image h4 = new Image(getClass().getResourceAsStream("hotel4.jpg"),350,250,false,false);
+				   	Image h5 = new Image(getClass().getResourceAsStream("hotel5.jpeg"),350,250,false,false);				   	
 		   			Image[] hv = {imagen, h1, h2, h3, h4, h5};
 		   			for(int i = 0; i<4; i++ ) {
 		   				int rd = (int) (Math.random() * 5+1);	
@@ -134,13 +134,13 @@ public class GUI extends Application {
 		   	fotos.setStyle("-fx-background-color:#FCF3CF ;");
 		   	fotos.setVgap(5);
 		   	fotos.setHgap(5);
-		   	Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/hotel1.jpeg"), 187.5, 150, false, false);
+		   	Image imagen1 = new Image(getClass().getResourceAsStream("hotel1.jpeg"), 187.5, 150, false, false);
 		   	Label label1 = new Label("", new ImageView(imagen1)); 	
-		   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/hotel2.jpeg"), 187.5, 150, false, false);
+		   	Image imagen2 = new Image(getClass().getResourceAsStream("hotel2.jpeg"), 187.5, 150, false, false);
 		   	Label label2= new Label("", new ImageView(imagen2));   	
-		   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/hotel3.jpeg"), 187.5, 150, false, false);
+		   	Image imagen3= new Image(getClass().getResourceAsStream("hotel3.jpeg"), 187.5, 150, false, false);
 		   	Label label3 = new Label("", new ImageView(imagen3));	
-		   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/hotel5.jpeg"), 187.5, 150, false, false);
+		   	Image imagen4 = new Image(getClass().getResourceAsStream("hotel5.jpeg"), 187.5, 150, false, false);
 		   	Label label4 = new Label("", new ImageView(imagen4));
 		   	fotos.add(label1, 0, 0);
 		   	fotos.add(label2, 1, 0);
@@ -166,13 +166,13 @@ public class GUI extends Application {
 		   				}
 		   				if (cont == 1) {
 		   					fotos.getChildren().clear();
-		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena1.jpeg"), 187.5, 150, false, false);
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("Ximena1.jpeg"), 187.5, 150, false, false);
 		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
-		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena2.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("Ximena2.jpeg"), 187.5, 150, false, false);
 		   				   	Label label2= new Label("", new ImageView(imagen2));   	
-		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Ximena4.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("Ximena4.jpeg"), 187.5, 150, false, false);
 		   				   	Label label3 = new Label("", new ImageView(imagen3));	
-		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Ximena3.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("Ximena3.jpeg"), 187.5, 150, false, false);
 		   				   	Label label4 = new Label("", new ImageView(imagen4));
 		   				   	fotos.add(label1, 0, 0);
 		   				   	fotos.add(label2, 1, 0);
@@ -182,13 +182,13 @@ public class GUI extends Application {
 		   				}
 		   				else if(cont == 2) {
 		   					fotos.getChildren().clear();
-		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan1.jpeg"), 187.5, 150, false, false);
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("Yojan1.jpeg"), 187.5, 150, false, false);
 		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
-		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan2.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("Yojan2.jpeg"), 187.5, 150, false, false);
 		   				   	Label label2= new Label("", new ImageView(imagen2));   	
-		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Yojan4.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("Yojan4.jpeg"), 187.5, 150, false, false);
 		   				   	Label label3 = new Label("", new ImageView(imagen3));	
-		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Yojan3.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("Yojan3.jpeg"), 187.5, 150, false, false);
 		   				   	Label label4 = new Label("", new ImageView(imagen4));
 		   				   	fotos.add(label1, 0, 0);
 		   				   	fotos.add(label2, 1, 0);
@@ -197,13 +197,13 @@ public class GUI extends Application {
 		   				}
 		   				else if(cont == 3) {
 		   					fotos.getChildren().clear();
-		   					Image imagen1 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica1.jpeg"), 187.5, 150, false, false);
+		   					Image imagen1 = new Image(getClass().getResourceAsStream("Veronica1.jpeg"), 187.5, 150, false, false);
 		   				   	Label label1 = new Label("", new ImageView(imagen1)); 	
-		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica2.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen2 = new Image(getClass().getResourceAsStream("Veronica2.jpeg"), 187.5, 150, false, false);
 		   				   	Label label2= new Label("", new ImageView(imagen2));   	
-		   				   	Image imagen3= new Image(getClass().getResourceAsStream("./Imagenes/Veronica4.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen3= new Image(getClass().getResourceAsStream("Veronica4.jpeg"), 187.5, 150, false, false);
 		   				   	Label label3 = new Label("", new ImageView(imagen3));	
-		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("./Imagenes/Veronica3.jpeg"), 187.5, 150, false, false);
+		   				   	Image imagen4 = new Image(getClass().getResourceAsStream("Veronica3.jpeg"), 187.5, 150, false, false);
 		   				   	Label label4 = new Label("", new ImageView(imagen4));
 		   				   	fotos.add(label1, 0, 0);
 		   				   	fotos.add(label2, 1, 0);
@@ -260,7 +260,7 @@ public class GUI extends Application {
 				Object control = e.getSource();
 				if (control instanceof MenuItem) { 
 					if(((MenuItem) control).getText().equals("Salir")) {
-						//Serializacion.serializacion();
+						Serializacion.serializacion();
 						Platform.exit();
 						}
 					else if(((MenuItem) control).getText().equals("Descripción")) {

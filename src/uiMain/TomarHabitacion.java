@@ -99,7 +99,7 @@ public class TomarHabitacion {
 					else if (resultado.get().equals(noHabitacion.getButtonTypes().get(1))) {
 						campo.clear();
 						Alert adios = new Alert(AlertType.INFORMATION);
-						adios.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("./Imagenes/triste.png"),50,50,false,false)));
+						adios.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("triste.png"),50,50,false,false)));
 						adios.setHeaderText("No se encuentran habitaciones disponibles.");
 						adios.setContentText("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!");
 						adios.show();
