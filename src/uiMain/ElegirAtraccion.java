@@ -2,8 +2,7 @@ package uiMain;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
-import Errores.Excepcion1;
+import Errores.ExcepcionNoCliente;
 import gestorAplicacion.Cliente;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -56,7 +55,7 @@ public class ElegirAtraccion {
 			BuscarCliente oidor = new BuscarCliente(campo);
 			try {
 				oidor.handle();
-			} catch (Excepcion1 e) {
+			} catch (ExcepcionNoCliente e) {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");

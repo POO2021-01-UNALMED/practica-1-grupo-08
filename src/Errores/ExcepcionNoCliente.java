@@ -10,26 +10,17 @@ import uiMain.BuscarCliente;
  * base de datos del hotel y es tratada en las funcionalidades; tomar habitación, cancelar reserva, dar salida a un cliente,
  * elegir menú o atracciones.*/
 
-public class Excepcion1 extends ErrorAplicacion {
+public class ExcepcionNoCliente extends ErrorAplicacion {
 	private static final long serialVersionUID = 1L;
 	
 	TextField campo = new TextField();
-	public Excepcion1(TextField campo) {
+	public ExcepcionNoCliente(TextField campo) {
 		super();
 		this.campo = campo;
-		//Throwable("cliente no registrado en la base de datos");
 	}
 	@Override
 	public String getMessage() {
 		return  super.getMessage()+"cliente no registrado en la base de datos";
 	}
 	
-	
-	
-	
-	
-	//Formato
-	//Fechas superiores
-/*	public String getMensaje() {
-		return super.getMessage()+" cliente no registrado en la base de datos";	}*/
 }

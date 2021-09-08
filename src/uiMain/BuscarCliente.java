@@ -1,8 +1,7 @@
 package uiMain;
 
 import java.util.Optional;
-
-import Errores.Excepcion1;
+import Errores.ExcepcionNoCliente;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.event.ActionEvent;
@@ -11,14 +10,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-
+//Clase bi
 public class BuscarCliente  {
 	private TextField campo;
 	Cliente clienteNuevo;
 	public BuscarCliente(TextField c) {
 		campo = c;
 	}
-	public void handle() throws Excepcion1{
+	public void handle() throws ExcepcionNoCliente{
 		Long cedula = null;
 		try {
 			cedula = Long.parseLong(campo.getText());
@@ -46,7 +45,7 @@ public class BuscarCliente  {
 			}
 		}
 		if (confirmacion == false) {
-			throw new Excepcion1(campo);
+			throw new ExcepcionNoCliente(campo);
 		}
 	
 }

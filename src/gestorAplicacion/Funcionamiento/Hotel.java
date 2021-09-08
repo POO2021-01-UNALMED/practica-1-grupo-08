@@ -2,6 +2,7 @@ package gestorAplicacion.Funcionamiento;
 import uiMain.*;
 import java.util.ArrayList;
 
+import Errores.ExcepcionMostrarClientes;
 import Errores.ExcepcionNoGanancias;
 import gestorAplicacion.*;
 import gestorAplicacion.Personal.Administrador;
@@ -191,7 +192,17 @@ public abstract class Hotel {
 		return total - salario;
 		
 	}
-	
+	public static void mostrarCliente() throws ExcepcionMostrarClientes {
+		int cont = 0;
+		for (Cliente i : Hotel.getClientes()) {
+			if (i.getHabitacion() != null && i.isReserva() == false) {
+				cont++;
+			}
+		}
+		if (cont == 0) {
+			throw new ExcepcionMostrarClientes();
+		}
+	}
 	public static Administrador getAd1() {
 		return ad1;
 	}

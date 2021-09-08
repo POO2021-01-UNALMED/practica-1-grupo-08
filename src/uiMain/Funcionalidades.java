@@ -2,6 +2,7 @@ package uiMain;
 
 import java.util.Optional;
 
+import Errores.ExcepcionMostrarClientes;
 import Errores.ExcepcionNoGanancias;
 import baseDatos.Deserializacion;
 import gestorAplicacion.Cliente;
@@ -24,6 +25,13 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+//Clase Funcionalidades:
+/* Componentes : Panel principal que irá cambiando de acuerdo a la funcionalidad escogida, barra de menú que contiene cada una de 
+ * las funcionalidades, el atributo estandar de tipo Scene usado para cambiar entre ventanas y todos los oidores de cada una de las 
+ * funcionalidades escogidas a través de la barra de menú.
+ * Funcionalidad: Esta clase permitirá efectuar cada una de las acciones que un usuario puede realizar en el sistema del hotel, dichas acciones se encuentran en la barra del menú y se describen en cada de
+ * sus clases. 
+ * */
 public class Funcionalidades {
 	public static VBox principal = new VBox(20);
 	public MenuBar barramenu = new MenuBar();;
@@ -31,7 +39,8 @@ public class Funcionalidades {
 	public static Label descripcion;
 	public static Scene estandar = new Scene(principal, 800, 550);
 
-
+    //Esta es la escena que aparecerá luego de abrer presionado el boton Menú principal de la clase GUI
+	//permitirá, ir mostrando en pantalla cada una de las funcionalidades que el usuario desea implementar.
 	public void crearScene() {
 
 		Menu inicio = new Menu("Inicio");
@@ -96,6 +105,7 @@ public class Funcionalidades {
 	}
 
 }
+//Este clase de tipo EventHandler nos indica que funcionalidad se ha elegido para proceder de acuerdo a esto.
 
 class Eventos implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent e) {
@@ -168,18 +178,24 @@ class Eventos implements EventHandler<ActionEvent> {
 			Funcionalidades.principal.getChildren().remove(3);
 			Funcionalidades.titulo.setText("Mostrar clientes");
 			Funcionalidades.descripcion.setText("A continuación se presenta la lista de clientes activos en el hotel:");
-			int cont = 0;
-			for (Cliente i : Hotel.getClientes()) {
-				if (i.getHabitacion() != null && i.isReserva() == false) {
-					cont++;
-				}
-			}
-			if (cont == 0) {
-				Alert nulo = new Alert(AlertType.INFORMATION);
-				nulo.setTitle("Información");
-				nulo.setHeaderText("En el momento no se encuentran clientes hospedados en el hotel.");
+			try{
+				Hotel.mostrarCliente();
+				ListView<String> clientes = new ListView<String>();
+				for (Cliente i : Hotel.getClientes()) {
+					if (i.getHabitacion() != null && i.isReserva() == false) {
+						clientes.getItems().add("Cliente identificado con " + i.getId()
+								+ ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
+						}
+					}
+				Funcionalidades.principal.getChildren().add(clientes);
+				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(20, 20, 20, 20));				
+			}catch(ExcepcionMostrarClientes cl) {
+				Alert nulo = new Alert(AlertType.WARNING);
+				nulo.setTitle("Advertencia");
+				nulo.setHeaderText("Sin clientes");
+				nulo.setContentText(cl.getMessage());
 				Optional<ButtonType> resulta = nulo.showAndWait();
-				if (!resulta.isPresent()) {
+				if (!resulta.isPresent()) {		
 					GUI.ventana.setScene(Funcionalidades.estandar);
 					Funcionalidades.titulo.setText("Bienvenido al hotel.");
 					Funcionalidades.descripcion.setText(
@@ -199,19 +215,9 @@ class Eventos implements EventHandler<ActionEvent> {
 					Label label = new Label("", new ImageView(imagen));
 					Funcionalidades.principal.getChildren().addAll(label);
 				}
-			} else {
-				ListView<String> clientes = new ListView<String>();
-				for (Cliente i : Hotel.getClientes()) {
-					if (i.getHabitacion() != null && i.isReserva() == false) {
-						clientes.getItems().add("Cliente identificado con " + i.getId()
-								+ ", hospedado en la habitación " + i.getHabitacion().getNumhabitacion() + ".");
-					}
-				}
-				Funcionalidades.principal.getChildren().add(clientes);
-				VBox.setMargin(Funcionalidades.principal.getChildren().get(3), new Insets(20, 20, 20, 20));
 			}
 		}
-
+					
 		else if (opcion.getText().equals("Aplicación")) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Descripción de la aplicación.");
@@ -255,7 +261,7 @@ class Eventos implements EventHandler<ActionEvent> {
 		}
 	}
 }
-
+//Esta clase en particular permite volver a la pantalla principal sin importar que funcionalidad estás implementando.
 class Inicio implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent e) {
 		GUI.ventana.setScene(Funcionalidades.estandar);

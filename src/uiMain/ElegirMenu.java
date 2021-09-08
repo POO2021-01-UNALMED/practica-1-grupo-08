@@ -3,8 +3,7 @@ package uiMain;
 import java.awt.Checkbox;
 import java.util.ArrayList;
 import java.util.Optional;
-
-import Errores.Excepcion1;
+import Errores.ExcepcionNoCliente;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import javafx.beans.value.ChangeListener;
@@ -61,7 +60,7 @@ public class ElegirMenu {
 			BuscarCliente oidor = new BuscarCliente(campo);
 			try {
 			oidor.handle();}
-			catch(Excepcion1 e) {
+			catch(ExcepcionNoCliente e) {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");

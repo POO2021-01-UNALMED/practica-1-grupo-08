@@ -79,7 +79,6 @@ public class GUI extends Application {
 		   	//Etiqueta para agregar imagenes
 		   	Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"),350,250,false,false);
 		   	label = new Label("", new ImageView(imagen));
-		   //BorderPane.setAlignment(label, Pos.TOP_CENTER);
 		   	pimagenes.setTop(label);
 		   	pimagenes.setOnMouseEntered(new EventHandler<MouseEvent>() {
 		   		int cont = 0;
@@ -110,7 +109,8 @@ public class GUI extends Application {
 		   	pimagenes.setBottom(botonprincipal);
 		   	p1.getChildren().addAll(saludo,pimagenes);
 		   			   	
-		   	//Panel vertical para almacenar hoja de vida y fotos.
+		   	//Panel vertical para almacenar hoja de vida y fotos de los integrantes del grupo
+		   	//que se irán cambiando a medida en que se le da click.
 		   	VBox p2 = new VBox();
 		   	p2.setSpacing(5);
 		   	p2.setPadding(new Insets(10,0,0,0));
@@ -194,7 +194,6 @@ public class GUI extends Application {
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
-		   				   // p2.getChildren().add(fotos);
 		   				}
 		   				else if(cont == 3) {
 		   					fotos.getChildren().clear();
@@ -210,17 +209,13 @@ public class GUI extends Application {
 		   				   	fotos.add(label2, 1, 0);
 		   				   	fotos.add(label3, 0, 1);
 		   				   	fotos.add(label4, 1, 1);
-		   				   // p2.getChildren().add(fotos);
 		   				}
 		   			}
 		   		}
 		   	});
-		   	
-		   	 	
-		   	
-		   	
+		   	   	
 		   
-		   	//Panel principal.
+		   	//Panel principal, contiene el saludo de bienvenida, el panel con las fotos y hojas de vidas y el panel con las fotos del sistema.
 		   	BorderPane principal = new BorderPane();
 		   	principal.setLeft(p1);
 		   	principal.setRight(p2);
@@ -246,7 +241,7 @@ public class GUI extends Application {
 	
 	
 	public static void main(String[] args) {
-		//Métodos para deseria
+		//Métodos para deserializar los objetos previamente creados
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
 		launch(args);

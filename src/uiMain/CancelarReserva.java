@@ -1,8 +1,7 @@
 package uiMain;
 
 import java.util.Optional;
-
-import Errores.Excepcion1;
+import Errores.ExcepcionNoCliente;
 import gestorAplicacion.Cliente;
 import gestorAplicacion.Funcionamiento.Hotel;
 import gestorAplicacion.Funcionamiento.Reserva;
@@ -23,6 +22,8 @@ public class CancelarReserva {
 	GridPane formCedula = new GridPane();
 		
 	public CancelarReserva(){
+		formCedula.setHgap(10);
+		formCedula.setVgap(15);
 		Cancelar oyente = new Cancelar(campo);
 		enviar.setOnAction(oyente);
 		formCedula.addRow(0, criterio, campo, enviar);
@@ -50,7 +51,7 @@ public class CancelarReserva {
 			BuscarCliente oidor = new BuscarCliente(campoBuscar);
 			try {
 				oidor.handle();}
-			catch(Excepcion1 e) {
+			catch(ExcepcionNoCliente e) {
 				Alert sinCliente = new Alert(AlertType.ERROR);
 				sinCliente.setTitle("Error");
 				sinCliente.setHeaderText("Cliente no encontrado.");
