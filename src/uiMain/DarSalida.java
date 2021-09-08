@@ -18,6 +18,13 @@ import javafx.scene.paint.Color;
 //import uiMain.TomarHabitacion.buscarCliente;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+//Clase DarSalida: 
+/* Funcionalidad: Esta clase permite que al ser seleccionado en la barra de menú el item "dar salida a un cliente", se 
+ * pueda ingresar la cédula del cliente y verificar que si se encuentre en el hotel y este alojado, si este es el 
+ * caso el cliente tiene la opcion de crear una nueva reserva usando el formulario de la clase FieldPane. Si el 
+ * cliente ingresado no cumple con estas condiciones se le informará el caso por el cual no puede hacer uso de esta 
+ * funcionalidad.
+ * */
 
 public class DarSalida {
 	Label criterio = new Label("Cédula: ");
@@ -77,7 +84,6 @@ public class DarSalida {
 				Alert noregistrado = new Alert(AlertType.ERROR);
 				noregistrado.setTitle("Error");
 				noregistrado.setHeaderText("Usted no se encuentra en el hotel y no tiene deudas pendientes.");
-				// noregistrado.setContentText("");
 				Optional<ButtonType> resulta = noregistrado.showAndWait();
 				if (!resulta.isPresent()) {
 					campo.clear();
@@ -143,7 +149,7 @@ public class DarSalida {
 				adios.setHeaderText("¡Gracias por visitarnos, vuelva pronto!");
 				adios.show();
 			} else if (resultado.get().equals(hacerReserva.getButtonTypes().get(0))) {
-				// Formulario Reserva
+				// Formulario Reserva creado en la clase FieldPane
 				VBox formulario = new VBox(10);
 				formulario.setStyle("-fx-background-color:#FCF3CF ;");
 				formulario.setAlignment(Pos.TOP_CENTER);

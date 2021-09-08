@@ -24,7 +24,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
+// Clase FieldPane encargada de los formularios para crear nuevas reservas.
+/* Funcionalidad: Esta clase permite crear un formulario de registro en el caso en que un cliente desee hacer una reserva, 
+ * los controles que verifiquen si el cliente si se encuentre registrado se hacen a través de las que en las que se cree un 
+ * objeto de este tipo (clase DarSalida y clase TomarHabitacion).
+ * Esta clase hace uso de varias excepciones para verificar que los datos hayan sido ingresados y las fechas estén en el formato 
+ * adecuado. 
+ * */
 public class FieldPane extends Pane{
 	private String tituloCriterios;
 	private String[] criterios;
@@ -34,7 +40,7 @@ public class FieldPane extends Pane{
 	ArrayList<TextField> limpiar = new ArrayList<TextField>();
 	
 	GridPane grid = new GridPane();
-	//Organizar fechas que indiquen el formato
+	//Constructor de la clase que permite crear el formularios de manera dinámica.
 	public FieldPane(String tituloCriterios, String criterios [], String tituloValores, String valores [], Boolean habilitado[]) {
 		this.tituloCriterios = tituloCriterios;	
 		this.criterios = criterios;
@@ -88,7 +94,7 @@ public class FieldPane extends Pane{
 				aux = valores[i];				
 			} 
 	}
-		return aux; //Crear excepción si retorna un null
+		return aux; 
 		}
 	
 	public GridPane getFieldPane() {
@@ -234,7 +240,7 @@ public class FieldPane extends Pane{
 					}
 				}
 			}
-			
+			//Se crea la reserva con los datos ingresados.
 			if(habauxiliar.getClientes().size() == 0) {				
 				Reserva reserva1 = new Reserva(cliente.getFecha_entrada().toString(), cliente.getFecha_salida().toString(), cliente);
 				habauxiliar.setClientes(cliente);
@@ -280,6 +286,7 @@ public class FieldPane extends Pane{
 					limpiar.get(1).clear();
 					limpiar.get(2).clear();
 				}
+			//Si no se encuentran habitaciones disponibles para reservar se envía el siguiente cuadro de diálogo.	
 			} else {
 				Alert adios = new Alert(AlertType.INFORMATION);
 				adios.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("triste.png"),50,50,false,false)));

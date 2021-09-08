@@ -17,7 +17,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
+//Clase TomarHabitacion:
+/* Funcionalidad: Esta clase permite que al ser seleccionado en la barra de menú el item "Tomar habitación" un cliente
+ * previamente registrado pueda alojarse en el hotel.
+ * */
 public class TomarHabitacion {
 	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
@@ -61,7 +64,7 @@ public class TomarHabitacion {
 			Cliente clienteNuevo = oidor.getBuscarCliente();
 			if (clienteNuevo == null){
 				return;
-			}
+			}//Informa que el cliente ya tiene una habitación y por lo tanto no puede elegir otra
 			if (clienteNuevo.getHabitacion() != null) {
 				Alert siHabitacion = new Alert(AlertType.INFORMATION);
 				siHabitacion.setTitle("Información");
@@ -74,7 +77,9 @@ public class TomarHabitacion {
 				}
 
 			} else if (clienteNuevo.getHabitacion() == null) {
-				Hotel.asignarHabitacion(clienteNuevo);
+				Hotel.asignarHabitacion(clienteNuevo); //Si luego de llamar a este método que permite asignar una habitación a un cliente 
+				//de acuerdo a sus necesidades la habitación del cliente es null, es porque en definitiva no hay habitaciones disponibles
+				//y por lo tanto tendrá la opción de hacer una reserva.
 				if (clienteNuevo.getHabitacion() != null) {
 					Alert siHabitacion = new Alert(AlertType.INFORMATION);
 					siHabitacion.setTitle("Información");
@@ -130,12 +135,6 @@ public class TomarHabitacion {
 						GUI.ventana.setScene(tomarHabitacion);
 						
 					}
-					/*
-					 * if (respuesta.equals("si")) { hacerReserva(clientenuevo); return; } else if
-					 * (respuesta.equals("no")) { System.out.
-					 * println("¡Gracias por elegirnos, esperamos tener disponibilidad la próxima ocasión!"
-					 * ); }
-					 */
 				}
 			}
 

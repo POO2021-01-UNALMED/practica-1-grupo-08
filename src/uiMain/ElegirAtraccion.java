@@ -22,7 +22,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import uiMain.ElegirMenu.ElegirM;
-
+//Clase elegir Atracción 
+/* Funcionalidad: Esta clase permite que al ser seleccionado en la barra de menú el item "elegir atracción" un 
+ * cliente previamente registrado y que haya tomado una habitación pueda elegir una o varias atracciones.
+ * */
 public class ElegirAtraccion {
 	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
@@ -89,7 +92,9 @@ public class ElegirAtraccion {
 					return;
 				}
 
-				
+				//Permite al cliente escoger las atracciones que desea y confirmar su entrada, de acuerdo a las 
+				//atracciones elegidas se le guardará el valor del servivio para ser cobrado al momento en que salga
+				//del hotel.
 			} else if (clienteNuevo != null) {
 				Funcionalidades.titulo.setText("Opciones de atracciones.");
 				Funcionalidades.descripcion.setText("Elija a continuación la atracción que desea:");
@@ -154,9 +159,9 @@ public class ElegirAtraccion {
 						if (!respuest.isPresent()) {
 						}
 						else if (respuest.get().equals(confirmacion.getButtonTypes().get(1))) {
-							// mande al campo de escoger más atracciones
+							// Manda al campo de escoger más atracciones
 						} else if (respuest.get().equals(confirmacion.getButtonTypes().get(0))) {
-							// Gastos Servicios
+							// Se guardan el valor de las atracciones en las cuentas de los clientes.
 							for (int i = 0; i < opatraccion.size(); i++) {
 								clienteNuevo.getServicio().tipoAtraccion(opatraccion.get(i), clienteNuevo);
 							}

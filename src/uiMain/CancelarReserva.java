@@ -14,7 +14,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-
+//Clase CancelarReserva:
+/* Funcionalidad: Esta clase permite que al ser seleccionado en la barra de menú el item cancelar reserva, un 
+ * cliente pueda ingresar su cédula y cancelar una reserva previamente realizada. Se controlan varios aspectos
+ * como que el cliente si se encuentre registrado y que si tenga una reserva realizada, en todos estos casos 
+ * saldrán cuadros de diálogos informando si se pudo realizar la transacción o no.
+ * */
 public class CancelarReserva {
 	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
@@ -68,7 +73,7 @@ public class CancelarReserva {
 				if (cliente == null){
 					return;
 				}
-
+			//Cuadros de diálogos en caso de que el cliente si pueda cancelar una reserva
 			if (cliente.isReserva() == true) {
 				for (Reserva i : Hotel.getReservas()) {
 					if (i.getCliente() == cliente) {
@@ -132,7 +137,7 @@ public class CancelarReserva {
 							break;
 					}
 				}				
-					
+				//Cuadro de diálogo en el caso en que el cliente no tenga reservas	
 			} else {
 				Alert noReserva = new Alert(AlertType.INFORMATION);
 				noReserva.setTitle("Información");

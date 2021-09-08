@@ -10,7 +10,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-//Clase bi
+//Clase BuscarCliente
+/* Funcionalidad: Esta clase permite hacer la búsqueda de un cliente luego de que en cada funcionalidad se le solicite ingresar
+ * una cédula, si el cliente no es encontrado mandará excepción de ExcepcionNoCliente la cual informa al usuario
+ * que el cliente no se encuentra registrado. Si por el contrario el cliente si se encuentra registrado entonces 
+ * será enviado a la clase donde ha sido llamado a través el método getBuscar().
+ * */
 public class BuscarCliente  {
 	private TextField campo;
 	Cliente clienteNuevo;

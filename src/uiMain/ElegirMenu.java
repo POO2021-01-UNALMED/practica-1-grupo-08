@@ -27,7 +27,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
+//Clase Elegir Menu
+/* Funcionalidad: Esta clase permite que al ser seleccionado en la barra de menú el item "Elegir menú del restaurante" un
+ * cliente previamente registrado y que haya tomado una habitación pueda elegir los platillos que desee 
+ * */
 public class ElegirMenu {
 	Label criterio = new Label("Cédula: ");
 	TextField campo = new TextField();
@@ -93,7 +96,9 @@ public class ElegirMenu {
 					return;
 				}
 
-				
+			//Si el cliente cumple se encuentra en el hotel entonces tiene dos tipos de menús: menú vegetariano y menú tradicional,
+			//en ambos menús se le despliega la lista de platos disponibles para su elección.
+			//Luego de elegir platos la cuenta del cliente será modificada con el valor de los platos elegidos.	
 			} else if (clienteNuevo != null) {
 				infoCed.getChildren().clear();
 
@@ -173,10 +178,10 @@ public class ElegirMenu {
 						return;
 					}
 					if (respuesta.get().equals(confirmacion.getButtonTypes().get(1))) {
-						// mande a escoger platillo
+						// Manda a escoger platillo
 					} else if (respuesta.get().equals(confirmacion.getButtonTypes().get(0))) {
 						
-						//Gastos Servicios
+						//Se aumenta la cuenta del cliente con el valor de los platillos.
 						for(int i = 0; i< opcarta.size();i++) {
 							clienteNuevo.getServicio().tipoMenu(1, opcarta.get(i), clienteNuevo);
 						}
@@ -190,8 +195,6 @@ public class ElegirMenu {
 							return;
 						}
 						if (resultado.get() == ButtonType.OK) {
-							// combomenu.valueProperty().set(null);
-							// combomenu.getSelectionModel().clearSelection();
 							op1.setSelected(false);
 							op2.setSelected(false);
 							op3.setSelected(false);
@@ -201,16 +204,13 @@ public class ElegirMenu {
 					}
 				}
 			});
-
+           //Opciones de la carta vegetariana
 			if (combomenu.getValue().equals("Carta vegetariana")) {
 				op1.setText("Espirales con setas y verduras. - $20000");
 				op2.setText("Ensala de espárragos y requesón - $18000");
 				op3.setText("Lasaña vegetal - $15000");
 				op4.setText("Alcachofas rellenas de quinoa - $22000");
 				op5.setText("Hamburguesa vegetariana - $15000");
-
-				// Crear otro arreglo para tradicional y al final se envían los dos. Serían dos
-				// líneas en comparación a otras 5
 
 				// Acciones:
 				op1.setOnAction(new EventHandler<ActionEvent>() {
@@ -300,7 +300,7 @@ public class ElegirMenu {
 					}
 				});
 
-				
+				//Opciones de la carta tradicional
 
 			} else if (combomenu.getValue().equals("Carta tradicional")) {
 				op1.setText("Alitas orientales - $15000.");
