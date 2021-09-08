@@ -33,10 +33,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+/*Clase interfaz principal:
+ *Esta clase hereda de Application, por tanto, implementa el método start() que contiene todos los elementos
+ *de la intefaz inicio y el método main() que ejecuta el único Stage del sistema.
+ **/
+
+
 public class GUI extends Application {
 	public static Stage ventana;
+	//Escena para la interfaz inicio.
 	public static Scene escena1;
+	//Escena para la interfaz funcionalidades.
 	Scene  escenaFun = new Funcionalidades().getEscenaFun();
+	//Contiene la imagen principal del sistema.
 	public static Label label;
 	
 	
@@ -237,12 +246,15 @@ public class GUI extends Application {
 	
 	
 	public static void main(String[] args) {
+		//Métodos para deseria
 		Deserializacion.deserializar();
 		Habitacion.aumentarCapacidad();
 		launch(args);
 	
 	}
 	
+	/*Retorna la escena de inicio cuando se requiere en otras clases para cambiar de escena o modificar 
+	alguno de sus elementos.*/
 	public Scene getEscenaGUI() {
 		return escena1;
 	}

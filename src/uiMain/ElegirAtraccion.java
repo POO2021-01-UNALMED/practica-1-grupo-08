@@ -92,6 +92,8 @@ public class ElegirAtraccion {
 
 				
 			} else if (clienteNuevo != null) {
+				Funcionalidades.titulo.setText("Opciones de atracciones.");
+				Funcionalidades.descripcion.setText("Elija a continuación la atracción que desea:");
 				infoCed.getChildren().clear();
 				VBox eleccionatr = new VBox(10);
 				Label cabecera;
