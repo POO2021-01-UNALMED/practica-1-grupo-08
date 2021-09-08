@@ -135,13 +135,9 @@ public class FieldPane extends Pane{
 	class oyenteRegresar implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
 			GUI.ventana.setScene(Funcionalidades.estandar);
-			Funcionalidades.titulo.setText("Bienvenido al hotel.");
-			Funcionalidades.descripcion.setText(
-					"En la barra superior encontrarás los servicios que tenemos disponibles,esperamos que sean de tu agrado.");
-			Funcionalidades.principal.getChildren().remove(3);
-			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/images.jpg"), 450, 350, false, false);
-			Label label = new Label("", new ImageView(imagen));
-			Funcionalidades.principal.getChildren().addAll(label);
+			GridPane aux = (GridPane) Funcionalidades.principal.getChildren().get(3);
+			TextField aux2 = (TextField) aux.getChildren().get(1);
+			aux2.clear();
 		}
 	}
 	
